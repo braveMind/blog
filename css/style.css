@@ -729,6 +729,9 @@ a.article-title:hover {
   float: left;
   margin-right: 10px;
 }
+.tag-list-link {
+  width: 100px !important;
+}
 .article-tag-list-link:before {
   content: "#";
 }
@@ -1075,15 +1078,6 @@ a.article-title:hover {
   background: #999;
   color: #fff;
 }
-#page-nav .prev {
-  float: left;
-}
-#page-nav .next {
-  float: right;
-}
-#page-nav .page-number {
-  display: inline-block;
-}
 @media screen and (max-width: 479px) {
   #page-nav .page-number {
     display: none;
@@ -1327,18 +1321,63 @@ pre .javascript .function {
   -moz-background-size: 100%;
   background-size: 100%;
 }
-.left_header a {
+.left_header a,
+.left_header .tag_s {
   margin-top: 1px;
   padding: 15px;
   display: block;
   width: 100%;
   height: 5%;
+  line-height: 5%;
   min-height: 50px;
   color: #fff;
   font-size: 20px;
 }
-.left_header a:hover {
+.left_header a:hover,
+.left_header .tag_s:hover {
   background-color: #d4612e;
+}
+.left_header .pop::before {
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #fff;
+  border-top: 10px solid transparent;
+  content: "";
+  height: 0;
+  position: absolute;
+  right: 100%;
+  top: 57px;
+  width: 0;
+}
+.left_header .pop {
+  clear: both;
+  background: #fff none repeat scroll 0 0;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 10px #9d9d9d;
+  box-shadow: 0 0 10px #9d9d9d;
+  height: 240px;
+  left: 45px;
+  position: relative;
+  width: 260px;
+  margin-top: -78px;
+  color: #f00;
+  display: none;
+}
+.left_header .tag-list-link {
+  font-size: 12px;
+  padding: 5px;
+  line-height: 30px;
+  margin-top: 30px;
+  display: inline;
+  color: #000;
+  letter-spacing: 1px;
+}
+.left_header .tag-list-link:hover {
+  background-color: "white";
+}
+.left_header .tag-list {
+  padding: 10;
+  padding-top: 25px;
 }
 .left_content {
   width: 93%;
