@@ -1310,6 +1310,19 @@ pre .javascript .function {
   min-width: 50px;
   background-color: #2a2a2a;
 }
+.left_header .header_avater {
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  background: url("images/avater.jpg") center #000;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  margin: auto;
+  margin-top: 20px;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  background-size: 100%;
+}
 .left_header a {
   margin-top: 1px;
   padding: 15px;
@@ -1318,14 +1331,14 @@ pre .javascript .function {
   height: 5%;
   min-height: 50px;
   color: #fff;
-  background-color: #e3852f;
+  font-size: 20px;
 }
 .left_header a:hover {
   background-color: #d4612e;
 }
 .left_content {
   width: 93%;
-  background-color: #bc8f8f;
+  background-color: #f5f5f5;
   min-height: 100%;
   height: auto;
   padding-top: 2%;
