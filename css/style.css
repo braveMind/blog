@@ -1379,6 +1379,9 @@ pre .javascript .function {
   padding: 10;
   padding-top: 25px;
 }
+.left_header .git {
+  font-size: 25px;
+}
 .left_content {
   width: 93%;
   background-color: #f5f5f5;
