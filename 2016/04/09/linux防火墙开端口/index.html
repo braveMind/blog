@@ -3,17 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>小菜园</title>
+  <title>linux防火墙开端口 | 小菜园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小菜园">
-<meta property="og:url" content="http://bravemind.github.io/index.html">
+  <meta name="description" content="Linux环境下，长长需要自己开一些端口，基本上每次用的时候都要去找，所以就总结记录下来开端口常用的命令，下次直接可以使使用，拯救我懒惰的大脑。
+linux 防火墙开端口/sbin/iptables -I INPUT -p tcp --dport 11211 -j ACCEPT
+保存修改：/etc/rc.d/init.d/iptables save
+查看打开的端口：/etc/init.d/ip">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux防火墙开端口">
+<meta property="og:url" content="http://bravemind.github.io/2016/04/09/linux防火墙开端口/index.html">
 <meta property="og:site_name" content="小菜园">
-<meta property="og:description">
+<meta property="og:description" content="Linux环境下，长长需要自己开一些端口，基本上每次用的时候都要去找，所以就总结记录下来开端口常用的命令，下次直接可以使使用，拯救我懒惰的大脑。
+linux 防火墙开端口/sbin/iptables -I INPUT -p tcp --dport 11211 -j ACCEPT
+保存修改：/etc/rc.d/init.d/iptables save
+查看打开的端口：/etc/init.d/ip">
+<meta property="og:updated_time" content="2016-04-09T04:30:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小菜园">
-<meta name="twitter:description">
+<meta name="twitter:title" content="linux防火墙开端口">
+<meta name="twitter:description" content="Linux环境下，长长需要自己开一些端口，基本上每次用的时候都要去找，所以就总结记录下来开端口常用的命令，下次直接可以使使用，拯救我懒惰的大脑。
+linux 防火墙开端口/sbin/iptables -I INPUT -p tcp --dport 11211 -j ACCEPT
+保存修改：/etc/rc.d/init.d/iptables save
+查看打开的端口：/etc/init.d/ip">
   
   
     <link rel="icon" href="/favicon.png">
@@ -42,9 +52,7 @@
     <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
 </div>
 <div class="left_content">
-    <section>
-  
-    <article id="post-linux防火墙开端口" class="article article-type-post" itemscope itemprop="blogPost">
+    <section><article id="post-linux防火墙开端口" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
   </div>
@@ -54,8 +62,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/04/09/linux防火墙开端口/">linux防火墙开端口</a>
+    <h1 class="article-title" itemprop="name">
+      linux防火墙开端口
     </h1>
   
 
@@ -87,6 +95,11 @@ service iptables stop # 停止服务
     <div class="article-entry" itemprop="articleBody">
       
       
+      <div id="toc" class="article-toc">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux-防火墙开端口"><span class="toc-number">1.</span> <span class="toc-text">linux 防火墙开端口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#保存修改："><span class="toc-number">1.1.</span> <span class="toc-text">保存修改：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看打开的端口："><span class="toc-number">1.2.</span> <span class="toc-text">查看打开的端口：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关闭防火墙"><span class="toc-number">1.3.</span> <span class="toc-text">关闭防火墙</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看防火墙信息"><span class="toc-number">1.4.</span> <span class="toc-text">查看防火墙信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开放端口-8080"><span class="toc-number">1.5.</span> <span class="toc-text">开放端口:8080</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#将更改进行保存"><span class="toc-number">1.6.</span> <span class="toc-text">将更改进行保存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#另外也可以直接在-etc-sysconfig-iptables中增加一行："><span class="toc-number">1.7.</span> <span class="toc-text">另外也可以直接在/etc/sysconfig/iptables中增加一行：</span></a></li></ol></li></ol>
+        <hr/>
+      </div>
+      
       <p>  Linux环境下，长长需要自己开一些端口，基本上每次用的时候都要去找，所以就总结记录下来开端口常用的命令，下次直接可以使使用，拯救我懒惰的大脑。</p>
 <h3 id="linux-防火墙开端口"><a href="#linux-防火墙开端口" class="headerlink" title="linux 防火墙开端口"></a>linux 防火墙开端口</h3><pre><code>/sbin/iptables -I INPUT -p tcp --dport 11211 -j ACCEPT
 </code></pre><h4 id="保存修改："><a href="#保存修改：" class="headerlink" title="保存修改："></a>保存修改：</h4><pre><code>/etc/rc.d/init.d/iptables save
@@ -110,73 +123,22 @@ service iptables stop # 停止服务
     </footer>
   </div>
   
-</article>
-
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-写于开始" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/04/09/写于开始/">首记</a>
-    </h1>
+    <a href="/blog/2016/04/09/写于开始/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">首记</div>
+    </a>
   
+</nav>
 
-        <a href="/blog/2016/04/09/写于开始/" class="article-data-title">
-
-  <time  datetime="2016-04-09T01:53:15.000Z" itemprop="datePublished">2016-04-09</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>写文章和读书能让人的心灵慢慢的平静下来，对于我而言能获得真正心灵上的放松，把日常的琐碎暂时忘记，全身沉浸在和自己交流的空间里，对于我来说这就是搭建这个博客的意义。 </p>
-</blockquote>
-<h3 id="为什么还要造这个轮子"><a href="#为什么还要造这个轮子" class="headerlink" title="为什么还要造这个轮子"></a>为什么还要造这个轮子</h3><p>博客的风格我偏向于简约，之前也在网上找了很多别人开发的主题，但都不能完全切合我的心意，简洁的风格是我所喜欢的。于是打算自己给自己造个博客主题，不为炫技只为展示文字，于是braveMind就诞生了，由于诞生的比较匆忙很多地方做的不够灵活，修改了部分源码，也没有做全面测试，所以暂时先不开源出。<br>如果喜欢可以加我Q：1069983529留言，看到我会第一时间分享与你。</p>
-<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>博客的名字取名为小菜园，比较符合本码农的情怀，理想主义种自己的菜，业余时间浇浇水，希望能自己能一直坚持下去。</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>写文章和读书能让人的心灵慢慢的平静下来，对于我而言能获得真正心灵上的放松，把日常的琐碎暂时忘记，全身沉浸在和自己交流的空间里，对于我来说这就是搭建这个博客的意义。 </p>
-</blockquote>
-<h3 id="为什么还要造这个轮子"><a href="#为什么还要造这个轮子" class="headerlink" title="为什么还要造这个轮子"></a>为什么还要造这个轮子</h3><p>博客的风格我偏向于简约，之前也在网上找了很多别人开发的主题，但都不能完全切合我的心意，简洁的风格是我所喜欢的。于是打算自己给自己造个博客主题，不为炫技只为展示文字，于是braveMind就诞生了，由于诞生的比较匆忙很多地方做的不够灵活，修改了部分源码，也没有做全面测试，所以暂时先不开源出。<br>如果喜欢可以加我Q：1069983529留言，看到我会第一时间分享与你。</p>
-<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>博客的名字取名为小菜园，比较符合本码农的情怀，理想主义种自己的菜，业余时间浇浇水，希望能自己能一直坚持下去。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/09/写于开始/" data-id="cimsn5wtd00015hkqij46skha" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"></ul>
-
-    </footer>
-  </div>
   
 </article>
 
 
 
-
-  
-  
 </section>
 </div>
 

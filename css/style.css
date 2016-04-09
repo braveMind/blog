@@ -563,6 +563,10 @@ body {
 a.article-title:hover {
   color: #258fb8;
 }
+#toc+p {
+  padding: 10px;
+  border-left: 10px solid #f5f5f5;
+}
 .article-entry {
   color: #555;
   padding: 0 20px;
@@ -635,10 +639,12 @@ a.article-title:hover {
   padding: 10px 0;
 }
 .article-entry blockquote {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.4em;
+  font-family: inherit;
+  padding: 10px;
+  border-left: 10px solid #f5f5f5;
+  font-size: 1.2em;
   margin: 1.6em 20px;
-  text-align: center;
+  text-align: left;
 }
 .article-entry blockquote footer {
   font-size: 14px;
@@ -1123,6 +1129,11 @@ a.article-title:hover {
 .article-entry .gist .gist-file .gist-data .line-numbers {
   color: #666;
   font-size: 0.85em;
+}
+.article-entry .highlight .gutter pre .article-entry+p,
+.article-entry .gist .gist-file .gist-data .line-numbers .article-entry+p {
+  padding: 10px;
+  border-left: 10px solid #f5f5f5;
 }
 .article-entry pre,
 .article-entry code {
