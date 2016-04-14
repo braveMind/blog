@@ -5,28 +5,28 @@
   
   <title>Angular 页面路由 | 小菜园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="什么是页面路由？路由这是一个形象的比喻，就像网络，一个网段可以依靠路由划分不同的子网一样，我们的页面可以依靠 ‘#’ 哈希符合来划分不同的状态。
+  <meta name="description" content="什么是页面路由？路由这是一个形象的比喻，就像网络，一个网段可以依靠路由划分不同的子网一样，我们的页面可以依靠 ‘#’ 哈希符合来划分不同的状态,每个状态有可以有父子关系,子页面可以共享父页面的数据。
 
 ui-router为什么要使用页面路由？
-最大的优点是页面路由可以局部刷新，不借助于后台，不用写javascript脚本来让页面实现居中刷新，给用户非常好的体验。
-页面路由还可以支持懒加载css,js，第二次进入相同页面会缓存上一次的页面请求，页面">
+最大的优点是页面路由可以局部刷新，不借助于后台，不用写javascript脚本来让页面实现局部刷新，给用户非常好的体验。
+页面路由还可以支持懒加载css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular 页面路由">
 <meta property="og:url" content="http://bravemind.github.io/2016/04/13/Angular-ui-router/index.html">
 <meta property="og:site_name" content="小菜园">
-<meta property="og:description" content="什么是页面路由？路由这是一个形象的比喻，就像网络，一个网段可以依靠路由划分不同的子网一样，我们的页面可以依靠 ‘#’ 哈希符合来划分不同的状态。
+<meta property="og:description" content="什么是页面路由？路由这是一个形象的比喻，就像网络，一个网段可以依靠路由划分不同的子网一样，我们的页面可以依靠 ‘#’ 哈希符合来划分不同的状态,每个状态有可以有父子关系,子页面可以共享父页面的数据。
 
 ui-router为什么要使用页面路由？
-最大的优点是页面路由可以局部刷新，不借助于后台，不用写javascript脚本来让页面实现居中刷新，给用户非常好的体验。
-页面路由还可以支持懒加载css,js，第二次进入相同页面会缓存上一次的页面请求，页面">
-<meta property="og:updated_time" content="2016-04-13T15:26:37.000Z">
+最大的优点是页面路由可以局部刷新，不借助于后台，不用写javascript脚本来让页面实现局部刷新，给用户非常好的体验。
+页面路由还可以支持懒加载css">
+<meta property="og:updated_time" content="2016-04-14T01:01:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular 页面路由">
-<meta name="twitter:description" content="什么是页面路由？路由这是一个形象的比喻，就像网络，一个网段可以依靠路由划分不同的子网一样，我们的页面可以依靠 ‘#’ 哈希符合来划分不同的状态。
+<meta name="twitter:description" content="什么是页面路由？路由这是一个形象的比喻，就像网络，一个网段可以依靠路由划分不同的子网一样，我们的页面可以依靠 ‘#’ 哈希符合来划分不同的状态,每个状态有可以有父子关系,子页面可以共享父页面的数据。
 
 ui-router为什么要使用页面路由？
-最大的优点是页面路由可以局部刷新，不借助于后台，不用写javascript脚本来让页面实现居中刷新，给用户非常好的体验。
-页面路由还可以支持懒加载css,js，第二次进入相同页面会缓存上一次的页面请求，页面">
+最大的优点是页面路由可以局部刷新，不借助于后台，不用写javascript脚本来让页面实现局部刷新，给用户非常好的体验。
+页面路由还可以支持懒加载css">
   
   
     <link rel="icon" href="/blog/favicon.png">
@@ -80,10 +80,10 @@ ui-router为什么要使用页面路由？
    <!-- <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p> 什么是页面路由？路由这是一个形象的比喻，就像网络，一个网段可以依靠路由划分不同的子网一样，我们的页面可以依靠 ‘#’ 哈希符合来划分不同的状态。</p>
+<p> 什么是页面路由？路由这是一个形象的比喻，就像网络，一个网段可以依靠路由划分不同的子网一样，我们的页面可以依靠 ‘#’ 哈希符合来划分不同的状态,每个状态有可以有父子关系,子页面可以共享父页面的数据。</p>
 </blockquote>
 <h3 id="ui-router"><a href="#ui-router" class="headerlink" title="ui-router"></a>ui-router</h3><h4 id="为什么要使用页面路由？"><a href="#为什么要使用页面路由？" class="headerlink" title="为什么要使用页面路由？"></a>为什么要使用页面路由？</h4><ol>
-<li>最大的优点是页面路由可以局部刷新，不借助于后台，不用写javascript脚本来让页面实现居中刷新，给用户非常好的体验。</li>
+<li>最大的优点是页面路由可以局部刷新，不借助于后台，不用写javascript脚本来让页面实现局部刷新，给用户非常好的体验。</li>
 <li>页面路由还可以支持懒加载css,js，第二次进入相同页面会缓存上一次的页面请求，页面响应速度快。 </li>
 <li>页面路由子节点可以共享父节点中的数据，比传统的页面跳转数据传递优雅许多。</li>
 <li>页面路由可以使html模块化，我们可以写更多公用的模块让其他页面引用。</li>
@@ -103,10 +103,10 @@ ui-router为什么要使用页面路由？
       </div>
       
       <blockquote>
-<p> 什么是页面路由？路由这是一个形象的比喻，就像网络，一个网段可以依靠路由划分不同的子网一样，我们的页面可以依靠 ‘#’ 哈希符合来划分不同的状态。</p>
+<p> 什么是页面路由？路由这是一个形象的比喻，就像网络，一个网段可以依靠路由划分不同的子网一样，我们的页面可以依靠 ‘#’ 哈希符合来划分不同的状态,每个状态有可以有父子关系,子页面可以共享父页面的数据。</p>
 </blockquote>
 <h3 id="ui-router"><a href="#ui-router" class="headerlink" title="ui-router"></a>ui-router</h3><h4 id="为什么要使用页面路由？"><a href="#为什么要使用页面路由？" class="headerlink" title="为什么要使用页面路由？"></a>为什么要使用页面路由？</h4><ol>
-<li>最大的优点是页面路由可以局部刷新，不借助于后台，不用写javascript脚本来让页面实现居中刷新，给用户非常好的体验。</li>
+<li>最大的优点是页面路由可以局部刷新，不借助于后台，不用写javascript脚本来让页面实现局部刷新，给用户非常好的体验。</li>
 <li>页面路由还可以支持懒加载css,js，第二次进入相同页面会缓存上一次的页面请求，页面响应速度快。 </li>
 <li>页面路由子节点可以共享父节点中的数据，比传统的页面跳转数据传递优雅许多。</li>
 <li>页面路由可以使html模块化，我们可以写更多公用的模块让其他页面引用。</li>
@@ -116,7 +116,7 @@ ui-router为什么要使用页面路由？
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/13/Angular-ui-router/" data-id="cimz0g98v0000ghkq5ilr1cry" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/13/Angular-ui-router/" data-id="cimzkzcul0000om9kjq40vw8h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Angular/">Angular</a></li></ul>
