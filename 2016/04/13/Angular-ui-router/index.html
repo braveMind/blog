@@ -19,7 +19,7 @@ ui-router为什么要使用页面路由？
 ui-router为什么要使用页面路由？
 最大的优点是页面路由可以局部刷新，不借助于后台，不用写javascript脚本来让页面实现局部刷新，给用户非常好的体验。
 页面路由还可以支持懒加载css">
-<meta property="og:updated_time" content="2016-04-14T01:01:52.000Z">
+<meta property="og:updated_time" content="2016-04-14T01:55:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular 页面路由">
 <meta name="twitter:description" content="什么是页面路由？路由这是一个形象的比喻，就像网络，一个网段可以依靠路由划分不同的子网一样，我们的页面可以依靠 ‘#’ 哈希符合来划分不同的状态,每个状态有可以有父子关系,子页面可以共享父页面的数据。
@@ -89,7 +89,7 @@ ui-router为什么要使用页面路由？
 <li>页面路由可以使html模块化，我们可以写更多公用的模块让其他页面引用。</li>
 <li>页面路由可以很方便的实现面包屑导航，可方便实现多视图  。</li>
 </ol>
-<h3 id="ui-router的URL划分"><a href="#ui-router的URL划分" class="headerlink" title="ui-router的URL划分"></a>ui-router的URL划分</h3><h3 id="ui-router-保存父页面的信息"><a href="#ui-router-保存父页面的信息" class="headerlink" title="ui-router 保存父页面的信息"></a>ui-router 保存父页面的信息</h3><h3 id="保存父页面信息实例"><a href="#保存父页面信息实例" class="headerlink" title="保存父页面信息实例"></a>保存父页面信息实例</h3>
+<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><h3 id="ui-router的URL划分"><a href="#ui-router的URL划分" class="headerlink" title="ui-router的URL划分"></a>ui-router的URL划分</h3><h3 id="ui-router-保存父页面的信息"><a href="#ui-router-保存父页面的信息" class="headerlink" title="ui-router 保存父页面的信息"></a>ui-router 保存父页面的信息</h3><h3 id="保存父页面信息实例"><a href="#保存父页面信息实例" class="headerlink" title="保存父页面信息实例"></a>保存父页面信息实例</h3><h3 id="ui-router-指令"><a href="#ui-router-指令" class="headerlink" title="ui-router 指令"></a>ui-router 指令</h3><h4 id="ui-sref"><a href="#ui-sref" class="headerlink" title="ui-sref"></a>ui-sref</h4><h4 id="ui-serf-active"><a href="#ui-serf-active" class="headerlink" title="ui-serf-active"></a>ui-serf-active</h4><h4 id="ui-sref-opts"><a href="#ui-sref-opts" class="headerlink" title="ui-sref-opts"></a>ui-sref-opts</h4>
       
 
 
@@ -98,7 +98,7 @@ ui-router为什么要使用页面路由？
       
       
       <div id="toc" class="article-toc">
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ui-router"><span class="toc-number">1.</span> <span class="toc-text">ui-router</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么要使用页面路由？"><span class="toc-number">1.1.</span> <span class="toc-text">为什么要使用页面路由？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ui-router的URL划分"><span class="toc-number">2.</span> <span class="toc-text">ui-router的URL划分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ui-router-保存父页面的信息"><span class="toc-number">3.</span> <span class="toc-text">ui-router 保存父页面的信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保存父页面信息实例"><span class="toc-number">4.</span> <span class="toc-text">保存父页面信息实例</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ui-router"><span class="toc-number">1.</span> <span class="toc-text">ui-router</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么要使用页面路由？"><span class="toc-number">1.1.</span> <span class="toc-text">为什么要使用页面路由？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#挖坑"><span class="toc-number"></span> <span class="toc-text">挖坑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ui-router的URL划分"><span class="toc-number">1.</span> <span class="toc-text">ui-router的URL划分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ui-router-保存父页面的信息"><span class="toc-number">2.</span> <span class="toc-text">ui-router 保存父页面的信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保存父页面信息实例"><span class="toc-number">3.</span> <span class="toc-text">保存父页面信息实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ui-router-指令"><span class="toc-number">4.</span> <span class="toc-text">ui-router 指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ui-sref"><span class="toc-number">4.1.</span> <span class="toc-text">ui-sref</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ui-serf-active"><span class="toc-number">4.2.</span> <span class="toc-text">ui-serf-active</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ui-sref-opts"><span class="toc-number">4.3.</span> <span class="toc-text">ui-sref-opts</span></a></li></ol></li></ol>
         <hr/>
       </div>
       
@@ -112,11 +112,11 @@ ui-router为什么要使用页面路由？
 <li>页面路由可以使html模块化，我们可以写更多公用的模块让其他页面引用。</li>
 <li>页面路由可以很方便的实现面包屑导航，可方便实现多视图  。</li>
 </ol>
-<h3 id="ui-router的URL划分"><a href="#ui-router的URL划分" class="headerlink" title="ui-router的URL划分"></a>ui-router的URL划分</h3><h3 id="ui-router-保存父页面的信息"><a href="#ui-router-保存父页面的信息" class="headerlink" title="ui-router 保存父页面的信息"></a>ui-router 保存父页面的信息</h3><h3 id="保存父页面信息实例"><a href="#保存父页面信息实例" class="headerlink" title="保存父页面信息实例"></a>保存父页面信息实例</h3>
+<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><h3 id="ui-router的URL划分"><a href="#ui-router的URL划分" class="headerlink" title="ui-router的URL划分"></a>ui-router的URL划分</h3><h3 id="ui-router-保存父页面的信息"><a href="#ui-router-保存父页面的信息" class="headerlink" title="ui-router 保存父页面的信息"></a>ui-router 保存父页面的信息</h3><h3 id="保存父页面信息实例"><a href="#保存父页面信息实例" class="headerlink" title="保存父页面信息实例"></a>保存父页面信息实例</h3><h3 id="ui-router-指令"><a href="#ui-router-指令" class="headerlink" title="ui-router 指令"></a>ui-router 指令</h3><h4 id="ui-sref"><a href="#ui-sref" class="headerlink" title="ui-sref"></a>ui-sref</h4><h4 id="ui-serf-active"><a href="#ui-serf-active" class="headerlink" title="ui-serf-active"></a>ui-serf-active</h4><h4 id="ui-sref-opts"><a href="#ui-sref-opts" class="headerlink" title="ui-sref-opts"></a>ui-sref-opts</h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/13/Angular-ui-router/" data-id="cimzkzcul0000om9kjq40vw8h" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/13/Angular-ui-router/" data-id="cimzmwmv700001a9kvocsnr71" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Angular/">Angular</a></li></ul>
