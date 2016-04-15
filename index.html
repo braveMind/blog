@@ -78,7 +78,9 @@
 <li>页面路由可以使html模块化，我们可以写更多公用的模块让其他页面引用。</li>
 <li>页面路由可以很方便的实现面包屑导航，可方便实现多视图  。</li>
 </ol>
-<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><h3 id="ui-router的URL划分"><a href="#ui-router的URL划分" class="headerlink" title="ui-router的URL划分"></a>ui-router的URL划分</h3><h3 id="ui-router-保存父页面的信息"><a href="#ui-router-保存父页面的信息" class="headerlink" title="ui-router 保存父页面的信息"></a>ui-router 保存父页面的信息</h3><h3 id="保存父页面信息实例"><a href="#保存父页面信息实例" class="headerlink" title="保存父页面信息实例"></a>保存父页面信息实例</h3><h3 id="ui-router-指令"><a href="#ui-router-指令" class="headerlink" title="ui-router 指令"></a>ui-router 指令</h3><h4 id="ui-sref"><a href="#ui-sref" class="headerlink" title="ui-sref"></a>ui-sref</h4><h4 id="ui-serf-active"><a href="#ui-serf-active" class="headerlink" title="ui-serf-active"></a>ui-serf-active</h4><h4 id="ui-sref-opts"><a href="#ui-sref-opts" class="headerlink" title="ui-sref-opts"></a>ui-sref-opts</h4>
+<h3 id="ui-router的“-”状态划分"><a href="#ui-router的“-”状态划分" class="headerlink" title="ui-router的“#”状态划分"></a>ui-router的“#”状态划分</h3><p>ui-router中依靠 ‘state’来划状态，一个url页面里<strong>只有一个总的 “#”（url哈希标记） 标记</strong>，这个“#”号后面的状态是路由的起使状态，所以所有的<strong>子页面</strong>，即使有不同的state但是在url中都不会出现第二个“#”，每出现一个“#”表示更换了一个页面路由入口。</p>
+<h3 id="ui-router-保存父页面的信息"><a href="#ui-router-保存父页面的信息" class="headerlink" title="ui-router 保存父页面的信息"></a>ui-router 保存父页面的信息</h3><p>ui-router中页面之间传值变得非常的容易，也比较优雅，有两种传值方式一种是scope继承，适用于在子页面中通过绑定父页面中已经定义好的数据，另外一种Controller之间传值：<br><a href="http://stackoverflow.com/questions/27696612/how-do-i-share-scope-data-between-states-in-angularjs-ui-router" target="_blank" rel="external">挖坑</a></p>
+<h3 id="保存父页面信息实例"><a href="#保存父页面信息实例" class="headerlink" title="保存父页面信息实例"></a>保存父页面信息实例</h3><h3 id="ui-router-指令"><a href="#ui-router-指令" class="headerlink" title="ui-router 指令"></a>ui-router 指令</h3><h4 id="ui-sref"><a href="#ui-sref" class="headerlink" title="ui-sref"></a>ui-sref</h4><h4 id="ui-serf-active"><a href="#ui-serf-active" class="headerlink" title="ui-serf-active"></a>ui-serf-active</h4><h4 id="ui-sref-opts"><a href="#ui-sref-opts" class="headerlink" title="ui-sref-opts"></a>ui-sref-opts</h4>
       
 
 
@@ -96,11 +98,13 @@
 <li>页面路由可以使html模块化，我们可以写更多公用的模块让其他页面引用。</li>
 <li>页面路由可以很方便的实现面包屑导航，可方便实现多视图  。</li>
 </ol>
-<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><h3 id="ui-router的URL划分"><a href="#ui-router的URL划分" class="headerlink" title="ui-router的URL划分"></a>ui-router的URL划分</h3><h3 id="ui-router-保存父页面的信息"><a href="#ui-router-保存父页面的信息" class="headerlink" title="ui-router 保存父页面的信息"></a>ui-router 保存父页面的信息</h3><h3 id="保存父页面信息实例"><a href="#保存父页面信息实例" class="headerlink" title="保存父页面信息实例"></a>保存父页面信息实例</h3><h3 id="ui-router-指令"><a href="#ui-router-指令" class="headerlink" title="ui-router 指令"></a>ui-router 指令</h3><h4 id="ui-sref"><a href="#ui-sref" class="headerlink" title="ui-sref"></a>ui-sref</h4><h4 id="ui-serf-active"><a href="#ui-serf-active" class="headerlink" title="ui-serf-active"></a>ui-serf-active</h4><h4 id="ui-sref-opts"><a href="#ui-sref-opts" class="headerlink" title="ui-sref-opts"></a>ui-sref-opts</h4>
+<h3 id="ui-router的“-”状态划分"><a href="#ui-router的“-”状态划分" class="headerlink" title="ui-router的“#”状态划分"></a>ui-router的“#”状态划分</h3><p>ui-router中依靠 ‘state’来划状态，一个url页面里<strong>只有一个总的 “#”（url哈希标记） 标记</strong>，这个“#”号后面的状态是路由的起使状态，所以所有的<strong>子页面</strong>，即使有不同的state但是在url中都不会出现第二个“#”，每出现一个“#”表示更换了一个页面路由入口。</p>
+<h3 id="ui-router-保存父页面的信息"><a href="#ui-router-保存父页面的信息" class="headerlink" title="ui-router 保存父页面的信息"></a>ui-router 保存父页面的信息</h3><p>ui-router中页面之间传值变得非常的容易，也比较优雅，有两种传值方式一种是scope继承，适用于在子页面中通过绑定父页面中已经定义好的数据，另外一种Controller之间传值：<br><a href="http://stackoverflow.com/questions/27696612/how-do-i-share-scope-data-between-states-in-angularjs-ui-router" target="_blank" rel="external">挖坑</a></p>
+<h3 id="保存父页面信息实例"><a href="#保存父页面信息实例" class="headerlink" title="保存父页面信息实例"></a>保存父页面信息实例</h3><h3 id="ui-router-指令"><a href="#ui-router-指令" class="headerlink" title="ui-router 指令"></a>ui-router 指令</h3><h4 id="ui-sref"><a href="#ui-sref" class="headerlink" title="ui-sref"></a>ui-sref</h4><h4 id="ui-serf-active"><a href="#ui-serf-active" class="headerlink" title="ui-serf-active"></a>ui-serf-active</h4><h4 id="ui-sref-opts"><a href="#ui-sref-opts" class="headerlink" title="ui-sref-opts"></a>ui-sref-opts</h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/13/Angular-ui-router/" data-id="cimzmwmv700001a9kvocsnr71" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/13/Angular-ui-router/" data-id="cin1w0dio0000s0kq5u54i49l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Angular/">Angular</a></li></ul>
@@ -204,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/12/如何正确创建单例模式/" data-id="cimzmwmvj00061a9k3fo5kjyn" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/12/如何正确创建单例模式/" data-id="cin1w0diz0004s0kq3xckc7zn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -280,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/11/抽象工厂/" data-id="cimzmwmvi00041a9kk165z1at" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/11/抽象工厂/" data-id="cin1w0diy0003s0kqyz5cb7lk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -368,7 +372,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/10/简单工厂模式/" data-id="cimzmwmvq00091a9kaekk1vzu" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/10/简单工厂模式/" data-id="cin1w0djb000cs0kqjuc4xij0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -432,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/10/设计模式/" data-id="cimzmwmvt000c1a9ko5ty5c30" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/10/设计模式/" data-id="cin1w0djf000es0kqthp1bbv1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
