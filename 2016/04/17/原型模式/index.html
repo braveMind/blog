@@ -7,21 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="原型模式利用了对象的深度拷贝创建一个新的对象，这样做的目的是为了提高杂对象创建时的性能。复杂对象可能是我们查询数据库取得的对象，我们可以缓存这个对象，下次取得时候直接获取缓存信息。
 
-深度copy用到的技术java中实现对象深度copy只需要重写Object的clone方法，但是重写colne方法必须继承Cloneable这个空接口，负责抛出异常 “CloneNotSupportedExcept">
+深度copy用到的技术java中实现对象深度copy只需要重写Object的clone方法，但是重写colne方法必须继承Cloneable这个空接口，否则抛出异常 “CloneNotSupportedExcept">
 <meta property="og:type" content="article">
 <meta property="og:title" content="原型模式（创建型模型）">
 <meta property="og:url" content="http://bravemind.github.io/2016/04/17/原型模式/index.html">
 <meta property="og:site_name" content="小菜园">
 <meta property="og:description" content="原型模式利用了对象的深度拷贝创建一个新的对象，这样做的目的是为了提高杂对象创建时的性能。复杂对象可能是我们查询数据库取得的对象，我们可以缓存这个对象，下次取得时候直接获取缓存信息。
 
-深度copy用到的技术java中实现对象深度copy只需要重写Object的clone方法，但是重写colne方法必须继承Cloneable这个空接口，负责抛出异常 “CloneNotSupportedExcept">
+深度copy用到的技术java中实现对象深度copy只需要重写Object的clone方法，但是重写colne方法必须继承Cloneable这个空接口，否则抛出异常 “CloneNotSupportedExcept">
 <meta property="og:image" content="http://7xstto.com2.z0.glb.clouddn.com/prototype.png">
-<meta property="og:updated_time" content="2016-04-17T15:35:15.000Z">
+<meta property="og:updated_time" content="2016-04-17T15:38:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原型模式（创建型模型）">
 <meta name="twitter:description" content="原型模式利用了对象的深度拷贝创建一个新的对象，这样做的目的是为了提高杂对象创建时的性能。复杂对象可能是我们查询数据库取得的对象，我们可以缓存这个对象，下次取得时候直接获取缓存信息。
 
-深度copy用到的技术java中实现对象深度copy只需要重写Object的clone方法，但是重写colne方法必须继承Cloneable这个空接口，负责抛出异常 “CloneNotSupportedExcept">
+深度copy用到的技术java中实现对象深度copy只需要重写Object的clone方法，但是重写colne方法必须继承Cloneable这个空接口，否则抛出异常 “CloneNotSupportedExcept">
 <meta name="twitter:image" content="http://7xstto.com2.z0.glb.clouddn.com/prototype.png">
   
   
@@ -78,7 +78,7 @@
         <blockquote>
 <p>原型模式利用了<strong>对象的深度拷贝创建一个新的对象</strong>，这样做的目的是为了<strong>提高杂对象创建时的性能</strong>。复杂对象可能是我们查询数据库取得的对象，我们可以缓存这个对象，下次取得时候直接获取缓存信息。</p>
 </blockquote>
-<h2 id="深度copy用到的技术"><a href="#深度copy用到的技术" class="headerlink" title="深度copy用到的技术"></a>深度copy用到的技术</h2><p>java中实现对象<strong>深度copy</strong>只需要重写Object的clone方法，但是重写colne方法必须继承Cloneable这个空接口，负责抛出异常 “CloneNotSupportedException”，Object的clone方法是一个浅层copy,所以我们需要重写这个方法，对于对象深度copy和浅度copy又能写一章了，等设计模式写完在写一篇详细介绍。    </p>
+<h2 id="深度copy用到的技术"><a href="#深度copy用到的技术" class="headerlink" title="深度copy用到的技术"></a>深度copy用到的技术</h2><p>java中实现对象<strong>深度copy</strong>只需要重写Object的clone方法，但是重写colne方法必须继承Cloneable这个空接口，否则抛出异常 “CloneNotSupportedException”，Object的clone方法是一个浅层copy,所以我们需要重写这个方法，对于对象深度copy和浅度copy的不同又能写一章了，等设计模式写完在写一篇详细介绍。    </p>
 <p>详见：JDK源码Object类213行clone方法注释。</p>
 <h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/prototype.png" alt="类结构图">  </p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>原型模式是比较简单的一个好理解的设计模式，主要是使用了深度copy,实现一个对象存取cache,AnimalCache中使用了clone返回一个新的对象，对这个对象的修改不会影响hashTable这个线程安全的hash表中存储的值。</p>
@@ -105,7 +105,7 @@
       <blockquote>
 <p>原型模式利用了<strong>对象的深度拷贝创建一个新的对象</strong>，这样做的目的是为了<strong>提高杂对象创建时的性能</strong>。复杂对象可能是我们查询数据库取得的对象，我们可以缓存这个对象，下次取得时候直接获取缓存信息。</p>
 </blockquote>
-<h2 id="深度copy用到的技术"><a href="#深度copy用到的技术" class="headerlink" title="深度copy用到的技术"></a>深度copy用到的技术</h2><p>java中实现对象<strong>深度copy</strong>只需要重写Object的clone方法，但是重写colne方法必须继承Cloneable这个空接口，负责抛出异常 “CloneNotSupportedException”，Object的clone方法是一个浅层copy,所以我们需要重写这个方法，对于对象深度copy和浅度copy又能写一章了，等设计模式写完在写一篇详细介绍。    </p>
+<h2 id="深度copy用到的技术"><a href="#深度copy用到的技术" class="headerlink" title="深度copy用到的技术"></a>深度copy用到的技术</h2><p>java中实现对象<strong>深度copy</strong>只需要重写Object的clone方法，但是重写colne方法必须继承Cloneable这个空接口，否则抛出异常 “CloneNotSupportedException”，Object的clone方法是一个浅层copy,所以我们需要重写这个方法，对于对象深度copy和浅度copy的不同又能写一章了，等设计模式写完在写一篇详细介绍。    </p>
 <p>详见：JDK源码Object类213行clone方法注释。</p>
 <h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/prototype.png" alt="类结构图">  </p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>原型模式是比较简单的一个好理解的设计模式，主要是使用了深度copy,实现一个对象存取cache,AnimalCache中使用了clone返回一个新的对象，对这个对象的修改不会影响hashTable这个线程安全的hash表中存储的值。</p>
@@ -120,7 +120,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/17/原型模式/" data-id="cin4qi7xk0000mrkq6ffcnyze" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/17/原型模式/" data-id="cin4qm9nt0004n2kqt1s3otu5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
