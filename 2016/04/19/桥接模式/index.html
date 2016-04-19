@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>桥接模式（结构型模型二） | 小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。怎么理解呢？桥接模式解决的问题是当类有两个维度发生改变时候，把发生变化的因素写到接口里，在抽象类中定义抽象方法，具体的实现类继承这个抽象类，实现抽象方法。客户端调用抽象类，传递接口的实现类，完成具体的方法调用。
+
+。。。。。。未完待续。。。。。。。
+优点接口的实现类对客户端调用完全透明。接口实现类发生修改，客户端完全不关心，低耦合。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="桥接模式（结构型模型二）">
+<meta property="og:url" content="http://bravemind.github.io/2016/04/19/桥接模式/index.html">
+<meta property="og:site_name" content="小菜园">
+<meta property="og:description" content="桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。怎么理解呢？桥接模式解决的问题是当类有两个维度发生改变时候，把发生变化的因素写到接口里，在抽象类中定义抽象方法，具体的实现类继承这个抽象类，实现抽象方法。客户端调用抽象类，传递接口的实现类，完成具体的方法调用。
+
+。。。。。。未完待续。。。。。。。
+优点接口的实现类对客户端调用完全透明。接口实现类发生修改，客户端完全不关心，低耦合。">
+<meta property="og:updated_time" content="2016-04-19T15:05:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="桥接模式（结构型模型二）">
+<meta name="twitter:description" content="桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。怎么理解呢？桥接模式解决的问题是当类有两个维度发生改变时候，把发生变化的因素写到接口里，在抽象类中定义抽象方法，具体的实现类继承这个抽象类，实现抽象方法。客户端调用抽象类，传递接口的实现类，完成具体的方法调用。
+
+。。。。。。未完待续。。。。。。。
+优点接口的实现类对客户端调用完全透明。接口实现类发生修改，客户端完全不关心，低耦合。">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/grid.css">
+
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.min.css">
+
+
+
+</head>
+<div class="left_header">
+    <a class="header_avater" href="/blog"></a>
+    <div class="tag_s" id="showTag">
+        <i class="fa fa-tag" href="../blog"></i>
+            <div id="tags_clod" class="pop">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Angular/">Angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">8</span></li></ul>
+            </div>
+    </div>
+    <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
+    <a href="https://github.com/braveMind" class="git" target="_blank"><i class="fa fa-github"></i></a>
+
+
+    <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
+</div>
+<div class="left_content">
+    <section><article id="post-桥接模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      桥接模式（结构型模型二）
+    </h1>
+  
+
+        <a href="/blog/2016/04/19/桥接模式/" class="article-data-title">
+
+  <time  datetime="2016-04-19T14:38:02.000Z" itemprop="datePublished">2016-04-19</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。怎么理解呢？桥接模式解决的问题是当类有两个维度发生改变时候，把发生变化的因素写到接口里，在抽象类中定义抽象方法，具体的实现类继承这个抽象类，实现抽象方法。客户端调用抽象类，传递接口的实现类，完成具体的方法调用。</p>
+</blockquote>
+<p>。。。。。。未完待续。。。。。。。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>接口的实现类对客户端调用完全透明。接口实现类发生修改，客户端完全不关心，低耦合。</p>
+<h3 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h3><p>那个类应该设计成接口，那个方法应该设计成抽象方法需要设计者考虑。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <div id="toc" class="article-toc">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不足"><span class="toc-number">2.</span> <span class="toc-text">不足</span></a></li></ol>
+        <hr/>
+      </div>
+      
+      <blockquote>
+<p>桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。怎么理解呢？桥接模式解决的问题是当类有两个维度发生改变时候，把发生变化的因素写到接口里，在抽象类中定义抽象方法，具体的实现类继承这个抽象类，实现抽象方法。客户端调用抽象类，传递接口的实现类，完成具体的方法调用。</p>
+</blockquote>
+<p>。。。。。。未完待续。。。。。。。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>接口的实现类对客户端调用完全透明。接口实现类发生修改，客户端完全不关心，低耦合。</p>
+<h3 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h3><p>那个类应该设计成接口，那个方法应该设计成抽象方法需要设计者考虑。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/04/19/桥接模式/" data-id="cin7kazqd000cl3kqfclokfi1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/04/18/适配器模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">适配器模式（结构型模型一）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+</div>
+
+
+   
+
+   <script src="/blog/js/jQuery.js"></script>
+   <script src="/blog/js/script.js"></script>
+
+
+
