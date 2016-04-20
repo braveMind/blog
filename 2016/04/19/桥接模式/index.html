@@ -5,26 +5,26 @@
   
   <title>桥接模式（结构型模型二） | 小菜园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。怎么理解呢？桥接模式解决的问题是当类有两个维度发生改变时候，把发生变化的因素写到接口里，在抽象类中定义抽象方法，具体的实现类继承这个抽象类，实现抽象方法。客户端调用抽象类，传递接口的实现类，完成具体的方法调用。
+  <meta name="description" content="桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。怎么理解呢？桥接模式解决的问题是当类有多个维度发生改变时候，把发生变化的因素写剥离到接口里，在抽象类中定义抽象方法这个方法是类中共有的，具体的实现类继承这个抽象类，实现抽象方法。客户端调用抽象类，传递接口的实现类，完成具体的方法调用。
 
 类图
-分析桥接模式就是对大的接口进行拆分，把变化的，不可确定的接口剥离出来，然后在抽象类中进行组装，在抽象类的子类中实现">
+分析桥接模式就是对大的接口进行拆分，把变化的，不可确定的接口剥离出来，然后在抽象类中进行组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="桥接模式（结构型模型二）">
 <meta property="og:url" content="http://bravemind.github.io/2016/04/19/桥接模式/index.html">
 <meta property="og:site_name" content="小菜园">
-<meta property="og:description" content="桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。怎么理解呢？桥接模式解决的问题是当类有两个维度发生改变时候，把发生变化的因素写到接口里，在抽象类中定义抽象方法，具体的实现类继承这个抽象类，实现抽象方法。客户端调用抽象类，传递接口的实现类，完成具体的方法调用。
+<meta property="og:description" content="桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。怎么理解呢？桥接模式解决的问题是当类有多个维度发生改变时候，把发生变化的因素写剥离到接口里，在抽象类中定义抽象方法这个方法是类中共有的，具体的实现类继承这个抽象类，实现抽象方法。客户端调用抽象类，传递接口的实现类，完成具体的方法调用。
 
 类图
-分析桥接模式就是对大的接口进行拆分，把变化的，不可确定的接口剥离出来，然后在抽象类中进行组装，在抽象类的子类中实现">
+分析桥接模式就是对大的接口进行拆分，把变化的，不可确定的接口剥离出来，然后在抽象类中进行组">
 <meta property="og:image" content="http://7xstto.com2.z0.glb.clouddn.com/bridge.png">
-<meta property="og:updated_time" content="2016-04-20T15:37:58.000Z">
+<meta property="og:updated_time" content="2016-04-20T15:44:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="桥接模式（结构型模型二）">
-<meta name="twitter:description" content="桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。怎么理解呢？桥接模式解决的问题是当类有两个维度发生改变时候，把发生变化的因素写到接口里，在抽象类中定义抽象方法，具体的实现类继承这个抽象类，实现抽象方法。客户端调用抽象类，传递接口的实现类，完成具体的方法调用。
+<meta name="twitter:description" content="桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。怎么理解呢？桥接模式解决的问题是当类有多个维度发生改变时候，把发生变化的因素写剥离到接口里，在抽象类中定义抽象方法这个方法是类中共有的，具体的实现类继承这个抽象类，实现抽象方法。客户端调用抽象类，传递接口的实现类，完成具体的方法调用。
 
 类图
-分析桥接模式就是对大的接口进行拆分，把变化的，不可确定的接口剥离出来，然后在抽象类中进行组装，在抽象类的子类中实现">
+分析桥接模式就是对大的接口进行拆分，把变化的，不可确定的接口剥离出来，然后在抽象类中进行组">
 <meta name="twitter:image" content="http://7xstto.com2.z0.glb.clouddn.com/bridge.png">
   
   
@@ -79,7 +79,7 @@
    <!-- <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。怎么理解呢？桥接模式解决的问题是当类有两个维度发生改变时候，把发生变化的因素写到接口里，在抽象类中定义抽象方法，具体的实现类继承这个抽象类，实现抽象方法。客户端调用抽象类，传递接口的实现类，完成具体的方法调用。</p>
+<p>桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。怎么理解呢？桥接模式解决的问题是当类有多个维度发生改变时候，把发生变化的因素写剥离到接口里，在抽象类中定义抽象方法这个方法是类中共有的，具体的实现类继承这个抽象类，实现抽象方法。客户端调用抽象类，传递接口的实现类，完成具体的方法调用。</p>
 </blockquote>
 <h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p><img src="http://7xstto.com2.z0.glb.clouddn.com/bridge.png" alt="类结构图"></p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>桥接模式就是对大的接口进行拆分，把变化的，不可确定的接口剥离出来，然后在抽象类中进行组装，在抽象类的子类中实现父类中的方法。</p>
@@ -107,7 +107,7 @@
       </div>
       
       <blockquote>
-<p>桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。怎么理解呢？桥接模式解决的问题是当类有两个维度发生改变时候，把发生变化的因素写到接口里，在抽象类中定义抽象方法，具体的实现类继承这个抽象类，实现抽象方法。客户端调用抽象类，传递接口的实现类，完成具体的方法调用。</p>
+<p>桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。怎么理解呢？桥接模式解决的问题是当类有多个维度发生改变时候，把发生变化的因素写剥离到接口里，在抽象类中定义抽象方法这个方法是类中共有的，具体的实现类继承这个抽象类，实现抽象方法。客户端调用抽象类，传递接口的实现类，完成具体的方法调用。</p>
 </blockquote>
 <h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p><img src="http://7xstto.com2.z0.glb.clouddn.com/bridge.png" alt="类结构图"></p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>桥接模式就是对大的接口进行拆分，把变化的，不可确定的接口剥离出来，然后在抽象类中进行组装，在抽象类的子类中实现父类中的方法。</p>
@@ -125,7 +125,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/19/桥接模式/" data-id="cin90x6ig000fv4kql9hqo8il" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/19/桥接模式/" data-id="cin915fqc0009w6kqks7e4vl8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
