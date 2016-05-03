@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Angular/">Angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Angular/">Angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -43,6 +43,72 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-系统更新后nginx报错" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/04/09/系统更新后nginx报错/">系统更新后nginx报错</a>
+    </h1>
+  
+
+        <a href="/blog/2016/04/09/系统更新后nginx报错/" class="article-data-title">
+
+  <time  datetime="2016-04-09T05:13:27.000Z" itemprop="datePublished">2016-04-09</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h1><p>/usr/local/var/run/nginx.pid” failed (13: Permission denied)  </p>
+<blockquote>
+<p>MAC 系统升级为OS X EI 后文件系统 /usr 用户目录没有权限导致nginx启动报错。原本以为是nginx.conf配置问题。使用 sudo 启动可以启动，但是通过http代理的时候访问代理路径 http报403而且并不是代理路径没有权限，而是nginx启动后需要写日志，需要往磁盘写pid所以导致403问题。</p>
+</blockquote>
+<p>解决方法：</p>
+<pre><code>sudo chown -R &apos;username&apos; run  #写pid的磁盘路径
+chmod -R 700 run/
+</code></pre><p>同理修改日志，log的目录权限最后问题解决。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <h1 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h1><p>/usr/local/var/run/nginx.pid” failed (13: Permission denied)  </p>
+<blockquote>
+<p>MAC 系统升级为OS X EI 后文件系统 /usr 用户目录没有权限导致nginx启动报错。原本以为是nginx.conf配置问题。使用 sudo 启动可以启动，但是通过http代理的时候访问代理路径 http报403而且并不是代理路径没有权限，而是nginx启动后需要写日志，需要往磁盘写pid所以导致403问题。</p>
+</blockquote>
+<p>解决方法：</p>
+<pre><code>sudo chown -R &apos;username&apos; run  #写pid的磁盘路径
+chmod -R 700 run/
+</code></pre><p>同理修改日志，log的目录权限最后问题解决。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/04/09/系统更新后nginx报错/" data-id="cinqve52c000z509kr82wwo8q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-linux防火墙开端口" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -102,7 +168,7 @@ service iptables stop # 停止服务
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/09/linux防火墙开端口/" data-id="cinodfjna0003os9kla1bym00" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/09/linux防火墙开端口/" data-id="cinqve51d0004509kisrk15q8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -162,7 +228,7 @@ service iptables stop # 停止服务
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/09/写于开始/" data-id="cinodfjnd0006os9k5jqhuxsm" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/09/写于开始/" data-id="cinqve51m000b509kbpbrdftf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"></ul>
