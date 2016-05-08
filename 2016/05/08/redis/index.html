@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>redis（持续更新） | 小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#掌握  
+
+Redis支持五种数据类型。  
+Redis部分命令只能对特定的数据进行执行（Append只能针对字符串进行操作，HSET 只能对哈希表进行操作）而DEL，TYPE,EXPIRE可以对所有数据进行操作。  
+Redis的数据库如何实现存储不同的数据类型的。  
+发布订阅，脚本，事务等特性。  
+Redis如何处理客户端的请求。  
+Redis位操作，排序，复制，Sentinel,集群">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis（持续更新）">
+<meta property="og:url" content="http://bravemind.github.io/2016/05/08/redis/index.html">
+<meta property="og:site_name" content="小菜园">
+<meta property="og:description" content="#掌握  
+
+Redis支持五种数据类型。  
+Redis部分命令只能对特定的数据进行执行（Append只能针对字符串进行操作，HSET 只能对哈希表进行操作）而DEL，TYPE,EXPIRE可以对所有数据进行操作。  
+Redis的数据库如何实现存储不同的数据类型的。  
+发布订阅，脚本，事务等特性。  
+Redis如何处理客户端的请求。  
+Redis位操作，排序，复制，Sentinel,集群">
+<meta property="og:updated_time" content="2016-05-08T02:32:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redis（持续更新）">
+<meta name="twitter:description" content="#掌握  
+
+Redis支持五种数据类型。  
+Redis部分命令只能对特定的数据进行执行（Append只能针对字符串进行操作，HSET 只能对哈希表进行操作）而DEL，TYPE,EXPIRE可以对所有数据进行操作。  
+Redis的数据库如何实现存储不同的数据类型的。  
+发布订阅，脚本，事务等特性。  
+Redis如何处理客户端的请求。  
+Redis位操作，排序，复制，Sentinel,集群">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/grid.css">
+
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.min.css">
+
+
+
+</head>
+<div class="left_header">
+    <a class="header_avater" href="/blog"></a>
+    <div class="tag_s" id="showTag">
+        <i class="fa fa-tag" href="../blog"></i>
+            <div id="tags_clod" class="pop">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Angular/">Angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+            </div>
+    </div>
+    <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
+    <a href="https://github.com/braveMind" class="git" target="_blank"><i class="fa fa-github"></i></a>
+
+
+    <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
+</div>
+<div class="left_content">
+    <section><article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      redis（持续更新）
+    </h1>
+  
+
+        <a href="/blog/2016/05/08/redis/" class="article-data-title">
+
+  <time  datetime="2016-05-08T02:30:20.000Z" itemprop="datePublished">2016-05-08</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>#掌握  </p>
+<ol>
+<li>Redis支持五种数据类型。  </li>
+<li>Redis部分命令只能对特定的数据进行执行（Append只能针对字符串进行操作，HSET 只能对哈希表进行操作）而DEL，TYPE,EXPIRE可以对所有数据进行操作。  </li>
+<li>Redis的数据库如何实现存储不同的数据类型的。  </li>
+<li>发布订阅，脚本，事务等特性。  </li>
+<li>Redis如何处理客户端的请求。  </li>
+<li>Redis位操作，排序，复制，Sentinel,集群。  </li>
+<li>Redis单机特性，事务、持久化、Lua脚本、排序、二进制位操作。    </li>
+</ol>
+<p>##数据结构</p>
+<ol>
+<li>Redis是由键值对组成的，其中数据库的键值必须是<strong>字符串</strong>  </li>
+<li>Redis的值value，可以是<strong>字符串</strong>，<strong>列表对象（）list object）</strong>,<strong>哈希对象（hash object）</strong>,<strong>集合对象（set object）</strong>,<strong>有序集合对象（sorted set object）</strong>这五种。</li>
+<li>Redis SDS 磁盘空间分配两种策略如果小于1M,那么分配free为字符串本身大小，如果大于1M那么free为1M，通过预分配策略可以减少内存分配的次数。</li>
+</ol>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <div id="toc" class="article-toc">
+        
+        <hr/>
+      </div>
+      
+      <p>#掌握  </p>
+<ol>
+<li>Redis支持五种数据类型。  </li>
+<li>Redis部分命令只能对特定的数据进行执行（Append只能针对字符串进行操作，HSET 只能对哈希表进行操作）而DEL，TYPE,EXPIRE可以对所有数据进行操作。  </li>
+<li>Redis的数据库如何实现存储不同的数据类型的。  </li>
+<li>发布订阅，脚本，事务等特性。  </li>
+<li>Redis如何处理客户端的请求。  </li>
+<li>Redis位操作，排序，复制，Sentinel,集群。  </li>
+<li>Redis单机特性，事务、持久化、Lua脚本、排序、二进制位操作。    </li>
+</ol>
+<p>##数据结构</p>
+<ol>
+<li>Redis是由键值对组成的，其中数据库的键值必须是<strong>字符串</strong>  </li>
+<li>Redis的值value，可以是<strong>字符串</strong>，<strong>列表对象（）list object）</strong>,<strong>哈希对象（hash object）</strong>,<strong>集合对象（set object）</strong>,<strong>有序集合对象（sorted set object）</strong>这五种。</li>
+<li>Redis SDS 磁盘空间分配两种策略如果小于1M,那么分配free为字符串本身大小，如果大于1M那么free为1M，通过预分配策略可以减少内存分配的次数。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/05/08/redis/" data-id="cinxys7z3000095kqjvhnpc5h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/技术求索/">技术求索</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/05/08/状态模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">状态模式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+</div>
+
+
+   
+
+   <script src="/blog/js/jQuery.js"></script>
+   <script src="/blog/js/script.js"></script>
+
+
+
