@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: 设计模式第一阶段完结date: 2016-05-14 10:00:14
+tags: 设计模式
+“上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之”。
+
+碎碎念：很早以前就想开始总结一下设计模式，由于不知道要怎么开始，写些什么样的内容从而望而却步，但这个想法一直都没有从脑海中消失，于是利用了一个多月的时间肤浅的抽取出来了设计模式的表象，总结出了一些概念。
+在这一个多月里，也收">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小菜园">
+<meta property="og:url" content="http://bravemind.github.io/2016/05/14/设计模式第一阶段完结/index.html">
+<meta property="og:site_name" content="小菜园">
+<meta property="og:description" content="title: 设计模式第一阶段完结date: 2016-05-14 10:00:14
+tags: 设计模式
+“上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之”。
+
+碎碎念：很早以前就想开始总结一下设计模式，由于不知道要怎么开始，写些什么样的内容从而望而却步，但这个想法一直都没有从脑海中消失，于是利用了一个多月的时间肤浅的抽取出来了设计模式的表象，总结出了一些概念。
+在这一个多月里，也收">
+<meta property="og:updated_time" content="2016-05-14T02:44:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小菜园">
+<meta name="twitter:description" content="title: 设计模式第一阶段完结date: 2016-05-14 10:00:14
+tags: 设计模式
+“上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之”。
+
+碎碎念：很早以前就想开始总结一下设计模式，由于不知道要怎么开始，写些什么样的内容从而望而却步，但这个想法一直都没有从脑海中消失，于是利用了一个多月的时间肤浅的抽取出来了设计模式的表象，总结出了一些概念。
+在这一个多月里，也收">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/grid.css">
+
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.min.css">
+
+
+
+</head>
+<div class="left_header">
+    <a class="header_avater" href="/blog"></a>
+    <div class="tag_s" id="showTag">
+        <i class="fa fa-tag" href="../blog"></i>
+            <div id="tags_clod" class="pop">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+            </div>
+    </div>
+    <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
+    <a href="https://github.com/braveMind" class="git" target="_blank"><i class="fa fa-github"></i></a>
+
+
+    <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
+</div>
+<div class="left_content">
+    <section><article id="post-设计模式第一阶段完结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: 设计模式第一阶段完结<br>date: 2016-05-14 10:00:14</p>
+<h2 id="tags-设计模式"><a href="#tags-设计模式" class="headerlink" title="tags: 设计模式"></a>tags: 设计模式</h2><blockquote>
+<p>“上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之”。</p>
+</blockquote>
+<h3 id="碎碎念："><a href="#碎碎念：" class="headerlink" title="碎碎念："></a>碎碎念：</h3><p>很早以前就想开始总结一下设计模式，由于不知道要怎么开始，写些什么样的内容从而望而却步，但这个想法一直都没有从脑海中消失，于是利用了一个多月的时间肤浅的抽取出来了设计模式的表象，总结出了一些概念。</p>
+<p>在这一个多月里，也收获了很多，首先是完成了自己脑子里一直没有磨灭的总结设计模式的想法，开始的定位就是把概念理清楚，所以所有的内容尽量都用标准的设计模式，没有深入的去讨论各个模式之间的关联，比较，混合交叉使用。不是不想写，是自己可能现在理解程度并没达到“上士”对于道的理解，以后会慢慢的补充各个设计模式之间的关联对比。</p>
+<h3 id="项目直观感受"><a href="#项目直观感受" class="headerlink" title="项目直观感受"></a>项目直观感受</h3><p>在项目中修改别人的代码就能体会到，高级程序员写的程序你修改起来虽然也痛苦，但比起一些初级程序员的感觉就是如沐春风。他们深切的理解了“开闭原则”，“依赖倒置原则”，而不是像初级程序员那样依然使用面向对象的设计语言来写面向过程的程序，对于后期扩展，别人维护都让人痛不欲生。</p>
+<h3 id="关于设计"><a href="#关于设计" class="headerlink" title="关于设计"></a>关于设计</h3><p>好的设计也是不断的花时间重构出来的，没有人一开始就能写出好的设计，你了解设计模式就懂了如何去重构代码，如果没有时间上和业务上的委屈求全每个优秀程序员心里都想把自己的代码写到完美无缺的地步，可是有时候需要妥协如何平衡设计和产出需要有好的环境，好的leader,甚至好的客户。</p>
+<h3 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h3><p>这23种设计模式在博客里简单的抽取出了概念，实际的应用比这复杂的多，但是有了概念就对设计有了大体的认识，在以后的日子里还会不断地完善，不断的对比这些设计模式，程序员是一条漫长永无止境的道路，技术若水。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <div id="toc" class="article-toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tags-设计模式"><span class="toc-number">1.</span> <span class="toc-text">tags: 设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#碎碎念："><span class="toc-number">1.1.</span> <span class="toc-text">碎碎念：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目直观感受"><span class="toc-number">1.2.</span> <span class="toc-text">项目直观感受</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于设计"><span class="toc-number">1.3.</span> <span class="toc-text">关于设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下一步"><span class="toc-number">1.4.</span> <span class="toc-text">下一步</span></a></li></ol></li></ol>
+        <hr/>
+      </div>
+      
+      <hr>
+<p>title: 设计模式第一阶段完结<br>date: 2016-05-14 10:00:14</p>
+<h2 id="tags-设计模式"><a href="#tags-设计模式" class="headerlink" title="tags: 设计模式"></a>tags: 设计模式</h2><blockquote>
+<p>“上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之”。</p>
+</blockquote>
+<h3 id="碎碎念："><a href="#碎碎念：" class="headerlink" title="碎碎念："></a>碎碎念：</h3><p>很早以前就想开始总结一下设计模式，由于不知道要怎么开始，写些什么样的内容从而望而却步，但这个想法一直都没有从脑海中消失，于是利用了一个多月的时间肤浅的抽取出来了设计模式的表象，总结出了一些概念。</p>
+<p>在这一个多月里，也收获了很多，首先是完成了自己脑子里一直没有磨灭的总结设计模式的想法，开始的定位就是把概念理清楚，所以所有的内容尽量都用标准的设计模式，没有深入的去讨论各个模式之间的关联，比较，混合交叉使用。不是不想写，是自己可能现在理解程度并没达到“上士”对于道的理解，以后会慢慢的补充各个设计模式之间的关联对比。</p>
+<h3 id="项目直观感受"><a href="#项目直观感受" class="headerlink" title="项目直观感受"></a>项目直观感受</h3><p>在项目中修改别人的代码就能体会到，高级程序员写的程序你修改起来虽然也痛苦，但比起一些初级程序员的感觉就是如沐春风。他们深切的理解了“开闭原则”，“依赖倒置原则”，而不是像初级程序员那样依然使用面向对象的设计语言来写面向过程的程序，对于后期扩展，别人维护都让人痛不欲生。</p>
+<h3 id="关于设计"><a href="#关于设计" class="headerlink" title="关于设计"></a>关于设计</h3><p>好的设计也是不断的花时间重构出来的，没有人一开始就能写出好的设计，你了解设计模式就懂了如何去重构代码，如果没有时间上和业务上的委屈求全每个优秀程序员心里都想把自己的代码写到完美无缺的地步，可是有时候需要妥协如何平衡设计和产出需要有好的环境，好的leader,甚至好的客户。</p>
+<h3 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h3><p>这23种设计模式在博客里简单的抽取出了概念，实际的应用比这复杂的多，但是有了概念就对设计有了大体的认识，在以后的日子里还会不断地完善，不断的对比这些设计模式，程序员是一条漫长永无止境的道路，技术若水。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/05/14/设计模式第一阶段完结/" data-id="cio6jubmc001j3bkq44pqwl41" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/05/14/备忘录模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">备忘录模式（行为模式）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+</div>
+
+
+   
+
+   <script src="/blog/js/jQuery.js"></script>
+   <script src="/blog/js/script.js"></script>
+
+
+
