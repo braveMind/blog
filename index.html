@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -43,6 +43,108 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-备忘录模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/05/14/备忘录模式/">备忘录模式（行为模式）</a>
+    </h1>
+  
+
+        <a href="/blog/2016/05/14/备忘录模式/" class="article-data-title">
+
+  <time  datetime="2016-05-14T01:05:28.000Z" itemprop="datePublished">2016-05-14</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>备忘录模式的定义：不破坏封装的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态，这样可以在以后将对象恢复到原先保存的状态。备忘录模式是为对象的保存和恢复设计的。</p>
+</blockquote>
+<h2 id="类的结构图"><a href="#类的结构图" class="headerlink" title="类的结构图"></a>类的结构图</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/Memo.png" alt="类的结构图"></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>备忘录模式是一种比较简单的把对象<strong>关键状态</strong>保存下来的模式，在需要用到这些状态的额时候进行还原。  </p>
+<p>备忘录模式的组成：  </p>
+<ol>
+<li>存储类（Memo），用来记录需要备忘的节点。  </li>
+<li>需要备忘的类（OriginalState）,程序中需要保存这个类的关键状态。  </li>
+<li>备忘录类，用来存储 Memo类，也就是对象的所有状态都会保存到这里。</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>Memo 类，用来存储对象的关键节点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Memo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String state;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(String state)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Memo</span><span class="params">(String state)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Memo&#123;"</span> +</span><br><span class="line">                <span class="string">"state='"</span> + state + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要备忘的节点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OriginalState</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String state;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(String state)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = state;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Memo <span class="title">saveState</span><span class="params">(String state)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Memo(state); <span class="comment">//关键步骤，每次保存新的节点状态的时候都是 new 一个新的类。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getStateFromMemo</span><span class="params">(Memo memo)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state=memo.getState();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>备忘录类,用来存储状态的状态  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MemoContainer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Memo&gt; memoList=<span class="keyword">new</span> ArrayList&lt;Memo&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addMemo</span><span class="params">(Memo memo)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.memoList.add(memo);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Memo <span class="title">getMemo</span><span class="params">(<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.memoList.get(index);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>App 类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        MemoContainer memoContainer=<span class="keyword">new</span> MemoContainer();</span><br><span class="line">        OriginalState originalState=<span class="keyword">new</span> OriginalState();</span><br><span class="line">        originalState.setState(<span class="string">"this is first state"</span>);</span><br><span class="line">        memoContainer.addMemo(originalState.saveState(originalState.getState()));</span><br><span class="line">        originalState.setState(<span class="string">"this is second state"</span>);</span><br><span class="line">        memoContainer.addMemo(originalState.saveState(originalState.getState()));</span><br><span class="line">        originalState.setState(<span class="string">"this is third state"</span>);</span><br><span class="line">        memoContainer.addMemo(originalState.saveState(originalState.getState()));</span><br><span class="line"></span><br><span class="line">        System.out.println(memoContainer.getMemo(<span class="number">0</span>).toString());</span><br><span class="line">        System.out.println(memoContainer.getMemo(<span class="number">1</span>).toString());</span><br><span class="line">        System.out.println(memoContainer.getMemo(<span class="number">2</span>).toString());</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>给用户提供了一种可以恢复状态的机制。可以是用户能够比较方便地回到某个历史的状态。  </li>
+<li>备忘录中的对象，可以起到对被保存对象的封装，从而可以恰当地保持封装的边界。</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>备忘录中添加过多的复杂的对象，会浪费很大的空间。</li>
+</ol>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p>备忘录模式的定义：不破坏封装的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态，这样可以在以后将对象恢复到原先保存的状态。备忘录模式是为对象的保存和恢复设计的。</p>
+</blockquote>
+<h2 id="类的结构图"><a href="#类的结构图" class="headerlink" title="类的结构图"></a>类的结构图</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/Memo.png" alt="类的结构图"></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>备忘录模式是一种比较简单的把对象<strong>关键状态</strong>保存下来的模式，在需要用到这些状态的额时候进行还原。  </p>
+<p>备忘录模式的组成：  </p>
+<ol>
+<li>存储类（Memo），用来记录需要备忘的节点。  </li>
+<li>需要备忘的类（OriginalState）,程序中需要保存这个类的关键状态。  </li>
+<li>备忘录类，用来存储 Memo类，也就是对象的所有状态都会保存到这里。</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>Memo 类，用来存储对象的关键节点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Memo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String state;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(String state)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Memo</span><span class="params">(String state)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Memo&#123;"</span> +</span><br><span class="line">                <span class="string">"state='"</span> + state + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要备忘的节点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OriginalState</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String state;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(String state)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = state;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Memo <span class="title">saveState</span><span class="params">(String state)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Memo(state); <span class="comment">//关键步骤，每次保存新的节点状态的时候都是 new 一个新的类。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getStateFromMemo</span><span class="params">(Memo memo)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state=memo.getState();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>备忘录类,用来存储状态的状态  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MemoContainer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Memo&gt; memoList=<span class="keyword">new</span> ArrayList&lt;Memo&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addMemo</span><span class="params">(Memo memo)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.memoList.add(memo);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Memo <span class="title">getMemo</span><span class="params">(<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.memoList.get(index);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>App 类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        MemoContainer memoContainer=<span class="keyword">new</span> MemoContainer();</span><br><span class="line">        OriginalState originalState=<span class="keyword">new</span> OriginalState();</span><br><span class="line">        originalState.setState(<span class="string">"this is first state"</span>);</span><br><span class="line">        memoContainer.addMemo(originalState.saveState(originalState.getState()));</span><br><span class="line">        originalState.setState(<span class="string">"this is second state"</span>);</span><br><span class="line">        memoContainer.addMemo(originalState.saveState(originalState.getState()));</span><br><span class="line">        originalState.setState(<span class="string">"this is third state"</span>);</span><br><span class="line">        memoContainer.addMemo(originalState.saveState(originalState.getState()));</span><br><span class="line"></span><br><span class="line">        System.out.println(memoContainer.getMemo(<span class="number">0</span>).toString());</span><br><span class="line">        System.out.println(memoContainer.getMemo(<span class="number">1</span>).toString());</span><br><span class="line">        System.out.println(memoContainer.getMemo(<span class="number">2</span>).toString());</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>给用户提供了一种可以恢复状态的机制。可以是用户能够比较方便地回到某个历史的状态。  </li>
+<li>备忘录中的对象，可以起到对被保存对象的封装，从而可以恰当地保持封装的边界。</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>备忘录中添加过多的复杂的对象，会浪费很大的空间。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/05/14/备忘录模式/" data-id="cio6i13sh000d1vkqixab3v0o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-访问者模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -144,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/12/访问者模式/" data-id="cio5w2qtt001fixkqeqzaxsr6" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/12/访问者模式/" data-id="cio6i13ts001r1vkqz8q9llk1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -228,7 +330,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/11/模板模式/" data-id="cio5w2qt8000yixkqej0k8rn2" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/11/模板模式/" data-id="cio6i13su000v1vkqurd2qw85" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -320,7 +422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/10/策略模式/" data-id="cio5w2qtg0015ixkqz55mz55r" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/10/策略模式/" data-id="cio6i13sy00101vkqo2gwbq64" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -424,66 +526,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/09/空对象模式/" data-id="cio5w2qte0013ixkqlcvpph6h" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/09/空对象模式/" data-id="cio6i13t300171vkqqg17qfc6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-自己激励" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/05/08/自己激励/">自我鸡汤</a>
-    </h1>
-  
-
-        <a href="/blog/2016/05/08/自己激励/" class="article-data-title">
-
-  <time  datetime="2016-05-08T02:39:11.000Z" itemprop="datePublished">2016-05-08</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>人的一生两个最大的财富是：你的才华和你的时间。才华越来越多，但是时间越来越少，我们的一生可以说是用时间来换取才华。如果一天天过去了，我们的时间少了，而才华没有增加，那就是虚度了时光。<a href="https://www.facebook.com/kaifulee/photos/a.182917171735609.47515.172348966125763/1027338577293460/?type=1&amp;theater" target="_blank" rel="external">李开复</a></p>
-</blockquote>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>人的一生两个最大的财富是：你的才华和你的时间。才华越来越多，但是时间越来越少，我们的一生可以说是用时间来换取才华。如果一天天过去了，我们的时间少了，而才华没有增加，那就是虚度了时光。<a href="https://www.facebook.com/kaifulee/photos/a.182917171735609.47515.172348966125763/1027338577293460/?type=1&amp;theater" target="_blank" rel="external">李开复</a></p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/08/自己激励/" data-id="cio5w2qto001bixkqdu3xmsg4" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"></ul>
 
     </footer>
   </div>
