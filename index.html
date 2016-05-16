@@ -44,7 +44,7 @@
 <div class="left_content">
     <section>
   
-    <article id="linux-环境变量" class="article article-type-linux" itemscope itemprop="blogPost">
+    <article id="post-环境变量" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
   </div>
@@ -55,7 +55,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/05/16/环境变量/">环境变量</a>
+      <a class="article-title" href="/blog/2016/05/16/环境变量/">linux系统中四种环境变量</a>
     </h1>
   
 
@@ -68,7 +68,14 @@
     
    <!-- <div class="article-entry" itemprop="articleBody">
       
-        <p>test</p>
+        <h3 id="全局环境变量"><a href="#全局环境变量" class="headerlink" title="全局环境变量"></a>全局环境变量</h3><p>####/etc/profile####<br>次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。</p>
+<h4 id="etc-bashrc"><a href="#etc-bashrc" class="headerlink" title="/etc/bashrc"></a>/etc/bashrc</h4><p>次文件是每次 bash shell被打开时候该文件就会被读取里面的环境变量。</p>
+<h3 id="用户环境变量"><a href="#用户环境变量" class="headerlink" title="用户环境变量"></a>用户环境变量</h3><h5 id="bash-profile"><a href="#bash-profile" class="headerlink" title="~./bash_profile"></a>~./bash_profile</h5><p>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件.</p>
+<h5 id="使用export-在终端导入"><a href="#使用export-在终端导入" class="headerlink" title="使用export 在终端导入"></a>使用export 在终端导入</h5><p>例如使用导入jdk环境变量：<br>export PATH=$PATH:/usr/local/lib/jdk1.6.0_25</p>
+<h3 id="修改环境变量文件生效方法"><a href="#修改环境变量文件生效方法" class="headerlink" title="修改环境变量文件生效方法"></a>修改环境变量文件生效方法</h3><p>source 文件名</p>
+<h3 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h3><p>linux 系统中环境变量的路径叫做 PATH,我们如果定义环境变量千万不要覆盖了系统PATH，一般的做法是使用 “<strong>：</strong>” 跟着我们自己的环境变量，和windows不同，windows使用“<strong>；</strong>”。</p>
+<h3 id="环境变量文件执行顺序"><a href="#环境变量文件执行顺序" class="headerlink" title="环境变量文件执行顺序"></a>环境变量文件执行顺序</h3><p><strong>括弧里面的 环境变量文件名称可能 不同版本的linux 文件名字不一样,例如Ubuntu里面只有~/.profile</strong></p>
+<p>/etc/profile -&gt; (~/.bash_profile | ~/.bash_login | ~/.profile) -&gt; ~/.bashrc -&gt; /etc/bashrc -&gt; ~/.bash_logout</p>
 
       
 
@@ -77,12 +84,19 @@
     <div class="article-entry" itemprop="articleBody">
       
       
-      <p>test</p>
+      <h3 id="全局环境变量"><a href="#全局环境变量" class="headerlink" title="全局环境变量"></a>全局环境变量</h3><p>####/etc/profile####<br>次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。</p>
+<h4 id="etc-bashrc"><a href="#etc-bashrc" class="headerlink" title="/etc/bashrc"></a>/etc/bashrc</h4><p>次文件是每次 bash shell被打开时候该文件就会被读取里面的环境变量。</p>
+<h3 id="用户环境变量"><a href="#用户环境变量" class="headerlink" title="用户环境变量"></a>用户环境变量</h3><h5 id="bash-profile"><a href="#bash-profile" class="headerlink" title="~./bash_profile"></a>~./bash_profile</h5><p>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件.</p>
+<h5 id="使用export-在终端导入"><a href="#使用export-在终端导入" class="headerlink" title="使用export 在终端导入"></a>使用export 在终端导入</h5><p>例如使用导入jdk环境变量：<br>export PATH=$PATH:/usr/local/lib/jdk1.6.0_25</p>
+<h3 id="修改环境变量文件生效方法"><a href="#修改环境变量文件生效方法" class="headerlink" title="修改环境变量文件生效方法"></a>修改环境变量文件生效方法</h3><p>source 文件名</p>
+<h3 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h3><p>linux 系统中环境变量的路径叫做 PATH,我们如果定义环境变量千万不要覆盖了系统PATH，一般的做法是使用 “<strong>：</strong>” 跟着我们自己的环境变量，和windows不同，windows使用“<strong>；</strong>”。</p>
+<h3 id="环境变量文件执行顺序"><a href="#环境变量文件执行顺序" class="headerlink" title="环境变量文件执行顺序"></a>环境变量文件执行顺序</h3><p><strong>括弧里面的 环境变量文件名称可能 不同版本的linux 文件名字不一样,例如Ubuntu里面只有~/.profile</strong></p>
+<p>/etc/profile -&gt; (~/.bash_profile | ~/.bash_login | ~/.profile) -&gt; ~/.bashrc -&gt; /etc/bashrc -&gt; ~/.bash_logout</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/16/环境变量/" data-id="cioa39sfr000wo5kqa70v5dl8" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/16/环境变量/" data-id="cioa4xjt6000ztfkq8so9n5c2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -148,7 +162,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/14/设计模式第一阶段完结/" data-id="cioa39sgg001no5kqgog8i28u" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/14/设计模式第一阶段完结/" data-id="cioa4xjtp001ntfkq0no3616o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -250,7 +264,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/14/备忘录模式/" data-id="cioa39sfg000ho5kq7dj177m8" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/14/备忘录模式/" data-id="cioa4xjt70011tfkq5f5g2cin" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -364,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/12/访问者模式/" data-id="cioa39sge001lo5kq8d2ukap1" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/12/访问者模式/" data-id="cioa4xjtx001xtfkqigop386e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -448,7 +462,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/11/模板模式/" data-id="cioa39sfu000yo5kqboaw82it" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/11/模板模式/" data-id="cioa4xjt90013tfkqh4zehqgx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
