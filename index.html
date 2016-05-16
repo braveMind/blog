@@ -76,6 +76,7 @@
 <h3 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h3><p>linux 系统中环境变量的路径叫做 PATH,我们如果定义环境变量千万不要覆盖了系统PATH，一般的做法是使用 “<strong>：</strong>” 跟着我们自己的环境变量，和windows不同，windows使用“<strong>；</strong>”。</p>
 <h3 id="环境变量文件执行顺序"><a href="#环境变量文件执行顺序" class="headerlink" title="环境变量文件执行顺序"></a>环境变量文件执行顺序</h3><p><strong>括弧里面的 环境变量文件名称可能 不同版本的linux 文件名字不一样,例如Ubuntu里面只有~/.profile</strong></p>
 <p>/etc/profile -&gt; (~/.bash_profile | ~/.bash_login | ~/.profile) -&gt; ~/.bashrc -&gt; /etc/bashrc -&gt; ~/.bash_logout</p>
+<h3 id="配置java-Maven环境变量"><a href="#配置java-Maven环境变量" class="headerlink" title="配置java,Maven环境变量"></a>配置java,Maven环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home</span><br><span class="line">PATH=<span class="variable">$MAVEN_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line">PAHT=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PAHT</span></span><br><span class="line"></span><br><span class="line">M2_HOME=/usr/<span class="built_in">local</span>/Cellar/maven/3.3.3/libexec</span><br><span class="line">PATH=<span class="variable">$M2_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> M2_HOME</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME</span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure>
 
       
 
@@ -92,11 +93,12 @@
 <h3 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h3><p>linux 系统中环境变量的路径叫做 PATH,我们如果定义环境变量千万不要覆盖了系统PATH，一般的做法是使用 “<strong>：</strong>” 跟着我们自己的环境变量，和windows不同，windows使用“<strong>；</strong>”。</p>
 <h3 id="环境变量文件执行顺序"><a href="#环境变量文件执行顺序" class="headerlink" title="环境变量文件执行顺序"></a>环境变量文件执行顺序</h3><p><strong>括弧里面的 环境变量文件名称可能 不同版本的linux 文件名字不一样,例如Ubuntu里面只有~/.profile</strong></p>
 <p>/etc/profile -&gt; (~/.bash_profile | ~/.bash_login | ~/.profile) -&gt; ~/.bashrc -&gt; /etc/bashrc -&gt; ~/.bash_logout</p>
+<h3 id="配置java-Maven环境变量"><a href="#配置java-Maven环境变量" class="headerlink" title="配置java,Maven环境变量"></a>配置java,Maven环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home</span><br><span class="line">PATH=<span class="variable">$MAVEN_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line">PAHT=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PAHT</span></span><br><span class="line"></span><br><span class="line">M2_HOME=/usr/<span class="built_in">local</span>/Cellar/maven/3.3.3/libexec</span><br><span class="line">PATH=<span class="variable">$M2_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> M2_HOME</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME</span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/16/环境变量/" data-id="cioa4z44x0012tukq81fbil8h" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/16/环境变量/" data-id="cioa54ki10012u7kqca12f8l4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -162,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/14/设计模式第一阶段完结/" data-id="cioa4z45h001ptukqpczsrkld" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/14/设计模式第一阶段完结/" data-id="cioa54kim001nu7kqvbq3zu99" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -264,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/14/备忘录模式/" data-id="cioa4z44g000itukq701mdy2x" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/14/备忘录模式/" data-id="cioa54khj000iu7kqtfxz6nm1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -378,7 +380,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/12/访问者模式/" data-id="cioa4z45g001ntukqupdm072y" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/12/访问者模式/" data-id="cioa54kin001pu7kqqg69l2j5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -462,7 +464,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/11/模板模式/" data-id="cioa4z44u0010tukqfgylj8gc" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/11/模板模式/" data-id="cioa54khx000xu7kqb5w041js" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
