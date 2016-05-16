@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -43,6 +43,98 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-策略模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/05/10/策略模式/">策略模式（行为模式七）</a>
+    </h1>
+  
+
+        <a href="/blog/2016/05/10/策略模式/" class="article-data-title">
+
+  <time  datetime="2016-05-10T13:37:20.000Z" itemprop="datePublished">2016-05-10</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>策略模式允许类根据不同的条件在运行的时候可以选择不同的策略（算法）处理问题。策略模式把一系列的算法包装起来，供Client根据不同的条件调用。</p>
+</blockquote>
+<h2 id="类的结构图"><a href="#类的结构图" class="headerlink" title="类的结构图"></a>类的结构图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/strategy.png" alt="类的结构图"></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>结构组成：  </p>
+<ol>
+<li>顶层策略类  </li>
+<li>策略类的实现类  </li>
+<li>策略容器</li>
+</ol>
+<p>策略模式的类结构比较简单，只要实现一个接口就可以实现一种策略，容器中含有对策略类的引用，客户端调用时候根据不同的条件，把不同的策略注入到容器中，就可以完成对这种策略的引用。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>顶层策略类  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Operation</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doOperation</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>策略实现类  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">addOperation</span> <span class="keyword">implements</span> <span class="title">Operation</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doOperation</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        System.out.println(a+b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubOperation</span> <span class="keyword">implements</span> <span class="title">Operation</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doOperation</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        System.out.println(a-b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>容器类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Operation operation;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Operation <span class="title">getOperation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> operation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOperation</span><span class="params">(Operation operation)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.operation = operation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Context</span><span class="params">(Operation operation)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.operation = operation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Operation</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.operation.doOperation(a,b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>App 类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Operation operation=<span class="keyword">new</span> addOperation();</span><br><span class="line">        Context context=<span class="keyword">new</span> Context(operation);</span><br><span class="line">        context.Operation(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">        Operation subOperation=<span class="keyword">new</span> SubOperation();</span><br><span class="line">        context.setOperation(subOperation);</span><br><span class="line">        context.Operation(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>策略模式封装的是算法，在算法不确定的时候，可以使用策略模式。如果算法改变时候，客户端可以不用做任何的调整。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>策略模式在调用的时候，客户端必须知道这个具体使用哪个算法，不符合迪米特法则，可以使用工厂方法避免。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p>策略模式允许类根据不同的条件在运行的时候可以选择不同的策略（算法）处理问题。策略模式把一系列的算法包装起来，供Client根据不同的条件调用。</p>
+</blockquote>
+<h2 id="类的结构图"><a href="#类的结构图" class="headerlink" title="类的结构图"></a>类的结构图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/strategy.png" alt="类的结构图"></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>结构组成：  </p>
+<ol>
+<li>顶层策略类  </li>
+<li>策略类的实现类  </li>
+<li>策略容器</li>
+</ol>
+<p>策略模式的类结构比较简单，只要实现一个接口就可以实现一种策略，容器中含有对策略类的引用，客户端调用时候根据不同的条件，把不同的策略注入到容器中，就可以完成对这种策略的引用。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>顶层策略类  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Operation</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doOperation</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>策略实现类  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">addOperation</span> <span class="keyword">implements</span> <span class="title">Operation</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doOperation</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        System.out.println(a+b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubOperation</span> <span class="keyword">implements</span> <span class="title">Operation</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doOperation</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        System.out.println(a-b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>容器类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Operation operation;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Operation <span class="title">getOperation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> operation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOperation</span><span class="params">(Operation operation)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.operation = operation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Context</span><span class="params">(Operation operation)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.operation = operation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Operation</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.operation.doOperation(a,b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>App 类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Operation operation=<span class="keyword">new</span> addOperation();</span><br><span class="line">        Context context=<span class="keyword">new</span> Context(operation);</span><br><span class="line">        context.Operation(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">        Operation subOperation=<span class="keyword">new</span> SubOperation();</span><br><span class="line">        context.setOperation(subOperation);</span><br><span class="line">        context.Operation(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>策略模式封装的是算法，在算法不确定的时候，可以使用策略模式。如果算法改变时候，客户端可以不用做任何的调整。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>策略模式在调用的时候，客户端必须知道这个具体使用哪个算法，不符合迪米特法则，可以使用工厂方法避免。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/05/10/策略模式/" data-id="cioa39sg10017o5kqi1xcq9ns" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-空对象模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -134,7 +226,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/09/空对象模式/" data-id="cio6kuukk00155vkqihbf01hm" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/09/空对象模式/" data-id="cioa39sfz0015o5kqgyqifdnu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -190,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/08/自己激励/" data-id="cio6kuukr001b5vkq37qo8odq" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/08/自己激励/" data-id="cioa39sg7001do5kqxxdethfv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"></ul>
@@ -268,7 +360,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/08/redis/" data-id="cio6kuujk00045vkqgdh7pv2w" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/08/redis/" data-id="cioa39sez0004o5kqz53f8wot" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/技术求索/">技术求索</a></li></ul>
@@ -438,103 +530,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/08/状态模式/" data-id="cio6kuukj00135vkqzo2raxn6" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-中介者模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/05/07/中介者模式/">中介者模式（行为模式四）</a>
-    </h1>
-  
-
-        <a href="/blog/2016/05/07/中介者模式/" class="article-data-title">
-
-  <time  datetime="2016-05-07T00:20:30.000Z" itemprop="datePublished">2016-05-07</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>中介者模式把类之间复杂的通信关系或复杂的关系引用，交由一个第三方的中介者类来处理，类之间的通信通过这个中介来维护，便于系统扩展。</p>
-</blockquote>
-<h2 id="类的结构图"><a href="#类的结构图" class="headerlink" title="类的结构图"></a>类的结构图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/mediator.png" alt="类的结构图"></p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>中介模式的组成：  </p>
-<ol>
-<li>抽象的中介（Mediator）,定义中介处理消息的具体操作。    </li>
-<li>抽象的中介使用者类，也叫同事类（Person）利用中介来发送消息。  </li>
-<li>具体中介（ConcreteMediator）,具体的消息处理者 。   </li>
-<li>具体的的中介使用者（PersonA,PersonB），利用中介来处理具体业务。  </li>
-</ol>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>抽象中介</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Mediator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operatorMessage</span><span class="params">(String message)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>抽象中介依赖者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Mediator mediator;<span class="comment">//对中介的引用</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(Mediator mediator)</span></span>&#123; <span class="comment">//把具体的中介注入</span></span><br><span class="line">        <span class="keyword">this</span>.mediator=mediator;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(String message)</span></span>;<span class="comment">//消息的实现延迟到子类中</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>具体中介依赖者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PersonA</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonA</span><span class="params">(Mediator mediator)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(mediator);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mediator.operatorMessage(<span class="keyword">new</span> Date().toString()+message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PersonB</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonB</span><span class="params">(Mediator mediator)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(mediator);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mediator.operatorMessage(<span class="keyword">new</span> Date().toString()+<span class="string">"hello"</span>+message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>具体中介类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteMediator</span> <span class="keyword">implements</span> <span class="title">Mediator</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operatorMessage</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this message operator by mediator"</span>+message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>App 客户端</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Mediator mediator=<span class="keyword">new</span> ConcreteMediator();<span class="comment">//具体中介</span></span><br><span class="line">        Person personA=<span class="keyword">new</span> PersonA(mediator);<span class="comment">//注入具体中介</span></span><br><span class="line">        personA.sendMessage(<span class="string">"this is test message"</span>);<span class="comment">//利用中介发送消息</span></span><br><span class="line">        Person personB=<span class="keyword">new</span> PersonB(mediator);</span><br><span class="line">        personB.sendMessage(<span class="string">"hello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>把系统间的通信交给抽象的第三方中介，解耦了系统，便于系统的维护和扩展。</p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>在具体中介者类中包含了大量中介使用者之间的交互细节，可能会导致具体中介者类非常复杂，使得系统难以维护。</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>中介者模式把类之间复杂的通信关系或复杂的关系引用，交由一个第三方的中介者类来处理，类之间的通信通过这个中介来维护，便于系统扩展。</p>
-</blockquote>
-<h2 id="类的结构图"><a href="#类的结构图" class="headerlink" title="类的结构图"></a>类的结构图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/mediator.png" alt="类的结构图"></p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>中介模式的组成：  </p>
-<ol>
-<li>抽象的中介（Mediator）,定义中介处理消息的具体操作。    </li>
-<li>抽象的中介使用者类，也叫同事类（Person）利用中介来发送消息。  </li>
-<li>具体中介（ConcreteMediator）,具体的消息处理者 。   </li>
-<li>具体的的中介使用者（PersonA,PersonB），利用中介来处理具体业务。  </li>
-</ol>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>抽象中介</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Mediator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operatorMessage</span><span class="params">(String message)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>抽象中介依赖者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Mediator mediator;<span class="comment">//对中介的引用</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(Mediator mediator)</span></span>&#123; <span class="comment">//把具体的中介注入</span></span><br><span class="line">        <span class="keyword">this</span>.mediator=mediator;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(String message)</span></span>;<span class="comment">//消息的实现延迟到子类中</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>具体中介依赖者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PersonA</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonA</span><span class="params">(Mediator mediator)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(mediator);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mediator.operatorMessage(<span class="keyword">new</span> Date().toString()+message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PersonB</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonB</span><span class="params">(Mediator mediator)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(mediator);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mediator.operatorMessage(<span class="keyword">new</span> Date().toString()+<span class="string">"hello"</span>+message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>具体中介类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteMediator</span> <span class="keyword">implements</span> <span class="title">Mediator</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operatorMessage</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this message operator by mediator"</span>+message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>App 客户端</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Mediator mediator=<span class="keyword">new</span> ConcreteMediator();<span class="comment">//具体中介</span></span><br><span class="line">        Person personA=<span class="keyword">new</span> PersonA(mediator);<span class="comment">//注入具体中介</span></span><br><span class="line">        personA.sendMessage(<span class="string">"this is test message"</span>);<span class="comment">//利用中介发送消息</span></span><br><span class="line">        Person personB=<span class="keyword">new</span> PersonB(mediator);</span><br><span class="line">        personB.sendMessage(<span class="string">"hello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>把系统间的通信交给抽象的第三方中介，解耦了系统，便于系统的维护和扩展。</p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>在具体中介者类中包含了大量中介使用者之间的交互细节，可能会导致具体中介者类非常复杂，使得系统难以维护。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/07/中介者模式/" data-id="cio6kuujr000a5vkqlda6hd2v" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/08/状态模式/" data-id="cioa39sfv0011o5kqekn4u1zw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -550,7 +546,7 @@
   
   
     <nav id="page-nav">
-      <a class="" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/7/">7</a><a class="extend next" rel="next" href="/blog/page/3/">Next &raquo;</a>
+      <a class="" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/8/">8</a><a class="extend next" rel="next" href="/blog/page/3/">Next &raquo;</a>
     </nav>
   
 </section>
