@@ -5,22 +5,22 @@
   
   <title>linux系统中四种环境变量 | 小菜园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="全局环境变量####/etc/profile####次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。
+  <meta name="description" content="全局环境变量/etc/profile次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。
 /etc/bashrc次文件是每次 bash shell被打开时候该文件就会被读取里面的环境变量。
-用户环境变量~./bash_profile每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他">
+用户环境变量~./bash_profile每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux系统中四种环境变量">
 <meta property="og:url" content="http://bravemind.github.io/2016/05/16/环境变量/index.html">
 <meta property="og:site_name" content="小菜园">
-<meta property="og:description" content="全局环境变量####/etc/profile####次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。
+<meta property="og:description" content="全局环境变量/etc/profile次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。
 /etc/bashrc次文件是每次 bash shell被打开时候该文件就会被读取里面的环境变量。
-用户环境变量~./bash_profile每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他">
-<meta property="og:updated_time" content="2016-05-16T14:57:50.000Z">
+用户环境变量~./bash_profile每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量">
+<meta property="og:updated_time" content="2016-05-16T14:59:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux系统中四种环境变量">
-<meta name="twitter:description" content="全局环境变量####/etc/profile####次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。
+<meta name="twitter:description" content="全局环境变量/etc/profile次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。
 /etc/bashrc次文件是每次 bash shell被打开时候该文件就会被读取里面的环境变量。
-用户环境变量~./bash_profile每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他">
+用户环境变量~./bash_profile每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量">
   
   
     <link rel="icon" href="/blog/favicon.png">
@@ -73,7 +73,7 @@
     
    <!-- <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="全局环境变量"><a href="#全局环境变量" class="headerlink" title="全局环境变量"></a>全局环境变量</h3><p>####/etc/profile####<br>次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。</p>
+        <h3 id="全局环境变量"><a href="#全局环境变量" class="headerlink" title="全局环境变量"></a>全局环境变量</h3><h4 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a>/etc/profile</h4><p>次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。</p>
 <h4 id="etc-bashrc"><a href="#etc-bashrc" class="headerlink" title="/etc/bashrc"></a>/etc/bashrc</h4><p>次文件是每次 bash shell被打开时候该文件就会被读取里面的环境变量。</p>
 <h3 id="用户环境变量"><a href="#用户环境变量" class="headerlink" title="用户环境变量"></a>用户环境变量</h3><h5 id="bash-profile"><a href="#bash-profile" class="headerlink" title="~./bash_profile"></a>~./bash_profile</h5><p>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件.</p>
 <h5 id="使用export-在终端导入"><a href="#使用export-在终端导入" class="headerlink" title="使用export 在终端导入"></a>使用export 在终端导入</h5><p>例如使用导入jdk环境变量：<br>export PATH=$PATH:/usr/local/lib/jdk1.6.0_25</p>
@@ -90,11 +90,11 @@
       
       
       <div id="toc" class="article-toc">
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局环境变量"><span class="toc-number">1.</span> <span class="toc-text">全局环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#etc-bashrc"><span class="toc-number">1.1.</span> <span class="toc-text">/etc/bashrc</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户环境变量"><span class="toc-number">2.</span> <span class="toc-text">用户环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#bash-profile"><span class="toc-number">2.0.1.</span> <span class="toc-text">~./bash_profile</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用export-在终端导入"><span class="toc-number">2.0.2.</span> <span class="toc-text">使用export 在终端导入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改环境变量文件生效方法"><span class="toc-number">3.</span> <span class="toc-text">修改环境变量文件生效方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加环境变量"><span class="toc-number">4.</span> <span class="toc-text">添加环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#环境变量文件执行顺序"><span class="toc-number">5.</span> <span class="toc-text">环境变量文件执行顺序</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局环境变量"><span class="toc-number">1.</span> <span class="toc-text">全局环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#etc-profile"><span class="toc-number">1.1.</span> <span class="toc-text">/etc/profile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#etc-bashrc"><span class="toc-number">1.2.</span> <span class="toc-text">/etc/bashrc</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户环境变量"><span class="toc-number">2.</span> <span class="toc-text">用户环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#bash-profile"><span class="toc-number">2.0.1.</span> <span class="toc-text">~./bash_profile</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用export-在终端导入"><span class="toc-number">2.0.2.</span> <span class="toc-text">使用export 在终端导入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改环境变量文件生效方法"><span class="toc-number">3.</span> <span class="toc-text">修改环境变量文件生效方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加环境变量"><span class="toc-number">4.</span> <span class="toc-text">添加环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#环境变量文件执行顺序"><span class="toc-number">5.</span> <span class="toc-text">环境变量文件执行顺序</span></a></li></ol>
         <hr/>
       </div>
       
-      <h3 id="全局环境变量"><a href="#全局环境变量" class="headerlink" title="全局环境变量"></a>全局环境变量</h3><p>####/etc/profile####<br>次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。</p>
+      <h3 id="全局环境变量"><a href="#全局环境变量" class="headerlink" title="全局环境变量"></a>全局环境变量</h3><h4 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a>/etc/profile</h4><p>次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。</p>
 <h4 id="etc-bashrc"><a href="#etc-bashrc" class="headerlink" title="/etc/bashrc"></a>/etc/bashrc</h4><p>次文件是每次 bash shell被打开时候该文件就会被读取里面的环境变量。</p>
 <h3 id="用户环境变量"><a href="#用户环境变量" class="headerlink" title="用户环境变量"></a>用户环境变量</h3><h5 id="bash-profile"><a href="#bash-profile" class="headerlink" title="~./bash_profile"></a>~./bash_profile</h5><p>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件.</p>
 <h5 id="使用export-在终端导入"><a href="#使用export-在终端导入" class="headerlink" title="使用export 在终端导入"></a>使用export 在终端导入</h5><p>例如使用导入jdk环境变量：<br>export PATH=$PATH:/usr/local/lib/jdk1.6.0_25</p>
@@ -106,7 +106,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/16/环境变量/" data-id="cioa4xjt6000ztfkq8so9n5c2" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/16/环境变量/" data-id="cioa4z44x0012tukq81fbil8h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
