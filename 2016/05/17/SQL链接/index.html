@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>SQL链接 | 小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="sql的链接类型内连接（inner join）内连接是应用程序默认的链接类型，内连接是把表A和B的列组合在一起产生的，其组产生的值满足笛卡尔积.inner join分为：  
+
+等值链接
+不等值链接  
+自然链接 
+
+显示的使用 INNER JOIN  
+1234SELECT *FROM   employee        INNER JOIN department           ON e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL链接">
+<meta property="og:url" content="http://bravemind.github.io/2016/05/17/SQL链接/index.html">
+<meta property="og:site_name" content="小菜园">
+<meta property="og:description" content="sql的链接类型内连接（inner join）内连接是应用程序默认的链接类型，内连接是把表A和B的列组合在一起产生的，其组产生的值满足笛卡尔积.inner join分为：  
+
+等值链接
+不等值链接  
+自然链接 
+
+显示的使用 INNER JOIN  
+1234SELECT *FROM   employee        INNER JOIN department           ON e">
+<meta property="og:updated_time" content="2016-05-17T15:11:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL链接">
+<meta name="twitter:description" content="sql的链接类型内连接（inner join）内连接是应用程序默认的链接类型，内连接是把表A和B的列组合在一起产生的，其组产生的值满足笛卡尔积.inner join分为：  
+
+等值链接
+不等值链接  
+自然链接 
+
+显示的使用 INNER JOIN  
+1234SELECT *FROM   employee        INNER JOIN department           ON e">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/grid.css">
+
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.min.css">
+
+
+
+</head>
+<div class="left_header">
+    <a class="header_avater" href="/blog"></a>
+    <div class="tag_s" id="showTag">
+        <i class="fa fa-tag" href="../blog"></i>
+            <div id="tags_clod" class="pop">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+            </div>
+    </div>
+    <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
+    <a href="https://github.com/braveMind" class="git" target="_blank"><i class="fa fa-github"></i></a>
+
+
+    <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
+</div>
+<div class="left_content">
+    <section><article id="post-SQL链接" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SQL链接
+    </h1>
+  
+
+        <a href="/blog/2016/05/17/SQL链接/" class="article-data-title">
+
+  <time  datetime="2016-05-17T15:09:25.000Z" itemprop="datePublished">2016-05-17</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="sql的链接类型"><a href="#sql的链接类型" class="headerlink" title="sql的链接类型"></a>sql的链接类型</h2><h2 id="内连接（inner-join）"><a href="#内连接（inner-join）" class="headerlink" title="内连接（inner join）"></a>内连接（inner join）</h2><p>内连接是应用程序默认的链接类型，内连接是把表A和B的列组合在一起产生的，其组产生的值满足笛卡尔积.<br>inner join分为：  </p>
+<ol>
+<li>等值链接</li>
+<li>不等值链接  </li>
+<li>自然链接 </li>
+</ol>
+<p>显示的使用 INNER JOIN  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span>   employee </span><br><span class="line">       <span class="keyword">INNER</span> <span class="keyword">JOIN</span> department </span><br><span class="line">          <span class="keyword">ON</span> employee.DepartmentID = department.DepartmentID</span><br></pre></td></tr></table></figure>
+<p>隐示的使用 INNER JOIN<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span>   employee </span><br><span class="line">       <span class="keyword">INNER</span> <span class="keyword">JOIN</span> department </span><br><span class="line">          <span class="keyword">USING</span> (DepartmentID)</span><br></pre></td></tr></table></figure></p>
+<h2 id="外联接"><a href="#外联接" class="headerlink" title="外联接"></a>外联接</h2><ol>
+<li>左外链接  </li>
+<li>右外链接  </li>
+<li>全连接：完整外部联接返回左表和右表中的所有行。当某行在另一个表中没有匹配行时，则另一个表的选择列表列包含空值。如果表之间有匹配行，则整个结果集行包含基表的数据值</li>
+</ol>
+<h3 id="on和where的区别"><a href="#on和where的区别" class="headerlink" title="on和where的区别"></a>on和where的区别</h3><p>1、 on条件是在生成临时表时使用的条件，它不管on中的条件是否为真，都会返回左边表中的记录。  </p>
+<p>2、where条件是在临时表生成好后，再对临时表进行过滤的条件。这时已经没有left join的含义（必须返回左边表的记录）了，条件不为真的就全部过滤掉。  </p>
+<h3 id="left-join-是left-outer-join的简写。"><a href="#left-join-是left-outer-join的简写。" class="headerlink" title="left join 是left outer join的简写。"></a>left join 是left outer join的简写。</h3><h3 id="right-join-是-right-outer-join-的简写。"><a href="#right-join-是-right-outer-join-的简写。" class="headerlink" title="right join 是 right outer join 的简写。"></a>right join 是 right outer join 的简写。</h3>
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <div id="toc" class="article-toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sql的链接类型"><span class="toc-number">1.</span> <span class="toc-text">sql的链接类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内连接（inner-join）"><span class="toc-number">2.</span> <span class="toc-text">内连接（inner join）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外联接"><span class="toc-number">3.</span> <span class="toc-text">外联接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#on和where的区别"><span class="toc-number">3.1.</span> <span class="toc-text">on和where的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#left-join-是left-outer-join的简写。"><span class="toc-number">3.2.</span> <span class="toc-text">left join 是left outer join的简写。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#right-join-是-right-outer-join-的简写。"><span class="toc-number">3.3.</span> <span class="toc-text">right join 是 right outer join 的简写。</span></a></li></ol></li></ol>
+        <hr/>
+      </div>
+      
+      <h2 id="sql的链接类型"><a href="#sql的链接类型" class="headerlink" title="sql的链接类型"></a>sql的链接类型</h2><h2 id="内连接（inner-join）"><a href="#内连接（inner-join）" class="headerlink" title="内连接（inner join）"></a>内连接（inner join）</h2><p>内连接是应用程序默认的链接类型，内连接是把表A和B的列组合在一起产生的，其组产生的值满足笛卡尔积.<br>inner join分为：  </p>
+<ol>
+<li>等值链接</li>
+<li>不等值链接  </li>
+<li>自然链接 </li>
+</ol>
+<p>显示的使用 INNER JOIN  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span>   employee </span><br><span class="line">       <span class="keyword">INNER</span> <span class="keyword">JOIN</span> department </span><br><span class="line">          <span class="keyword">ON</span> employee.DepartmentID = department.DepartmentID</span><br></pre></td></tr></table></figure>
+<p>隐示的使用 INNER JOIN<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span>   employee </span><br><span class="line">       <span class="keyword">INNER</span> <span class="keyword">JOIN</span> department </span><br><span class="line">          <span class="keyword">USING</span> (DepartmentID)</span><br></pre></td></tr></table></figure></p>
+<h2 id="外联接"><a href="#外联接" class="headerlink" title="外联接"></a>外联接</h2><ol>
+<li>左外链接  </li>
+<li>右外链接  </li>
+<li>全连接：完整外部联接返回左表和右表中的所有行。当某行在另一个表中没有匹配行时，则另一个表的选择列表列包含空值。如果表之间有匹配行，则整个结果集行包含基表的数据值</li>
+</ol>
+<h3 id="on和where的区别"><a href="#on和where的区别" class="headerlink" title="on和where的区别"></a>on和where的区别</h3><p>1、 on条件是在生成临时表时使用的条件，它不管on中的条件是否为真，都会返回左边表中的记录。  </p>
+<p>2、where条件是在临时表生成好后，再对临时表进行过滤的条件。这时已经没有left join的含义（必须返回左边表的记录）了，条件不为真的就全部过滤掉。  </p>
+<h3 id="left-join-是left-outer-join的简写。"><a href="#left-join-是left-outer-join的简写。" class="headerlink" title="left join 是left outer join的简写。"></a>left join 是left outer join的简写。</h3><h3 id="right-join-是-right-outer-join-的简写。"><a href="#right-join-是-right-outer-join-的简写。" class="headerlink" title="right join 是 right outer join 的简写。"></a>right join 是 right outer join 的简写。</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/05/17/SQL链接/" data-id="ciobkuqgr0003l0kqdadv4dpk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/05/16/环境变量/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">linux系统中四种环境变量</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+</div>
+
+
+   
+
+   <script src="/blog/js/jQuery.js"></script>
+   <script src="/blog/js/script.js"></script>
+
+
+
