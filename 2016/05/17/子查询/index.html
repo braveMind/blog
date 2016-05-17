@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>子查询 | 小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="子查询子查询不能直接出现在where中，应该出现在 where的子查询里面。
+in 和 not in 子查询用来比较一个给定的值有没有出现在一个特定的集合里面。
+Any some allAny 与比较操作符连用，表示任何大于子查询的一项都会被返回。some any的别名比较不常用。all 与子查询比较，比子查询大的所有值，才会被返回。
+查询性能优化绝大多数的子查询都可以改成链接查询。
+union">
+<meta property="og:type" content="article">
+<meta property="og:title" content="子查询">
+<meta property="og:url" content="http://bravemind.github.io/2016/05/17/子查询/index.html">
+<meta property="og:site_name" content="小菜园">
+<meta property="og:description" content="子查询子查询不能直接出现在where中，应该出现在 where的子查询里面。
+in 和 not in 子查询用来比较一个给定的值有没有出现在一个特定的集合里面。
+Any some allAny 与比较操作符连用，表示任何大于子查询的一项都会被返回。some any的别名比较不常用。all 与子查询比较，比子查询大的所有值，才会被返回。
+查询性能优化绝大多数的子查询都可以改成链接查询。
+union">
+<meta property="og:updated_time" content="2016-05-17T15:22:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="子查询">
+<meta name="twitter:description" content="子查询子查询不能直接出现在where中，应该出现在 where的子查询里面。
+in 和 not in 子查询用来比较一个给定的值有没有出现在一个特定的集合里面。
+Any some allAny 与比较操作符连用，表示任何大于子查询的一项都会被返回。some any的别名比较不常用。all 与子查询比较，比子查询大的所有值，才会被返回。
+查询性能优化绝大多数的子查询都可以改成链接查询。
+union">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/grid.css">
+
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.min.css">
+
+
+
+</head>
+<div class="left_header">
+    <a class="header_avater" href="/blog"></a>
+    <div class="tag_s" id="showTag">
+        <i class="fa fa-tag" href="../blog"></i>
+            <div id="tags_clod" class="pop">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+            </div>
+    </div>
+    <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
+    <a href="https://github.com/braveMind" class="git" target="_blank"><i class="fa fa-github"></i></a>
+
+
+    <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
+</div>
+<div class="left_content">
+    <section><article id="post-子查询" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      子查询
+    </h1>
+  
+
+        <a href="/blog/2016/05/17/子查询/" class="article-data-title">
+
+  <time  datetime="2016-05-17T15:21:41.000Z" itemprop="datePublished">2016-05-17</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><p>子查询不能直接出现在where中，应该出现在 where的子查询里面。</p>
+<h2 id="in-和-not-in-子查询"><a href="#in-和-not-in-子查询" class="headerlink" title="in 和 not in 子查询"></a>in 和 not in 子查询</h2><p>用来比较一个给定的值有没有出现在一个特定的集合里面。</p>
+<h2 id="Any-some-all"><a href="#Any-some-all" class="headerlink" title="Any some all"></a>Any some all</h2><p>Any 与比较操作符连用，表示任何大于子查询的一项都会被返回。<br>some any的别名比较不常用。<br>all 与子查询比较，比子查询大的所有值，才会被返回。</p>
+<h3 id="查询性能优化"><a href="#查询性能优化" class="headerlink" title="查询性能优化"></a>查询性能优化</h3><p>绝大多数的子查询都可以改成链接查询。</p>
+<h3 id="union-和-union-all"><a href="#union-和-union-all" class="headerlink" title="union 和 union all"></a>union 和 union all</h3><p>必须有相同的列数目，并且列的数据类型必须相同。<br>union 不允许有重复的列，union 允许有重复的列。</p>
+<h3 id="数据库主外键对性能影响"><a href="#数据库主外键对性能影响" class="headerlink" title="数据库主外键对性能影响"></a>数据库主外键对性能影响</h3><p>1.数据库需要维护外键的内部管理；<br>2.外键等于把数据的一致性事务实现，全部交给数据库服务器完成；<br>3.有了外键，当做一些涉及外键字段的增，删，更新操作之后，需要触发相关操作去检查，而不得不消耗资源；<br>4.外键还会因为需要请求对其他表内部加锁而容易出现死锁情况；  </p>
+<h3 id="数据库优化"><a href="#数据库优化" class="headerlink" title="数据库优化"></a>数据库优化</h3><p>索引加快了检索速度，降低了在索引里面插入，删除，以及修改的速度。因为写入操作不仅要写入到数据行，而且还有改变索引。其次索引要占用很大的磁盘空间。</p>
+<p>添加的索引一般是给where子句添加。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <div id="toc" class="article-toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#子查询"><span class="toc-number">1.</span> <span class="toc-text">子查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#in-和-not-in-子查询"><span class="toc-number">2.</span> <span class="toc-text">in 和 not in 子查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Any-some-all"><span class="toc-number">3.</span> <span class="toc-text">Any some all</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询性能优化"><span class="toc-number">3.1.</span> <span class="toc-text">查询性能优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#union-和-union-all"><span class="toc-number">3.2.</span> <span class="toc-text">union 和 union all</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库主外键对性能影响"><span class="toc-number">3.3.</span> <span class="toc-text">数据库主外键对性能影响</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库优化"><span class="toc-number">3.4.</span> <span class="toc-text">数据库优化</span></a></li></ol></li></ol>
+        <hr/>
+      </div>
+      
+      <h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><p>子查询不能直接出现在where中，应该出现在 where的子查询里面。</p>
+<h2 id="in-和-not-in-子查询"><a href="#in-和-not-in-子查询" class="headerlink" title="in 和 not in 子查询"></a>in 和 not in 子查询</h2><p>用来比较一个给定的值有没有出现在一个特定的集合里面。</p>
+<h2 id="Any-some-all"><a href="#Any-some-all" class="headerlink" title="Any some all"></a>Any some all</h2><p>Any 与比较操作符连用，表示任何大于子查询的一项都会被返回。<br>some any的别名比较不常用。<br>all 与子查询比较，比子查询大的所有值，才会被返回。</p>
+<h3 id="查询性能优化"><a href="#查询性能优化" class="headerlink" title="查询性能优化"></a>查询性能优化</h3><p>绝大多数的子查询都可以改成链接查询。</p>
+<h3 id="union-和-union-all"><a href="#union-和-union-all" class="headerlink" title="union 和 union all"></a>union 和 union all</h3><p>必须有相同的列数目，并且列的数据类型必须相同。<br>union 不允许有重复的列，union 允许有重复的列。</p>
+<h3 id="数据库主外键对性能影响"><a href="#数据库主外键对性能影响" class="headerlink" title="数据库主外键对性能影响"></a>数据库主外键对性能影响</h3><p>1.数据库需要维护外键的内部管理；<br>2.外键等于把数据的一致性事务实现，全部交给数据库服务器完成；<br>3.有了外键，当做一些涉及外键字段的增，删，更新操作之后，需要触发相关操作去检查，而不得不消耗资源；<br>4.外键还会因为需要请求对其他表内部加锁而容易出现死锁情况；  </p>
+<h3 id="数据库优化"><a href="#数据库优化" class="headerlink" title="数据库优化"></a>数据库优化</h3><p>索引加快了检索速度，降低了在索引里面插入，删除，以及修改的速度。因为写入操作不仅要写入到数据行，而且还有改变索引。其次索引要占用很大的磁盘空间。</p>
+<p>添加的索引一般是给where子句添加。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/05/17/子查询/" data-id="ciobl9m4o000tnskt1ur7otfb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/05/17/SQL链接/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SQL链接</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+</div>
+
+
+   
+
+   <script src="/blog/js/jQuery.js"></script>
+   <script src="/blog/js/script.js"></script>
+
+
+
