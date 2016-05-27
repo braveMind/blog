@@ -5,25 +5,25 @@
   
   <title>泛型通配符 | 小菜园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java泛型（generics）是JDK 5中引入的一个新特性，允许在定义类和接口的时候使用类型参数（type parameter）。声明的类型参数在使用时用具体的类型来替换
+  <meta name="description" content="Java泛型（generics）是JDK 5中引入的一个新特性，允许在定义类和接口的时候使用类型参数（type parameter）。声明的类型参数在使用时用具体的类型来替换。
 
 泛型的优点能在编译的时候就知道类型不匹配的错误，并且使用数据的时候不需要手动强制类型强转。
-泛型的表示大家约定以用K表示键，V表示值，T表示type类型，E表示enum枚举，其实这四个都只是符号，都是表示泛型名称。? 表">
+泛型的表示大家约定以用K表示键，V表示值，T表示type类型，E表示enum枚举，其实这四个都只是符号，都是表示泛型名称。?">
 <meta property="og:type" content="article">
 <meta property="og:title" content="泛型通配符">
 <meta property="og:url" content="http://bravemind.github.io/2016/05/27/泛型通配符/index.html">
 <meta property="og:site_name" content="小菜园">
-<meta property="og:description" content="Java泛型（generics）是JDK 5中引入的一个新特性，允许在定义类和接口的时候使用类型参数（type parameter）。声明的类型参数在使用时用具体的类型来替换
+<meta property="og:description" content="Java泛型（generics）是JDK 5中引入的一个新特性，允许在定义类和接口的时候使用类型参数（type parameter）。声明的类型参数在使用时用具体的类型来替换。
 
 泛型的优点能在编译的时候就知道类型不匹配的错误，并且使用数据的时候不需要手动强制类型强转。
-泛型的表示大家约定以用K表示键，V表示值，T表示type类型，E表示enum枚举，其实这四个都只是符号，都是表示泛型名称。? 表">
-<meta property="og:updated_time" content="2016-05-27T07:43:04.000Z">
+泛型的表示大家约定以用K表示键，V表示值，T表示type类型，E表示enum枚举，其实这四个都只是符号，都是表示泛型名称。?">
+<meta property="og:updated_time" content="2016-05-27T07:46:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="泛型通配符">
-<meta name="twitter:description" content="Java泛型（generics）是JDK 5中引入的一个新特性，允许在定义类和接口的时候使用类型参数（type parameter）。声明的类型参数在使用时用具体的类型来替换
+<meta name="twitter:description" content="Java泛型（generics）是JDK 5中引入的一个新特性，允许在定义类和接口的时候使用类型参数（type parameter）。声明的类型参数在使用时用具体的类型来替换。
 
 泛型的优点能在编译的时候就知道类型不匹配的错误，并且使用数据的时候不需要手动强制类型强转。
-泛型的表示大家约定以用K表示键，V表示值，T表示type类型，E表示enum枚举，其实这四个都只是符号，都是表示泛型名称。? 表">
+泛型的表示大家约定以用K表示键，V表示值，T表示type类型，E表示enum枚举，其实这四个都只是符号，都是表示泛型名称。?">
   
   
     <link rel="icon" href="/blog/favicon.png">
@@ -42,7 +42,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -79,7 +79,7 @@
    <!-- <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>Java泛型（generics）是JDK 5中引入的一个新特性，允许在定义类和接口的时候使用类型参数（type parameter）。声明的类型参数在使用时用具体的类型来替换</p>
+<p>Java泛型（generics）是JDK 5中引入的一个新特性，允许在定义类和接口的时候使用类型参数（type parameter）。声明的类型参数在使用时用具体的类型来替换。</p>
 </blockquote>
 <h2 id="泛型的优点"><a href="#泛型的优点" class="headerlink" title="泛型的优点"></a>泛型的优点</h2><p>能在编译的时候就知道类型不匹配的错误，并且使用数据的时候不需要手动强制类型强转。</p>
 <h2 id="泛型的表示"><a href="#泛型的表示" class="headerlink" title="泛型的表示"></a>泛型的表示</h2><p><strong>大家约定</strong>以用K表示键，V表示值，T表示type类型，E表示enum枚举，其实这四个都只是符号，都是表示泛型名称。? 表示不确定的类型。 </p>
@@ -87,7 +87,7 @@
 <p>如下方式定义一个返回类型是T类型的方法，这个T可以是任意类型，编译器会帮你在编译的时候进行类型擦除，避免了强制类型转换。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">process</span><span class="params">(T t)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    System.out.println(t);</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="有限制的泛型"><a href="#有限制的泛型" class="headerlink" title="有限制的泛型"></a>有限制的泛型</h2><p>上面的泛型T可以表示任意类型，我们可以使用 extends,和super来对T类型进行限制。  </p>
-<p>extends用来限制泛型必须继承某个类，super用来限制泛型必须是某个类的父类。</p>
+<p>enxtends用来限制泛型必须继承某个类，super用来限制泛型必须是某个类的父类。</p>
 <p>优点：可以使用父类中的方法，对泛型的实现类加以限制。</p>
 <p>限制 T 必须是Numer的子类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T extends Number&gt; <span class="function">T <span class="title">process</span><span class="params">(T t)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">      System.out.println(t.floatValue());</span><br><span class="line">      <span class="keyword">return</span> t;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
@@ -121,7 +121,7 @@
       </div>
       
       <blockquote>
-<p>Java泛型（generics）是JDK 5中引入的一个新特性，允许在定义类和接口的时候使用类型参数（type parameter）。声明的类型参数在使用时用具体的类型来替换</p>
+<p>Java泛型（generics）是JDK 5中引入的一个新特性，允许在定义类和接口的时候使用类型参数（type parameter）。声明的类型参数在使用时用具体的类型来替换。</p>
 </blockquote>
 <h2 id="泛型的优点"><a href="#泛型的优点" class="headerlink" title="泛型的优点"></a>泛型的优点</h2><p>能在编译的时候就知道类型不匹配的错误，并且使用数据的时候不需要手动强制类型强转。</p>
 <h2 id="泛型的表示"><a href="#泛型的表示" class="headerlink" title="泛型的表示"></a>泛型的表示</h2><p><strong>大家约定</strong>以用K表示键，V表示值，T表示type类型，E表示enum枚举，其实这四个都只是符号，都是表示泛型名称。? 表示不确定的类型。 </p>
@@ -129,7 +129,7 @@
 <p>如下方式定义一个返回类型是T类型的方法，这个T可以是任意类型，编译器会帮你在编译的时候进行类型擦除，避免了强制类型转换。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">process</span><span class="params">(T t)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    System.out.println(t);</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="有限制的泛型"><a href="#有限制的泛型" class="headerlink" title="有限制的泛型"></a>有限制的泛型</h2><p>上面的泛型T可以表示任意类型，我们可以使用 extends,和super来对T类型进行限制。  </p>
-<p>extends用来限制泛型必须继承某个类，super用来限制泛型必须是某个类的父类。</p>
+<p>enxtends用来限制泛型必须继承某个类，super用来限制泛型必须是某个类的父类。</p>
 <p>优点：可以使用父类中的方法，对泛型的实现类加以限制。</p>
 <p>限制 T 必须是Numer的子类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T extends Number&gt; <span class="function">T <span class="title">process</span><span class="params">(T t)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">      System.out.println(t.floatValue());</span><br><span class="line">      <span class="keyword">return</span> t;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
@@ -153,10 +153,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/27/泛型通配符/" data-id="ciopf8skh0017rd9ku91ro04g" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/27/泛型通配符/" data-id="ciopfdndb0018rs9kwuumufdv" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/">java</a></li></ul>
 
     </footer>
   </div>
