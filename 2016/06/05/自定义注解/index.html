@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>自定义注解 | 小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="自定义注解用到最多的地方就是和反射一起用来写框架，反射用来执行特殊标记的类或方法，其次如果不写框架,在Spring mvc 中可能会扩展hibernate中的注解用来进行前端数据校验。
+
+框架中大量使用如Mybatis中就含有大量的自定义注解如下：
+自定义注解自定义注解@interface +注解名称，注解的注解称为元注解。@Retention(Resource,class,method)用来定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义注解">
+<meta property="og:url" content="http://bravemind.github.io/2016/06/05/自定义注解/index.html">
+<meta property="og:site_name" content="小菜园">
+<meta property="og:description" content="自定义注解用到最多的地方就是和反射一起用来写框架，反射用来执行特殊标记的类或方法，其次如果不写框架,在Spring mvc 中可能会扩展hibernate中的注解用来进行前端数据校验。
+
+框架中大量使用如Mybatis中就含有大量的自定义注解如下：
+自定义注解自定义注解@interface +注解名称，注解的注解称为元注解。@Retention(Resource,class,method)用来定">
+<meta property="og:image" content="http://7xstto.com1.z0.glb.clouddn.com/mybaitis-annotations.png">
+<meta property="og:image" content="http://7xstto.com1.z0.glb.clouddn.com/annotation.png">
+<meta property="og:image" content="http://7xstto.com1.z0.glb.clouddn.com/annotation2.png">
+<meta property="og:image" content="http://7xstto.com1.z0.glb.clouddn.com/annotationResult.png">
+<meta property="og:updated_time" content="2016-06-05T05:25:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自定义注解">
+<meta name="twitter:description" content="自定义注解用到最多的地方就是和反射一起用来写框架，反射用来执行特殊标记的类或方法，其次如果不写框架,在Spring mvc 中可能会扩展hibernate中的注解用来进行前端数据校验。
+
+框架中大量使用如Mybatis中就含有大量的自定义注解如下：
+自定义注解自定义注解@interface +注解名称，注解的注解称为元注解。@Retention(Resource,class,method)用来定">
+<meta name="twitter:image" content="http://7xstto.com1.z0.glb.clouddn.com/mybaitis-annotations.png">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/grid.css">
+
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.min.css">
+
+
+
+</head>
+<div class="left_header">
+    <a class="header_avater" href="/blog"></a>
+    <div class="tag_s" id="showTag">
+        <i class="fa fa-tag" href="../blog"></i>
+            <div id="tags_clod" class="pop">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+            </div>
+    </div>
+    <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
+    <a href="https://github.com/braveMind" class="git" target="_blank"><i class="fa fa-github"></i></a>
+
+
+    <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
+    <a href="/blog/2016/05/21/友情链接/"><i class="fa fa-link" aria-hidden="true"></i></a>
+
+</div>
+<div class="left_content">
+    <section><article id="post-自定义注解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      自定义注解
+    </h1>
+  
+
+        <a href="/blog/2016/06/05/自定义注解/" class="article-data-title">
+
+  <time  datetime="2016-06-05T04:17:01.000Z" itemprop="datePublished">2016-06-05</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>自定义注解用到最多的地方就是和反射一起用来写框架，反射用来执行特殊标记的类或方法，其次如果不写框架,在Spring mvc 中可能会扩展hibernate中的注解用来进行前端数据校验。</p>
+</blockquote>
+<p>框架中大量使用如Mybatis中就含有大量的自定义注解如下：<br><img src="http://7xstto.com1.z0.glb.clouddn.com/mybaitis-annotations.png" alt="mybatis中的自定义注解"></p>
+<h2 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h2><p>自定义注解@interface +注解名称，注解的注解称为元注解。<br>@Retention(Resource,class,method)用来定义注解的保留时机。@Target用来注解这个注解是针对于那个域（method,filed,class）。</p>
+<p>jdk中定义如下：<br><img src="http://7xstto.com1.z0.glb.clouddn.com/annotation.png" alt="RetentionPolicy"></p>
+<p><img src="http://7xstto.com1.z0.glb.clouddn.com/annotation2.png" alt="ElementType"></p>
+<p>可以用上面的在注解类型来描述自己定义的注解作用时机，作用在方法上还是filed上。</p>
+<p>定义自己的注解@Test如下，作用在METHOD上：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Test &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">enabled</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">true</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义另外一个注解如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> TestInfo &#123;</span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">enum</span> Priority&#123;</span><br><span class="line">        LOW,MEDIUM,HIGH</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">Priority <span class="title">priority</span><span class="params">()</span> <span class="keyword">default</span> Priority.MEDIUM</span>;</span><br><span class="line">    String[] tags() <span class="keyword">default</span> <span class="string">""</span>;</span><br><span class="line">    <span class="function">String <span class="title">createBy</span><span class="params">()</span> <span class="keyword">default</span> "Mkyoung"</span>;</span><br><span class="line">    <span class="function">String <span class="title">lastModified</span><span class="params">()</span> <span class="keyword">default</span> "03/01/2014"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意事项</strong></p>
+<blockquote>
+<p>在注解中定义的方法不能含有参数，不能抛出异常。返回值类型限制为基本类型，String,Class,enums,annotations,数组类型。</p>
+</blockquote>
+<h2 id="使用注解"><a href="#使用注解" class="headerlink" title="使用注解"></a>使用注解</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@TestInfo</span>(</span><br><span class="line">        priority = TestInfo.Priority.HIGH,</span><br><span class="line">        createBy=<span class="string">"mkyoung.com"</span>,</span><br><span class="line">        tags=&#123;<span class="string">"sales"</span>,<span class="string">"test"</span>&#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestExample</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">true</span>) System.out.println(<span class="string">"this test failed"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span>(enabled = <span class="keyword">false</span>)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testB</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">false</span>) System.out.println(<span class="string">"this test success"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span>(enabled = <span class="keyword">true</span>)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testC</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="number">10</span>&gt;<span class="number">1</span>)&#123;</span><br><span class="line">            System.out.println(<span class="string">"this is awalys true"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="利用反射来翻译注解"><a href="#利用反射来翻译注解" class="headerlink" title="利用反射来翻译注解"></a>利用反射来翻译注解</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">import</span> java.lang.annotation.Annotation;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationTargetException;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by jun on 16/6/5.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RunTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> passed=<span class="number">0</span>, failed=<span class="number">0</span>,count=<span class="number">0</span>,ignore=<span class="number">0</span>;</span><br><span class="line">        Class&lt;TestExample&gt; obj=TestExample.class;</span><br><span class="line">        <span class="comment">//isAnnotationPresent(class); 方法用于返回,制定类型的注解是否存在于此元素上,如果存在就</span></span><br><span class="line">        <span class="keyword">if</span>(obj.isAnnotationPresent(TestInfo.class))&#123;</span><br><span class="line">            Annotation annotate=obj.getAnnotation(TestInfo.class);</span><br><span class="line">            TestInfo testInfo=(TestInfo) annotate;</span><br><span class="line">            System.out.println(testInfo.priority());</span><br><span class="line">            System.out.println(testInfo.createBy());</span><br><span class="line">            System.out.println(<span class="string">"%n Tags:"</span>);</span><br><span class="line">            <span class="keyword">int</span> tagLength=testInfo.tags().length;</span><br><span class="line">            <span class="keyword">for</span>(String tag:testInfo.tags())&#123;</span><br><span class="line">                <span class="keyword">if</span>(tagLength&gt;<span class="number">1</span>)&#123;</span><br><span class="line">                    System.out.println(tag+<span class="string">","</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    System.out.println(tag);</span><br><span class="line">                &#125;</span><br><span class="line">                tagLength--;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.printf(<span class="string">"%nLastModified :%s%n%n"</span>, testInfo.lastModified());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(Method method:obj.getDeclaredMethods())&#123;</span><br><span class="line">                <span class="keyword">if</span>(method.isAnnotationPresent(Test.class))&#123;</span><br><span class="line">                    Annotation annotation=method.getAnnotation(Test.class);</span><br><span class="line">                    Test test=(Test) annotation;</span><br><span class="line">                    <span class="comment">//根据注解标记执行方法</span></span><br><span class="line">                    <span class="keyword">if</span>(test.enabled())&#123;</span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                            method.invoke(obj.newInstance());</span><br><span class="line">                            System.out.printf(<span class="string">"%s - Test '%s' - passed %n"</span>, ++count, method.getName());</span><br><span class="line">                            passed++;</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (IllegalAccessException ex) &#123;</span><br><span class="line">                            System.out.printf(<span class="string">"%s - Test '%s' - failed: %s %n"</span>, ++count, method.getName(), ex.getCause());</span><br><span class="line">                            failed++;</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        System.out.printf(<span class="string">"%s - Test '%s' - ignored%n"</span>, ++count, method.getName());</span><br><span class="line">                        ignore++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.printf(<span class="string">"%nResult : Total : %d, Passed: %d, Failed %d, Ignore %d%n"</span>, count, passed, failed, ignore);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/annotationResult.png" alt=""></p>
+<p><a href="http://www.mkyong.com/java/java-custom-annotations-example/" target="_blank" rel="external">参考</a></p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <div id="toc" class="article-toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义注解"><span class="toc-number">1.</span> <span class="toc-text">自定义注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用注解"><span class="toc-number">2.</span> <span class="toc-text">使用注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用反射来翻译注解"><span class="toc-number">3.</span> <span class="toc-text">利用反射来翻译注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行结果"><span class="toc-number">4.</span> <span class="toc-text">运行结果</span></a></li></ol>
+        <hr/>
+      </div>
+      
+      <blockquote>
+<p>自定义注解用到最多的地方就是和反射一起用来写框架，反射用来执行特殊标记的类或方法，其次如果不写框架,在Spring mvc 中可能会扩展hibernate中的注解用来进行前端数据校验。</p>
+</blockquote>
+<p>框架中大量使用如Mybatis中就含有大量的自定义注解如下：<br><img src="http://7xstto.com1.z0.glb.clouddn.com/mybaitis-annotations.png" alt="mybatis中的自定义注解"></p>
+<h2 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h2><p>自定义注解@interface +注解名称，注解的注解称为元注解。<br>@Retention(Resource,class,method)用来定义注解的保留时机。@Target用来注解这个注解是针对于那个域（method,filed,class）。</p>
+<p>jdk中定义如下：<br><img src="http://7xstto.com1.z0.glb.clouddn.com/annotation.png" alt="RetentionPolicy"></p>
+<p><img src="http://7xstto.com1.z0.glb.clouddn.com/annotation2.png" alt="ElementType"></p>
+<p>可以用上面的在注解类型来描述自己定义的注解作用时机，作用在方法上还是filed上。</p>
+<p>定义自己的注解@Test如下，作用在METHOD上：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Test &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">enabled</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">true</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义另外一个注解如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> TestInfo &#123;</span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">enum</span> Priority&#123;</span><br><span class="line">        LOW,MEDIUM,HIGH</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">Priority <span class="title">priority</span><span class="params">()</span> <span class="keyword">default</span> Priority.MEDIUM</span>;</span><br><span class="line">    String[] tags() <span class="keyword">default</span> <span class="string">""</span>;</span><br><span class="line">    <span class="function">String <span class="title">createBy</span><span class="params">()</span> <span class="keyword">default</span> "Mkyoung"</span>;</span><br><span class="line">    <span class="function">String <span class="title">lastModified</span><span class="params">()</span> <span class="keyword">default</span> "03/01/2014"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意事项</strong></p>
+<blockquote>
+<p>在注解中定义的方法不能含有参数，不能抛出异常。返回值类型限制为基本类型，String,Class,enums,annotations,数组类型。</p>
+</blockquote>
+<h2 id="使用注解"><a href="#使用注解" class="headerlink" title="使用注解"></a>使用注解</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@TestInfo</span>(</span><br><span class="line">        priority = TestInfo.Priority.HIGH,</span><br><span class="line">        createBy=<span class="string">"mkyoung.com"</span>,</span><br><span class="line">        tags=&#123;<span class="string">"sales"</span>,<span class="string">"test"</span>&#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestExample</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">true</span>) System.out.println(<span class="string">"this test failed"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span>(enabled = <span class="keyword">false</span>)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testB</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">false</span>) System.out.println(<span class="string">"this test success"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span>(enabled = <span class="keyword">true</span>)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testC</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="number">10</span>&gt;<span class="number">1</span>)&#123;</span><br><span class="line">            System.out.println(<span class="string">"this is awalys true"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="利用反射来翻译注解"><a href="#利用反射来翻译注解" class="headerlink" title="利用反射来翻译注解"></a>利用反射来翻译注解</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">import</span> java.lang.annotation.Annotation;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationTargetException;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by jun on 16/6/5.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RunTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> passed=<span class="number">0</span>, failed=<span class="number">0</span>,count=<span class="number">0</span>,ignore=<span class="number">0</span>;</span><br><span class="line">        Class&lt;TestExample&gt; obj=TestExample.class;</span><br><span class="line">        <span class="comment">//isAnnotationPresent(class); 方法用于返回,制定类型的注解是否存在于此元素上,如果存在就</span></span><br><span class="line">        <span class="keyword">if</span>(obj.isAnnotationPresent(TestInfo.class))&#123;</span><br><span class="line">            Annotation annotate=obj.getAnnotation(TestInfo.class);</span><br><span class="line">            TestInfo testInfo=(TestInfo) annotate;</span><br><span class="line">            System.out.println(testInfo.priority());</span><br><span class="line">            System.out.println(testInfo.createBy());</span><br><span class="line">            System.out.println(<span class="string">"%n Tags:"</span>);</span><br><span class="line">            <span class="keyword">int</span> tagLength=testInfo.tags().length;</span><br><span class="line">            <span class="keyword">for</span>(String tag:testInfo.tags())&#123;</span><br><span class="line">                <span class="keyword">if</span>(tagLength&gt;<span class="number">1</span>)&#123;</span><br><span class="line">                    System.out.println(tag+<span class="string">","</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    System.out.println(tag);</span><br><span class="line">                &#125;</span><br><span class="line">                tagLength--;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.printf(<span class="string">"%nLastModified :%s%n%n"</span>, testInfo.lastModified());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(Method method:obj.getDeclaredMethods())&#123;</span><br><span class="line">                <span class="keyword">if</span>(method.isAnnotationPresent(Test.class))&#123;</span><br><span class="line">                    Annotation annotation=method.getAnnotation(Test.class);</span><br><span class="line">                    Test test=(Test) annotation;</span><br><span class="line">                    <span class="comment">//根据注解标记执行方法</span></span><br><span class="line">                    <span class="keyword">if</span>(test.enabled())&#123;</span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                            method.invoke(obj.newInstance());</span><br><span class="line">                            System.out.printf(<span class="string">"%s - Test '%s' - passed %n"</span>, ++count, method.getName());</span><br><span class="line">                            passed++;</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (IllegalAccessException ex) &#123;</span><br><span class="line">                            System.out.printf(<span class="string">"%s - Test '%s' - failed: %s %n"</span>, ++count, method.getName(), ex.getCause());</span><br><span class="line">                            failed++;</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        System.out.printf(<span class="string">"%s - Test '%s' - ignored%n"</span>, ++count, method.getName());</span><br><span class="line">                        ignore++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.printf(<span class="string">"%nResult : Total : %d, Passed: %d, Failed %d, Ignore %d%n"</span>, count, passed, failed, ignore);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/annotationResult.png" alt=""></p>
+<p><a href="http://www.mkyong.com/java/java-custom-annotations-example/" target="_blank" rel="external">参考</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/06/05/自定义注解/" data-id="cip25arqj001vs1kvjc0x6seg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/06/04/普吉岛归来/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">普吉岛旅行</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+</div>
+
+
+   
+
+   <script src="/blog/js/jQuery.js"></script>
+   <script src="/blog/js/script.js"></script>
+
+
+
