@@ -86,7 +86,7 @@
 <p><strong>容量就是每次初始化HashMap的初始化大小</strong>，负载因子就是 put进去的元素容量/初始化容量，<strong>如果这个比值大于负载因子，那么就要发生rehashed,调整hash表的大小为原来的两倍</strong>。</p>
 <h2 id="负载因子大小"><a href="#负载因子大小" class="headerlink" title="负载因子大小"></a>负载因子大小</h2><p>默认的值是0.75，这个值是存取时间和空间上的一个平衡点。如果要存大的数据，对于性能有要求最好设置一个大的初始化容量，这样比自动增长更高效。</p>
 <h2 id="非线程同步"><a href="#非线程同步" class="headerlink" title="非线程同步"></a>非线程同步</h2><p><strong>hashMap</strong>非线程同步的如果有超过两个线程修改（put,remove）hashMap，那么必须额外的设置hashMap使它变成线程同步的,可以使用<strong>Map m = Collections.synchronizedMap(new HashMap(…));</strong>来同步。</p>
-<h2 id="fail-fast"><a href="#fail-fast" class="headerlink" title="fail-fast"></a>fail-fast</h2><blockquote>
+<h2 id="Fail-fast-检测机制"><a href="#Fail-fast-检测机制" class="headerlink" title="Fail-fast 检测机制"></a>Fail-fast 检测机制</h2><blockquote>
 <p>if the map is structurally modified at any time after the iterator is created, in any way except through the iterator’s own <tt>remove</tt> method, the iterator will throw a {@link ConcurrentModificationException}.  Thus, in the face of concurrent modification, the iterator fails quickly and cleanly, rather than risking arbitrary, non-deterministic behavior at an undetermined time in the future.</p>
 </blockquote>
 <p>如果迭代器已经被创建了，那么再去修改它就会报这样的一个异常ConcurrentModificationException，除非使用迭代器自己的 remove方法，这点避免了并发修改在未来的程序中带来的不确定后果,报出这异常后可以防止多线程并发带来的不确定性bug,JDK的官方文档这么说：<i>the fail-fast behavior of iterators</i></p>
@@ -124,7 +124,7 @@
 <p><strong>容量就是每次初始化HashMap的初始化大小</strong>，负载因子就是 put进去的元素容量/初始化容量，<strong>如果这个比值大于负载因子，那么就要发生rehashed,调整hash表的大小为原来的两倍</strong>。</p>
 <h2 id="负载因子大小"><a href="#负载因子大小" class="headerlink" title="负载因子大小"></a>负载因子大小</h2><p>默认的值是0.75，这个值是存取时间和空间上的一个平衡点。如果要存大的数据，对于性能有要求最好设置一个大的初始化容量，这样比自动增长更高效。</p>
 <h2 id="非线程同步"><a href="#非线程同步" class="headerlink" title="非线程同步"></a>非线程同步</h2><p><strong>hashMap</strong>非线程同步的如果有超过两个线程修改（put,remove）hashMap，那么必须额外的设置hashMap使它变成线程同步的,可以使用<strong>Map m = Collections.synchronizedMap(new HashMap(…));</strong>来同步。</p>
-<h2 id="fail-fast"><a href="#fail-fast" class="headerlink" title="fail-fast"></a>fail-fast</h2><blockquote>
+<h2 id="Fail-fast-检测机制"><a href="#Fail-fast-检测机制" class="headerlink" title="Fail-fast 检测机制"></a>Fail-fast 检测机制</h2><blockquote>
 <p>if the map is structurally modified at any time after the iterator is created, in any way except through the iterator’s own <tt>remove</tt> method, the iterator will throw a {@link ConcurrentModificationException}.  Thus, in the face of concurrent modification, the iterator fails quickly and cleanly, rather than risking arbitrary, non-deterministic behavior at an undetermined time in the future.</p>
 </blockquote>
 <p>如果迭代器已经被创建了，那么再去修改它就会报这样的一个异常ConcurrentModificationException，除非使用迭代器自己的 remove方法，这点避免了并发修改在未来的程序中带来的不确定后果,报出这异常后可以防止多线程并发带来的不确定性bug,JDK的官方文档这么说：<i>the fail-fast behavior of iterators</i></p>
@@ -142,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/06/hashMap的区别/" data-id="cip5mcwf10004b9kvsmtew11d" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/06/hashMap的区别/" data-id="cip5mezy30004bgkvucqsao4k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -206,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/06/SVNConfilicts/" data-id="cip5mcwez0003b9kv53h7php1" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/06/SVNConfilicts/" data-id="cip5mezy70006bgkv1kur56bv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -296,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/05/自定义注解/" data-id="cip5mcwgv0021b9kvq6jim3qp" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/05/自定义注解/" data-id="cip5mf003001xbgkvqfefu04n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -366,7 +366,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/04/普吉岛归来/" data-id="cip5mcwg3001bb9kve88m5jbx" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/04/普吉岛归来/" data-id="cip5mezzd001bbgkvtblkkyu5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"></ul>
@@ -474,7 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/27/泛型通配符/" data-id="cip5mcwgi001nb9kv36m8cdlw" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/27/泛型通配符/" data-id="cip5mezzh001gbgkvbk5vlnpe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
