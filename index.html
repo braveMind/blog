@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -77,10 +77,9 @@
 <h2 id="对用户授权-授予用户在所有database上的权限"><a href="#对用户授权-授予用户在所有database上的权限" class="headerlink" title="对用户授权(授予用户在所有database上的权限)"></a>对用户授权(授予用户在所有database上的权限)</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="撤销权限，并针对某个表授权"><a href="#撤销权限，并针对某个表授权" class="headerlink" title="撤销权限，并针对某个表授权"></a>撤销权限，并针对某个表授权</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">FROM</span> <span class="string">'username'</span>@<span class="string">'localhost'</span>;</span><br><span class="line"></span><br><span class="line">//db上的所有权限</span><br><span class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> dbname.* <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</span><br><span class="line"></span><br><span class="line">//db上的特殊权限</span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">UPDATE</span> <span class="keyword">ON</span> dbname.* <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
 <p>如果只是授予username，特定的数据库，那么username登陆 MySQL，只能看到特定的表。</p>
-<h2 id="权限更改后刷新权限语句"><a href="#权限更改后刷新权限语句" class="headerlink" title="权限更改后刷新权限语句"></a>权限更改后刷新权限语句</h2><p>FLUSH PRIVILEGES;</p>
-<h2 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h2><p>DROP USER username@localhost;</p>
-<h2 id="切换到mysql-db中查看mysql中的用户"><a href="#切换到mysql-db中查看mysql中的用户" class="headerlink" title="切换到mysql db中查看mysql中的用户"></a>切换到mysql db中查看mysql中的用户</h2><p>use mysql;<br>SELECT User, Host FROM user;</p>
-
+<h2 id="权限更改后刷新权限语句"><a href="#权限更改后刷新权限语句" class="headerlink" title="权限更改后刷新权限语句"></a>权限更改后刷新权限语句</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> username@localhost;</span><br></pre></td></tr></table></figure>
+<h2 id="切换到mysql-db中查看mysql中的用户"><a href="#切换到mysql-db中查看mysql中的用户" class="headerlink" title="切换到mysql db中查看mysql中的用户"></a>切换到mysql db中查看mysql中的用户</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> mysql;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">User</span>, Host <span class="keyword">FROM</span> <span class="keyword">user</span>;</span><br></pre></td></tr></table></figure>
       
 
 
@@ -95,17 +94,16 @@
 <h2 id="对用户授权-授予用户在所有database上的权限"><a href="#对用户授权-授予用户在所有database上的权限" class="headerlink" title="对用户授权(授予用户在所有database上的权限)"></a>对用户授权(授予用户在所有database上的权限)</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="撤销权限，并针对某个表授权"><a href="#撤销权限，并针对某个表授权" class="headerlink" title="撤销权限，并针对某个表授权"></a>撤销权限，并针对某个表授权</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">FROM</span> <span class="string">'username'</span>@<span class="string">'localhost'</span>;</span><br><span class="line"></span><br><span class="line">//db上的所有权限</span><br><span class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> dbname.* <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</span><br><span class="line"></span><br><span class="line">//db上的特殊权限</span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">UPDATE</span> <span class="keyword">ON</span> dbname.* <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
 <p>如果只是授予username，特定的数据库，那么username登陆 MySQL，只能看到特定的表。</p>
-<h2 id="权限更改后刷新权限语句"><a href="#权限更改后刷新权限语句" class="headerlink" title="权限更改后刷新权限语句"></a>权限更改后刷新权限语句</h2><p>FLUSH PRIVILEGES;</p>
-<h2 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h2><p>DROP USER username@localhost;</p>
-<h2 id="切换到mysql-db中查看mysql中的用户"><a href="#切换到mysql-db中查看mysql中的用户" class="headerlink" title="切换到mysql db中查看mysql中的用户"></a>切换到mysql db中查看mysql中的用户</h2><p>use mysql;<br>SELECT User, Host FROM user;</p>
-
+<h2 id="权限更改后刷新权限语句"><a href="#权限更改后刷新权限语句" class="headerlink" title="权限更改后刷新权限语句"></a>权限更改后刷新权限语句</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> username@localhost;</span><br></pre></td></tr></table></figure>
+<h2 id="切换到mysql-db中查看mysql中的用户"><a href="#切换到mysql-db中查看mysql中的用户" class="headerlink" title="切换到mysql db中查看mysql中的用户"></a>切换到mysql db中查看mysql中的用户</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> mysql;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">User</span>, Host <span class="keyword">FROM</span> <span class="keyword">user</span>;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/08/mysql用户管理/" data-id="cip6kkmi700061d9k3namn2xl" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/08/mysql用户管理/" data-id="cip6ko9pr00061x9kgot6ihr8" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/mysql/">mysql</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
 
     </footer>
   </div>
@@ -212,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/06/hashMap的区别/" data-id="cip6kkmia00081d9kpgz41irr" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/06/hashMap的区别/" data-id="cip6ko9q1000c1x9k3bsuw55y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -276,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/06/SVNConfilicts/" data-id="cip6kkmi500041d9kd5x4chkv" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/06/SVNConfilicts/" data-id="cip6ko9pn00031x9kvay88ing" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -366,7 +364,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/05/自定义注解/" data-id="cip6kkmkq00221d9kva91hirj" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/05/自定义注解/" data-id="cip6ko9rl00211x9kjehkjln6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -436,7 +434,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/04/普吉岛归来/" data-id="cip6kkmji001b1d9k8eahjh75" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/04/普吉岛归来/" data-id="cip6ko9qn00181x9kizxasedv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"></ul>
