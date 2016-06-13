@@ -3,18 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>arryList | 小菜园</title>
+  <title>ArryList的细节 | 小菜园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="ArrayList的定义JDK如下定义:
+
+Resizable-array implementation of the List interface.  Implements  
+
+all optional list operations, and permits all elements, including  
+null.  In addition to implementing the Li">
 <meta property="og:type" content="article">
-<meta property="og:title" content="arryList">
+<meta property="og:title" content="ArryList的细节">
 <meta property="og:url" content="http://bravemind.github.io/2016/06/13/arryList/index.html">
 <meta property="og:site_name" content="小菜园">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-06-13T13:16:29.000Z">
+<meta property="og:description" content="ArrayList的定义JDK如下定义:
+
+Resizable-array implementation of the List interface.  Implements  
+
+all optional list operations, and permits all elements, including  
+null.  In addition to implementing the Li">
+<meta property="og:updated_time" content="2016-06-13T15:36:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="arryList">
-<meta name="twitter:description">
+<meta name="twitter:title" content="ArryList的细节">
+<meta name="twitter:description" content="ArrayList的定义JDK如下定义:
+
+Resizable-array implementation of the List interface.  Implements  
+
+all optional list operations, and permits all elements, including  
+null.  In addition to implementing the Li">
   
   
     <link rel="icon" href="/blog/favicon.png">
@@ -33,7 +48,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -56,7 +71,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      arryList
+      ArryList的细节
     </h1>
   
 
@@ -69,7 +84,19 @@
     
    <!-- <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="ArrayList的定义"><a href="#ArrayList的定义" class="headerlink" title="ArrayList的定义"></a>ArrayList的定义</h2><p>JDK如下定义:</p>
+<blockquote>
+<p>Resizable-array implementation of the <tt>List</tt> interface.  Implements  </p>
+<ul>
+<li>all optional list operations, and permits all elements, including  </li>
+<li><tt>null</tt>.  In addition to implementing the <tt>List</tt> interface,  </li>
+<li>this class provides methods to manipulate the size of the array that is  </li>
+<li>used internally to store the list.  (This class is roughly equivalent to  </li>
+<li><tt>Vector</tt>, except that it is unsynchronized.)  </li>
+</ul>
+</blockquote>
+<p>ArryList是一个可变数组，实现了List接口，可以存放所有的数据类型，例如null类型。ArrayList这个类在内部实现了控制数组长度的方法，用来存放list中的元素.<br>这个类除了是线程非同步的，其大致相当于Vector类。</p>
+<h2 id="ArrayList如何自动扩容"><a href="#ArrayList如何自动扩容" class="headerlink" title="ArrayList如何自动扩容"></a>ArrayList如何自动扩容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123; <span class="comment">// 数组初始化默认的容量是 10</span></span><br><span class="line">        <span class="comment">// overflow-conscious code</span></span><br><span class="line">        <span class="keyword">int</span> oldCapacity = elementData.length; <span class="comment">//程序员分配数组初始化容量</span></span><br><span class="line">        <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);<span class="comment">//新分配的数组 容量是初始化的 的1.5倍，右移1位，相当于除2</span></span><br><span class="line">        <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">            newCapacity = minCapacity;<span class="comment">//数组最小的容量是10</span></span><br><span class="line">        <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">            newCapacity = hugeCapacity(minCapacity);<span class="comment">// 维数组分配 Interger 范围内最大的 容量</span></span><br><span class="line">        <span class="comment">// minCapacity is usually close to size, so this is a win:</span></span><br><span class="line">        elementData = Arrays.copyOf(elementData, newCapacity); <span class="comment">//使用 Arrays.copyOf 对数组的副本进行扩容，返回新的数组。</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
       
 
 
@@ -78,17 +105,31 @@
       
       
       <div id="toc" class="article-toc">
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ArrayList的定义"><span class="toc-number">1.</span> <span class="toc-text">ArrayList的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArrayList如何自动扩容"><span class="toc-number">2.</span> <span class="toc-text">ArrayList如何自动扩容</span></a></li></ol>
         <hr/>
       </div>
       
-      
+      <h2 id="ArrayList的定义"><a href="#ArrayList的定义" class="headerlink" title="ArrayList的定义"></a>ArrayList的定义</h2><p>JDK如下定义:</p>
+<blockquote>
+<p>Resizable-array implementation of the <tt>List</tt> interface.  Implements  </p>
+<ul>
+<li>all optional list operations, and permits all elements, including  </li>
+<li><tt>null</tt>.  In addition to implementing the <tt>List</tt> interface,  </li>
+<li>this class provides methods to manipulate the size of the array that is  </li>
+<li>used internally to store the list.  (This class is roughly equivalent to  </li>
+<li><tt>Vector</tt>, except that it is unsynchronized.)  </li>
+</ul>
+</blockquote>
+<p>ArryList是一个可变数组，实现了List接口，可以存放所有的数据类型，例如null类型。ArrayList这个类在内部实现了控制数组长度的方法，用来存放list中的元素.<br>这个类除了是线程非同步的，其大致相当于Vector类。</p>
+<h2 id="ArrayList如何自动扩容"><a href="#ArrayList如何自动扩容" class="headerlink" title="ArrayList如何自动扩容"></a>ArrayList如何自动扩容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123; <span class="comment">// 数组初始化默认的容量是 10</span></span><br><span class="line">        <span class="comment">// overflow-conscious code</span></span><br><span class="line">        <span class="keyword">int</span> oldCapacity = elementData.length; <span class="comment">//程序员分配数组初始化容量</span></span><br><span class="line">        <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);<span class="comment">//新分配的数组 容量是初始化的 的1.5倍，右移1位，相当于除2</span></span><br><span class="line">        <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">            newCapacity = minCapacity;<span class="comment">//数组最小的容量是10</span></span><br><span class="line">        <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">            newCapacity = hugeCapacity(minCapacity);<span class="comment">// 维数组分配 Interger 范围内最大的 容量</span></span><br><span class="line">        <span class="comment">// minCapacity is usually close to size, so this is a win:</span></span><br><span class="line">        elementData = Arrays.copyOf(elementData, newCapacity); <span class="comment">//使用 Arrays.copyOf 对数组的副本进行扩容，返回新的数组。</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/13/arryList/" data-id="cipe28e1v0003axkvkxrqiq2x" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/13/arryList/" data-id="cipe6n5lk0004iakvpdvgpa4h" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
     </footer>
   </div>
   
