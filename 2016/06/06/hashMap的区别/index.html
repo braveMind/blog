@@ -19,7 +19,8 @@ hashMap如何get，put数据？hashMap的结构？hashMap如何解决hash冲突�
 
 JDK文档如下定义
 Hash table based implementation of the Map interface.  This implementation provides all of the optional ma">
-<meta property="og:updated_time" content="2016-06-07T15:48:06.000Z">
+<meta property="og:image" content="http://7xstto.com1.z0.glb.clouddn.com/hashMap">
+<meta property="og:updated_time" content="2016-06-13T05:17:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hashMap常见问题">
 <meta name="twitter:description" content="问题
@@ -27,6 +28,7 @@ hashMap如何get，put数据？hashMap的结构？hashMap如何解决hash冲突�
 
 JDK文档如下定义
 Hash table based implementation of the Map interface.  This implementation provides all of the optional ma">
+<meta name="twitter:image" content="http://7xstto.com1.z0.glb.clouddn.com/hashMap">
   
   
     <link rel="icon" href="/blog/favicon.png">
@@ -104,7 +106,8 @@ Hash table based implementation of the Map interface.  This implementation provi
 <ul>
 <li>should be used only to detect bugs. 仅用于同步迭代器修改时候的bug检测。</li>
 </ul>
-<h2 id="hashMap的结构"><a href="#hashMap的结构" class="headerlink" title="hashMap的结构"></a>hashMap的结构</h2><p>hashMap是一个数组链表，table是一个数组,里面存放了一个 Entry<k,v> 形式的链表，这样的一个结构可以很好的解决hash冲突问题，放入同一个索引里面，链表的长度增加一个，读取的时候只需要读取链表的头部就可以读取到新value.</k,v></p>
+<h2 id="hashMap的结构"><a href="#hashMap的结构" class="headerlink" title="hashMap的结构"></a>hashMap的结构</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/hashMap" alt=""></p>
+<p>hashMap是一个数组链表，table是一个数组,里面存放了一个 Entry<k,v> 形式的链表，这样的一个结构可以很好的解决hash冲突问题，放入同一个索引里面，链表的长度增加一个，读取的时候只需要读取链表的头部就可以读取到新value.</k,v></p>
 <p>部分源代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组结构</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">transient</span> Entry&lt;K,V&gt;[] table = (Entry&lt;K,V&gt;[]) EMPTY_TABLE;</span><br><span class="line">    </span><br><span class="line">     <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> K key;</span><br><span class="line">        V value;</span><br><span class="line">        Entry&lt;K,V&gt; next;</span><br><span class="line">        <span class="keyword">int</span> hash;</span><br><span class="line"><span class="comment">//链表</span></span><br><span class="line">        <span class="comment">/**</span><br><span class="line">         * Creates new entry.</span><br><span class="line">         */</span></span><br><span class="line">        Entry(<span class="keyword">int</span> h, K k, V v, Entry&lt;K,V&gt; n) &#123;</span><br><span class="line">            value = v;</span><br><span class="line">            next = n;</span><br><span class="line">            key = k;</span><br><span class="line">            hash = h;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="put-value"><a href="#put-value" class="headerlink" title="put value"></a>put value</h2><p>如果put相同的key,那么先前放入的value将会被新放入的value取代,因为存放是用hashCode计算索引的，所以存储的顺序并不是遍历顺序。</p>
@@ -147,7 +150,8 @@ Hash table based implementation of the Map interface.  This implementation provi
 <ul>
 <li>should be used only to detect bugs. 仅用于同步迭代器修改时候的bug检测。</li>
 </ul>
-<h2 id="hashMap的结构"><a href="#hashMap的结构" class="headerlink" title="hashMap的结构"></a>hashMap的结构</h2><p>hashMap是一个数组链表，table是一个数组,里面存放了一个 Entry<k,v> 形式的链表，这样的一个结构可以很好的解决hash冲突问题，放入同一个索引里面，链表的长度增加一个，读取的时候只需要读取链表的头部就可以读取到新value.</k,v></p>
+<h2 id="hashMap的结构"><a href="#hashMap的结构" class="headerlink" title="hashMap的结构"></a>hashMap的结构</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/hashMap" alt=""></p>
+<p>hashMap是一个数组链表，table是一个数组,里面存放了一个 Entry<k,v> 形式的链表，这样的一个结构可以很好的解决hash冲突问题，放入同一个索引里面，链表的长度增加一个，读取的时候只需要读取链表的头部就可以读取到新value.</k,v></p>
 <p>部分源代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组结构</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">transient</span> Entry&lt;K,V&gt;[] table = (Entry&lt;K,V&gt;[]) EMPTY_TABLE;</span><br><span class="line">    </span><br><span class="line">     <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> K key;</span><br><span class="line">        V value;</span><br><span class="line">        Entry&lt;K,V&gt; next;</span><br><span class="line">        <span class="keyword">int</span> hash;</span><br><span class="line"><span class="comment">//链表</span></span><br><span class="line">        <span class="comment">/**</span><br><span class="line">         * Creates new entry.</span><br><span class="line">         */</span></span><br><span class="line">        Entry(<span class="keyword">int</span> h, K k, V v, Entry&lt;K,V&gt; n) &#123;</span><br><span class="line">            value = v;</span><br><span class="line">            next = n;</span><br><span class="line">            key = k;</span><br><span class="line">            hash = h;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="put-value"><a href="#put-value" class="headerlink" title="put value"></a>put value</h2><p>如果put相同的key,那么先前放入的value将会被新放入的value取代,因为存放是用hashCode计算索引的，所以存储的顺序并不是遍历顺序。</p>
@@ -158,7 +162,7 @@ Hash table based implementation of the Map interface.  This implementation provi
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/06/hashMap的区别/" data-id="cip894jj80008av9ki6v5pupo" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/06/hashMap的区别/" data-id="cipdkki890006r29kw2v6kn6c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
