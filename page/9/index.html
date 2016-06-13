@@ -46,6 +46,80 @@
 <div class="left_content">
     <section>
   
+    <article id="post-Angular-ui-router" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/04/13/Angular-ui-router/">Angular 页面路由</a>
+    </h1>
+  
+
+        <a href="/blog/2016/04/13/Angular-ui-router/" class="article-data-title">
+
+  <time  datetime="2016-04-13T13:33:15.000Z" itemprop="datePublished">2016-04-13</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p> 什么是页面路由？路由这是一个形象的比喻，就像网络，一个网段可以依靠路由划分不同的子网一样，我们的页面可以依靠 ‘#’ 哈希符合来划分不同的状态,每个状态有可以有父子关系,子页面可以共享父页面的数据。</p>
+</blockquote>
+<h3 id="ui-router"><a href="#ui-router" class="headerlink" title="ui-router"></a>ui-router</h3><h4 id="为什么要使用页面路由？"><a href="#为什么要使用页面路由？" class="headerlink" title="为什么要使用页面路由？"></a>为什么要使用页面路由？</h4><ol>
+<li>最大的优点是页面路由可以局部刷新，不借助于后台，不用写javascript脚本来让页面实现局部刷新，给用户非常好的体验。</li>
+<li>页面路由还可以支持懒加载css,js，第二次进入相同页面会缓存上一次的页面请求，页面响应速度快。 </li>
+<li>页面路由子节点可以共享父节点中的数据，比传统的页面跳转数据传递优雅许多。</li>
+<li>页面路由可以使html模块化，我们可以写更多公用的模块让其他页面引用。</li>
+<li>页面路由可以很方便的实现面包屑导航，可方便实现多视图  。</li>
+</ol>
+<h3 id="ui-router的“-”状态划分"><a href="#ui-router的“-”状态划分" class="headerlink" title="ui-router的“#”状态划分"></a>ui-router的“#”状态划分</h3><p>ui-router中依靠 ‘state’来划状态，一个url页面里<strong>只有一个总的 “#”（url哈希标记） 标记</strong>，这个“#”号后面的状态是路由的起使状态，所以所有的<strong>子页面</strong>，即使有不同的state但是在url中都不会出现第二个“#”，每出现一个“#”表示更换了一个页面路由入口。</p>
+<h3 id="ui-router-保存父页面的信息"><a href="#ui-router-保存父页面的信息" class="headerlink" title="ui-router 保存父页面的信息"></a>ui-router 保存父页面的信息</h3><p>ui-router中页面之间传值变得非常的容易，也比较优雅，有两种传值方式一种是scope继承，适用于在子页面中通过绑定父页面中已经定义好的数据，另外一种Controller之间传值：<br><a href="http://stackoverflow.com/questions/27696612/how-do-i-share-scope-data-between-states-in-angularjs-ui-router" target="_blank" rel="external">挖坑</a></p>
+<h3 id="保存父页面信息实例"><a href="#保存父页面信息实例" class="headerlink" title="保存父页面信息实例"></a>保存父页面信息实例</h3><h3 id="ui-router-指令"><a href="#ui-router-指令" class="headerlink" title="ui-router 指令"></a>ui-router 指令</h3><h4 id="ui-sref"><a href="#ui-sref" class="headerlink" title="ui-sref"></a>ui-sref</h4><h4 id="ui-serf-active"><a href="#ui-serf-active" class="headerlink" title="ui-serf-active"></a>ui-serf-active</h4><h4 id="ui-sref-opts"><a href="#ui-sref-opts" class="headerlink" title="ui-sref-opts"></a>ui-sref-opts</h4>
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p> 什么是页面路由？路由这是一个形象的比喻，就像网络，一个网段可以依靠路由划分不同的子网一样，我们的页面可以依靠 ‘#’ 哈希符合来划分不同的状态,每个状态有可以有父子关系,子页面可以共享父页面的数据。</p>
+</blockquote>
+<h3 id="ui-router"><a href="#ui-router" class="headerlink" title="ui-router"></a>ui-router</h3><h4 id="为什么要使用页面路由？"><a href="#为什么要使用页面路由？" class="headerlink" title="为什么要使用页面路由？"></a>为什么要使用页面路由？</h4><ol>
+<li>最大的优点是页面路由可以局部刷新，不借助于后台，不用写javascript脚本来让页面实现局部刷新，给用户非常好的体验。</li>
+<li>页面路由还可以支持懒加载css,js，第二次进入相同页面会缓存上一次的页面请求，页面响应速度快。 </li>
+<li>页面路由子节点可以共享父节点中的数据，比传统的页面跳转数据传递优雅许多。</li>
+<li>页面路由可以使html模块化，我们可以写更多公用的模块让其他页面引用。</li>
+<li>页面路由可以很方便的实现面包屑导航，可方便实现多视图  。</li>
+</ol>
+<h3 id="ui-router的“-”状态划分"><a href="#ui-router的“-”状态划分" class="headerlink" title="ui-router的“#”状态划分"></a>ui-router的“#”状态划分</h3><p>ui-router中依靠 ‘state’来划状态，一个url页面里<strong>只有一个总的 “#”（url哈希标记） 标记</strong>，这个“#”号后面的状态是路由的起使状态，所以所有的<strong>子页面</strong>，即使有不同的state但是在url中都不会出现第二个“#”，每出现一个“#”表示更换了一个页面路由入口。</p>
+<h3 id="ui-router-保存父页面的信息"><a href="#ui-router-保存父页面的信息" class="headerlink" title="ui-router 保存父页面的信息"></a>ui-router 保存父页面的信息</h3><p>ui-router中页面之间传值变得非常的容易，也比较优雅，有两种传值方式一种是scope继承，适用于在子页面中通过绑定父页面中已经定义好的数据，另外一种Controller之间传值：<br><a href="http://stackoverflow.com/questions/27696612/how-do-i-share-scope-data-between-states-in-angularjs-ui-router" target="_blank" rel="external">挖坑</a></p>
+<h3 id="保存父页面信息实例"><a href="#保存父页面信息实例" class="headerlink" title="保存父页面信息实例"></a>保存父页面信息实例</h3><h3 id="ui-router-指令"><a href="#ui-router-指令" class="headerlink" title="ui-router 指令"></a>ui-router 指令</h3><h4 id="ui-sref"><a href="#ui-sref" class="headerlink" title="ui-sref"></a>ui-sref</h4><h4 id="ui-serf-active"><a href="#ui-serf-active" class="headerlink" title="ui-serf-active"></a>ui-serf-active</h4><h4 id="ui-sref-opts"><a href="#ui-sref-opts" class="headerlink" title="ui-sref-opts"></a>ui-sref-opts</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/04/13/Angular-ui-router/" data-id="cipe28e1o0001axkvu8qjqgob" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
     <article id="post-如何正确创建单例模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
@@ -136,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/12/如何正确创建单例模式/" data-id="cipdkki9f0016r29kf35d8aqb" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/12/如何正确创建单例模式/" data-id="cipe28e34001baxkvcg2akbhf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -212,7 +286,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/11/抽象工厂/" data-id="cipdkki9m001dr29kclh0p1vg" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/11/抽象工厂/" data-id="cipe28e3d001iaxkvi8qbhr9a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -300,7 +374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/10/简单工厂模式/" data-id="cipdkkiac001wr29k4k12wmeq" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/10/简单工厂模式/" data-id="cipe28e3z0021axkvy51olu6d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -364,98 +438,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/10/设计模式/" data-id="cipdkkiar002er29kyvdgnaxl" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/10/设计模式/" data-id="cipe28e49002haxkv6as607pi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-构造函数和原型" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/04/10/构造函数和原型/">构造函数和原型</a>
-    </h1>
-  
-
-        <a href="/blog/2016/04/10/构造函数和原型/" class="article-data-title">
-
-  <time  datetime="2016-04-09T16:27:55.000Z" itemprop="datePublished">2016-04-10</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>什么是构造函数？ js中并没有区分什么是构造函数，构造函数本身和一般的函数没有什么区别，只是被当做对象的构造者，使用new关键字来调用，一般函数名首字母大写。</p>
-</blockquote>
-<h2 id="使用new关键字创建对象步骤"><a href="#使用new关键字创建对象步骤" class="headerlink" title="使用new关键字创建对象步骤"></a>使用new关键字创建对象步骤</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test=<span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> test1=<span class="keyword">new</span> Test();</span><br></pre></td></tr></table></figure>
-<h3 id="当构造函数被调用时候具体发生了什么？"><a href="#当构造函数被调用时候具体发生了什么？" class="headerlink" title="当构造函数被调用时候具体发生了什么？"></a>当构造函数被调用时候具体发生了什么？</h3><ol>
-<li>创建了一个新的对象 test1</li>
-<li>把test1的constructor指向了 Test</li>
-<li>扩大了test1原型链，使是test1共享Test这个 <strong>构造函数</strong>的原型对象（注意是构造函数的原型,test1可以继承Test原型对象上的属性）</li>
-<li>调用 Test()这个构造函数</li>
-</ol>
-<h5 id="解释："><a href="#解释：" class="headerlink" title="解释："></a>解释：</h5><p>1, 创建一个新对象，这个很好理解,这个test1是新创建的一个对象。</p>
-<p>2, test1的构造函数为Test</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">test1.constructor=== Test <span class="comment">//true  </span></span><br><span class="line">test1 <span class="keyword">instanceof</span> Test  <span class="comment">//ture test1是Test的对象</span></span><br></pre></td></tr></table></figure>
-<p>3，为什么会扩大原型连查找？js中属性查找先会在对象本身，test1上进行查找，如果没有这个属性会去这个构造函数的原型对象上去查找，所以所有子对象都会共享这个函数的原型对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Example</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.a=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">Example.prototype.a=<span class="number">2</span>;</span><br><span class="line">Example.prototype.b=<span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b=<span class="keyword">new</span> Example(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(b.a); <span class="comment">//1 在自身属性上查找，this就是代表b</span></span><br><span class="line"><span class="built_in">console</span>.log(b.b); <span class="comment">//3 自身属性没有b,在原型上查找。然后一层层直到Object对象上</span></span><br></pre></td></tr></table></figure>
-<h3 id="构造函数的其它trick"><a href="#构造函数的其它trick" class="headerlink" title="构造函数的其它trick"></a>构造函数的其它trick</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test2 = <span class="function"><span class="keyword">function</span> <span class="title">Example</span>(<span class="params"></span>) </span>&#123; &#125;;</span><br><span class="line">test1.constructor = Example;</span><br><span class="line"></span><br><span class="line">test1;<span class="comment">//test1 的构造函数是 Example                        </span></span><br><span class="line">test1.constructor == Example; <span class="comment">// true</span></span><br><span class="line">test1 <span class="keyword">instanceof</span> Example      <span class="comment">// false</span></span><br><span class="line">test1 <span class="keyword">instanceof</span> Test        <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<p>证明一个对象只有在new的时候才能属于某各类，中途中是无法手动的去改变这个类的所属的。但并不是说一个对象只能属于一个类，在javascript中又运行多继承，一个对象可以属于多个类。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Test = <span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test2=<span class="function"><span class="keyword">function</span> <span class="title">Example</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">test2.prototype= <span class="keyword">new</span> Test(); <span class="comment">//通过原型链实现继承</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test3=<span class="keyword">new</span> test2();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test3 <span class="keyword">instanceof</span> test2); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(test3 <span class="keyword">instanceof</span> Test)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p><strong>只有通过new才能确定函数属于哪个对象</strong>无法通过 prototype 和 constructor指向来改变对象的所属<br>例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line"><span class="keyword">var</span> Test = <span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test = <span class="keyword">new</span> Test();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test.constructor==Test);<span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">test.prototype=<span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test <span class="keyword">instanceof</span> Test)<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(test <span class="keyword">instanceof</span> test2)<span class="comment">//false 通过prototype 无效</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test.constructor === Test  );<span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test.prototype.constructor==Test.constructor);<span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test.constructor=<span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>)</span>&#123;&#125;; <span class="comment">//改变constructor 依然无效</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test <span class="keyword">instanceof</span> test2)<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>什么是构造函数？ js中并没有区分什么是构造函数，构造函数本身和一般的函数没有什么区别，只是被当做对象的构造者，使用new关键字来调用，一般函数名首字母大写。</p>
-</blockquote>
-<h2 id="使用new关键字创建对象步骤"><a href="#使用new关键字创建对象步骤" class="headerlink" title="使用new关键字创建对象步骤"></a>使用new关键字创建对象步骤</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test=<span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> test1=<span class="keyword">new</span> Test();</span><br></pre></td></tr></table></figure>
-<h3 id="当构造函数被调用时候具体发生了什么？"><a href="#当构造函数被调用时候具体发生了什么？" class="headerlink" title="当构造函数被调用时候具体发生了什么？"></a>当构造函数被调用时候具体发生了什么？</h3><ol>
-<li>创建了一个新的对象 test1</li>
-<li>把test1的constructor指向了 Test</li>
-<li>扩大了test1原型链，使是test1共享Test这个 <strong>构造函数</strong>的原型对象（注意是构造函数的原型,test1可以继承Test原型对象上的属性）</li>
-<li>调用 Test()这个构造函数</li>
-</ol>
-<h5 id="解释："><a href="#解释：" class="headerlink" title="解释："></a>解释：</h5><p>1, 创建一个新对象，这个很好理解,这个test1是新创建的一个对象。</p>
-<p>2, test1的构造函数为Test</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">test1.constructor=== Test <span class="comment">//true  </span></span><br><span class="line">test1 <span class="keyword">instanceof</span> Test  <span class="comment">//ture test1是Test的对象</span></span><br></pre></td></tr></table></figure>
-<p>3，为什么会扩大原型连查找？js中属性查找先会在对象本身，test1上进行查找，如果没有这个属性会去这个构造函数的原型对象上去查找，所以所有子对象都会共享这个函数的原型对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Example</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.a=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">Example.prototype.a=<span class="number">2</span>;</span><br><span class="line">Example.prototype.b=<span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b=<span class="keyword">new</span> Example(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(b.a); <span class="comment">//1 在自身属性上查找，this就是代表b</span></span><br><span class="line"><span class="built_in">console</span>.log(b.b); <span class="comment">//3 自身属性没有b,在原型上查找。然后一层层直到Object对象上</span></span><br></pre></td></tr></table></figure>
-<h3 id="构造函数的其它trick"><a href="#构造函数的其它trick" class="headerlink" title="构造函数的其它trick"></a>构造函数的其它trick</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test2 = <span class="function"><span class="keyword">function</span> <span class="title">Example</span>(<span class="params"></span>) </span>&#123; &#125;;</span><br><span class="line">test1.constructor = Example;</span><br><span class="line"></span><br><span class="line">test1;<span class="comment">//test1 的构造函数是 Example                        </span></span><br><span class="line">test1.constructor == Example; <span class="comment">// true</span></span><br><span class="line">test1 <span class="keyword">instanceof</span> Example      <span class="comment">// false</span></span><br><span class="line">test1 <span class="keyword">instanceof</span> Test        <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<p>证明一个对象只有在new的时候才能属于某各类，中途中是无法手动的去改变这个类的所属的。但并不是说一个对象只能属于一个类，在javascript中又运行多继承，一个对象可以属于多个类。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Test = <span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test2=<span class="function"><span class="keyword">function</span> <span class="title">Example</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">test2.prototype= <span class="keyword">new</span> Test(); <span class="comment">//通过原型链实现继承</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test3=<span class="keyword">new</span> test2();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test3 <span class="keyword">instanceof</span> test2); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(test3 <span class="keyword">instanceof</span> Test)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p><strong>只有通过new才能确定函数属于哪个对象</strong>无法通过 prototype 和 constructor指向来改变对象的所属<br>例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line"><span class="keyword">var</span> Test = <span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test = <span class="keyword">new</span> Test();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test.constructor==Test);<span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">test.prototype=<span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test <span class="keyword">instanceof</span> Test)<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(test <span class="keyword">instanceof</span> test2)<span class="comment">//false 通过prototype 无效</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test.constructor === Test  );<span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test.prototype.constructor==Test.constructor);<span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test.constructor=<span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>)</span>&#123;&#125;; <span class="comment">//改变constructor 依然无效</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test <span class="keyword">instanceof</span> test2)<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/10/构造函数和原型/" data-id="cipdkki9v001ir29kwqrt9ih6" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a></li></ul>
 
     </footer>
   </div>

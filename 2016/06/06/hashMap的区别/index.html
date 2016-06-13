@@ -20,7 +20,7 @@ hashMap如何get，put数据？hashMap的结构？hashMap如何解决hash冲突�
 JDK文档如下定义
 Hash table based implementation of the Map interface.  This implementation provides all of the optional ma">
 <meta property="og:image" content="http://7xstto.com1.z0.glb.clouddn.com/hashMap">
-<meta property="og:updated_time" content="2016-06-13T05:17:32.000Z">
+<meta property="og:updated_time" content="2016-06-13T13:32:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hashMap常见问题">
 <meta name="twitter:description" content="问题
@@ -90,6 +90,8 @@ Hash table based implementation of the Map interface.  This implementation provi
 <p>Hash table based implementation of the <tt>Map</tt> interface.  This implementation provides all of the optional map operations, and permits <tt>null</tt> values and the <tt>null</tt> key.  (The <tt>HashMap</tt> class is roughly equivalent to <tt>Hashtable</tt>, except that it is unsynchronized and permits nulls.)  This class makes no guarantees as to the order of the map; in particular, it does not guarantee that the order will remain constant over time.</p>
 </blockquote>
 <p> <strong>关键字</strong>：<strong>null value,null key</strong>是允许的，<strong>非同步的</strong>，<strong>不保证遍历顺序</strong>，也不保证序不随时间变化。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span></span><br><span class="line"></span>&#123;</span><br><span class="line">   xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>HashMap实现了Serializable接口，证明HashMap中的数据可以被序列化进行传输。<br>HashMap 实现了Cloneable接口，即覆盖了函数clone()，能被克隆。</p>
 <h2 id="影响HashMap的关键因素"><a href="#影响HashMap的关键因素" class="headerlink" title="影响HashMap的关键因素"></a>影响HashMap的关键因素</h2><blockquote>
 <p>two parameters that affect its performance: <i>initial capacity</i> and <i>load factor</i></p>
 <p><strong>The <i>capacity</i></strong> is the number of buckets in the hash table, and the initial capacity is simply the capacity at the time the hash table is created.  </p>
@@ -134,6 +136,8 @@ Hash table based implementation of the Map interface.  This implementation provi
 <p>Hash table based implementation of the <tt>Map</tt> interface.  This implementation provides all of the optional map operations, and permits <tt>null</tt> values and the <tt>null</tt> key.  (The <tt>HashMap</tt> class is roughly equivalent to <tt>Hashtable</tt>, except that it is unsynchronized and permits nulls.)  This class makes no guarantees as to the order of the map; in particular, it does not guarantee that the order will remain constant over time.</p>
 </blockquote>
 <p> <strong>关键字</strong>：<strong>null value,null key</strong>是允许的，<strong>非同步的</strong>，<strong>不保证遍历顺序</strong>，也不保证序不随时间变化。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span></span><br><span class="line"></span>&#123;</span><br><span class="line">   xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>HashMap实现了Serializable接口，证明HashMap中的数据可以被序列化进行传输。<br>HashMap 实现了Cloneable接口，即覆盖了函数clone()，能被克隆。</p>
 <h2 id="影响HashMap的关键因素"><a href="#影响HashMap的关键因素" class="headerlink" title="影响HashMap的关键因素"></a>影响HashMap的关键因素</h2><blockquote>
 <p>two parameters that affect its performance: <i>initial capacity</i> and <i>load factor</i></p>
 <p><strong>The <i>capacity</i></strong> is the number of buckets in the hash table, and the initial capacity is simply the capacity at the time the hash table is created.  </p>
@@ -162,7 +166,7 @@ Hash table based implementation of the Map interface.  This implementation provi
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/06/hashMap的区别/" data-id="cipdkki890006r29kw2v6kn6c" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/06/hashMap的区别/" data-id="cipe28e2k000maxkvrbzsbl4j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
