@@ -86,7 +86,7 @@
 <p>移动下标使数组每个下标元素都为null.</p>
 <h2 id="ArryList-vs-LinkList在插入大量元素时候的性能表现"><a href="#ArryList-vs-LinkList在插入大量元素时候的性能表现" class="headerlink" title="ArryList vs LinkList在插入大量元素时候的性能表现"></a>ArryList vs LinkList在插入大量元素时候的性能表现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List list=<span class="keyword">new</span> ArrayList();</span><br><span class="line">        List list2=<span class="keyword">new</span> LinkedList();</span><br><span class="line">        Long listBegin=System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2000000</span>;i++)&#123;</span><br><span class="line">            list.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        Long listEnd=System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        Long compareList=listEnd-listBegin;</span><br><span class="line"></span><br><span class="line">        Long linkBegin=System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2000000</span>;i++)&#123;</span><br><span class="line">            list2.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        Long linkEnd=System.currentTimeMillis();</span><br><span class="line">        Long linkCompare=linkEnd-linkBegin;</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">"ArrayList cost "</span> +compareList);</span><br><span class="line">        System.out.println(<span class="string">"LinkList cost "</span> +linkCompare);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span> faster=compareList-linkCompare&gt;<span class="number">0</span>?<span class="keyword">true</span>:<span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"LinkList add Data faster than ArrayList "</span>+faster);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结果如下：<br>ArryList cost 104<br>LinkList cost 1359<br>LinkList add Data faster than ArrayList false</p>
-<p>总结：<br>（顺序插入元素ArrayList性能高）操作是在一列数据的后面添加数据而不是在前面或中间,并且需要随机地访问其中的元素时,使用ArrayList会提供比较好的性能；</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>（顺序插入元素ArrayList性能高）操作是在一列数据的后面添加数据而不是在前面或中间,并且需要随机地访问其中的元素时,使用ArrayList会提供比较好的性能；</p>
 <p>（中间插入，删除LinkedList性能高，因为数组需要移动位置，链表只需要交换两个节点之间的指针）当你的操作是在一列数据的前面或中间添加或删除数据,并且按照顺序访问其中的元素时,就应该使用LinkedList了。</p>
 
       
@@ -112,13 +112,13 @@
 <p>移动下标使数组每个下标元素都为null.</p>
 <h2 id="ArryList-vs-LinkList在插入大量元素时候的性能表现"><a href="#ArryList-vs-LinkList在插入大量元素时候的性能表现" class="headerlink" title="ArryList vs LinkList在插入大量元素时候的性能表现"></a>ArryList vs LinkList在插入大量元素时候的性能表现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List list=<span class="keyword">new</span> ArrayList();</span><br><span class="line">        List list2=<span class="keyword">new</span> LinkedList();</span><br><span class="line">        Long listBegin=System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2000000</span>;i++)&#123;</span><br><span class="line">            list.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        Long listEnd=System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        Long compareList=listEnd-listBegin;</span><br><span class="line"></span><br><span class="line">        Long linkBegin=System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2000000</span>;i++)&#123;</span><br><span class="line">            list2.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        Long linkEnd=System.currentTimeMillis();</span><br><span class="line">        Long linkCompare=linkEnd-linkBegin;</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">"ArrayList cost "</span> +compareList);</span><br><span class="line">        System.out.println(<span class="string">"LinkList cost "</span> +linkCompare);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span> faster=compareList-linkCompare&gt;<span class="number">0</span>?<span class="keyword">true</span>:<span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"LinkList add Data faster than ArrayList "</span>+faster);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结果如下：<br>ArryList cost 104<br>LinkList cost 1359<br>LinkList add Data faster than ArrayList false</p>
-<p>总结：<br>（顺序插入元素ArrayList性能高）操作是在一列数据的后面添加数据而不是在前面或中间,并且需要随机地访问其中的元素时,使用ArrayList会提供比较好的性能；</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>（顺序插入元素ArrayList性能高）操作是在一列数据的后面添加数据而不是在前面或中间,并且需要随机地访问其中的元素时,使用ArrayList会提供比较好的性能；</p>
 <p>（中间插入，删除LinkedList性能高，因为数组需要移动位置，链表只需要交换两个节点之间的指针）当你的操作是在一列数据的前面或中间添加或删除数据,并且按照顺序访问其中的元素时,就应该使用LinkedList了。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/13/arryList/" data-id="cipfmlzzf0004yukvpf474nxn" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/13/arryList/" data-id="cipfmqvy20004zbkve52g2vhy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -170,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/09/HappyThings/" data-id="cipfmlzzc0003yukvv45ni34t" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/09/HappyThings/" data-id="cipfmqvy10003zbkvb33s5uaa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"></ul>
@@ -238,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/08/mysql用户管理/" data-id="cipfmlzzv000dyukvah1okdf1" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/08/mysql用户管理/" data-id="cipfmqvyi000dzbkvotc57suf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
@@ -354,7 +354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/06/hashMap的区别/" data-id="cipfmlzzt000cyukvxis3qt5l" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/06/hashMap的区别/" data-id="cipfmqvyb0009zbkvlg41sfhv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -418,7 +418,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/06/SVNConfilicts/" data-id="cipfmlzzo0009yukv5a64p96s" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/06/SVNConfilicts/" data-id="cipfmqvyg000czbkv3nftgr28" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
