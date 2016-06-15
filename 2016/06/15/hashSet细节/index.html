@@ -6,21 +6,21 @@
   <title>小菜园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="title: hashSet细节date: 2016-06-15 15:41:31 
-tags: java基础
-JDK如下定义HashSetThis class implements the Set interface, backed by a hash table  (actually a HashMap instance).  It makes no guarantees as to th">
+tags: java基础
+JDK如下定义HashSetThis class implements the Set interface, backed by a hash table  (actually a HashMap instance).  It makes no guarantees as to the">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小菜园">
 <meta property="og:url" content="http://bravemind.github.io/2016/06/15/hashSet细节/index.html">
 <meta property="og:site_name" content="小菜园">
 <meta property="og:description" content="title: hashSet细节date: 2016-06-15 15:41:31 
-tags: java基础
-JDK如下定义HashSetThis class implements the Set interface, backed by a hash table  (actually a HashMap instance).  It makes no guarantees as to th">
-<meta property="og:updated_time" content="2016-06-15T15:10:47.000Z">
+tags: java基础
+JDK如下定义HashSetThis class implements the Set interface, backed by a hash table  (actually a HashMap instance).  It makes no guarantees as to the">
+<meta property="og:updated_time" content="2016-06-15T15:12:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小菜园">
 <meta name="twitter:description" content="title: hashSet细节date: 2016-06-15 15:41:31 
-tags: java基础
-JDK如下定义HashSetThis class implements the Set interface, backed by a hash table  (actually a HashMap instance).  It makes no guarantees as to th">
+tags: java基础
+JDK如下定义HashSetThis class implements the Set interface, backed by a hash table  (actually a HashMap instance).  It makes no guarantees as to the">
   
   
     <link rel="icon" href="/blog/favicon.png">
@@ -62,7 +62,7 @@ JDK如下定义HashSetThis class implements the Set interface, backed by a hash 
       
         <hr>
 <p>title: hashSet细节<br>date: 2016-06-15 15:41:31 </p>
-<h2 id="tags-java基础"><a href="#tags-java基础" class="headerlink" title="tags: java基础"></a>tags: java基础</h2><blockquote>
+<h2 id="tags-java基础"><a href="#tags-java基础" class="headerlink" title="tags: java基础"></a>tags: java基础</h2><blockquote>
 <p>JDK如下定义HashSet<br>This class implements the <tt>Set</tt> interface, backed by a hash table<br>  (actually a <tt>HashMap</tt> instance).  It makes no guarantees as to the  iteration order of the set; in particular, it does not guarantee that the  order will remain constant over time.  This class permits the <tt>null</tt>  element.  </p>
 </blockquote>
 <p>HashTable 是基于hash表的数据结构，实际上使用的是HashMap的数据结构,HashSet不保证结迭代顺序，也不保证保证表中的元素顺序随着时间的变化,HashSet允许包含一个null值。由于HashSet使用的是hashMap为底层的数据结构，那么hashSet也是线程非同步的。</p>
@@ -83,13 +83,13 @@ JDK如下定义HashSetThis class implements the Set interface, backed by a hash 
       
       
       <div id="toc" class="article-toc">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tags-java基础"><span class="toc-number">1.</span> <span class="toc-text">tags: java基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashSet-add方法"><span class="toc-number">2.</span> <span class="toc-text">HashSet add方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hashSet-contain方法"><span class="toc-number">3.</span> <span class="toc-text">hashSet contain方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hashSet-的遍历-iterator"><span class="toc-number">4.</span> <span class="toc-text">hashSet 的遍历 iterator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tags-java基础"><span class="toc-number">1.</span> <span class="toc-text">tags: java基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashSet-add方法"><span class="toc-number">2.</span> <span class="toc-text">HashSet add方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hashSet-contain方法"><span class="toc-number">3.</span> <span class="toc-text">hashSet contain方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hashSet-的遍历-iterator"><span class="toc-number">4.</span> <span class="toc-text">hashSet 的遍历 iterator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
         <hr/>
       </div>
       
       <hr>
 <p>title: hashSet细节<br>date: 2016-06-15 15:41:31 </p>
-<h2 id="tags-java基础"><a href="#tags-java基础" class="headerlink" title="tags: java基础"></a>tags: java基础</h2><blockquote>
+<h2 id="tags-java基础"><a href="#tags-java基础" class="headerlink" title="tags: java基础"></a>tags: java基础</h2><blockquote>
 <p>JDK如下定义HashSet<br>This class implements the <tt>Set</tt> interface, backed by a hash table<br>  (actually a <tt>HashMap</tt> instance).  It makes no guarantees as to the  iteration order of the set; in particular, it does not guarantee that the  order will remain constant over time.  This class permits the <tt>null</tt>  element.  </p>
 </blockquote>
 <p>HashTable 是基于hash表的数据结构，实际上使用的是HashMap的数据结构,HashSet不保证结迭代顺序，也不保证保证表中的元素顺序随着时间的变化,HashSet允许包含一个null值。由于HashSet使用的是hashMap为底层的数据结构，那么hashSet也是线程非同步的。</p>
@@ -105,7 +105,7 @@ JDK如下定义HashSetThis class implements the Set interface, backed by a hash 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/15/hashSet细节/" data-id="ciph0lt92000cxwkvgp3rmonk" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/15/hashSet细节/" data-id="ciph0occn000cy5kvk367xxfv" class="article-share-link">Share</a>
       
       
     </footer>
