@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>treeMap细节 | 小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JDK1.7中如下定义treeMap的A Red-Black tree based {@link NavigableMap} implementation.The map is sorted according to the {@linkplain Comparable natural ordering} of its keys, or by a {@link Comparator} provi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="treeMap细节">
+<meta property="og:url" content="http://bravemind.github.io/2016/06/16/treeMap/index.html">
+<meta property="og:site_name" content="小菜园">
+<meta property="og:description" content="JDK1.7中如下定义treeMap的A Red-Black tree based {@link NavigableMap} implementation.The map is sorted according to the {@linkplain Comparable natural ordering} of its keys, or by a {@link Comparator} provi">
+<meta property="og:updated_time" content="2016-06-16T14:15:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="treeMap细节">
+<meta name="twitter:description" content="JDK1.7中如下定义treeMap的A Red-Black tree based {@link NavigableMap} implementation.The map is sorted according to the {@linkplain Comparable natural ordering} of its keys, or by a {@link Comparator} provi">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/grid.css">
+
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.min.css">
+
+
+
+</head>
+<div class="left_header">
+    <a class="header_avater" href="/blog"></a>
+    <div class="tag_s" id="showTag">
+        <i class="fa fa-tag" href="../blog"></i>
+            <div id="tags_clod" class="pop">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+            </div>
+    </div>
+    <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
+    <a href="https://github.com/braveMind" class="git" target="_blank"><i class="fa fa-github"></i></a>
+
+
+    <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
+    <a href="/blog/2016/05/21/友情链接/"><i class="fa fa-link" aria-hidden="true"></i></a>
+
+</div>
+<div class="left_content">
+    <section><article id="post-treeMap" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      treeMap细节
+    </h1>
+  
+
+        <a href="/blog/2016/06/16/treeMap/" class="article-data-title">
+
+  <time  datetime="2016-06-16T01:43:27.000Z" itemprop="datePublished">2016-06-16</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>JDK1.7中如下定义treeMap的<br>A Red-Black tree based {@link NavigableMap} implementation.The map is sorted according to the {@linkplain Comparable natural ordering} of its keys, or by a {@link Comparator} provided at map creation time, depending on which constructor is used.</p>
+</blockquote>
+<h2 id="treeMap的数据结构"><a href="#treeMap的数据结构" class="headerlink" title="treeMap的数据结构"></a>treeMap的数据结构</h2><p>treeMap的数据结构是基于红黑树的，它的存储是按照自然顺序进行排序，或者根据创建映射时提供的Comparator进行排序，具体取决于使用的构造方法。</p>
+<h2 id="在JDK中类的定义"><a href="#在JDK中类的定义" class="headerlink" title="在JDK中类的定义"></a>在JDK中类的定义</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">implements</span> <span class="title">NavigableMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span><br><span class="line"></span>&#123;</span><br><span class="line">	.......</span><br><span class="line">	...</span><br><span class="line">	..</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="红黑树的简单介绍-参考红黑树"><a href="#红黑树的简单介绍-参考红黑树" class="headerlink" title="红黑树的简单介绍 参考红黑树"></a>红黑树的简单介绍 参考<a href="http://www.cnblogs.com/skywang12345/p/3245399.html" target="_blank" rel="external">红黑树</a></h2><p>红黑树有五个构建条件</p>
+<ol>
+<li>每个节点或者是黑色，或者是红色。</li>
+<li>根节点是黑色。</li>
+<li>每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]</li>
+<li>如果一个节点是红色的，则它的子节点必须是黑色的。</li>
+<li>从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。</li>
+</ol>
+<p>注意：<br>特性(3)中的叶子节点，是只为空(NIL或null)的节点。<br>特性(5)，确保没有一条路径会比其他路径长出俩倍。因而，红黑树是相对是接近平衡的二叉树。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <div id="toc" class="article-toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#treeMap的数据结构"><span class="toc-number">1.</span> <span class="toc-text">treeMap的数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在JDK中类的定义"><span class="toc-number">2.</span> <span class="toc-text">在JDK中类的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#红黑树的简单介绍-参考红黑树"><span class="toc-number">3.</span> <span class="toc-text">红黑树的简单介绍 参考红黑树</span></a></li></ol>
+        <hr/>
+      </div>
+      
+      <blockquote>
+<p>JDK1.7中如下定义treeMap的<br>A Red-Black tree based {@link NavigableMap} implementation.The map is sorted according to the {@linkplain Comparable natural ordering} of its keys, or by a {@link Comparator} provided at map creation time, depending on which constructor is used.</p>
+</blockquote>
+<h2 id="treeMap的数据结构"><a href="#treeMap的数据结构" class="headerlink" title="treeMap的数据结构"></a>treeMap的数据结构</h2><p>treeMap的数据结构是基于红黑树的，它的存储是按照自然顺序进行排序，或者根据创建映射时提供的Comparator进行排序，具体取决于使用的构造方法。</p>
+<h2 id="在JDK中类的定义"><a href="#在JDK中类的定义" class="headerlink" title="在JDK中类的定义"></a>在JDK中类的定义</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">implements</span> <span class="title">NavigableMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span><br><span class="line"></span>&#123;</span><br><span class="line">	.......</span><br><span class="line">	...</span><br><span class="line">	..</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="红黑树的简单介绍-参考红黑树"><a href="#红黑树的简单介绍-参考红黑树" class="headerlink" title="红黑树的简单介绍 参考红黑树"></a>红黑树的简单介绍 参考<a href="http://www.cnblogs.com/skywang12345/p/3245399.html" target="_blank" rel="external">红黑树</a></h2><p>红黑树有五个构建条件</p>
+<ol>
+<li>每个节点或者是黑色，或者是红色。</li>
+<li>根节点是黑色。</li>
+<li>每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]</li>
+<li>如果一个节点是红色的，则它的子节点必须是黑色的。</li>
+<li>从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。</li>
+</ol>
+<p>注意：<br>特性(3)中的叶子节点，是只为空(NIL或null)的节点。<br>特性(5)，确保没有一条路径会比其他路径长出俩倍。因而，红黑树是相对是接近平衡的二叉树。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/06/16/treeMap/" data-id="cipie2dhl000dwkkvhgw12qs1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/06/15/hashSet/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hashSet细节</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+</div>
+
+
+   
+
+   <script src="/blog/js/jQuery.js"></script>
+   <script src="/blog/js/script.js"></script>
+
+
+

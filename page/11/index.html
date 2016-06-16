@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,78 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-linux防火墙开端口" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/04/09/linux防火墙开端口/">linux防火墙开端口</a>
+    </h1>
+  
+
+        <a href="/blog/2016/04/09/linux防火墙开端口/" class="article-data-title">
+
+  <time  datetime="2016-04-09T03:42:29.000Z" itemprop="datePublished">2016-04-09</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>  Linux环境下，常常需要自己开一些端口，基本上每次用的时候都要去找，所以就总结记录下来开端口常用的命令，下次直接可以使使用，拯救我懒惰的大脑。</p>
+<h3 id="linux-防火墙开端口"><a href="#linux-防火墙开端口" class="headerlink" title="linux 防火墙开端口"></a>linux 防火墙开端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/iptables -I INPUT -p tcp --dport 11211 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h4 id="保存修改："><a href="#保存修改：" class="headerlink" title="保存修改："></a>保存修改：</h4><pre><code>/etc/rc.d/init.d/iptables save
+</code></pre><h4 id="查看打开的端口："><a href="#查看打开的端口：" class="headerlink" title="查看打开的端口："></a>查看打开的端口：</h4><pre><code>/etc/init.d/iptables status
+</code></pre><h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><pre><code>/etc/init.d/iptables stop
+service iptables stop # 停止服务
+</code></pre><h4 id="查看防火墙信息"><a href="#查看防火墙信息" class="headerlink" title="查看防火墙信息"></a>查看防火墙信息</h4><pre><code>/etc/init.d/iptables status 
+</code></pre><h4 id="开放端口-8080"><a href="#开放端口-8080" class="headerlink" title="开放端口:8080"></a>开放端口:8080</h4><pre><code>/sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
+/etc/init.d/iptables restart
+</code></pre><h4 id="将更改进行保存"><a href="#将更改进行保存" class="headerlink" title="将更改进行保存"></a>将更改进行保存</h4><pre><code>/etc/rc.d/init.d/iptables save
+</code></pre><h4 id="另外也可以直接在-etc-sysconfig-iptables中增加一行："><a href="#另外也可以直接在-etc-sysconfig-iptables中增加一行：" class="headerlink" title="另外也可以直接在/etc/sysconfig/iptables中增加一行："></a>另外也可以直接在/etc/sysconfig/iptables中增加一行：</h4><pre><code>-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 8080 -j ACCEPT
+</code></pre>
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <p>  Linux环境下，常常需要自己开一些端口，基本上每次用的时候都要去找，所以就总结记录下来开端口常用的命令，下次直接可以使使用，拯救我懒惰的大脑。</p>
+<h3 id="linux-防火墙开端口"><a href="#linux-防火墙开端口" class="headerlink" title="linux 防火墙开端口"></a>linux 防火墙开端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/iptables -I INPUT -p tcp --dport 11211 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h4 id="保存修改："><a href="#保存修改：" class="headerlink" title="保存修改："></a>保存修改：</h4><pre><code>/etc/rc.d/init.d/iptables save
+</code></pre><h4 id="查看打开的端口："><a href="#查看打开的端口：" class="headerlink" title="查看打开的端口："></a>查看打开的端口：</h4><pre><code>/etc/init.d/iptables status
+</code></pre><h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><pre><code>/etc/init.d/iptables stop
+service iptables stop # 停止服务
+</code></pre><h4 id="查看防火墙信息"><a href="#查看防火墙信息" class="headerlink" title="查看防火墙信息"></a>查看防火墙信息</h4><pre><code>/etc/init.d/iptables status 
+</code></pre><h4 id="开放端口-8080"><a href="#开放端口-8080" class="headerlink" title="开放端口:8080"></a>开放端口:8080</h4><pre><code>/sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
+/etc/init.d/iptables restart
+</code></pre><h4 id="将更改进行保存"><a href="#将更改进行保存" class="headerlink" title="将更改进行保存"></a>将更改进行保存</h4><pre><code>/etc/rc.d/init.d/iptables save
+</code></pre><h4 id="另外也可以直接在-etc-sysconfig-iptables中增加一行："><a href="#另外也可以直接在-etc-sysconfig-iptables中增加一行：" class="headerlink" title="另外也可以直接在/etc/sysconfig/iptables中增加一行："></a>另外也可以直接在/etc/sysconfig/iptables中增加一行：</h4><pre><code>-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 8080 -j ACCEPT
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/04/09/linux防火墙开端口/" data-id="cipie2dho000hwkkvwv8rcfs1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-写于开始" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -92,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/09/写于开始/" data-id="ciph0sfse000qyhkvlex51o9e" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/09/写于开始/" data-id="cipie2di0000vwkkvaaptl7jg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"></ul>

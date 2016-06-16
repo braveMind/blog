@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,84 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-treeMap" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/06/16/treeMap/">treeMap细节</a>
+    </h1>
+  
+
+        <a href="/blog/2016/06/16/treeMap/" class="article-data-title">
+
+  <time  datetime="2016-06-16T01:43:27.000Z" itemprop="datePublished">2016-06-16</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>JDK1.7中如下定义treeMap的<br>A Red-Black tree based {@link NavigableMap} implementation.The map is sorted according to the {@linkplain Comparable natural ordering} of its keys, or by a {@link Comparator} provided at map creation time, depending on which constructor is used.</p>
+</blockquote>
+<h2 id="treeMap的数据结构"><a href="#treeMap的数据结构" class="headerlink" title="treeMap的数据结构"></a>treeMap的数据结构</h2><p>treeMap的数据结构是基于红黑树的，它的存储是按照自然顺序进行排序，或者根据创建映射时提供的Comparator进行排序，具体取决于使用的构造方法。</p>
+<h2 id="在JDK中类的定义"><a href="#在JDK中类的定义" class="headerlink" title="在JDK中类的定义"></a>在JDK中类的定义</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">implements</span> <span class="title">NavigableMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span><br><span class="line"></span>&#123;</span><br><span class="line">	.......</span><br><span class="line">	...</span><br><span class="line">	..</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="红黑树的简单介绍-参考红黑树"><a href="#红黑树的简单介绍-参考红黑树" class="headerlink" title="红黑树的简单介绍 参考红黑树"></a>红黑树的简单介绍 参考<a href="http://www.cnblogs.com/skywang12345/p/3245399.html" target="_blank" rel="external">红黑树</a></h2><p>红黑树有五个构建条件</p>
+<ol>
+<li>每个节点或者是黑色，或者是红色。</li>
+<li>根节点是黑色。</li>
+<li>每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]</li>
+<li>如果一个节点是红色的，则它的子节点必须是黑色的。</li>
+<li>从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。</li>
+</ol>
+<p>注意：<br>特性(3)中的叶子节点，是只为空(NIL或null)的节点。<br>特性(5)，确保没有一条路径会比其他路径长出俩倍。因而，红黑树是相对是接近平衡的二叉树。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p>JDK1.7中如下定义treeMap的<br>A Red-Black tree based {@link NavigableMap} implementation.The map is sorted according to the {@linkplain Comparable natural ordering} of its keys, or by a {@link Comparator} provided at map creation time, depending on which constructor is used.</p>
+</blockquote>
+<h2 id="treeMap的数据结构"><a href="#treeMap的数据结构" class="headerlink" title="treeMap的数据结构"></a>treeMap的数据结构</h2><p>treeMap的数据结构是基于红黑树的，它的存储是按照自然顺序进行排序，或者根据创建映射时提供的Comparator进行排序，具体取决于使用的构造方法。</p>
+<h2 id="在JDK中类的定义"><a href="#在JDK中类的定义" class="headerlink" title="在JDK中类的定义"></a>在JDK中类的定义</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">implements</span> <span class="title">NavigableMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span><br><span class="line"></span>&#123;</span><br><span class="line">	.......</span><br><span class="line">	...</span><br><span class="line">	..</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="红黑树的简单介绍-参考红黑树"><a href="#红黑树的简单介绍-参考红黑树" class="headerlink" title="红黑树的简单介绍 参考红黑树"></a>红黑树的简单介绍 参考<a href="http://www.cnblogs.com/skywang12345/p/3245399.html" target="_blank" rel="external">红黑树</a></h2><p>红黑树有五个构建条件</p>
+<ol>
+<li>每个节点或者是黑色，或者是红色。</li>
+<li>根节点是黑色。</li>
+<li>每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]</li>
+<li>如果一个节点是红色的，则它的子节点必须是黑色的。</li>
+<li>从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。</li>
+</ol>
+<p>注意：<br>特性(3)中的叶子节点，是只为空(NIL或null)的节点。<br>特性(5)，确保没有一条路径会比其他路径长出俩倍。因而，红黑树是相对是接近平衡的二叉树。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/06/16/treeMap/" data-id="cipie2dhl000dwkkvhgw12qs1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-hashSet" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -106,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/15/hashSet/" data-id="ciph0sfrx0008yhkvrn4bd21y" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/15/hashSet/" data-id="cipie2dhd0008wkkv1xr2djj4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -166,7 +244,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/15/vimIDEA/" data-id="ciph0sfsa000lyhkvfob0kucp" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/15/vimIDEA/" data-id="cipie2dhu000owkkvmy0ps6w7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -252,7 +330,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/13/arryList/" data-id="ciph0sfs2000cyhkvecauzrcr" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/13/arryList/" data-id="cipie2dhb0006wkkvn0zk0qte" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -304,78 +382,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/09/HappyThings/" data-id="ciph0sfrr0004yhkvuhdkyrzz" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/09/HappyThings/" data-id="cipie2dhf0009wkkvg5khpp58" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-mysql用户管理" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/06/08/mysql用户管理/">mysql用户管理</a>
-    </h1>
-  
-
-        <a href="/blog/2016/06/08/mysql用户管理/" class="article-data-title">
-
-  <time  datetime="2016-06-08T07:27:49.000Z" itemprop="datePublished">2016-06-08</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>创建用户，授权，删除用户，查看系统用户。</p>
-</blockquote>
-<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> username <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="对用户授权-授予用户在所有database上的权限"><a href="#对用户授权-授予用户在所有database上的权限" class="headerlink" title="对用户授权(授予用户在所有database上的权限)"></a>对用户授权(授予用户在所有database上的权限)</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="撤销权限，并针对某个表授权"><a href="#撤销权限，并针对某个表授权" class="headerlink" title="撤销权限，并针对某个表授权"></a>撤销权限，并针对某个表授权</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">FROM</span> <span class="string">'username'</span>@<span class="string">'localhost'</span>;</span><br><span class="line"></span><br><span class="line">//db上的所有权限</span><br><span class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> dbname.* <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</span><br><span class="line"></span><br><span class="line">//db上的特殊权限</span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">UPDATE</span> <span class="keyword">ON</span> dbname.* <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
-<p>如果只是授予username，特定的数据库，那么username登陆 MySQL，只能看到特定的表。</p>
-<h2 id="权限更改后刷新权限语句"><a href="#权限更改后刷新权限语句" class="headerlink" title="权限更改后刷新权限语句"></a>权限更改后刷新权限语句</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> username@localhost;</span><br></pre></td></tr></table></figure>
-<h2 id="切换到mysql-db中查看mysql中的用户"><a href="#切换到mysql-db中查看mysql中的用户" class="headerlink" title="切换到mysql db中查看mysql中的用户"></a>切换到mysql db中查看mysql中的用户</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> mysql;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">User</span>, Host <span class="keyword">FROM</span> <span class="keyword">user</span>;</span><br></pre></td></tr></table></figure>
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>创建用户，授权，删除用户，查看系统用户。</p>
-</blockquote>
-<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> username <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="对用户授权-授予用户在所有database上的权限"><a href="#对用户授权-授予用户在所有database上的权限" class="headerlink" title="对用户授权(授予用户在所有database上的权限)"></a>对用户授权(授予用户在所有database上的权限)</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="撤销权限，并针对某个表授权"><a href="#撤销权限，并针对某个表授权" class="headerlink" title="撤销权限，并针对某个表授权"></a>撤销权限，并针对某个表授权</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">FROM</span> <span class="string">'username'</span>@<span class="string">'localhost'</span>;</span><br><span class="line"></span><br><span class="line">//db上的所有权限</span><br><span class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> dbname.* <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</span><br><span class="line"></span><br><span class="line">//db上的特殊权限</span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">UPDATE</span> <span class="keyword">ON</span> dbname.* <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
-<p>如果只是授予username，特定的数据库，那么username登陆 MySQL，只能看到特定的表。</p>
-<h2 id="权限更改后刷新权限语句"><a href="#权限更改后刷新权限语句" class="headerlink" title="权限更改后刷新权限语句"></a>权限更改后刷新权限语句</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> username@localhost;</span><br></pre></td></tr></table></figure>
-<h2 id="切换到mysql-db中查看mysql中的用户"><a href="#切换到mysql-db中查看mysql中的用户" class="headerlink" title="切换到mysql db中查看mysql中的用户"></a>切换到mysql db中查看mysql中的用户</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> mysql;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">User</span>, Host <span class="keyword">FROM</span> <span class="keyword">user</span>;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/08/mysql用户管理/" data-id="ciph0sfs7000hyhkvcs6q2sr8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
 
     </footer>
   </div>
