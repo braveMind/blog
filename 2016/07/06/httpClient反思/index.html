@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>小bug反思 | 小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="程序中那些困扰我好几天的问题，在某个瞬间突然柳暗花明，常常让我觉得感动，又觉得当时好蠢！
+
+碎碎念问题描述最近自己用httpClient4.5封装了一个顺手的HttpClientUtils工具，丝滑的链式调用用来模拟登陆smartqq，再接一个图灵机器人（第三方接口），图灵机器人内部接了很多有意思的API，天气查询，快递查询，百科，笑话，聊天等，还可以自己在扩展，在接入其它api如讯飞的人脸识别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小bug反思">
+<meta property="og:url" content="http://bravemind.github.io/2016/07/06/httpClient反思/index.html">
+<meta property="og:site_name" content="小菜园">
+<meta property="og:description" content="程序中那些困扰我好几天的问题，在某个瞬间突然柳暗花明，常常让我觉得感动，又觉得当时好蠢！
+
+碎碎念问题描述最近自己用httpClient4.5封装了一个顺手的HttpClientUtils工具，丝滑的链式调用用来模拟登陆smartqq，再接一个图灵机器人（第三方接口），图灵机器人内部接了很多有意思的API，天气查询，快递查询，百科，笑话，聊天等，还可以自己在扩展，在接入其它api如讯飞的人脸识别">
+<meta property="og:updated_time" content="2016-07-06T02:32:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小bug反思">
+<meta name="twitter:description" content="程序中那些困扰我好几天的问题，在某个瞬间突然柳暗花明，常常让我觉得感动，又觉得当时好蠢！
+
+碎碎念问题描述最近自己用httpClient4.5封装了一个顺手的HttpClientUtils工具，丝滑的链式调用用来模拟登陆smartqq，再接一个图灵机器人（第三方接口），图灵机器人内部接了很多有意思的API，天气查询，快递查询，百科，笑话，聊天等，还可以自己在扩展，在接入其它api如讯飞的人脸识别">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/grid.css">
+
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.min.css">
+
+
+
+</head>
+<div class="left_header">
+    <a class="header_avater" href="/blog"></a>
+    <div class="tag_s" id="showTag">
+        <i class="fa fa-tag" href="../blog"></i>
+            <div id="tags_clod" class="pop">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+            </div>
+    </div>
+    <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
+    <a href="https://github.com/braveMind" class="git" target="_blank"><i class="fa fa-github"></i></a>
+
+
+    <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
+    <a href="/blog/2016/05/21/友情链接/"><i class="fa fa-link" aria-hidden="true"></i></a>
+
+</div>
+<div class="left_content">
+    <section><article id="post-httpClient反思" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      小bug反思
+    </h1>
+  
+
+        <a href="/blog/2016/07/06/httpClient反思/" class="article-data-title">
+
+  <time  datetime="2016-07-06T01:47:45.000Z" itemprop="datePublished">2016-07-06</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>程序中那些困扰我好几天的问题，在某个瞬间突然柳暗花明，常常让我觉得感动，又觉得当时好蠢！</p>
+</blockquote>
+<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>最近自己用httpClient4.5封装了一个顺手的HttpClientUtils工具，丝滑的链式调用用来模拟登陆smartqq，再接一个图灵机器人（第三方接口），图灵机器人内部接了很多有意思的API，天气查询，快递查询，百科，笑话，聊天等，还可以自己在扩展，在接入其它api如讯飞的人脸识别，语音识别，喜欢玩硬件的可以搭建在树莓派上，总之可以玩的花样很多。</p>
+<p><strong>问题来了</strong>：在用firebug分析qq的请求包时候发现游览器在请求qq协议的时候携带的是15个cookie，我在用httpClient的时候发送的是12个cookie，<strong>奇葩的是发送的这个12cookie在登陆这一步的时候服务器发给我的请求是成功的，关键是当时没多想</strong>，既然成功了那么后续的操作获取登陆的一个token的时候服务器返回状态代码1000，当时查看了smartqq的协议说是cookie携带不全。  </p>
+<h3 id="寻找解决方法"><a href="#寻找解决方法" class="headerlink" title="寻找解决方法"></a>寻找解决方法</h3><p>以前项目中使用的老版本的httpClient 3.x，自己在玩的时候就换上了最新版的httpClient 4.5配置了httpClinet连接池，配置好了cookie管理策略。可就是请求时候携带12个cookie，这个问题困扰着我，从上周六到周一脑子异常兴奋每天睡眠不足5小时，早上六点就又爬起来，问题解决不了的时候就在谷歌上搜索，大家使用的方法我都用了可是还是没解决，算了还是放放吧，隔了一天再仔细研究了一下qq的协议发现登陆成功后少调用了一个get请求！！当把这个get请求添加上的时候瞬间柳暗花明！先是感动，后到想死的心都有了！！</p>
+<h2 id="问题反思"><a href="#问题反思" class="headerlink" title="问题反思"></a>问题反思</h2><p>技术问题往往很好解决，难解决的是思维逻辑问题，尤其是你百思不解的时候有容易把问题归类到技术领域，这个时候如果跳出来就会很苦恼，俗称牛角尖！浪费大量时间在谷歌，debug，这时候最好的办法是搁置问题。给大脑一个休息的时间，回过头来再看问题也许你就有了新的发现，此时既不会盲目自信，又不会过度思考，更容易接近问题的本质。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <div id="toc" class="article-toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#碎碎念"><span class="toc-number">1.</span> <span class="toc-text">碎碎念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题描述"><span class="toc-number">1.1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#寻找解决方法"><span class="toc-number">1.2.</span> <span class="toc-text">寻找解决方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题反思"><span class="toc-number">2.</span> <span class="toc-text">问题反思</span></a></li></ol>
+        <hr/>
+      </div>
+      
+      <blockquote>
+<p>程序中那些困扰我好几天的问题，在某个瞬间突然柳暗花明，常常让我觉得感动，又觉得当时好蠢！</p>
+</blockquote>
+<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>最近自己用httpClient4.5封装了一个顺手的HttpClientUtils工具，丝滑的链式调用用来模拟登陆smartqq，再接一个图灵机器人（第三方接口），图灵机器人内部接了很多有意思的API，天气查询，快递查询，百科，笑话，聊天等，还可以自己在扩展，在接入其它api如讯飞的人脸识别，语音识别，喜欢玩硬件的可以搭建在树莓派上，总之可以玩的花样很多。</p>
+<p><strong>问题来了</strong>：在用firebug分析qq的请求包时候发现游览器在请求qq协议的时候携带的是15个cookie，我在用httpClient的时候发送的是12个cookie，<strong>奇葩的是发送的这个12cookie在登陆这一步的时候服务器发给我的请求是成功的，关键是当时没多想</strong>，既然成功了那么后续的操作获取登陆的一个token的时候服务器返回状态代码1000，当时查看了smartqq的协议说是cookie携带不全。  </p>
+<h3 id="寻找解决方法"><a href="#寻找解决方法" class="headerlink" title="寻找解决方法"></a>寻找解决方法</h3><p>以前项目中使用的老版本的httpClient 3.x，自己在玩的时候就换上了最新版的httpClient 4.5配置了httpClinet连接池，配置好了cookie管理策略。可就是请求时候携带12个cookie，这个问题困扰着我，从上周六到周一脑子异常兴奋每天睡眠不足5小时，早上六点就又爬起来，问题解决不了的时候就在谷歌上搜索，大家使用的方法我都用了可是还是没解决，算了还是放放吧，隔了一天再仔细研究了一下qq的协议发现登陆成功后少调用了一个get请求！！当把这个get请求添加上的时候瞬间柳暗花明！先是感动，后到想死的心都有了！！</p>
+<h2 id="问题反思"><a href="#问题反思" class="headerlink" title="问题反思"></a>问题反思</h2><p>技术问题往往很好解决，难解决的是思维逻辑问题，尤其是你百思不解的时候有容易把问题归类到技术领域，这个时候如果跳出来就会很苦恼，俗称牛角尖！浪费大量时间在谷歌，debug，这时候最好的办法是搁置问题。给大脑一个休息的时间，回过头来再看问题也许你就有了新的发现，此时既不会盲目自信，又不会过度思考，更容易接近问题的本质。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/07/06/httpClient反思/" data-id="ciqa9uda4000h9t9k436phkcx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/06/30/JDK动态代理/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JDK动态代理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+</div>
+
+
+   
+
+   <script src="/blog/js/jQuery.js"></script>
+   <script src="/blog/js/script.js"></script>
+
+
+
