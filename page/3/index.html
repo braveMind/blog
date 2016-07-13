@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,80 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-hashSet" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/06/15/hashSet/">hashSet细节</a>
+    </h1>
+  
+
+        <a href="/blog/2016/06/15/hashSet/" class="article-data-title">
+
+  <time  datetime="2016-06-15T15:14:33.000Z" itemprop="datePublished">2016-06-15</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>JDK如下定义HashSet<br>This class implements the <tt>Set</tt> interface, backed by a hash table<br>  (actually a <tt>HashMap</tt> instance).  It makes no guarantees as to the  iteration order of the set; in particular, it does not guarantee that the  order will remain constant over time.  This class permits the <tt>null</tt>  element.  </p>
+</blockquote>
+<p>HashTable 是基于hash表的数据结构，实际上使用的是HashMap的数据结构,HashSet不保证结迭代顺序，也不保证保证表中的元素顺序随着时间的变化,HashSet允许包含一个null值。由于HashSet使用的是hashMap为底层的数据结构，那么hashSet也是线程非同步的。</p>
+<h2 id="HashSet-add方法"><a href="#HashSet-add方法" class="headerlink" title="HashSet add方法"></a>HashSet add方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> map.put(e, PRESENT)==<span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>hashSet实际上add元素时候是把将要存入的这个元素当做key值调用hashMap的put方法，放入hashMap中的，value放一个空的对象。因此hashSet,put元素的时间复杂度基本上是o(1),除了hash冲突。  </p>
+<h2 id="hashSet-contain方法"><a href="#hashSet-contain方法" class="headerlink" title="hashSet contain方法"></a>hashSet contain方法</h2><p>hashMap中没有contain放，hashMap中的方法叫做containKey曾经一道面试题。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> map.containsKey(o);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>没错，hashSet的contains方法是调用map.containsKey(O)方法的，containsKey(o)是根据hash函数去做散列的，所以与元素的多少无关，无论是多少元素containsKey(o)的时间复杂度基本上O(1)。</p>
+<h2 id="hashSet-的遍历-iterator"><a href="#hashSet-的遍历-iterator" class="headerlink" title="hashSet 的遍历 iterator"></a>hashSet 的遍历 iterator</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> map.keySet().iterator();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>HashSet的遍历也是调用HashMap的keySet().iterator()进行遍历的Entry<k,v>这样的一个链表节点的。</k,v></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>HashSet可以看成是HashMap的一种特殊结构,HashSet存储的元素是仅仅是HashMap的key，因此hashSet可以过滤重复的值，同时采用了Hash表结构HashSet是一种非线程安全的存储结构，在多线程下需要线程同步。影响HashSet性能的因素和HashMap相同同样是初始化容量，和负载因子。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p>JDK如下定义HashSet<br>This class implements the <tt>Set</tt> interface, backed by a hash table<br>  (actually a <tt>HashMap</tt> instance).  It makes no guarantees as to the  iteration order of the set; in particular, it does not guarantee that the  order will remain constant over time.  This class permits the <tt>null</tt>  element.  </p>
+</blockquote>
+<p>HashTable 是基于hash表的数据结构，实际上使用的是HashMap的数据结构,HashSet不保证结迭代顺序，也不保证保证表中的元素顺序随着时间的变化,HashSet允许包含一个null值。由于HashSet使用的是hashMap为底层的数据结构，那么hashSet也是线程非同步的。</p>
+<h2 id="HashSet-add方法"><a href="#HashSet-add方法" class="headerlink" title="HashSet add方法"></a>HashSet add方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> map.put(e, PRESENT)==<span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>hashSet实际上add元素时候是把将要存入的这个元素当做key值调用hashMap的put方法，放入hashMap中的，value放一个空的对象。因此hashSet,put元素的时间复杂度基本上是o(1),除了hash冲突。  </p>
+<h2 id="hashSet-contain方法"><a href="#hashSet-contain方法" class="headerlink" title="hashSet contain方法"></a>hashSet contain方法</h2><p>hashMap中没有contain放，hashMap中的方法叫做containKey曾经一道面试题。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> map.containsKey(o);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>没错，hashSet的contains方法是调用map.containsKey(O)方法的，containsKey(o)是根据hash函数去做散列的，所以与元素的多少无关，无论是多少元素containsKey(o)的时间复杂度基本上O(1)。</p>
+<h2 id="hashSet-的遍历-iterator"><a href="#hashSet-的遍历-iterator" class="headerlink" title="hashSet 的遍历 iterator"></a>hashSet 的遍历 iterator</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> map.keySet().iterator();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>HashSet的遍历也是调用HashMap的keySet().iterator()进行遍历的Entry<k,v>这样的一个链表节点的。</k,v></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>HashSet可以看成是HashMap的一种特殊结构,HashSet存储的元素是仅仅是HashMap的key，因此hashSet可以过滤重复的值，同时采用了Hash表结构HashSet是一种非线程安全的存储结构，在多线程下需要线程同步。影响HashSet性能的因素和HashMap相同同样是初始化容量，和负载因子。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/06/15/hashSet/" data-id="ciqk9crui000hzg9kip22nlur" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-vimIDEA" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -98,7 +172,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/15/vimIDEA/" data-id="ciqa9udap00169t9kot8vzeog" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/15/vimIDEA/" data-id="ciqk9crv7001bzg9kf9dfu72g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -184,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/13/arryList/" data-id="ciqa9uda3000f9t9kudyhbfuf" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/13/arryList/" data-id="ciqk9crue000dzg9kmxnakd9d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -236,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/09/HappyThings/" data-id="ciqa9ud9s00089t9kaphxwc4m" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/09/HappyThings/" data-id="ciqk9cru70008zg9kmgcgwca9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"></ul>
@@ -304,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/08/mysql用户管理/" data-id="ciqa9udah000z9t9k018o5pli" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/08/mysql用户管理/" data-id="ciqk9cruy0011zg9k1ov4pxnq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
@@ -318,125 +392,9 @@
 
 
   
-    <article id="post-hashMap的区别" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/06/06/hashMap的区别/">hashMap常见问题</a>
-    </h1>
-  
-
-        <a href="/blog/2016/06/06/hashMap的区别/" class="article-data-title">
-
-  <time  datetime="2016-06-06T14:51:33.000Z" itemprop="datePublished">2016-06-06</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><blockquote>
-<p>hashMap如何get，put数据？<br>hashMap的结构？<br>hashMap如何解决hash冲突？<br>hashMap中的一些概念，影响hashMap性能的关键因素？</p>
-</blockquote>
-<h2 id="JDK文档如下定义"><a href="#JDK文档如下定义" class="headerlink" title="JDK文档如下定义"></a>JDK文档如下定义</h2><blockquote>
-<p>Hash table based implementation of the <tt>Map</tt> interface.  This implementation provides all of the optional map operations, and permits <tt>null</tt> values and the <tt>null</tt> key.  (The <tt>HashMap</tt> class is roughly equivalent to <tt>Hashtable</tt>, except that it is unsynchronized and permits nulls.)  This class makes no guarantees as to the order of the map; in particular, it does not guarantee that the order will remain constant over time.</p>
-</blockquote>
-<p> <strong>关键字</strong>：<strong>null value,null key</strong>是允许的，<strong>非同步的</strong>，<strong>不保证遍历顺序</strong>，也不保证序不随时间变化。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span></span><br><span class="line"></span>&#123;</span><br><span class="line">   xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>HashMap实现了Serializable接口，证明HashMap中的数据可以被序列化进行传输。<br>HashMap 实现了Cloneable接口，即覆盖了函数clone()，能被克隆。</p>
-<h2 id="影响HashMap的关键因素"><a href="#影响HashMap的关键因素" class="headerlink" title="影响HashMap的关键因素"></a>影响HashMap的关键因素</h2><blockquote>
-<p>two parameters that affect its performance: <i>initial capacity</i> and <i>load factor</i></p>
-<p><strong>The <i>capacity</i></strong> is the number of buckets in the hash table, and the initial capacity is simply the capacity at the time the hash table is created.  </p>
-<p><strong>The <i>load factor</i></strong> is a measure of how full the hash table is allowed to get before its capacity is automatically increased</p>
-<p><strong><i>rehashed</i></strong> (that is, internal data structures are rebuilt) so that the hash table has approximately twice the number of buckets.</p>
-</blockquote>
-<p><strong>容量就是每次初始化HashMap的初始化大小</strong>，负载因子就是 put进去的元素容量/初始化容量，<strong>如果这个比值大于负载因子，那么就要发生rehashed,调整hash表的大小为原来的两倍</strong>。</p>
-<h2 id="负载因子大小"><a href="#负载因子大小" class="headerlink" title="负载因子大小"></a>负载因子大小</h2><p>默认的值是0.75，这个值是存取时间和空间上的一个平衡点。如果要存大的数据，对于性能有要求最好设置一个大的初始化容量，这样比自动增长更高效。</p>
-<h2 id="非线程同步"><a href="#非线程同步" class="headerlink" title="非线程同步"></a>非线程同步</h2><p><strong>hashMap</strong>非线程同步的如果有超过两个线程修改（put,remove）hashMap，那么必须额外的设置hashMap使它变成线程同步的,可以使用<strong>Map m = Collections.synchronizedMap(new HashMap(…));</strong>来同步。</p>
-<h2 id="Fail-fast-检测机制"><a href="#Fail-fast-检测机制" class="headerlink" title="Fail-fast 检测机制"></a>Fail-fast 检测机制</h2><blockquote>
-<p>if the map is structurally modified at any time after the iterator is created, in any way except through the iterator’s own <tt>remove</tt> method, the iterator will throw a {@link ConcurrentModificationException}.  Thus, in the face of concurrent modification, the iterator fails quickly and cleanly, rather than risking arbitrary, non-deterministic behavior at an undetermined time in the future.</p>
-</blockquote>
-<p>如果迭代器已经被创建了，那么再去修改它就会报这样的一个异常ConcurrentModificationException，除非使用迭代器自己的 remove方法，这点避免了并发修改在未来的程序中带来的不确定后果,报出这异常后可以防止多线程并发带来的不确定性bug,JDK的官方文档这么说：<i>the fail-fast behavior of iterators</i></p>
-<ul>
-<li>should be used only to detect bugs. 仅用于同步迭代器修改时候的bug检测。</li>
-</ul>
-<h2 id="hashMap的结构"><a href="#hashMap的结构" class="headerlink" title="hashMap的结构"></a>hashMap的结构</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/hashMap" alt=""></p>
-<p>hashMap是一个数组链表，table是一个数组,里面存放了一个 Entry<k,v> 形式的链表，这样的一个结构可以很好的解决hash冲突问题，放入同一个索引里面，链表的长度增加一个，读取的时候只需要读取链表的头部就可以读取到新value.</k,v></p>
-<p>部分源代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组结构</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">transient</span> Entry&lt;K,V&gt;[] table = (Entry&lt;K,V&gt;[]) EMPTY_TABLE;</span><br><span class="line">    </span><br><span class="line">     <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> K key;</span><br><span class="line">        V value;</span><br><span class="line">        Entry&lt;K,V&gt; next;</span><br><span class="line">        <span class="keyword">int</span> hash;</span><br><span class="line"><span class="comment">//链表</span></span><br><span class="line">        <span class="comment">/**</span><br><span class="line">         * Creates new entry.</span><br><span class="line">         */</span></span><br><span class="line">        Entry(<span class="keyword">int</span> h, K k, V v, Entry&lt;K,V&gt; n) &#123;</span><br><span class="line">            value = v;</span><br><span class="line">            next = n;</span><br><span class="line">            key = k;</span><br><span class="line">            hash = h;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="put-value"><a href="#put-value" class="headerlink" title="put value"></a>put value</h2><p>如果put相同的key,那么先前放入的value将会被新放入的value取代,因为存放是用hashCode计算索引的，所以存储的顺序并不是遍历顺序。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (table == EMPTY_TABLE) &#123;</span><br><span class="line">            inflateTable(threshold); <span class="comment">//初始化hash表大小</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (key == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> putForNullKey(value);</span><br><span class="line">        <span class="keyword">int</span> hash = hash(key);<span class="comment">//计算key的hash code，如果hash code相等那么就产生所谓的 hash碰撞</span></span><br><span class="line">        <span class="keyword">int</span> i = indexFor(hash, table.length);<span class="comment">//位这个hash code 在这个hash表中存放的索引位置。</span></span><br><span class="line">        <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[i]; e != <span class="keyword">null</span>; e = e.next) &#123;</span><br><span class="line">            Object k;</span><br><span class="line">            <span class="keyword">if</span> (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) &#123; <span class="comment">//存在相同的 key值，hash值相等，key的值相等，那么新的值将会取代先前的值。</span></span><br><span class="line">                V oldValue = e.value;</span><br><span class="line">                e.value = value;</span><br><span class="line">                e.recordAccess(<span class="keyword">this</span>);</span><br><span class="line">                <span class="keyword">return</span> oldValue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        modCount++;<span class="comment">//此HashMap 结构被改变的次数</span></span><br><span class="line">        addEntry(hash, key, value, i);<span class="comment">//如果key值不相等那么放入hash表中。</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="get值"><a href="#get值" class="headerlink" title="get值"></a>get值</h2><p>hashMap的存和取的速度基本上是恒定的，除非有hash碰撞。存数据和取数据都是计算hash code然后比较hashcode和key值如果相等那么就直接返回要获取的value值，速度是非常快的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> Entry&lt;K,V&gt; <span class="title">getEntry</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (size == <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">int</span> hash = (key == <span class="keyword">null</span>) ? <span class="number">0</span> : hash(key);<span class="comment">//计算hashcode</span></span><br><span class="line">       <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[indexFor(hash, table.length)]; <span class="comment">//取得在hash表中的索引，hash表可以看成是 数据和链表的形式解决hash冲突。</span></span><br><span class="line">            e != <span class="keyword">null</span>;</span><br><span class="line">            e = e.next) &#123;</span><br><span class="line">           Object k;</span><br><span class="line">           <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">               ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))<span class="comment">//比较hashcode和value如果相等返回 value，这一步证明hashMap与数据容量无关</span></span><br><span class="line">               <span class="keyword">return</span> e;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><blockquote>
-<p>hashMap如何get，put数据？<br>hashMap的结构？<br>hashMap如何解决hash冲突？<br>hashMap中的一些概念，影响hashMap性能的关键因素？</p>
-</blockquote>
-<h2 id="JDK文档如下定义"><a href="#JDK文档如下定义" class="headerlink" title="JDK文档如下定义"></a>JDK文档如下定义</h2><blockquote>
-<p>Hash table based implementation of the <tt>Map</tt> interface.  This implementation provides all of the optional map operations, and permits <tt>null</tt> values and the <tt>null</tt> key.  (The <tt>HashMap</tt> class is roughly equivalent to <tt>Hashtable</tt>, except that it is unsynchronized and permits nulls.)  This class makes no guarantees as to the order of the map; in particular, it does not guarantee that the order will remain constant over time.</p>
-</blockquote>
-<p> <strong>关键字</strong>：<strong>null value,null key</strong>是允许的，<strong>非同步的</strong>，<strong>不保证遍历顺序</strong>，也不保证序不随时间变化。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line">    <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span></span><br><span class="line"></span>&#123;</span><br><span class="line">   xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>HashMap实现了Serializable接口，证明HashMap中的数据可以被序列化进行传输。<br>HashMap 实现了Cloneable接口，即覆盖了函数clone()，能被克隆。</p>
-<h2 id="影响HashMap的关键因素"><a href="#影响HashMap的关键因素" class="headerlink" title="影响HashMap的关键因素"></a>影响HashMap的关键因素</h2><blockquote>
-<p>two parameters that affect its performance: <i>initial capacity</i> and <i>load factor</i></p>
-<p><strong>The <i>capacity</i></strong> is the number of buckets in the hash table, and the initial capacity is simply the capacity at the time the hash table is created.  </p>
-<p><strong>The <i>load factor</i></strong> is a measure of how full the hash table is allowed to get before its capacity is automatically increased</p>
-<p><strong><i>rehashed</i></strong> (that is, internal data structures are rebuilt) so that the hash table has approximately twice the number of buckets.</p>
-</blockquote>
-<p><strong>容量就是每次初始化HashMap的初始化大小</strong>，负载因子就是 put进去的元素容量/初始化容量，<strong>如果这个比值大于负载因子，那么就要发生rehashed,调整hash表的大小为原来的两倍</strong>。</p>
-<h2 id="负载因子大小"><a href="#负载因子大小" class="headerlink" title="负载因子大小"></a>负载因子大小</h2><p>默认的值是0.75，这个值是存取时间和空间上的一个平衡点。如果要存大的数据，对于性能有要求最好设置一个大的初始化容量，这样比自动增长更高效。</p>
-<h2 id="非线程同步"><a href="#非线程同步" class="headerlink" title="非线程同步"></a>非线程同步</h2><p><strong>hashMap</strong>非线程同步的如果有超过两个线程修改（put,remove）hashMap，那么必须额外的设置hashMap使它变成线程同步的,可以使用<strong>Map m = Collections.synchronizedMap(new HashMap(…));</strong>来同步。</p>
-<h2 id="Fail-fast-检测机制"><a href="#Fail-fast-检测机制" class="headerlink" title="Fail-fast 检测机制"></a>Fail-fast 检测机制</h2><blockquote>
-<p>if the map is structurally modified at any time after the iterator is created, in any way except through the iterator’s own <tt>remove</tt> method, the iterator will throw a {@link ConcurrentModificationException}.  Thus, in the face of concurrent modification, the iterator fails quickly and cleanly, rather than risking arbitrary, non-deterministic behavior at an undetermined time in the future.</p>
-</blockquote>
-<p>如果迭代器已经被创建了，那么再去修改它就会报这样的一个异常ConcurrentModificationException，除非使用迭代器自己的 remove方法，这点避免了并发修改在未来的程序中带来的不确定后果,报出这异常后可以防止多线程并发带来的不确定性bug,JDK的官方文档这么说：<i>the fail-fast behavior of iterators</i></p>
-<ul>
-<li>should be used only to detect bugs. 仅用于同步迭代器修改时候的bug检测。</li>
-</ul>
-<h2 id="hashMap的结构"><a href="#hashMap的结构" class="headerlink" title="hashMap的结构"></a>hashMap的结构</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/hashMap" alt=""></p>
-<p>hashMap是一个数组链表，table是一个数组,里面存放了一个 Entry<k,v> 形式的链表，这样的一个结构可以很好的解决hash冲突问题，放入同一个索引里面，链表的长度增加一个，读取的时候只需要读取链表的头部就可以读取到新value.</k,v></p>
-<p>部分源代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组结构</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">transient</span> Entry&lt;K,V&gt;[] table = (Entry&lt;K,V&gt;[]) EMPTY_TABLE;</span><br><span class="line">    </span><br><span class="line">     <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> K key;</span><br><span class="line">        V value;</span><br><span class="line">        Entry&lt;K,V&gt; next;</span><br><span class="line">        <span class="keyword">int</span> hash;</span><br><span class="line"><span class="comment">//链表</span></span><br><span class="line">        <span class="comment">/**</span><br><span class="line">         * Creates new entry.</span><br><span class="line">         */</span></span><br><span class="line">        Entry(<span class="keyword">int</span> h, K k, V v, Entry&lt;K,V&gt; n) &#123;</span><br><span class="line">            value = v;</span><br><span class="line">            next = n;</span><br><span class="line">            key = k;</span><br><span class="line">            hash = h;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="put-value"><a href="#put-value" class="headerlink" title="put value"></a>put value</h2><p>如果put相同的key,那么先前放入的value将会被新放入的value取代,因为存放是用hashCode计算索引的，所以存储的顺序并不是遍历顺序。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (table == EMPTY_TABLE) &#123;</span><br><span class="line">            inflateTable(threshold); <span class="comment">//初始化hash表大小</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (key == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> putForNullKey(value);</span><br><span class="line">        <span class="keyword">int</span> hash = hash(key);<span class="comment">//计算key的hash code，如果hash code相等那么就产生所谓的 hash碰撞</span></span><br><span class="line">        <span class="keyword">int</span> i = indexFor(hash, table.length);<span class="comment">//位这个hash code 在这个hash表中存放的索引位置。</span></span><br><span class="line">        <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[i]; e != <span class="keyword">null</span>; e = e.next) &#123;</span><br><span class="line">            Object k;</span><br><span class="line">            <span class="keyword">if</span> (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) &#123; <span class="comment">//存在相同的 key值，hash值相等，key的值相等，那么新的值将会取代先前的值。</span></span><br><span class="line">                V oldValue = e.value;</span><br><span class="line">                e.value = value;</span><br><span class="line">                e.recordAccess(<span class="keyword">this</span>);</span><br><span class="line">                <span class="keyword">return</span> oldValue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        modCount++;<span class="comment">//此HashMap 结构被改变的次数</span></span><br><span class="line">        addEntry(hash, key, value, i);<span class="comment">//如果key值不相等那么放入hash表中。</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="get值"><a href="#get值" class="headerlink" title="get值"></a>get值</h2><p>hashMap的存和取的速度基本上是恒定的，除非有hash碰撞。存数据和取数据都是计算hash code然后比较hashcode和key值如果相等那么就直接返回要获取的value值，速度是非常快的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> Entry&lt;K,V&gt; <span class="title">getEntry</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (size == <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">int</span> hash = (key == <span class="keyword">null</span>) ? <span class="number">0</span> : hash(key);<span class="comment">//计算hashcode</span></span><br><span class="line">       <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[indexFor(hash, table.length)]; <span class="comment">//取得在hash表中的索引，hash表可以看成是 数据和链表的形式解决hash冲突。</span></span><br><span class="line">            e != <span class="keyword">null</span>;</span><br><span class="line">            e = e.next) &#123;</span><br><span class="line">           Object k;</span><br><span class="line">           <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">               ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))<span class="comment">//比较hashcode和value如果相等返回 value，这一步证明hashMap与数据容量无关</span></span><br><span class="line">               <span class="keyword">return</span> e;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/06/hashMap的区别/" data-id="ciqa9uda6000k9t9kiookj32r" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="" rel="prev" href="/blog/page/2/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/12/">12</a><a class="extend next" rel="next" href="/blog/page/4/">Next &raquo;</a>
+      <a class="" rel="prev" href="/blog/page/2/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/13/">13</a><a class="extend next" rel="next" href="/blog/page/4/">Next &raquo;</a>
     </nav>
   
 </section>
