@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>多线程一 | 小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="问题1.什么是线程，线程之间的基本状态和状态之间的关系？是程序执行的最小单位，一条线程指的是进程中一个单一顺序的控制流，线程是CPU进行调度资源的最小单位，一个进程中可以并发多个线程，每条线程并行执行不同的任务。
+同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（registe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多线程一">
+<meta property="og:url" content="http://bravemind.github.io/2016/07/14/多线程一/index.html">
+<meta property="og:site_name" content="小菜园">
+<meta property="og:description" content="问题1.什么是线程，线程之间的基本状态和状态之间的关系？是程序执行的最小单位，一条线程指的是进程中一个单一顺序的控制流，线程是CPU进行调度资源的最小单位，一个进程中可以并发多个线程，每条线程并行执行不同的任务。
+同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（registe">
+<meta property="og:updated_time" content="2016-07-14T09:32:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多线程一">
+<meta name="twitter:description" content="问题1.什么是线程，线程之间的基本状态和状态之间的关系？是程序执行的最小单位，一条线程指的是进程中一个单一顺序的控制流，线程是CPU进行调度资源的最小单位，一个进程中可以并发多个线程，每条线程并行执行不同的任务。
+同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（registe">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/grid.css">
+
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.min.css">
+
+
+
+</head>
+<div class="left_header">
+    <a class="header_avater" href="/blog"></a>
+    <div class="tag_s" id="showTag">
+        <i class="fa fa-tag" href="../blog"></i>
+            <div id="tags_clod" class="pop">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+            </div>
+    </div>
+    <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
+    <a href="https://github.com/braveMind" class="git" target="_blank"><i class="fa fa-github"></i></a>
+
+
+    <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
+    <a href="/blog/2016/05/21/友情链接/"><i class="fa fa-link" aria-hidden="true"></i></a>
+
+</div>
+<div class="left_content">
+    <section><article id="post-多线程一" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      多线程一
+    </h1>
+  
+
+        <a href="/blog/2016/07/14/多线程一/" class="article-data-title">
+
+  <time  datetime="2016-07-14T08:55:46.000Z" itemprop="datePublished">2016-07-14</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-什么是线程，线程之间的基本状态和状态之间的关系？"><a href="#1-什么是线程，线程之间的基本状态和状态之间的关系？" class="headerlink" title="1.什么是线程，线程之间的基本状态和状态之间的关系？"></a>1.什么是线程，线程之间的基本状态和状态之间的关系？</h2><p>是程序执行的最小单位，一条线程指的是进程中一个单一顺序的控制流，线程是CPU进行调度资源的最小单位，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
+<p>同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）。</p>
+<p><strong>线程间的基本状态是：就绪,运行,阻塞.</strong><br>1，就绪状态是指线程具备运行的所有条件，逻辑上可以运行，在等待处理机。<br>2，运行状态是指线程占有处理机正在运行。<br>3,阻塞状态是指线程在等待一个事件（如某个信号量），逻辑上不可执行。</p>
+<h2 id="2-线程和进程有什么区别？"><a href="#2-线程和进程有什么区别？" class="headerlink" title="2.线程和进程有什么区别？"></a>2.线程和进程有什么区别？</h2><h2 id="3-多线程有那些实现方式，分别是什么？"><a href="#3-多线程有那些实现方式，分别是什么？" class="headerlink" title="3.多线程有那些实现方式，分别是什么？"></a>3.多线程有那些实现方式，分别是什么？</h2><h2 id="4-多线程同步和互斥有几种实现方式，分别是什么？"><a href="#4-多线程同步和互斥有几种实现方式，分别是什么？" class="headerlink" title="4.多线程同步和互斥有几种实现方式，分别是什么？"></a>4.多线程同步和互斥有几种实现方式，分别是什么？</h2><h2 id="5-在什么情况下使用同步和互斥。"><a href="#5-在什么情况下使用同步和互斥。" class="headerlink" title="5.在什么情况下使用同步和互斥。"></a>5.在什么情况下使用同步和互斥。</h2>
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <div id="toc" class="article-toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-什么是线程，线程之间的基本状态和状态之间的关系？"><span class="toc-number">1.1.</span> <span class="toc-text">1.什么是线程，线程之间的基本状态和状态之间的关系？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-线程和进程有什么区别？"><span class="toc-number">1.2.</span> <span class="toc-text">2.线程和进程有什么区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-多线程有那些实现方式，分别是什么？"><span class="toc-number">1.3.</span> <span class="toc-text">3.多线程有那些实现方式，分别是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-多线程同步和互斥有几种实现方式，分别是什么？"><span class="toc-number">1.4.</span> <span class="toc-text">4.多线程同步和互斥有几种实现方式，分别是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-在什么情况下使用同步和互斥。"><span class="toc-number">1.5.</span> <span class="toc-text">5.在什么情况下使用同步和互斥。</span></a></li></ol></li></ol>
+        <hr/>
+      </div>
+      
+      <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-什么是线程，线程之间的基本状态和状态之间的关系？"><a href="#1-什么是线程，线程之间的基本状态和状态之间的关系？" class="headerlink" title="1.什么是线程，线程之间的基本状态和状态之间的关系？"></a>1.什么是线程，线程之间的基本状态和状态之间的关系？</h2><p>是程序执行的最小单位，一条线程指的是进程中一个单一顺序的控制流，线程是CPU进行调度资源的最小单位，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
+<p>同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）。</p>
+<p><strong>线程间的基本状态是：就绪,运行,阻塞.</strong><br>1，就绪状态是指线程具备运行的所有条件，逻辑上可以运行，在等待处理机。<br>2，运行状态是指线程占有处理机正在运行。<br>3,阻塞状态是指线程在等待一个事件（如某个信号量），逻辑上不可执行。</p>
+<h2 id="2-线程和进程有什么区别？"><a href="#2-线程和进程有什么区别？" class="headerlink" title="2.线程和进程有什么区别？"></a>2.线程和进程有什么区别？</h2><h2 id="3-多线程有那些实现方式，分别是什么？"><a href="#3-多线程有那些实现方式，分别是什么？" class="headerlink" title="3.多线程有那些实现方式，分别是什么？"></a>3.多线程有那些实现方式，分别是什么？</h2><h2 id="4-多线程同步和互斥有几种实现方式，分别是什么？"><a href="#4-多线程同步和互斥有几种实现方式，分别是什么？" class="headerlink" title="4.多线程同步和互斥有几种实现方式，分别是什么？"></a>4.多线程同步和互斥有几种实现方式，分别是什么？</h2><h2 id="5-在什么情况下使用同步和互斥。"><a href="#5-在什么情况下使用同步和互斥。" class="headerlink" title="5.在什么情况下使用同步和互斥。"></a>5.在什么情况下使用同步和互斥。</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/07/14/多线程一/" data-id="ciqm4acrz001qju9k3w84s0gg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/07/13/linux常用命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">linux常用命令</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+</div>
+
+
+   
+
+   <script src="/blog/js/jQuery.js"></script>
+   <script src="/blog/js/script.js"></script>
+
+
+
