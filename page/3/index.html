@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,80 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-比较器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/06/20/比较器/">Comparator 和 Comparable</a>
+    </h1>
+  
+
+        <a href="/blog/2016/06/20/比较器/" class="article-data-title">
+
+  <time  datetime="2016-06-20T14:21:22.000Z" itemprop="datePublished">2016-06-20</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Comparator 和 Comparable 的区别？面试常考题目。</p>
+</blockquote>
+<h2 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h2><p>唯一相同的就是函数名字相同，都叫compare函数。  </p>
+<h2 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h2><ol>
+<li>comparator属于java.util 包下面的,Comparable 属于java.lang包里面的。  </li>
+<li>Comparator compare方法含有两个参数泛型参数，Comparable接口含有一个泛型参数。  </li>
+<li>一个类实现了 Comparator 就可以称这个类是可比较类，可以被Collections.sort(),Arrays.sort()，和可以排序的map调用用来排序，而不用指明具体的比较(可排序的map，例如TreeMap 构造函数是 comparable)    </li>
+<li>compareable 是单维度的比如只能给类中的 id,name,price等排序。  </li>
+<li>comparator是多维度的可以对类的中的 每一个元素进行排序。  </li>
+<li>compareable 必须在类上进行实现接口才能对类中的元素进行排序，comparetor不用对类进行修改，只要另外一个类实现了Comparator，排序的时候只需要把这个排序类传入，就可以对对象进行排序。</li>
+</ol>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p>Comparator 和 Comparable 的区别？面试常考题目。</p>
+</blockquote>
+<h2 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h2><p>唯一相同的就是函数名字相同，都叫compare函数。  </p>
+<h2 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h2><ol>
+<li>comparator属于java.util 包下面的,Comparable 属于java.lang包里面的。  </li>
+<li>Comparator compare方法含有两个参数泛型参数，Comparable接口含有一个泛型参数。  </li>
+<li>一个类实现了 Comparator 就可以称这个类是可比较类，可以被Collections.sort(),Arrays.sort()，和可以排序的map调用用来排序，而不用指明具体的比较(可排序的map，例如TreeMap 构造函数是 comparable)    </li>
+<li>compareable 是单维度的比如只能给类中的 id,name,price等排序。  </li>
+<li>comparator是多维度的可以对类的中的 每一个元素进行排序。  </li>
+<li>compareable 必须在类上进行实现接口才能对类中的元素进行排序，comparetor不用对类进行修改，只要另外一个类实现了Comparator，排序的时候只需要把这个排序类传入，就可以对对象进行排序。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/06/20/比较器/" data-id="ciqqhm45e002iry9k3grhvgfq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-treeMap" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -122,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/16/treeMap/" data-id="ciqmfx1ax001iqtkvtdfx0x3k" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/16/treeMap/" data-id="ciqqhm4450019ry9knxfplf81" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -196,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/15/hashSet/" data-id="ciqmfx19u000dqtkv18zm07pn" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/15/hashSet/" data-id="ciqqhm43k000gry9khynb4dte" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -262,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/15/vimIDEA/" data-id="ciqmfx1af0011qtkvdm87wzmr" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/15/vimIDEA/" data-id="ciqqhm448001cry9kdx3q79ke" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -348,62 +422,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/13/arryList/" data-id="ciqmfx19y000iqtkv70go6ape" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/13/arryList/" data-id="ciqqhm43r000nry9kdotv6k2b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-HappyThings" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/06/09/HappyThings/">Happy Things</a>
-    </h1>
-  
-
-        <a href="/blog/2016/06/09/HappyThings/" class="article-data-title">
-
-  <time  datetime="2016-06-09T11:49:23.000Z" itemprop="datePublished">2016-06-09</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <p>吼吼，人品大爆发，经济舱被换成头等舱，好开心啊！！nice surprise, 没事刷gitHub…也好开心。</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <p>吼吼，人品大爆发，经济舱被换成头等舱，好开心啊！！nice surprise, 没事刷gitHub…也好开心。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/09/HappyThings/" data-id="ciqmfx19i0006qtkvrkw99444" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"></ul>
 
     </footer>
   </div>
