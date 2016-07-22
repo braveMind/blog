@@ -74,7 +74,8 @@
 <p><strong>非阻塞</strong>：非阻塞IO就是当前线程不必把自己挂起，等待操作系统完成IO请求，当前线程需要轮训内核非阻塞描述符recvfrom,完成IO请求。</p>
 <h2 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h2><p><strong>同步</strong>：就是我发出一个请求，这个请求在没有得到结果之前，调用不返回，一旦调用有结果，就返回，同步就是主动等待调用结果。</p>
 <p><strong>异步</strong>：调用结果在发出去之后，这个调用立即返回，此时调用者不会立即得到结果，随后被调用者通过回调或者通过状态通知来处理这个调用。<br>例如：告知内核启动某个操作，并让内核在整个操作（数据从内核复制到应用缓冲区）完成后通知应用进程。与信号量的区别是我们不需要自己完成IO操作，内核已经帮我们完成了IO操作，内核通知我们IO操作何时完成。</p>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>阻塞式IO,非阻塞式IO，IO复用模型，信号量驱动，都属于同步IO,真正的IO操作recvfrom将会阻塞进程，只有异步IO模型（需要特殊API）才是真正的异步IO。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/IO.png" alt="五种IO模型的比较"></p>
+<p>阻塞式IO,非阻塞式IO，IO复用模型，信号量驱动，都属于同步IO,真正的IO操作recvfrom将会阻塞进程，只有异步IO模型（需要特殊API）才是真正的异步IO。</p>
 <p>参考：UNIX网络编程（第六章）</p>
 
       
@@ -88,13 +89,14 @@
 <p><strong>非阻塞</strong>：非阻塞IO就是当前线程不必把自己挂起，等待操作系统完成IO请求，当前线程需要轮训内核非阻塞描述符recvfrom,完成IO请求。</p>
 <h2 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h2><p><strong>同步</strong>：就是我发出一个请求，这个请求在没有得到结果之前，调用不返回，一旦调用有结果，就返回，同步就是主动等待调用结果。</p>
 <p><strong>异步</strong>：调用结果在发出去之后，这个调用立即返回，此时调用者不会立即得到结果，随后被调用者通过回调或者通过状态通知来处理这个调用。<br>例如：告知内核启动某个操作，并让内核在整个操作（数据从内核复制到应用缓冲区）完成后通知应用进程。与信号量的区别是我们不需要自己完成IO操作，内核已经帮我们完成了IO操作，内核通知我们IO操作何时完成。</p>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>阻塞式IO,非阻塞式IO，IO复用模型，信号量驱动，都属于同步IO,真正的IO操作recvfrom将会阻塞进程，只有异步IO模型（需要特殊API）才是真正的异步IO。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/IO.png" alt="五种IO模型的比较"></p>
+<p>阻塞式IO,非阻塞式IO，IO复用模型，信号量驱动，都属于同步IO,真正的IO操作recvfrom将会阻塞进程，只有异步IO模型（需要特殊API）才是真正的异步IO。</p>
 <p>参考：UNIX网络编程（第六章）</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/22/NIO/" data-id="ciqxfiqbn0006d09k8dhkd0zv" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/22/NIO/" data-id="ciqxh95wp0009fd9kkdjva4jp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -164,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/22/IOmodel/" data-id="ciqxfiqbr0008d09kpitniitq" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/22/IOmodel/" data-id="ciqxh95wo0008fd9kb6etgylb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -240,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/17/aira2/" data-id="ciqxfiqc3000kd09k0px0ibtc" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/17/aira2/" data-id="ciqxh95wy000ifd9kxx86ifnp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -312,7 +314,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/14/多线程一/" data-id="ciqxfiqdj0021d09kmisiylyc" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/14/多线程一/" data-id="ciqxh95yb0024fd9kzgximb9q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -374,7 +376,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/13/linux常用命令/" data-id="ciqxfiqcj0013d09k6ijl5a8z" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/13/linux常用命令/" data-id="ciqxh95xc0011fd9kqwj2cc0i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
