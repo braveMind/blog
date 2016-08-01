@@ -11,8 +11,7 @@ du命令详见
 1ab -n 1000 -c 200 http://xxx
 请求1000次，并发是200，模拟200个人同时访问  
 ab命令参考
-结束进程``` shell
-kill -9 $(ps -ef | grep $1 | grep">
+结束进程12kill -9 $(ps -ef | grep $1 | grep -v grep">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux常用命令">
 <meta property="og:url" content="http://bravemind.github.io/2016/07/13/linux常用命令/index.html">
@@ -23,9 +22,8 @@ du命令详见
 1ab -n 1000 -c 200 http://xxx
 请求1000次，并发是200，模拟200个人同时访问  
 ab命令参考
-结束进程``` shell
-kill -9 $(ps -ef | grep $1 | grep">
-<meta property="og:updated_time" content="2016-08-01T15:15:29.000Z">
+结束进程12kill -9 $(ps -ef | grep $1 | grep -v grep">
+<meta property="og:updated_time" content="2016-08-01T15:19:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux常用命令">
 <meta name="twitter:description" content="文件操作大小排序某目录下按照M排序1sudo du -sh /usr/* | sort -rn
@@ -34,8 +32,7 @@ du命令详见
 1ab -n 1000 -c 200 http://xxx
 请求1000次，并发是200，模拟200个人同时访问  
 ab命令参考
-结束进程``` shell
-kill -9 $(ps -ef | grep $1 | grep">
+结束进程12kill -9 $(ps -ef | grep $1 | grep -v grep">
   
   
     <link rel="icon" href="/blog/favicon.png">
@@ -96,9 +93,7 @@ kill -9 $(ps -ef | grep $1 | grep">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ab -n 1000 -c 200 http://xxx</span><br></pre></td></tr></table></figure>
 <p>请求1000次，并发是200，模拟200个人同时访问  </p>
 <p><a href="http://www.ha97.com/4617.html" target="_blank" rel="external">ab命令参考</a></p>
-<h2 id="结束进程"><a href="#结束进程" class="headerlink" title="结束进程"></a>结束进程</h2><p>``` shell</p>
-<p>kill -9 $(ps -ef | grep $1 | grep -v grep | awk ‘{print $2}’)</p>
-
+<h2 id="结束进程"><a href="#结束进程" class="headerlink" title="结束进程"></a>结束进程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">kill -9 $(ps -ef | grep $1 | grep -v grep | awk &apos;&#123;print $2&#125;&apos;)</span><br></pre></td></tr></table></figure>
       
 
 
@@ -117,13 +112,11 @@ kill -9 $(ps -ef | grep $1 | grep">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ab -n 1000 -c 200 http://xxx</span><br></pre></td></tr></table></figure>
 <p>请求1000次，并发是200，模拟200个人同时访问  </p>
 <p><a href="http://www.ha97.com/4617.html" target="_blank" rel="external">ab命令参考</a></p>
-<h2 id="结束进程"><a href="#结束进程" class="headerlink" title="结束进程"></a>结束进程</h2><p>``` shell</p>
-<p>kill -9 $(ps -ef | grep $1 | grep -v grep | awk ‘{print $2}’)</p>
-
+<h2 id="结束进程"><a href="#结束进程" class="headerlink" title="结束进程"></a>结束进程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">kill -9 $(ps -ef | grep $1 | grep -v grep | awk &apos;&#123;print $2&#125;&apos;)</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/13/linux常用命令/" data-id="circ6hx44000xj6kv1h5upjxx" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/13/linux常用命令/" data-id="circ6lt870012jmkv6x0xhixe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
