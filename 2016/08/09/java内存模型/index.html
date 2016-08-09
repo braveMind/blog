@@ -17,7 +17,7 @@
 为了使处理器内部的运算单元被充分的利用，处理器可能会对输入的代码进行乱排序">
 <meta property="og:image" content="http://7xstto.com1.z0.glb.clouddn.com/%E7%A1%AC%E4%BB%B6%E5%86%85%E5%AD%98.png">
 <meta property="og:image" content="http://7xstto.com1.z0.glb.clouddn.com/%E8%BD%AF%E5%86%85%E5%AD%98.png">
-<meta property="og:updated_time" content="2016-08-09T07:13:49.000Z">
+<meta property="og:updated_time" content="2016-08-09T07:17:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java虚拟机内存模型（多线程划分）">
 <meta name="twitter:description" content="物理机器内存模型
@@ -117,6 +117,7 @@
 <h2 id="先行发生原则"><a href="#先行发生原则" class="headerlink" title="先行发生原则"></a>先行发生原则</h2><p>先发生的线程对变量的修改会影响后续线程对变量的使用。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i=<span class="number">1</span>; <span class="comment">//线程A</span></span><br><span class="line"></span><br><span class="line">j=i;<span class="comment">//线程B</span></span><br><span class="line"></span><br><span class="line">i=<span class="number">2</span>; <span class="comment">//线程C</span></span><br></pre></td></tr></table></figure>
 <p>j的值可能是1，2。</p>
+<p>参考：周志明《深入理解java虚拟机》</p>
 
       
 
@@ -169,11 +170,12 @@
 <h2 id="先行发生原则"><a href="#先行发生原则" class="headerlink" title="先行发生原则"></a>先行发生原则</h2><p>先发生的线程对变量的修改会影响后续线程对变量的使用。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i=<span class="number">1</span>; <span class="comment">//线程A</span></span><br><span class="line"></span><br><span class="line">j=i;<span class="comment">//线程B</span></span><br><span class="line"></span><br><span class="line">i=<span class="number">2</span>; <span class="comment">//线程C</span></span><br></pre></td></tr></table></figure>
 <p>j的值可能是1，2。</p>
+<p>参考：周志明《深入理解java虚拟机》</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/09/java内存模型/" data-id="cirn4s7g8000ob99kv3arm9qq" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/09/java内存模型/" data-id="cirn4viz8000nbw9kluagwryw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
