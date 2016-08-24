@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CopyOnWriteArrayList | 小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JDK1.5以后的并发包中新增的几个容器，平时在码代码的时候压根都没有印象❤️,在多线程读取List的时候CopyOnWriteArrayList是个不错的选择。
+
+为啥取个这么长的名字CopyOnWriteArrayList，为什么会起个这么长的名字，对于英语不好的人来说多记忆一个单词就会死一个脑细胞，从字面上来讲 “复制(copy)发生（on）在写（write,其实这个写代表的是所有引起数组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CopyOnWriteArrayList">
+<meta property="og:url" content="http://bravemind.github.io/2016/08/24/CopyOnWriteArrayList/index.html">
+<meta property="og:site_name" content="小菜园">
+<meta property="og:description" content="JDK1.5以后的并发包中新增的几个容器，平时在码代码的时候压根都没有印象❤️,在多线程读取List的时候CopyOnWriteArrayList是个不错的选择。
+
+为啥取个这么长的名字CopyOnWriteArrayList，为什么会起个这么长的名字，对于英语不好的人来说多记忆一个单词就会死一个脑细胞，从字面上来讲 “复制(copy)发生（on）在写（write,其实这个写代表的是所有引起数组">
+<meta property="og:updated_time" content="2016-08-24T02:30:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CopyOnWriteArrayList">
+<meta name="twitter:description" content="JDK1.5以后的并发包中新增的几个容器，平时在码代码的时候压根都没有印象❤️,在多线程读取List的时候CopyOnWriteArrayList是个不错的选择。
+
+为啥取个这么长的名字CopyOnWriteArrayList，为什么会起个这么长的名字，对于英语不好的人来说多记忆一个单词就会死一个脑细胞，从字面上来讲 “复制(copy)发生（on）在写（write,其实这个写代表的是所有引起数组">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/grid.css">
+
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.min.css">
+
+
+
+</head>
+<div class="left_header">
+    <a class="header_avater" href="/blog"></a>
+    <div class="tag_s" id="showTag">
+        <i class="fa fa-tag" href="../blog"></i>
+            <div id="tags_clod" class="pop">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+            </div>
+    </div>
+    <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
+    <a href="https://github.com/braveMind" class="git" target="_blank"><i class="fa fa-github"></i></a>
+
+
+    <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
+    <a href="/blog/2016/05/21/友情链接/"><i class="fa fa-link" aria-hidden="true"></i></a>
+
+</div>
+<div class="left_content">
+    <section><article id="post-CopyOnWriteArrayList" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CopyOnWriteArrayList
+    </h1>
+  
+
+        <a href="/blog/2016/08/24/CopyOnWriteArrayList/" class="article-data-title">
+
+  <time  datetime="2016-08-24T01:11:24.000Z" itemprop="datePublished">2016-08-24</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>JDK1.5以后的并发包中新增的几个容器，平时在码代码的时候压根都没有印象❤️,在多线程读取List的时候CopyOnWriteArrayList是个不错的选择。</p>
+</blockquote>
+<h2 id="为啥取个这么长的名字"><a href="#为啥取个这么长的名字" class="headerlink" title="为啥取个这么长的名字"></a>为啥取个这么长的名字</h2><p>CopyOnWriteArrayList，为什么会起个这么长的名字，对于英语不好的人来说多记忆一个单词就会死一个脑细胞，从字面上来讲 “复制(copy)发生（on）在写（write,<strong>其实这个写代表的是所有引起数组变化的操作</strong>）的ArrayList上”😒，不符合语义，应该把主语提前，再添加一些修饰语,”ArrayList每次发生写操作时候就重新复制一个数组出来”。对，这样合理多了，不过这只是对这个单词的第一印象。</p>
+<h2 id="jdk1-7官方发言"><a href="#jdk1-7官方发言" class="headerlink" title="jdk1.7官方发言"></a>jdk1.7官方发言</h2><p><strong>A thread-safe variant of {@link java.util.ArrayList}</strong> in which all mutative operations (<tt>add</tt>, <tt>set</tt>, and so on) are implemented by making a fresh copy of the underlying array.</p>
+<p> <strong>private volatile transient Object[] array;</strong></p>
+<p>是ArrayList线程安全的变体所有的改变数组的操作都需要新建一个数组的的拷贝，并将新的值放在这个数组中，在把用 <strong>volatile</strong> 修饰的数组指向这个新的数组，如果不懂volatile关键字的用法请看《深入理解java虚拟机》第五章。</p>
+<h2 id="add-元素"><a href="#add-元素" class="headerlink" title="add 元素"></a>add 元素</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> ReentrantLock lock = <span class="keyword">this</span>.lock;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Object[] elements = getArray();</span><br><span class="line">            <span class="keyword">int</span> len = elements.length;</span><br><span class="line">            Object[] newElements = Arrays.copyOf(elements, len + <span class="number">1</span>);</span><br><span class="line">            newElements[len] = e;</span><br><span class="line">            setArray(newElements);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>add操作使用的是可重入锁，理论上更高效，但是程序员要不要使用lock锁存在很大的争议。<br><a href="">synchronized vs Lock</a><a href="http://blog.csdn.net/fw0124/article/details/6672522" target="_blank" rel="external">http://blog.csdn.net/fw0124/article/details/6672522</a></p>
+<h2 id="集合遍历"><a href="#集合遍历" class="headerlink" title="集合遍历"></a>集合遍历</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> COWIterator&lt;E&gt;(getArray(), <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们如果多个线程在迭代器中去修改ArrayList会报<br><strong>ConcurrentModificationException</strong>，如果尝试修改CopyOnWriteArrayList 会报一个 UnsupportedOperationException,是的这个异常是迭代器自定义的异常，人家根本就不支持在迭代时候去修改数组的结构！！ 好自为之吧，别遍历的时候修改数组的结构了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">       * Not supported. Always throws UnsupportedOperationException.</span><br><span class="line">       * <span class="doctag">@throws</span> UnsupportedOperationException always; &lt;tt&gt;remove&lt;/tt&gt;</span><br><span class="line">       *         is not supported by this iterator.</span><br><span class="line">       */</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">/**</span><br><span class="line">       * Not supported. Always throws UnsupportedOperationException.</span><br><span class="line">       * <span class="doctag">@throws</span> UnsupportedOperationException always; &lt;tt&gt;set&lt;/tt&gt;</span><br><span class="line">       *         is not supported by this iterator.</span><br><span class="line">       */</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">/**</span><br><span class="line">       * Not supported. Always throws UnsupportedOperationException.</span><br><span class="line">       * <span class="doctag">@throws</span> UnsupportedOperationException always; &lt;tt&gt;add&lt;/tt&gt;</span><br><span class="line">       *         is not supported by this iterator.</span><br><span class="line">       */</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CopyOnWriteArrayList使用的场景。"><a href="#CopyOnWriteArrayList使用的场景。" class="headerlink" title="CopyOnWriteArrayList使用的场景。"></a>CopyOnWriteArrayList使用的场景。</h2><p>通过volatile提供了“读取到的数据总是最新的”这个机制的,多线程高效的遍历数组可以使用CopyOnWriteArrayList.</p>
+<p>对于经常被修改的数据列表，使用同步的ArrayList性能胜过CopyOnWriteArrayList,因为CopyOnWriteArrayList所有的修改线程会对底层数组进行复制，这种操作是低效的。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <div id="toc" class="article-toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为啥取个这么长的名字"><span class="toc-number">1.</span> <span class="toc-text">为啥取个这么长的名字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jdk1-7官方发言"><span class="toc-number">2.</span> <span class="toc-text">jdk1.7官方发言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#add-元素"><span class="toc-number">3.</span> <span class="toc-text">add 元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集合遍历"><span class="toc-number">4.</span> <span class="toc-text">集合遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CopyOnWriteArrayList使用的场景。"><span class="toc-number">5.</span> <span class="toc-text">CopyOnWriteArrayList使用的场景。</span></a></li></ol>
+        <hr/>
+      </div>
+      
+      <blockquote>
+<p>JDK1.5以后的并发包中新增的几个容器，平时在码代码的时候压根都没有印象❤️,在多线程读取List的时候CopyOnWriteArrayList是个不错的选择。</p>
+</blockquote>
+<h2 id="为啥取个这么长的名字"><a href="#为啥取个这么长的名字" class="headerlink" title="为啥取个这么长的名字"></a>为啥取个这么长的名字</h2><p>CopyOnWriteArrayList，为什么会起个这么长的名字，对于英语不好的人来说多记忆一个单词就会死一个脑细胞，从字面上来讲 “复制(copy)发生（on）在写（write,<strong>其实这个写代表的是所有引起数组变化的操作</strong>）的ArrayList上”😒，不符合语义，应该把主语提前，再添加一些修饰语,”ArrayList每次发生写操作时候就重新复制一个数组出来”。对，这样合理多了，不过这只是对这个单词的第一印象。</p>
+<h2 id="jdk1-7官方发言"><a href="#jdk1-7官方发言" class="headerlink" title="jdk1.7官方发言"></a>jdk1.7官方发言</h2><p><strong>A thread-safe variant of {@link java.util.ArrayList}</strong> in which all mutative operations (<tt>add</tt>, <tt>set</tt>, and so on) are implemented by making a fresh copy of the underlying array.</p>
+<p> <strong>private volatile transient Object[] array;</strong></p>
+<p>是ArrayList线程安全的变体所有的改变数组的操作都需要新建一个数组的的拷贝，并将新的值放在这个数组中，在把用 <strong>volatile</strong> 修饰的数组指向这个新的数组，如果不懂volatile关键字的用法请看《深入理解java虚拟机》第五章。</p>
+<h2 id="add-元素"><a href="#add-元素" class="headerlink" title="add 元素"></a>add 元素</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> ReentrantLock lock = <span class="keyword">this</span>.lock;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Object[] elements = getArray();</span><br><span class="line">            <span class="keyword">int</span> len = elements.length;</span><br><span class="line">            Object[] newElements = Arrays.copyOf(elements, len + <span class="number">1</span>);</span><br><span class="line">            newElements[len] = e;</span><br><span class="line">            setArray(newElements);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>add操作使用的是可重入锁，理论上更高效，但是程序员要不要使用lock锁存在很大的争议。<br><a href="">synchronized vs Lock</a><a href="http://blog.csdn.net/fw0124/article/details/6672522" target="_blank" rel="external">http://blog.csdn.net/fw0124/article/details/6672522</a></p>
+<h2 id="集合遍历"><a href="#集合遍历" class="headerlink" title="集合遍历"></a>集合遍历</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> COWIterator&lt;E&gt;(getArray(), <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们如果多个线程在迭代器中去修改ArrayList会报<br><strong>ConcurrentModificationException</strong>，如果尝试修改CopyOnWriteArrayList 会报一个 UnsupportedOperationException,是的这个异常是迭代器自定义的异常，人家根本就不支持在迭代时候去修改数组的结构！！ 好自为之吧，别遍历的时候修改数组的结构了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">       * Not supported. Always throws UnsupportedOperationException.</span><br><span class="line">       * <span class="doctag">@throws</span> UnsupportedOperationException always; &lt;tt&gt;remove&lt;/tt&gt;</span><br><span class="line">       *         is not supported by this iterator.</span><br><span class="line">       */</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">/**</span><br><span class="line">       * Not supported. Always throws UnsupportedOperationException.</span><br><span class="line">       * <span class="doctag">@throws</span> UnsupportedOperationException always; &lt;tt&gt;set&lt;/tt&gt;</span><br><span class="line">       *         is not supported by this iterator.</span><br><span class="line">       */</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">/**</span><br><span class="line">       * Not supported. Always throws UnsupportedOperationException.</span><br><span class="line">       * <span class="doctag">@throws</span> UnsupportedOperationException always; &lt;tt&gt;add&lt;/tt&gt;</span><br><span class="line">       *         is not supported by this iterator.</span><br><span class="line">       */</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CopyOnWriteArrayList使用的场景。"><a href="#CopyOnWriteArrayList使用的场景。" class="headerlink" title="CopyOnWriteArrayList使用的场景。"></a>CopyOnWriteArrayList使用的场景。</h2><p>通过volatile提供了“读取到的数据总是最新的”这个机制的,多线程高效的遍历数组可以使用CopyOnWriteArrayList.</p>
+<p>对于经常被修改的数据列表，使用同步的ArrayList性能胜过CopyOnWriteArrayList,因为CopyOnWriteArrayList所有的修改线程会对底层数组进行复制，这种操作是低效的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/08/24/CopyOnWriteArrayList/" data-id="cis8a99lh0003t49k06wx29j1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/08/12/annotation/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">注解处理器</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+</div>
+
+
+   
+
+   <script src="/blog/js/jQuery.js"></script>
+   <script src="/blog/js/script.js"></script>
+
+
+
