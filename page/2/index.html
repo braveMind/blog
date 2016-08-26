@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,117 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-java虚拟机内存模型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="java虚拟机内存模型"><a href="#java虚拟机内存模型" class="headerlink" title="java虚拟机内存模型"></a>java虚拟机内存模型</h2><h2 id="物理机器内存模型"><a href="#物理机器内存模型" class="headerlink" title="物理机器内存模型"></a>物理机器内存模型</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/%E7%A1%AC%E4%BB%B6%E5%86%85%E5%AD%98.png" alt="机器内存"></p>
+<p>硬件的高速缓存很好的解决了处理器和内存的矛盾，但是引入了新的问题，缓存一致性，当多个处理器同时共享同一个主存时候可能导致数据不一致，解决这些问题，需要各个处理器访问缓存时遵循一些协议，在读写时候要根据协议来读写，这些协议有：MSI、MESI、Synpse、Firefly、Dragon Protocol等。</p>
+<p>为了使处理器内部的运算单元被充分的利用，处理器可能会对输入的代码进行<strong>乱排序执行</strong>（Out-Of-Order Execution）优化，<strong>计算机会在处理之后将乱序的结果重组保证该结果与顺序执行的结果是一致的</strong>。但是并不保证在程序中各个语句的计算先后顺序与输入代码中的顺序是一致的，如果一个计算任务依赖另外一个计算机任务的中间结果那么这个中间结果是不可靠的，<strong>java虚拟机在即时编译的时候也有类似的指令重排序（Instruction Reorder）优化</strong></p>
+<h2 id="java虚拟机内存"><a href="#java虚拟机内存" class="headerlink" title="java虚拟机内存"></a>java虚拟机内存</h2><p>java内存模型主要定义各个变量的的访问规则，虚拟机中将变量存储到内存和从内存中取出变量的底层细节。这些变量指的是实例字段，静态字段，构成数组对象的元素，不包括局部变量与方法参数（线程私有变量）不会被共享。  </p>
+<p>每条线程有自己的工作内存，保存该线程使用的变量的主内存副本的拷贝，线程对所有变量的读取操作必须都在工作内存中进行，而不能直接读取主存中的的内存变量。不同线程之间无法直接访问对方工作内存中的变量，线程间变量的访问需要通过主内存来完成。</p>
+<p><img src="http://7xstto.com1.z0.glb.clouddn.com/%E8%BD%AF%E5%86%85%E5%AD%98.png" alt="物理机器内存模型"></p>
+<h2 id="内存划分层次以及对应关系"><a href="#内存划分层次以及对应关系" class="headerlink" title="内存划分层次以及对应关系"></a>内存划分层次以及对应关系</h2><p>这里所划分的内存模型和通常将的java虚拟机内存模型（heap,stack,method areas）的划分层次是不一样的,如果两者要<strong>勉强对应</strong>起来那么，主内存对应java中对象的实例数据部分，工作内存对应于虚拟机中栈中的部分区域。从更底层的层次来说主内存就是硬件的内存，为了获取更高的运行速度，虚拟机及硬件系统可能让工作内存优先存储于寄存器和高速缓存中。</p>
+<h2 id="内存间的交互操作"><a href="#内存间的交互操作" class="headerlink" title="内存间的交互操作"></a>内存间的交互操作</h2><p>主内存与工作内存之间的交互协议，一个变量如何从主存copy到工作内存，如何从工作内存同步到主存，java定义了8种操作来完成。  </p>
+<ul>
+<li>lock(锁定)：作用于主内存变量，它把一个变量表示为一条线程独占状态。  </li>
+<li>unlock(解锁)：作用于主内存变量，它把一个处于锁定状态的变量释放出来，释放后的变量才可以被其它线程锁定。  </li>
+<li>read(读取)：作用于主内存变量，把变量从主内存传输到线程工作内存中，以便随后的load动作使用。  </li>
+<li>use(使用)：作用于工作内存变量，把工作内存中的变量传递给执行引擎，每当虚拟机遇到一个需要使用变量的值的字节码指令将会执行这个操作。  </li>
+<li>assign（赋值）：作用于工作内存，它把从一个执行引擎接收到的值赋值给工作内存变量，每当虚拟机遇到一个变量赋值的字节码指令的时候执行这个操作。  </li>
+<li>store(存储)：作用于工作内存变量，把工作内存中的变量传递到主内存中，一遍随后的write操作使用。</li>
+<li>write(写入)：作用于主存中的变量，它把sotre操作从工作内存中得到的变量放入到主存变量中。</li>
+</ul>
+<p>如果把一个变量复制到工作内存，那就顺序的执行read和load操作，如果要把变量从工作内存同步回主存，就要按顺序执行store和write操作。<strong>java内存模型要求上述操作是按照顺序执行的，而并没有保证是连续执行的</strong> 也就是说read和load之间，store和write之间可以插入其它的指令，如果对主存中的变量a,b 进行访问的时候一种出现的可能顺序是 read a、 read b、load b、 load a。</p>
+<h2 id="volatile-类型变量"><a href="#volatile-类型变量" class="headerlink" title="volatile 类型变量"></a>volatile 类型变量</h2><p>关键字volatile变量提供了轻量级的同步机制，当一个关键字被定义为volatile，当一条线程修改这个变量的值，新的值对所有的线程都是立即可知的，普通变量做不到这一点，变量的值在线程间的传递均需要通过主存来完成。</p>
+<h2 id="基于volatile变量运算在并发下是安全的？"><a href="#基于volatile变量运算在并发下是安全的？" class="headerlink" title="基于volatile变量运算在并发下是安全的？"></a>基于volatile变量运算在并发下是安全的？</h2><p>如果是非原子操作，volatile变量在并发运算中一样是不安全的。例如i++这样的运算，在各个线程取到i的时候i的值在各个线程中是一致的，在执行 add指令的时候其它线程可能把i的值已经修改了，在同步到主存的时候就可能把较小的值写到主存中。</p>
+<p>由于volatile变量只能保证可见性，在<strong>不符合</strong>面的场景中依然需要（synchronized或java.util.concurrent中的原子类）保证原子性。</p>
+<ul>
+<li>运算结果并不依赖变量的当前值，或能够确保只有单一的线程修改变量的值</li>
+<li>变量不需要与其它变量共同参与不变的约束。</li>
+</ul>
+<h2 id="volatile变量屏蔽指令重排序问题。"><a href="#volatile变量屏蔽指令重排序问题。" class="headerlink" title="volatile变量屏蔽指令重排序问题。"></a>volatile变量屏蔽指令重排序问题。</h2><p>伪代码：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">boolean</span> initialized=<span class="keyword">false</span>;</span><br><span class="line">processConfigOptions(configText,configOptions);</span><br><span class="line">initialized=<span class="keyword">true</span>; <span class="comment">//被重排序后，放在读取配置文件之前，会影响其它线程中initialized 的值。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(! initialized)&#123;</span><br><span class="line">sleep()</span><br><span class="line">&#125;</span><br><span class="line">doSomething();</span><br></pre></td></tr></table></figure>
+<h2 id="原子性、可见性、有序性"><a href="#原子性、可见性、有序性" class="headerlink" title="原子性、可见性、有序性"></a>原子性、可见性、有序性</h2><ul>
+<li>原子性：java内存模型来保证原子性变量的操作包括read、load、assign、use、store、write。如果应用需要大范围的原子操作使用同步代码块，synchronized关键字因此使用synchronized之间的代码块也具有原子性。</li>
+<li><p>可见性：可见性就是当一个线程修改了共享变量的值，其它线程能够立即得知变量的修改。java内存模型是通过变量在修改后讲新值同步到主存，在变量读取前从主存刷新变量的值，主存作为传递媒介来实现变量的可见性，无论是volatile变量还是普通变量，普通变量不能保证每次变量改变时，这个值对别的线程可见。</p>
+<p>  除了volatile变量，<strong>final,synchronized</strong>也可以实现可见性</p>
+</li>
+<li><p>有续性：<strong> 如果在本线程内观察所有的操作都是有序的（</strong>不管怎么重排序，（单线程）程序的执行结果不能被改变。**），如果在另外一个线程观察所有的操作都是无序的。</p>
+</li>
+</ul>
+<p><strong>前半句指的是线程内表现为串行，后半句指的是重排序和工作内存与主存同步延迟的现象。</strong></p>
+<h2 id="先行发生原则"><a href="#先行发生原则" class="headerlink" title="先行发生原则"></a>先行发生原则</h2><p>先发生的线程对变量的修改会影响后续线程对变量的使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i=<span class="number">1</span>; <span class="comment">//线程A</span></span><br><span class="line"></span><br><span class="line">j=i;<span class="comment">//线程B</span></span><br><span class="line"></span><br><span class="line">i=<span class="number">2</span>; <span class="comment">//线程C</span></span><br></pre></td></tr></table></figure>
+<p>j的值可能是1，2。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <h2 id="java虚拟机内存模型"><a href="#java虚拟机内存模型" class="headerlink" title="java虚拟机内存模型"></a>java虚拟机内存模型</h2><h2 id="物理机器内存模型"><a href="#物理机器内存模型" class="headerlink" title="物理机器内存模型"></a>物理机器内存模型</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/%E7%A1%AC%E4%BB%B6%E5%86%85%E5%AD%98.png" alt="机器内存"></p>
+<p>硬件的高速缓存很好的解决了处理器和内存的矛盾，但是引入了新的问题，缓存一致性，当多个处理器同时共享同一个主存时候可能导致数据不一致，解决这些问题，需要各个处理器访问缓存时遵循一些协议，在读写时候要根据协议来读写，这些协议有：MSI、MESI、Synpse、Firefly、Dragon Protocol等。</p>
+<p>为了使处理器内部的运算单元被充分的利用，处理器可能会对输入的代码进行<strong>乱排序执行</strong>（Out-Of-Order Execution）优化，<strong>计算机会在处理之后将乱序的结果重组保证该结果与顺序执行的结果是一致的</strong>。但是并不保证在程序中各个语句的计算先后顺序与输入代码中的顺序是一致的，如果一个计算任务依赖另外一个计算机任务的中间结果那么这个中间结果是不可靠的，<strong>java虚拟机在即时编译的时候也有类似的指令重排序（Instruction Reorder）优化</strong></p>
+<h2 id="java虚拟机内存"><a href="#java虚拟机内存" class="headerlink" title="java虚拟机内存"></a>java虚拟机内存</h2><p>java内存模型主要定义各个变量的的访问规则，虚拟机中将变量存储到内存和从内存中取出变量的底层细节。这些变量指的是实例字段，静态字段，构成数组对象的元素，不包括局部变量与方法参数（线程私有变量）不会被共享。  </p>
+<p>每条线程有自己的工作内存，保存该线程使用的变量的主内存副本的拷贝，线程对所有变量的读取操作必须都在工作内存中进行，而不能直接读取主存中的的内存变量。不同线程之间无法直接访问对方工作内存中的变量，线程间变量的访问需要通过主内存来完成。</p>
+<p><img src="http://7xstto.com1.z0.glb.clouddn.com/%E8%BD%AF%E5%86%85%E5%AD%98.png" alt="物理机器内存模型"></p>
+<h2 id="内存划分层次以及对应关系"><a href="#内存划分层次以及对应关系" class="headerlink" title="内存划分层次以及对应关系"></a>内存划分层次以及对应关系</h2><p>这里所划分的内存模型和通常将的java虚拟机内存模型（heap,stack,method areas）的划分层次是不一样的,如果两者要<strong>勉强对应</strong>起来那么，主内存对应java中对象的实例数据部分，工作内存对应于虚拟机中栈中的部分区域。从更底层的层次来说主内存就是硬件的内存，为了获取更高的运行速度，虚拟机及硬件系统可能让工作内存优先存储于寄存器和高速缓存中。</p>
+<h2 id="内存间的交互操作"><a href="#内存间的交互操作" class="headerlink" title="内存间的交互操作"></a>内存间的交互操作</h2><p>主内存与工作内存之间的交互协议，一个变量如何从主存copy到工作内存，如何从工作内存同步到主存，java定义了8种操作来完成。  </p>
+<ul>
+<li>lock(锁定)：作用于主内存变量，它把一个变量表示为一条线程独占状态。  </li>
+<li>unlock(解锁)：作用于主内存变量，它把一个处于锁定状态的变量释放出来，释放后的变量才可以被其它线程锁定。  </li>
+<li>read(读取)：作用于主内存变量，把变量从主内存传输到线程工作内存中，以便随后的load动作使用。  </li>
+<li>use(使用)：作用于工作内存变量，把工作内存中的变量传递给执行引擎，每当虚拟机遇到一个需要使用变量的值的字节码指令将会执行这个操作。  </li>
+<li>assign（赋值）：作用于工作内存，它把从一个执行引擎接收到的值赋值给工作内存变量，每当虚拟机遇到一个变量赋值的字节码指令的时候执行这个操作。  </li>
+<li>store(存储)：作用于工作内存变量，把工作内存中的变量传递到主内存中，一遍随后的write操作使用。</li>
+<li>write(写入)：作用于主存中的变量，它把sotre操作从工作内存中得到的变量放入到主存变量中。</li>
+</ul>
+<p>如果把一个变量复制到工作内存，那就顺序的执行read和load操作，如果要把变量从工作内存同步回主存，就要按顺序执行store和write操作。<strong>java内存模型要求上述操作是按照顺序执行的，而并没有保证是连续执行的</strong> 也就是说read和load之间，store和write之间可以插入其它的指令，如果对主存中的变量a,b 进行访问的时候一种出现的可能顺序是 read a、 read b、load b、 load a。</p>
+<h2 id="volatile-类型变量"><a href="#volatile-类型变量" class="headerlink" title="volatile 类型变量"></a>volatile 类型变量</h2><p>关键字volatile变量提供了轻量级的同步机制，当一个关键字被定义为volatile，当一条线程修改这个变量的值，新的值对所有的线程都是立即可知的，普通变量做不到这一点，变量的值在线程间的传递均需要通过主存来完成。</p>
+<h2 id="基于volatile变量运算在并发下是安全的？"><a href="#基于volatile变量运算在并发下是安全的？" class="headerlink" title="基于volatile变量运算在并发下是安全的？"></a>基于volatile变量运算在并发下是安全的？</h2><p>如果是非原子操作，volatile变量在并发运算中一样是不安全的。例如i++这样的运算，在各个线程取到i的时候i的值在各个线程中是一致的，在执行 add指令的时候其它线程可能把i的值已经修改了，在同步到主存的时候就可能把较小的值写到主存中。</p>
+<p>由于volatile变量只能保证可见性，在<strong>不符合</strong>面的场景中依然需要（synchronized或java.util.concurrent中的原子类）保证原子性。</p>
+<ul>
+<li>运算结果并不依赖变量的当前值，或能够确保只有单一的线程修改变量的值</li>
+<li>变量不需要与其它变量共同参与不变的约束。</li>
+</ul>
+<h2 id="volatile变量屏蔽指令重排序问题。"><a href="#volatile变量屏蔽指令重排序问题。" class="headerlink" title="volatile变量屏蔽指令重排序问题。"></a>volatile变量屏蔽指令重排序问题。</h2><p>伪代码：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">boolean</span> initialized=<span class="keyword">false</span>;</span><br><span class="line">processConfigOptions(configText,configOptions);</span><br><span class="line">initialized=<span class="keyword">true</span>; <span class="comment">//被重排序后，放在读取配置文件之前，会影响其它线程中initialized 的值。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(! initialized)&#123;</span><br><span class="line">sleep()</span><br><span class="line">&#125;</span><br><span class="line">doSomething();</span><br></pre></td></tr></table></figure>
+<h2 id="原子性、可见性、有序性"><a href="#原子性、可见性、有序性" class="headerlink" title="原子性、可见性、有序性"></a>原子性、可见性、有序性</h2><ul>
+<li>原子性：java内存模型来保证原子性变量的操作包括read、load、assign、use、store、write。如果应用需要大范围的原子操作使用同步代码块，synchronized关键字因此使用synchronized之间的代码块也具有原子性。</li>
+<li><p>可见性：可见性就是当一个线程修改了共享变量的值，其它线程能够立即得知变量的修改。java内存模型是通过变量在修改后讲新值同步到主存，在变量读取前从主存刷新变量的值，主存作为传递媒介来实现变量的可见性，无论是volatile变量还是普通变量，普通变量不能保证每次变量改变时，这个值对别的线程可见。</p>
+<p>  除了volatile变量，<strong>final,synchronized</strong>也可以实现可见性</p>
+</li>
+<li><p>有续性：<strong> 如果在本线程内观察所有的操作都是有序的（</strong>不管怎么重排序，（单线程）程序的执行结果不能被改变。**），如果在另外一个线程观察所有的操作都是无序的。</p>
+</li>
+</ul>
+<p><strong>前半句指的是线程内表现为串行，后半句指的是重排序和工作内存与主存同步延迟的现象。</strong></p>
+<h2 id="先行发生原则"><a href="#先行发生原则" class="headerlink" title="先行发生原则"></a>先行发生原则</h2><p>先发生的线程对变量的修改会影响后续线程对变量的使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i=<span class="number">1</span>; <span class="comment">//线程A</span></span><br><span class="line"></span><br><span class="line">j=i;<span class="comment">//线程B</span></span><br><span class="line"></span><br><span class="line">i=<span class="number">2</span>; <span class="comment">//线程C</span></span><br></pre></td></tr></table></figure>
+<p>j的值可能是1，2。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/08/09/java虚拟机内存模型/" data-id="cisbv91li001b8zkwxuepp4xb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-java内存模型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -162,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/09/java内存模型/" data-id="cisbsnq0300175ikwt9c99hib" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/09/java内存模型/" data-id="cisbv91lb00118zkw416gw3tn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -226,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/22/NIO/" data-id="cisbsnpzp000l5ikwu2y74q5a" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/22/NIO/" data-id="cisbv91l1000m8zkwttp8brqg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -296,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/22/IOmodel/" data-id="cisbsnpzi000c5ikw98io19u6" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/22/IOmodel/" data-id="cisbv91kz000h8zkwvq52cj6n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -384,82 +495,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/17/aira2/" data-id="cisbsnpzr000n5ikw7j9owvaw" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/17/aira2/" data-id="cisbv91l6000u8zkww2zkdty4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-多线程一" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/07/14/多线程一/">多线程一</a>
-    </h1>
-  
-
-        <a href="/blog/2016/07/14/多线程一/" class="article-data-title">
-
-  <time  datetime="2016-07-14T08:55:46.000Z" itemprop="datePublished">2016-07-14</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-什么是线程，线程之间的基本状态和状态之间的关系？"><a href="#1-什么是线程，线程之间的基本状态和状态之间的关系？" class="headerlink" title="1.什么是线程，线程之间的基本状态和状态之间的关系？"></a>1.什么是线程，线程之间的基本状态和状态之间的关系？</h2><p>是程序执行的最小单位，一条线程指的是进程中一个单一顺序的控制流，线程是CPU进行调度资源的最小单位，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
-<p>同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）。</p>
-<p><strong>线程间的基本状态是：就绪,运行,阻塞.</strong><br>1，就绪状态是指线程具备运行的所有条件，逻辑上可以运行，在等待处理机。<br>2，运行状态是指线程占有处理机正在运行。<br>3,阻塞状态是指线程在等待一个事件（如某个信号量），逻辑上不可执行。</p>
-<p>线程状态转换图：<br><img src="http://7xstto.com1.z0.glb.clouddn.com/threadMap.jpg" alt="状态转换图"></p>
-<h2 id="2-线程和进程有什么区别？"><a href="#2-线程和进程有什么区别？" class="headerlink" title="2.线程和进程有什么区别？"></a>2.线程和进程有什么区别？</h2><p>1.进程是相对于操作系统来说的，进程是操作系统分配资源的最小单位，线程是程序中进程的不同执行路劲。<br>2.线程之间可以共享内存，对于一些需要并发操作，而且要共享某些变量就只能用线程。<br>3.线程不能独立运行，必须依赖于进程，单线程的一个程序就是一个进程。</p>
-<h2 id="3-多线程同步和互斥有几种实现方式，分别是什么-什么时候使用？"><a href="#3-多线程同步和互斥有几种实现方式，分别是什么-什么时候使用？" class="headerlink" title="3.多线程同步和互斥有几种实现方式，分别是什么,什么时候使用？"></a>3.多线程同步和互斥有几种实现方式，分别是什么,什么时候使用？</h2><p><strong>线程间的同步方法大体可分为两类：用户模式和内核模式。</strong></p>
-<p>内核模式就是指利用系统内核对象的单一性来进行同步，使用时需要切换内核态与用户态，而用户模式就是不需要切换到内核态，只在用户态完成操作。</p>
-<p><strong>线程同步</strong>是指线程之间所具有的一种制约关系，一个线程的执行依赖另一个线程的消息，当它没有得到另一个线程的消息时应等待，直到消息到达时才被唤醒。   </p>
-<p><strong>线程同步可以使用信号量的方式（wait,notify,notifyAll)</strong>  </p>
-<p><strong>线程互斥</strong>是指对于共享的进程系统资源，在各单个线程访问时的排它性。当有若干个线程都要使用某一共享资源时，任何时刻最多只允许一个线程去使用，其它要使用该资源的线程必须等待，直到占用资源者释放该资源。线程互斥可以看成是一种特殊的线程同步（下文统称为同步）。 </p>
-<p><strong>线程互斥可以使用lock,synchronized</strong></p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-什么是线程，线程之间的基本状态和状态之间的关系？"><a href="#1-什么是线程，线程之间的基本状态和状态之间的关系？" class="headerlink" title="1.什么是线程，线程之间的基本状态和状态之间的关系？"></a>1.什么是线程，线程之间的基本状态和状态之间的关系？</h2><p>是程序执行的最小单位，一条线程指的是进程中一个单一顺序的控制流，线程是CPU进行调度资源的最小单位，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
-<p>同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）。</p>
-<p><strong>线程间的基本状态是：就绪,运行,阻塞.</strong><br>1，就绪状态是指线程具备运行的所有条件，逻辑上可以运行，在等待处理机。<br>2，运行状态是指线程占有处理机正在运行。<br>3,阻塞状态是指线程在等待一个事件（如某个信号量），逻辑上不可执行。</p>
-<p>线程状态转换图：<br><img src="http://7xstto.com1.z0.glb.clouddn.com/threadMap.jpg" alt="状态转换图"></p>
-<h2 id="2-线程和进程有什么区别？"><a href="#2-线程和进程有什么区别？" class="headerlink" title="2.线程和进程有什么区别？"></a>2.线程和进程有什么区别？</h2><p>1.进程是相对于操作系统来说的，进程是操作系统分配资源的最小单位，线程是程序中进程的不同执行路劲。<br>2.线程之间可以共享内存，对于一些需要并发操作，而且要共享某些变量就只能用线程。<br>3.线程不能独立运行，必须依赖于进程，单线程的一个程序就是一个进程。</p>
-<h2 id="3-多线程同步和互斥有几种实现方式，分别是什么-什么时候使用？"><a href="#3-多线程同步和互斥有几种实现方式，分别是什么-什么时候使用？" class="headerlink" title="3.多线程同步和互斥有几种实现方式，分别是什么,什么时候使用？"></a>3.多线程同步和互斥有几种实现方式，分别是什么,什么时候使用？</h2><p><strong>线程间的同步方法大体可分为两类：用户模式和内核模式。</strong></p>
-<p>内核模式就是指利用系统内核对象的单一性来进行同步，使用时需要切换内核态与用户态，而用户模式就是不需要切换到内核态，只在用户态完成操作。</p>
-<p><strong>线程同步</strong>是指线程之间所具有的一种制约关系，一个线程的执行依赖另一个线程的消息，当它没有得到另一个线程的消息时应等待，直到消息到达时才被唤醒。   </p>
-<p><strong>线程同步可以使用信号量的方式（wait,notify,notifyAll)</strong>  </p>
-<p><strong>线程互斥</strong>是指对于共享的进程系统资源，在各单个线程访问时的排它性。当有若干个线程都要使用某一共享资源时，任何时刻最多只允许一个线程去使用，其它要使用该资源的线程必须等待，直到占用资源者释放该资源。线程互斥可以看成是一种特殊的线程同步（下文统称为同步）。 </p>
-<p><strong>线程互斥可以使用lock,synchronized</strong></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/14/多线程一/" data-id="cisbsnq17002e5ikwuk7p5rv5" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
 
     </footer>
   </div>

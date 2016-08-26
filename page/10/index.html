@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,176 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-状态模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/05/08/状态模式/">状态模式（行为模式五）</a>
+    </h1>
+  
+
+        <a href="/blog/2016/05/08/状态模式/" class="article-data-title">
+
+  <time  datetime="2016-05-08T02:28:26.000Z" itemprop="datePublished">2016-05-08</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>状态模式：状态模式又称为类的状态模式，描述的是一个类根据不同的状态处理不同的业务逻辑，通常我们在项目中会通过 if(state) else,或switch来处理，但是对于复杂的类来说这样的代码显然可读性差，而且耦合性高。使用状态模式可以把每个类对应的不同状态交给具体的类处理接口来处理。</p>
+</blockquote>
+<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/state.png" alt="类的结构图"></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>状态模式组成：  </p>
+<ol>
+<li>抽象状态(StateHandle） 处理接口。  </li>
+<li>具体状态(ConcreteState)处理接口。  </li>
+<li>具体类(Content)。</li>
+</ol>
+<p>具体类处理者对细节的处理交给抽象状态处理者的实现，替代if-else 逻辑耦合，客户端只需要调用具体类的 hand方法就可以，屏蔽状态处理的细节。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>顶层抽象类  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StateHandle</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doAction</span><span class="params">(String state)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>抽象类的实现</p>
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteState</span> <span class="keyword">implements</span> <span class="title">StateHandle</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doAction</span><span class="params">(String state)</span> </span>{
+        System.out.println(<span class="string">"this request to concrete StateHandle "</span>+state);
+    }
+}
+</code></pre>
+<p>状态类  </p>
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Content</span> </span>{
+    <span class="keyword">private</span> StateHandle state;
+    <span class="keyword">private</span> String stateFlag;
+
+    <span class="function"><span class="keyword">public</span> String <span class="title">getStateFlag</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> stateFlag;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStateFlag</span><span class="params">(String stateFlag)</span> </span>{
+        <span class="keyword">this</span>.stateFlag = stateFlag;
+    }
+
+    <span class="function"><span class="keyword">public</span> StateHandle <span class="title">getState</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> state;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(StateHandle state)</span> </span>{
+        <span class="keyword">this</span>.state = state;
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">HandleState</span><span class="params">(String stateFlag)</span></span>{
+        state.doAction(stateFlag);
+    }
+
+}
+</code></pre>
+<p>APP类调用  </p>
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        StateHandle stateHandle=<span class="keyword">new</span> ConcreteState();
+        Content content=<span class="keyword">new</span> Content();
+        content.setState(stateHandle);<span class="comment">//注入具体的处理类</span>
+        content.setStateFlag(<span class="string">"Ready"</span>);
+        content.HandleState(content.getStateFlag());<span class="comment">//调用具体处理类</span>
+
+    }
+}
+</code></pre>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>状态模式相对于 if -else只是把 if-else 对应的代码交给具体的状态处理着，避免了写一堆逻辑代码，代码结构清晰。解耦了逻辑处理与业务判断的耦合性，方便扩展。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p>状态模式：状态模式又称为类的状态模式，描述的是一个类根据不同的状态处理不同的业务逻辑，通常我们在项目中会通过 if(state) else,或switch来处理，但是对于复杂的类来说这样的代码显然可读性差，而且耦合性高。使用状态模式可以把每个类对应的不同状态交给具体的类处理接口来处理。</p>
+</blockquote>
+<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/state.png" alt="类的结构图"></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>状态模式组成：  </p>
+<ol>
+<li>抽象状态(StateHandle） 处理接口。  </li>
+<li>具体状态(ConcreteState)处理接口。  </li>
+<li>具体类(Content)。</li>
+</ol>
+<p>具体类处理者对细节的处理交给抽象状态处理者的实现，替代if-else 逻辑耦合，客户端只需要调用具体类的 hand方法就可以，屏蔽状态处理的细节。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>顶层抽象类  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StateHandle</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doAction</span><span class="params">(String state)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>抽象类的实现</p>
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteState</span> <span class="keyword">implements</span> <span class="title">StateHandle</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doAction</span><span class="params">(String state)</span> </span>{
+        System.out.println(<span class="string">"this request to concrete StateHandle "</span>+state);
+    }
+}
+</code></pre>
+<p>状态类  </p>
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Content</span> </span>{
+    <span class="keyword">private</span> StateHandle state;
+    <span class="keyword">private</span> String stateFlag;
+
+    <span class="function"><span class="keyword">public</span> String <span class="title">getStateFlag</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> stateFlag;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStateFlag</span><span class="params">(String stateFlag)</span> </span>{
+        <span class="keyword">this</span>.stateFlag = stateFlag;
+    }
+
+    <span class="function"><span class="keyword">public</span> StateHandle <span class="title">getState</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> state;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(StateHandle state)</span> </span>{
+        <span class="keyword">this</span>.state = state;
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">HandleState</span><span class="params">(String stateFlag)</span></span>{
+        state.doAction(stateFlag);
+    }
+
+}
+</code></pre>
+<p>APP类调用  </p>
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        StateHandle stateHandle=<span class="keyword">new</span> ConcreteState();
+        Content content=<span class="keyword">new</span> Content();
+        content.setState(stateHandle);<span class="comment">//注入具体的处理类</span>
+        content.setStateFlag(<span class="string">"Ready"</span>);
+        content.HandleState(content.getStateFlag());<span class="comment">//调用具体处理类</span>
+
+    }
+}
+</code></pre>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>状态模式相对于 if -else只是把 if-else 对应的代码交给具体的状态处理着，避免了写一堆逻辑代码，代码结构清晰。解耦了逻辑处理与业务判断的耦合性，方便扩展。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/05/08/状态模式/" data-id="cisbv91my00358zkwou3pprjg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-中介者模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -128,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/07/中介者模式/" data-id="cisbsnq0w001z5ikwbakl8jea" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/07/中介者模式/" data-id="cisbv91md00288zkwq5zy3uhw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -218,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/05/迭代器模式/" data-id="cisbsnq26003v5ikwrm3ot7l2" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/05/迭代器模式/" data-id="cisbv91nq00458zkwmqbuks50" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -306,7 +476,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/04/观察者模式/" data-id="cisbsnq20003p5ikwshxdo0or" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/04/观察者模式/" data-id="cisbv91ne003p8zkwmmq1ftbx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -390,83 +560,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/03/命令模式/" data-id="cisbsnq1100215ikwd9w6o0s2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-责任链模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/05/01/责任链模式/">责任链模式（结构模型八）</a>
-    </h1>
-  
-
-        <a href="/blog/2016/05/01/责任链模式/" class="article-data-title">
-
-  <time  datetime="2016-05-01T08:22:35.000Z" itemprop="datePublished">2016-05-01</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>责任链设计模式，是把同一个请求转发给下一个请求接收者，每一个请求接收者中都含有下一个请求处理者的一个引用。这个引用一般放在一个抽象类中，子类只要继承就可以引用下一个处理着。责任链模式也是结构模型中的一种。</p>
-</blockquote>
-<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/reponsiblityChain.png" alt="类结构图"></p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>顶层抽象类中定义对下一个处理者的引用，report 方法中定义下一个处理者的处理顺序，抽象方法中定义下个处理者要实现的方法，具体的方法实现延迟到子类中进行。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>顶层抽象类  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RequestHandler</span> </span>&#123;</span><br><span class="line">	<span class="comment">//对下一个处理者的引用</span></span><br><span class="line">    <span class="keyword">private</span> RequestHandler nextRequestHandle;</span><br><span class="line">	<span class="comment">//把任务传递到下一个处理着</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNextRequestHandle</span><span class="params">(RequestHandler nextRequestHandle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.nextRequestHandle = nextRequestHandle;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">report</span><span class="params">(String message)</span></span>&#123;</span><br><span class="line">        reportToHighLevel(message);</span><br><span class="line">        <span class="keyword">if</span>(nextRequestHandle!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            reportToHighLevel(message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//抽象的处理者，子类去实现</span></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">reportToHighLevel</span><span class="params">(String message)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>底层实现类  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TeamLeader</span> <span class="keyword">extends</span> <span class="title">RequestHandler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reportToHighLevel</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is team leader approve"</span>+message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DepartmentLeader</span> <span class="keyword">extends</span> <span class="title">RequestHandler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reportToHighLevel</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is department leader approve"</span>+message);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CompanyCEO</span> <span class="keyword">extends</span> <span class="title">RequestHandler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reportToHighLevel</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is CEO approve"</span>+message);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Main方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TeamLeader teamLeader=<span class="keyword">new</span> TeamLeader();</span><br><span class="line">        DepartmentLeader departmentLeader=<span class="keyword">new</span> DepartmentLeader();</span><br><span class="line">        CompanyCEO companyCEO=<span class="keyword">new</span> CompanyCEO();</span><br><span class="line">        departmentLeader.setNextRequestHandle(companyCEO);</span><br><span class="line">        teamLeader.setNextRequestHandle(departmentLeader);</span><br><span class="line">        teamLeader.report(<span class="string">"should department leader approve"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p> 1、降低耦合度。它将请求的发送者和接受者解耦。<br> 2、简化了对象。使得对象不需要知道链的结构。<br> 3、可以方便的处理请求的顺序。<br> 4、增加新的请求处理类很方便。 </p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>可能会造成循环调用，系统出现问题时候不容易排查。 </p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>责任链设计模式，是把同一个请求转发给下一个请求接收者，每一个请求接收者中都含有下一个请求处理者的一个引用。这个引用一般放在一个抽象类中，子类只要继承就可以引用下一个处理着。责任链模式也是结构模型中的一种。</p>
-</blockquote>
-<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/reponsiblityChain.png" alt="类结构图"></p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>顶层抽象类中定义对下一个处理者的引用，report 方法中定义下一个处理者的处理顺序，抽象方法中定义下个处理者要实现的方法，具体的方法实现延迟到子类中进行。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>顶层抽象类  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RequestHandler</span> </span>&#123;</span><br><span class="line">	<span class="comment">//对下一个处理者的引用</span></span><br><span class="line">    <span class="keyword">private</span> RequestHandler nextRequestHandle;</span><br><span class="line">	<span class="comment">//把任务传递到下一个处理着</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNextRequestHandle</span><span class="params">(RequestHandler nextRequestHandle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.nextRequestHandle = nextRequestHandle;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">report</span><span class="params">(String message)</span></span>&#123;</span><br><span class="line">        reportToHighLevel(message);</span><br><span class="line">        <span class="keyword">if</span>(nextRequestHandle!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            reportToHighLevel(message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//抽象的处理者，子类去实现</span></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">reportToHighLevel</span><span class="params">(String message)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>底层实现类  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TeamLeader</span> <span class="keyword">extends</span> <span class="title">RequestHandler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reportToHighLevel</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is team leader approve"</span>+message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DepartmentLeader</span> <span class="keyword">extends</span> <span class="title">RequestHandler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reportToHighLevel</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is department leader approve"</span>+message);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CompanyCEO</span> <span class="keyword">extends</span> <span class="title">RequestHandler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reportToHighLevel</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is CEO approve"</span>+message);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Main方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TeamLeader teamLeader=<span class="keyword">new</span> TeamLeader();</span><br><span class="line">        DepartmentLeader departmentLeader=<span class="keyword">new</span> DepartmentLeader();</span><br><span class="line">        CompanyCEO companyCEO=<span class="keyword">new</span> CompanyCEO();</span><br><span class="line">        departmentLeader.setNextRequestHandle(companyCEO);</span><br><span class="line">        teamLeader.setNextRequestHandle(departmentLeader);</span><br><span class="line">        teamLeader.report(<span class="string">"should department leader approve"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p> 1、降低耦合度。它将请求的发送者和接受者解耦。<br> 2、简化了对象。使得对象不需要知道链的结构。<br> 3、可以方便的处理请求的顺序。<br> 4、增加新的请求处理类很方便。 </p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>可能会造成循环调用，系统出现问题时候不容易排查。 </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/01/责任链模式/" data-id="cisbsnq1y003n5ikwggf7tos4" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/03/命令模式/" data-id="cisbv91mb00268zkw517p3k6l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
