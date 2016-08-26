@@ -5,22 +5,22 @@
   
   <title>CopyOnWriteArrayList | 小菜园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JDK1.5以后的并发包中新增的几个容器，平时在码代码的时候压根都没有印象❤️,在多线程读取List的时候CopyOnWriteArrayList是个不错的选择。
+  <meta name="description" content="JDK1.5以后的并发包中新增的几个容器，平时在码代码的时候压根都没有印象❤️,在多线程读取List的时候CopyOnWriteArrayList 是个不错的
 
-为啥取个这么长的名字CopyOnWriteArrayList，为什么会起个这么长的名字，对于英语不好的人来说多记忆一个单词就会死一个脑细胞，从字面上来讲 “复制(copy)发生（on）在写（write,其实这个写代表的是所有引起数组">
+为啥取个这么长的名字CopyOnWriteArrayList，为什么会起个这么长的名字，对于英语不好的人来说多记忆一个单词就会死一个脑细胞，从字面上来讲 “复制(copy)发生（on）在写（write,其实这个写代表的是所有引起数组变化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CopyOnWriteArrayList">
 <meta property="og:url" content="http://bravemind.github.io/2016/08/24/CopyOnWriteArrayList/index.html">
 <meta property="og:site_name" content="小菜园">
-<meta property="og:description" content="JDK1.5以后的并发包中新增的几个容器，平时在码代码的时候压根都没有印象❤️,在多线程读取List的时候CopyOnWriteArrayList是个不错的选择。
+<meta property="og:description" content="JDK1.5以后的并发包中新增的几个容器，平时在码代码的时候压根都没有印象❤️,在多线程读取List的时候CopyOnWriteArrayList 是个不错的
 
-为啥取个这么长的名字CopyOnWriteArrayList，为什么会起个这么长的名字，对于英语不好的人来说多记忆一个单词就会死一个脑细胞，从字面上来讲 “复制(copy)发生（on）在写（write,其实这个写代表的是所有引起数组">
-<meta property="og:updated_time" content="2016-08-24T02:30:02.000Z">
+为啥取个这么长的名字CopyOnWriteArrayList，为什么会起个这么长的名字，对于英语不好的人来说多记忆一个单词就会死一个脑细胞，从字面上来讲 “复制(copy)发生（on）在写（write,其实这个写代表的是所有引起数组变化">
+<meta property="og:updated_time" content="2016-08-24T02:36:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CopyOnWriteArrayList">
-<meta name="twitter:description" content="JDK1.5以后的并发包中新增的几个容器，平时在码代码的时候压根都没有印象❤️,在多线程读取List的时候CopyOnWriteArrayList是个不错的选择。
+<meta name="twitter:description" content="JDK1.5以后的并发包中新增的几个容器，平时在码代码的时候压根都没有印象❤️,在多线程读取List的时候CopyOnWriteArrayList 是个不错的
 
-为啥取个这么长的名字CopyOnWriteArrayList，为什么会起个这么长的名字，对于英语不好的人来说多记忆一个单词就会死一个脑细胞，从字面上来讲 “复制(copy)发生（on）在写（write,其实这个写代表的是所有引起数组">
+为啥取个这么长的名字CopyOnWriteArrayList，为什么会起个这么长的名字，对于英语不好的人来说多记忆一个单词就会死一个脑细胞，从字面上来讲 “复制(copy)发生（on）在写（write,其实这个写代表的是所有引起数组变化">
   
   
     <link rel="icon" href="/blog/favicon.png">
@@ -39,7 +39,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -76,7 +76,7 @@
    <!-- <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>JDK1.5以后的并发包中新增的几个容器，平时在码代码的时候压根都没有印象❤️,在多线程读取List的时候CopyOnWriteArrayList是个不错的选择。</p>
+<p>JDK1.5以后的并发包中新增的几个容器，平时在码代码的时候压根都没有印象❤️,在多线程读取List的时候CopyOnWriteArrayList 是个不错的</p>
 </blockquote>
 <h2 id="为啥取个这么长的名字"><a href="#为啥取个这么长的名字" class="headerlink" title="为啥取个这么长的名字"></a>为啥取个这么长的名字</h2><p>CopyOnWriteArrayList，为什么会起个这么长的名字，对于英语不好的人来说多记忆一个单词就会死一个脑细胞，从字面上来讲 “复制(copy)发生（on）在写（write,<strong>其实这个写代表的是所有引起数组变化的操作</strong>）的ArrayList上”😒，不符合语义，应该把主语提前，再添加一些修饰语,”ArrayList每次发生写操作时候就重新复制一个数组出来”。对，这样合理多了，不过这只是对这个单词的第一印象。</p>
 <h2 id="jdk1-7官方发言"><a href="#jdk1-7官方发言" class="headerlink" title="jdk1.7官方发言"></a>jdk1.7官方发言</h2><p><strong>A thread-safe variant of {@link java.util.ArrayList}</strong> in which all mutative operations (<tt>add</tt>, <tt>set</tt>, and so on) are implemented by making a fresh copy of the underlying array.</p>
@@ -103,7 +103,7 @@
       </div>
       
       <blockquote>
-<p>JDK1.5以后的并发包中新增的几个容器，平时在码代码的时候压根都没有印象❤️,在多线程读取List的时候CopyOnWriteArrayList是个不错的选择。</p>
+<p>JDK1.5以后的并发包中新增的几个容器，平时在码代码的时候压根都没有印象❤️,在多线程读取List的时候CopyOnWriteArrayList 是个不错的</p>
 </blockquote>
 <h2 id="为啥取个这么长的名字"><a href="#为啥取个这么长的名字" class="headerlink" title="为啥取个这么长的名字"></a>为啥取个这么长的名字</h2><p>CopyOnWriteArrayList，为什么会起个这么长的名字，对于英语不好的人来说多记忆一个单词就会死一个脑细胞，从字面上来讲 “复制(copy)发生（on）在写（write,<strong>其实这个写代表的是所有引起数组变化的操作</strong>）的ArrayList上”😒，不符合语义，应该把主语提前，再添加一些修饰语,”ArrayList每次发生写操作时候就重新复制一个数组出来”。对，这样合理多了，不过这只是对这个单词的第一印象。</p>
 <h2 id="jdk1-7官方发言"><a href="#jdk1-7官方发言" class="headerlink" title="jdk1.7官方发言"></a>jdk1.7官方发言</h2><p><strong>A thread-safe variant of {@link java.util.ArrayList}</strong> in which all mutative operations (<tt>add</tt>, <tt>set</tt>, and so on) are implemented by making a fresh copy of the underlying array.</p>
@@ -120,7 +120,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/24/CopyOnWriteArrayList/" data-id="cis8a99lh0003t49k06wx29j1" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/24/CopyOnWriteArrayList/" data-id="cisbsnpza00065ikw9zd1k5ph" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -130,6 +130,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/blog/2016/08/26/JAVANIO/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JAVA NIO 指南
+        
+      </div>
+    </a>
   
   
     <a href="/blog/2016/08/12/annotation/" id="article-nav-older" class="article-nav-link-wrap">

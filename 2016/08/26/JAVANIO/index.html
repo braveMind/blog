@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JAVA NIO 指南 | 小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="天道酬勤，低头耕耘
+
+还是老规矩，为啥要翻译这本书呢？对于自己这个英语渣渣，勉强过四级的英语的人来说，可能自己不借助于字典有些单词都不认识，但这不能成为我技术上的阻碍，看英文文档是一个程序员可能最重要的能力了，为了锻炼英语，不惧怕英语，学习提高英语翻译能力，顺带把知识点过一遍，我决定翻译这本薄薄的书籍了，对了薄也是我考虑的重要因素。
+JAVA NIO 指南我们开始学习JAVA NIO教程，这是第">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA NIO 指南">
+<meta property="og:url" content="http://bravemind.github.io/2016/08/26/JAVANIO/index.html">
+<meta property="og:site_name" content="小菜园">
+<meta property="og:description" content="天道酬勤，低头耕耘
+
+还是老规矩，为啥要翻译这本书呢？对于自己这个英语渣渣，勉强过四级的英语的人来说，可能自己不借助于字典有些单词都不认识，但这不能成为我技术上的阻碍，看英文文档是一个程序员可能最重要的能力了，为了锻炼英语，不惧怕英语，学习提高英语翻译能力，顺带把知识点过一遍，我决定翻译这本薄薄的书籍了，对了薄也是我考虑的重要因素。
+JAVA NIO 指南我们开始学习JAVA NIO教程，这是第">
+<meta property="og:image" content="http://7xstto.com1.z0.glb.clouddn.com/NIO.png">
+<meta property="og:updated_time" content="2016-08-26T13:27:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA NIO 指南">
+<meta name="twitter:description" content="天道酬勤，低头耕耘
+
+还是老规矩，为啥要翻译这本书呢？对于自己这个英语渣渣，勉强过四级的英语的人来说，可能自己不借助于字典有些单词都不认识，但这不能成为我技术上的阻碍，看英文文档是一个程序员可能最重要的能力了，为了锻炼英语，不惧怕英语，学习提高英语翻译能力，顺带把知识点过一遍，我决定翻译这本薄薄的书籍了，对了薄也是我考虑的重要因素。
+JAVA NIO 指南我们开始学习JAVA NIO教程，这是第">
+<meta name="twitter:image" content="http://7xstto.com1.z0.glb.clouddn.com/NIO.png">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/grid.css">
+
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.min.css">
+
+
+
+</head>
+<div class="left_header">
+    <a class="header_avater" href="/blog"></a>
+    <div class="tag_s" id="showTag">
+        <i class="fa fa-tag" href="../blog"></i>
+            <div id="tags_clod" class="pop">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+            </div>
+    </div>
+    <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
+    <a href="https://github.com/braveMind" class="git" target="_blank"><i class="fa fa-github"></i></a>
+
+
+    <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
+    <a href="/blog/2016/05/21/友情链接/"><i class="fa fa-link" aria-hidden="true"></i></a>
+
+</div>
+<div class="left_content">
+    <section><article id="post-JAVANIO" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JAVA NIO 指南
+    </h1>
+  
+
+        <a href="/blog/2016/08/26/JAVANIO/" class="article-data-title">
+
+  <time  datetime="2016-08-26T12:46:00.000Z" itemprop="datePublished">2016-08-26</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>天道酬勤，低头耕耘</p>
+</blockquote>
+<p>还是老规矩，为啥要翻译这本书呢？对于自己这个英语渣渣，勉强过四级的英语的人来说，可能自己不借助于字典有些单词都不认识，但这不能成为我技术上的阻碍，看英文文档是一个程序员可能最重要的能力了，为了锻炼英语，不惧怕英语，学习提高英语翻译能力，顺带把知识点过一遍，我决定翻译这本薄薄的书籍了，对了<strong>薄</strong>也是我考虑的重要因素。</p>
+<h2 id="JAVA-NIO-指南"><a href="#JAVA-NIO-指南" class="headerlink" title="JAVA NIO 指南"></a>JAVA NIO 指南</h2><p>我们开始学习JAVA NIO教程，这是第一篇文章因此我们当做目录。<strong>java的非阻塞IO操作是面向buffer的，以前的标准IO操作是面向字节流的</strong>。</p>
+<p><img src="http://7xstto.com1.z0.glb.clouddn.com/NIO.png" alt=""></p>
+<h2 id="标准IO和NIO的不同"><a href="#标准IO和NIO的不同" class="headerlink" title="标准IO和NIO的不同"></a>标准IO和NIO的不同</h2><p>第一个主要的不同点是，标准IO操作是基于字节流（stream）的，NIO是面向Buffer(缓存区的)，基于Buffer的操作处理数据更灵活。<strong>基于Buffer的IO操作只要数据到达缓冲区，那么这个数据就可以被处理</strong>。<strong>因此我们可以把数据指针向前或者向后移动，而字节流却不可以这么操作</strong>。  </p>
+<p>第二个主要的不同点是，IO操作，在基于字节流的情况下，线程会被阻塞知道完成IO操作。当NIO操作的时候线程不会被阻塞，如果IO操作未完成线程可以去做其它的事情而不必停留在阻塞模式下。<strong>NIO结合channels(通道)和selectors(选择器)一个多线程可以管理多个线程进行并行的IO操作</strong>。</p>
+<h2 id="java-NIO"><a href="#java-NIO" class="headerlink" title="java NIO"></a>java NIO</h2><p>在接下来的NIO学习中，我们将涵盖一下内容。    </p>
+<ul>
+<li>java NIO Channel  </li>
+<li>java NIO Buffer  </li>
+<li>NIO Path  </li>
+<li>File Permissions  </li>
+<li>File Attributes using Java NIO  </li>
+<li>Glob with Java NIO  </li>
+<li>Java NIO Files – Delete Copy Move  </li>
+<li>Walk File Tree with Java NIO  </li>
+<li>Search File Using NIO  </li>
+<li>Monitor Folder with Java NIO  </li>
+<li>File Read with NIO  </li>
+<li>File Write with NIO  </li>
+<li>Memory-mapped file with NIO  </li>
+<li>Scattering and Gathering with NIO  </li>
+<li>File Locking  </li>
+<li>Selectors  </li>
+<li>Character Sets  </li>
+<li>NIO Pipes  </li>
+<li>SocketChannel  </li>
+<li>DatagramChannel  </li>
+<li>Example: Java TFTP Client with NIO  </li>
+</ul>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <div id="toc" class="article-toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA-NIO-指南"><span class="toc-number">1.</span> <span class="toc-text">JAVA NIO 指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标准IO和NIO的不同"><span class="toc-number">2.</span> <span class="toc-text">标准IO和NIO的不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-NIO"><span class="toc-number">3.</span> <span class="toc-text">java NIO</span></a></li></ol>
+        <hr/>
+      </div>
+      
+      <blockquote>
+<p>天道酬勤，低头耕耘</p>
+</blockquote>
+<p>还是老规矩，为啥要翻译这本书呢？对于自己这个英语渣渣，勉强过四级的英语的人来说，可能自己不借助于字典有些单词都不认识，但这不能成为我技术上的阻碍，看英文文档是一个程序员可能最重要的能力了，为了锻炼英语，不惧怕英语，学习提高英语翻译能力，顺带把知识点过一遍，我决定翻译这本薄薄的书籍了，对了<strong>薄</strong>也是我考虑的重要因素。</p>
+<h2 id="JAVA-NIO-指南"><a href="#JAVA-NIO-指南" class="headerlink" title="JAVA NIO 指南"></a>JAVA NIO 指南</h2><p>我们开始学习JAVA NIO教程，这是第一篇文章因此我们当做目录。<strong>java的非阻塞IO操作是面向buffer的，以前的标准IO操作是面向字节流的</strong>。</p>
+<p><img src="http://7xstto.com1.z0.glb.clouddn.com/NIO.png" alt=""></p>
+<h2 id="标准IO和NIO的不同"><a href="#标准IO和NIO的不同" class="headerlink" title="标准IO和NIO的不同"></a>标准IO和NIO的不同</h2><p>第一个主要的不同点是，标准IO操作是基于字节流（stream）的，NIO是面向Buffer(缓存区的)，基于Buffer的操作处理数据更灵活。<strong>基于Buffer的IO操作只要数据到达缓冲区，那么这个数据就可以被处理</strong>。<strong>因此我们可以把数据指针向前或者向后移动，而字节流却不可以这么操作</strong>。  </p>
+<p>第二个主要的不同点是，IO操作，在基于字节流的情况下，线程会被阻塞知道完成IO操作。当NIO操作的时候线程不会被阻塞，如果IO操作未完成线程可以去做其它的事情而不必停留在阻塞模式下。<strong>NIO结合channels(通道)和selectors(选择器)一个多线程可以管理多个线程进行并行的IO操作</strong>。</p>
+<h2 id="java-NIO"><a href="#java-NIO" class="headerlink" title="java NIO"></a>java NIO</h2><p>在接下来的NIO学习中，我们将涵盖一下内容。    </p>
+<ul>
+<li>java NIO Channel  </li>
+<li>java NIO Buffer  </li>
+<li>NIO Path  </li>
+<li>File Permissions  </li>
+<li>File Attributes using Java NIO  </li>
+<li>Glob with Java NIO  </li>
+<li>Java NIO Files – Delete Copy Move  </li>
+<li>Walk File Tree with Java NIO  </li>
+<li>Search File Using NIO  </li>
+<li>Monitor Folder with Java NIO  </li>
+<li>File Read with NIO  </li>
+<li>File Write with NIO  </li>
+<li>Memory-mapped file with NIO  </li>
+<li>Scattering and Gathering with NIO  </li>
+<li>File Locking  </li>
+<li>Selectors  </li>
+<li>Character Sets  </li>
+<li>NIO Pipes  </li>
+<li>SocketChannel  </li>
+<li>DatagramChannel  </li>
+<li>Example: Java TFTP Client with NIO  </li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/08/26/JAVANIO/" data-id="cisbsnpzd00085ikwzpk8yc3m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/译文/">译文</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/08/24/CopyOnWriteArrayList/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CopyOnWriteArrayList</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+</div>
+
+
+   
+
+   <script src="/blog/js/jQuery.js"></script>
+   <script src="/blog/js/script.js"></script>
+
+
+
