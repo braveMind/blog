@@ -88,10 +88,7 @@
 </code></pre><p><strong>SocketChannel</strong></p>
 <pre><code>有三种类型的Channel,SocketChannel,ServerSocketChannel 和 DatagramChannel
 这些都是可以被选择的，工作在非阻塞I/O下。
-</code></pre><h2 id="Java-NIO-Channel-例子"><a href="#Java-NIO-Channel-例子" class="headerlink" title="Java NIO Channel 例子"></a>Java NIO Channel 例子</h2><p>``` java<br>package com.javapapers.java.nio;</p>
-<p>import java.io.IOException;<br>import java.io.RandomAccessFile;<br>import java.nio.ByteBuffer;<br>import java.nio.channels.FileChannel;</p>
-<p>public class ChannelExample {<br>    public static void main(String args[]) throws IOException {<br>        RandomAccessFile file = new RandomAccessFile(“temp.txt”, “r”);<br>        FileChannel fileChannel = file.getChannel();<br>        ByteBuffer byteBuffer = ByteBuffer.allocate(512);<br>        while (fileChannel.read(byteBuffer) &gt; 0) {<br>            // flip the buffer to prepare for get operation<br>            byteBuffer.flip();<br>            while (byteBuffer.hasRemaining()) {<br>                System.out.print((char) byteBuffer.get());<br>            }<br>            // clear the buffer ready for next sequence of read<br>            byteBuffer.clear();<br>        }<br>        file.close();<br>    }<br>}<br>``</p>
-
+</code></pre><h2 id="Java-NIO-Channel-例子"><a href="#Java-NIO-Channel-例子" class="headerlink" title="Java NIO Channel 例子"></a>Java NIO Channel 例子</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.javapapers.java.nio;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.RandomAccessFile;</span><br><span class="line"><span class="keyword">import</span> java.nio.ByteBuffer;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.FileChannel;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChannelExample</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		RandomAccessFile file = <span class="keyword">new</span> RandomAccessFile(<span class="string">"temp.txt"</span>, <span class="string">"r"</span>);</span><br><span class="line">		FileChannel fileChannel = file.getChannel();</span><br><span class="line">		ByteBuffer byteBuffer = ByteBuffer.allocate(<span class="number">512</span>);</span><br><span class="line">		<span class="keyword">while</span> (fileChannel.read(byteBuffer) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="comment">// flip the buffer to prepare for get operation</span></span><br><span class="line">			byteBuffer.flip();</span><br><span class="line">			<span class="keyword">while</span> (byteBuffer.hasRemaining()) &#123;</span><br><span class="line">				System.out.print((<span class="keyword">char</span>) byteBuffer.get());</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// clear the buffer ready for next sequence of read</span></span><br><span class="line">			byteBuffer.clear();</span><br><span class="line">		&#125;</span><br><span class="line">		file.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
 
@@ -117,14 +114,11 @@
 </code></pre><p><strong>SocketChannel</strong></p>
 <pre><code>有三种类型的Channel,SocketChannel,ServerSocketChannel 和 DatagramChannel
 这些都是可以被选择的，工作在非阻塞I/O下。
-</code></pre><h2 id="Java-NIO-Channel-例子"><a href="#Java-NIO-Channel-例子" class="headerlink" title="Java NIO Channel 例子"></a>Java NIO Channel 例子</h2><p>``` java<br>package com.javapapers.java.nio;</p>
-<p>import java.io.IOException;<br>import java.io.RandomAccessFile;<br>import java.nio.ByteBuffer;<br>import java.nio.channels.FileChannel;</p>
-<p>public class ChannelExample {<br>    public static void main(String args[]) throws IOException {<br>        RandomAccessFile file = new RandomAccessFile(“temp.txt”, “r”);<br>        FileChannel fileChannel = file.getChannel();<br>        ByteBuffer byteBuffer = ByteBuffer.allocate(512);<br>        while (fileChannel.read(byteBuffer) &gt; 0) {<br>            // flip the buffer to prepare for get operation<br>            byteBuffer.flip();<br>            while (byteBuffer.hasRemaining()) {<br>                System.out.print((char) byteBuffer.get());<br>            }<br>            // clear the buffer ready for next sequence of read<br>            byteBuffer.clear();<br>        }<br>        file.close();<br>    }<br>}<br>``</p>
-
+</code></pre><h2 id="Java-NIO-Channel-例子"><a href="#Java-NIO-Channel-例子" class="headerlink" title="Java NIO Channel 例子"></a>Java NIO Channel 例子</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.javapapers.java.nio;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.RandomAccessFile;</span><br><span class="line"><span class="keyword">import</span> java.nio.ByteBuffer;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.FileChannel;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChannelExample</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		RandomAccessFile file = <span class="keyword">new</span> RandomAccessFile(<span class="string">"temp.txt"</span>, <span class="string">"r"</span>);</span><br><span class="line">		FileChannel fileChannel = file.getChannel();</span><br><span class="line">		ByteBuffer byteBuffer = ByteBuffer.allocate(<span class="number">512</span>);</span><br><span class="line">		<span class="keyword">while</span> (fileChannel.read(byteBuffer) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="comment">// flip the buffer to prepare for get operation</span></span><br><span class="line">			byteBuffer.flip();</span><br><span class="line">			<span class="keyword">while</span> (byteBuffer.hasRemaining()) &#123;</span><br><span class="line">				System.out.print((<span class="keyword">char</span>) byteBuffer.get());</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// clear the buffer ready for next sequence of read</span></span><br><span class="line">			byteBuffer.clear();</span><br><span class="line">		&#125;</span><br><span class="line">		file.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/26/NIOChannel/" data-id="cisbv91kx000f8zkw2aliwnie" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/26/NIOChannel/" data-id="cisbvcurk000l9hkwjufe88sz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/译文/">译文</a></li></ul>
@@ -238,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/26/JAVANIO/" data-id="cisbv91kt000c8zkwvay937xt" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/26/JAVANIO/" data-id="cisbvcure000c9hkw648v7qa8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/译文/">译文</a></li></ul>
@@ -316,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/24/CopyOnWriteArrayList/" data-id="cisbv91km00088zkw8pvuo3cy" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/24/CopyOnWriteArrayList/" data-id="cisbvcur200039hkw04s7bly4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -392,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/12/annotation/" data-id="cisbv91l3000p8zkwagbmbgex" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/12/annotation/" data-id="cisbvcurp000u9hkwvf3anxgh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -468,7 +462,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/11/LinkedList/" data-id="cisbv91ko00098zkwni6te9np" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/11/LinkedList/" data-id="cisbvcuri000h9hkwlmpoceem" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
