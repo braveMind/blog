@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,70 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-NIO" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/07/22/NIO/">IO 中的同步，异步，阻塞，非阻塞</a>
+    </h1>
+  
+
+        <a href="/blog/2016/07/22/NIO/" class="article-data-title">
+
+  <time  datetime="2016-07-22T05:55:12.000Z" itemprop="datePublished">2016-07-22</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="阻塞和非阻塞"><a href="#阻塞和非阻塞" class="headerlink" title="阻塞和非阻塞"></a>阻塞和非阻塞</h2><p><strong>阻塞式IO</strong>：应用程序向操作系统发出IO请求时候，此时应用程序的线程被挂起（应用进程切换到内核进程），当内核进程完成IO操作（DMA复制文件到内核缓冲区域），内核在切换到应用进程，应用进程读写内核中的数据到应用进程缓冲区，此时应用进程挂起等待系统内核完成IO请求就称为阻塞。</p>
+<p><strong>非阻塞</strong>：非阻塞IO就是当前线程不必把自己挂起，等待操作系统完成IO请求，当前线程需要轮训内核非阻塞描述符recvfrom,完成IO请求。</p>
+<h2 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h2><p><strong>同步</strong>：就是我发出一个请求，这个请求在没有得到结果之前，调用不返回，一旦调用有结果，就返回，同步就是主动等待调用结果。</p>
+<p><strong>异步</strong>：调用结果在发出去之后，这个调用立即返回，此时调用者不会立即得到结果，随后被调用者通过回调或者通过状态通知来处理这个调用。<br>例如：告知内核启动某个操作，并让内核在整个操作（数据从内核复制到应用缓冲区）完成后通知应用进程。与信号量的区别是我们不需要自己完成IO操作，内核已经帮我们完成了IO操作，内核通知我们IO操作何时完成。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/IO.png" alt="五种IO模型的比较"></p>
+<p>阻塞式IO,非阻塞式IO，IO复用模型，信号量驱动，都属于同步IO,真正的IO操作recvfrom将会阻塞进程，只有异步IO模型（需要特殊API）才是真正的异步IO。</p>
+<p>参考：UNIX网络编程（第六章）</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <h2 id="阻塞和非阻塞"><a href="#阻塞和非阻塞" class="headerlink" title="阻塞和非阻塞"></a>阻塞和非阻塞</h2><p><strong>阻塞式IO</strong>：应用程序向操作系统发出IO请求时候，此时应用程序的线程被挂起（应用进程切换到内核进程），当内核进程完成IO操作（DMA复制文件到内核缓冲区域），内核在切换到应用进程，应用进程读写内核中的数据到应用进程缓冲区，此时应用进程挂起等待系统内核完成IO请求就称为阻塞。</p>
+<p><strong>非阻塞</strong>：非阻塞IO就是当前线程不必把自己挂起，等待操作系统完成IO请求，当前线程需要轮训内核非阻塞描述符recvfrom,完成IO请求。</p>
+<h2 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h2><p><strong>同步</strong>：就是我发出一个请求，这个请求在没有得到结果之前，调用不返回，一旦调用有结果，就返回，同步就是主动等待调用结果。</p>
+<p><strong>异步</strong>：调用结果在发出去之后，这个调用立即返回，此时调用者不会立即得到结果，随后被调用者通过回调或者通过状态通知来处理这个调用。<br>例如：告知内核启动某个操作，并让内核在整个操作（数据从内核复制到应用缓冲区）完成后通知应用进程。与信号量的区别是我们不需要自己完成IO操作，内核已经帮我们完成了IO操作，内核通知我们IO操作何时完成。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/IO.png" alt="五种IO模型的比较"></p>
+<p>阻塞式IO,非阻塞式IO，IO复用模型，信号量驱动，都属于同步IO,真正的IO操作recvfrom将会阻塞进程，只有异步IO模型（需要特殊API）才是真正的异步IO。</p>
+<p>参考：UNIX网络编程（第六章）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/07/22/NIO/" data-id="cischfevj000tk6kwg18mev9e" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-IOmodel" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -102,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/22/IOmodel/" data-id="ciscegyfp000agukwoy4apkjv" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/22/IOmodel/" data-id="cischfeuy0006k6kwqus41i63" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -190,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/17/aira2/" data-id="ciscegyg8000zgukwoi36ng0i" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/17/aira2/" data-id="cischfevg000pk6kwoi6wzvga" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -262,7 +326,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/14/多线程一/" data-id="ciscegyhk002lgukwywduvqeo" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/14/多线程一/" data-id="cischfex1002nk6kw9f79v7uj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -324,74 +388,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/13/linux常用命令/" data-id="ciscegygu001ngukwdck8r7sk" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/13/linux常用命令/" data-id="cischfew6001kk6kwv75af6qx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-httpClient反思" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/07/06/httpClient反思/">小bug反思</a>
-    </h1>
-  
-
-        <a href="/blog/2016/07/06/httpClient反思/" class="article-data-title">
-
-  <time  datetime="2016-07-06T01:47:45.000Z" itemprop="datePublished">2016-07-06</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>程序中那些困扰我好几天的问题，在某个瞬间突然柳暗花明，常常让我觉得感动，又觉得当时好蠢！</p>
-</blockquote>
-<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>最近自己用httpClient4.5封装了一个顺手的HttpClientUtils工具，丝滑的链式调用用来模拟登陆smartqq，再接一个图灵机器人（第三方接口），图灵机器人内部接了很多有意思的API，天气查询，快递查询，百科，笑话，聊天等，还可以自己在扩展，在接入其它api如讯飞的人脸识别，语音识别，喜欢玩硬件的可以搭建在树莓派上，总之可以玩的花样很多。</p>
-<p><strong>问题来了</strong>：在用firebug分析qq的请求包时候发现游览器在请求qq协议的时候携带的是15个cookie，我在用httpClient的时候发送的是12个cookie，<strong>奇葩的是发送的这个12cookie在登陆这一步的时候服务器发给我的请求是成功的，关键是当时没多想</strong>，既然成功了那么后续的操作获取登陆的一个token的时候服务器返回状态代码1000，当时查看了smartqq的协议说是cookie携带不全。  </p>
-<h3 id="寻找解决方法"><a href="#寻找解决方法" class="headerlink" title="寻找解决方法"></a>寻找解决方法</h3><p>以前项目中使用的老版本的httpClient 3.x，自己在玩的时候就换上了最新版的httpClient 4.5配置了httpClinet连接池，配置好了cookie管理策略。可就是请求时候携带12个cookie，这个问题困扰着我，从上周六到周一脑子异常兴奋每天睡眠不足5小时，早上六点就又爬起来，问题解决不了的时候就在谷歌上搜索，大家使用的方法我都用了可是还是没解决，算了还是放放吧，隔了一天再仔细研究了一下qq的协议发现登陆成功后少调用了一个get请求！！当把这个get请求添加上的时候瞬间柳暗花明！先是感动，后到想死的心都有了！！</p>
-<h2 id="问题反思"><a href="#问题反思" class="headerlink" title="问题反思"></a>问题反思</h2><p>技术问题往往很好解决，难解决的是思维逻辑问题，尤其是你百思不解的时候有容易把问题归类到技术领域，这个时候如果跳出来就会很苦恼，俗称牛角尖！浪费大量时间在谷歌，debug，这时候最好的办法是搁置问题。给大脑一个休息的时间，回过头来再看问题也许你就有了新的发现，此时既不会盲目自信，又不会过度思考，更容易接近问题的本质。</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>程序中那些困扰我好几天的问题，在某个瞬间突然柳暗花明，常常让我觉得感动，又觉得当时好蠢！</p>
-</blockquote>
-<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>最近自己用httpClient4.5封装了一个顺手的HttpClientUtils工具，丝滑的链式调用用来模拟登陆smartqq，再接一个图灵机器人（第三方接口），图灵机器人内部接了很多有意思的API，天气查询，快递查询，百科，笑话，聊天等，还可以自己在扩展，在接入其它api如讯飞的人脸识别，语音识别，喜欢玩硬件的可以搭建在树莓派上，总之可以玩的花样很多。</p>
-<p><strong>问题来了</strong>：在用firebug分析qq的请求包时候发现游览器在请求qq协议的时候携带的是15个cookie，我在用httpClient的时候发送的是12个cookie，<strong>奇葩的是发送的这个12cookie在登陆这一步的时候服务器发给我的请求是成功的，关键是当时没多想</strong>，既然成功了那么后续的操作获取登陆的一个token的时候服务器返回状态代码1000，当时查看了smartqq的协议说是cookie携带不全。  </p>
-<h3 id="寻找解决方法"><a href="#寻找解决方法" class="headerlink" title="寻找解决方法"></a>寻找解决方法</h3><p>以前项目中使用的老版本的httpClient 3.x，自己在玩的时候就换上了最新版的httpClient 4.5配置了httpClinet连接池，配置好了cookie管理策略。可就是请求时候携带12个cookie，这个问题困扰着我，从上周六到周一脑子异常兴奋每天睡眠不足5小时，早上六点就又爬起来，问题解决不了的时候就在谷歌上搜索，大家使用的方法我都用了可是还是没解决，算了还是放放吧，隔了一天再仔细研究了一下qq的协议发现登陆成功后少调用了一个get请求！！当把这个get请求添加上的时候瞬间柳暗花明！先是感动，后到想死的心都有了！！</p>
-<h2 id="问题反思"><a href="#问题反思" class="headerlink" title="问题反思"></a>问题反思</h2><p>技术问题往往很好解决，难解决的是思维逻辑问题，尤其是你百思不解的时候有容易把问题归类到技术领域，这个时候如果跳出来就会很苦恼，俗称牛角尖！浪费大量时间在谷歌，debug，这时候最好的办法是搁置问题。给大脑一个休息的时间，回过头来再看问题也许你就有了新的发现，此时既不会盲目自信，又不会过度思考，更容易接近问题的本质。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/06/httpClient反思/" data-id="ciscegygi001bgukwg2w6n5b1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"></ul>
 
     </footer>
   </div>
