@@ -80,7 +80,37 @@
 <h3 id="用户实现"><a href="#用户实现" class="headerlink" title="用户实现"></a>用户实现</h3><p>MethodBeforeAdvice</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.springframework.aop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> org.springframework.aop.BeforeAdvice;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MethodBeforeAdvice</span> <span class="keyword">extends</span> <span class="title">BeforeAdvice</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">before</span><span class="params">(Method var1, Object[] var2, Object var3)</span> <span class="keyword">throws</span> Throwable</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Method参数，是目标方法的放射对象，Object[] var2是目标方法的参数，Object var3目标对象。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"xxxService"</span> <span class="attr">class</span>=<span class="string">"org.springframework.aop.framework.ProxyFactoryBean"</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"interceptorNames"</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">list</span>&gt;</span>  </span><br><span class="line">                <span class="tag">&lt;<span class="name">value</span>&gt;</span>beforeAdvice<span class="tag">&lt;/<span class="name">value</span>&gt;</span> </span><br><span class="line">            <span class="tag">&lt;/<span class="name">list</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span> </span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">[ProxyFactoryBean](http://www.cnblogs.com/wasp520/p/3143139.html)创建代理对象与其它AOP实现方式的不同。</span><br><span class="line"></span><br><span class="line">## 使用注解方式提供</span><br><span class="line"></span><br><span class="line">使用注解方式提供给需要的方法进行注解。</span><br><span class="line"></span><br><span class="line">``` java</span><br><span class="line">@Target(ElementType.METHOD)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">public @interface MyPermission &#123;</span><br><span class="line">    String role() default "";</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">@Aspect</span><br><span class="line">public class MyPermissionImp &#123;</span><br><span class="line">        @Around(value= "@annotation(com.mvc.annotation.MyPermission)")</span><br><span class="line">        private Object test(ProceedingJoinPoint joinPoint) throws Throwable &#123;</span><br><span class="line">            MethodSignature ms=(MethodSignature) joinPoint.getSignature();</span><br><span class="line">            Method method=ms.getMethod();</span><br><span class="line">            System.out.println(method.getAnnotation(MyPermission.class).role().toString()+"标记");</span><br><span class="line">            Object object=joinPoint.proceed();</span><br><span class="line">            return object;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="xml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"xxxService"</span> <span class="attr">class</span>=<span class="string">"org.springframework.aop.framework.ProxyFactoryBean"</span>&gt;</span>  
+        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"interceptorNames"</span>&gt;</span>  
+            <span class="tag">&lt;<span class="name">list</span>&gt;</span>  
+                <span class="tag">&lt;<span class="name">value</span>&gt;</span>beforeAdvice<span class="tag">&lt;/<span class="name">value</span>&gt;</span> 
+            <span class="tag">&lt;/<span class="name">list</span>&gt;</span>  
+        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>  
+    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+</code></pre>
+<p><a href="http://www.cnblogs.com/wasp520/p/3143139.html" target="_blank" rel="external">ProxyFactoryBean</a>创建代理对象与其它AOP实现方式的不同。</p>
+<h2 id="使用注解方式提供"><a href="#使用注解方式提供" class="headerlink" title="使用注解方式提供"></a>使用注解方式提供</h2><p>使用注解方式提供给需要的方法进行注解。</p>
+<pre><code class="java"><span class="meta">@Target</span>(ElementType.METHOD)
+<span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)
+<span class="keyword">public</span> <span class="meta">@interface</span> MyPermission {
+    <span class="function">String <span class="title">role</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;
+}
+
+<span class="meta">@Component</span>
+<span class="meta">@Aspect</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyPermissionImp</span> </span>{
+        <span class="meta">@Around</span>(value= <span class="string">"@annotation(com.mvc.annotation.MyPermission)"</span>)
+        <span class="function"><span class="keyword">private</span> Object <span class="title">test</span><span class="params">(ProceedingJoinPoint joinPoint)</span> <span class="keyword">throws</span> Throwable </span>{
+            MethodSignature ms=(MethodSignature) joinPoint.getSignature();
+            Method method=ms.getMethod();
+            System.out.println(method.getAnnotation(MyPermission.class).role().toString()+<span class="string">"标记"</span>);
+            Object object=joinPoint.proceed();
+            <span class="keyword">return</span> object;
+
+        }
+
+}
+</code></pre>
 <p>@Around 和 before 和 after 最主要的区别就是，Around方式可以决定目标方法是否需要执行！</p>
 <p>待续。。。</p>
 
@@ -101,14 +131,44 @@
 <h3 id="用户实现"><a href="#用户实现" class="headerlink" title="用户实现"></a>用户实现</h3><p>MethodBeforeAdvice</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.springframework.aop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> org.springframework.aop.BeforeAdvice;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MethodBeforeAdvice</span> <span class="keyword">extends</span> <span class="title">BeforeAdvice</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">before</span><span class="params">(Method var1, Object[] var2, Object var3)</span> <span class="keyword">throws</span> Throwable</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Method参数，是目标方法的放射对象，Object[] var2是目标方法的参数，Object var3目标对象。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"xxxService"</span> <span class="attr">class</span>=<span class="string">"org.springframework.aop.framework.ProxyFactoryBean"</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"interceptorNames"</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">list</span>&gt;</span>  </span><br><span class="line">                <span class="tag">&lt;<span class="name">value</span>&gt;</span>beforeAdvice<span class="tag">&lt;/<span class="name">value</span>&gt;</span> </span><br><span class="line">            <span class="tag">&lt;/<span class="name">list</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span> </span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">[ProxyFactoryBean](http://www.cnblogs.com/wasp520/p/3143139.html)创建代理对象与其它AOP实现方式的不同。</span><br><span class="line"></span><br><span class="line">## 使用注解方式提供</span><br><span class="line"></span><br><span class="line">使用注解方式提供给需要的方法进行注解。</span><br><span class="line"></span><br><span class="line">``` java</span><br><span class="line">@Target(ElementType.METHOD)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">public @interface MyPermission &#123;</span><br><span class="line">    String role() default "";</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">@Aspect</span><br><span class="line">public class MyPermissionImp &#123;</span><br><span class="line">        @Around(value= "@annotation(com.mvc.annotation.MyPermission)")</span><br><span class="line">        private Object test(ProceedingJoinPoint joinPoint) throws Throwable &#123;</span><br><span class="line">            MethodSignature ms=(MethodSignature) joinPoint.getSignature();</span><br><span class="line">            Method method=ms.getMethod();</span><br><span class="line">            System.out.println(method.getAnnotation(MyPermission.class).role().toString()+"标记");</span><br><span class="line">            Object object=joinPoint.proceed();</span><br><span class="line">            return object;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="xml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"xxxService"</span> <span class="attr">class</span>=<span class="string">"org.springframework.aop.framework.ProxyFactoryBean"</span>&gt;</span>  
+        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"interceptorNames"</span>&gt;</span>  
+            <span class="tag">&lt;<span class="name">list</span>&gt;</span>  
+                <span class="tag">&lt;<span class="name">value</span>&gt;</span>beforeAdvice<span class="tag">&lt;/<span class="name">value</span>&gt;</span> 
+            <span class="tag">&lt;/<span class="name">list</span>&gt;</span>  
+        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>  
+    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+</code></pre>
+<p><a href="http://www.cnblogs.com/wasp520/p/3143139.html" target="_blank" rel="external">ProxyFactoryBean</a>创建代理对象与其它AOP实现方式的不同。</p>
+<h2 id="使用注解方式提供"><a href="#使用注解方式提供" class="headerlink" title="使用注解方式提供"></a>使用注解方式提供</h2><p>使用注解方式提供给需要的方法进行注解。</p>
+<pre><code class="java"><span class="meta">@Target</span>(ElementType.METHOD)
+<span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)
+<span class="keyword">public</span> <span class="meta">@interface</span> MyPermission {
+    <span class="function">String <span class="title">role</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;
+}
+
+<span class="meta">@Component</span>
+<span class="meta">@Aspect</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyPermissionImp</span> </span>{
+        <span class="meta">@Around</span>(value= <span class="string">"@annotation(com.mvc.annotation.MyPermission)"</span>)
+        <span class="function"><span class="keyword">private</span> Object <span class="title">test</span><span class="params">(ProceedingJoinPoint joinPoint)</span> <span class="keyword">throws</span> Throwable </span>{
+            MethodSignature ms=(MethodSignature) joinPoint.getSignature();
+            Method method=ms.getMethod();
+            System.out.println(method.getAnnotation(MyPermission.class).role().toString()+<span class="string">"标记"</span>);
+            Object object=joinPoint.proceed();
+            <span class="keyword">return</span> object;
+
+        }
+
+}
+</code></pre>
 <p>@Around 和 before 和 after 最主要的区别就是，Around方式可以决定目标方法是否需要执行！</p>
 <p>待续。。。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/11/20/Spring-AOP/" data-id="civq6x78e000w3ekqnb1lmdo2" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/11/20/Spring-AOP/" data-id="civq725pg000x4lkqp5k76nel" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -168,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/10/31/访问者模式-1/" data-id="civq6x7b3004b3ekq2yer8t60" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/10/31/访问者模式-1/" data-id="civq725s600484lkqzbgjow11" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -238,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/09/06/面试总结/" data-id="civq6x7be004r3ekqhdag48r6" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/09/06/面试总结/" data-id="civq725se004o4lkqqew7rp2i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"></ul>
@@ -324,7 +384,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/27/JavaNIOtftp/" data-id="civq6x782000i3ekq45x2vgce" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/27/JavaNIOtftp/" data-id="civq725p4000h4lkqe1279obc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/译文/">译文</a></li></ul>
@@ -380,7 +440,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/27/Permissions/" data-id="civq6x78c000u3ekqp6yqt31s" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/27/Permissions/" data-id="civq725pc000s4lkq4hx8qed8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/译文/">译文</a></li></ul>
