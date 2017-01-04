@@ -46,6 +46,78 @@
 <div class="left_content">
     <section>
   
+    <article id="post-多线程一" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/07/14/多线程一/">多线程一</a>
+    </h1>
+  
+
+        <a href="/blog/2016/07/14/多线程一/" class="article-data-title">
+
+  <time  datetime="2016-07-14T08:55:46.000Z" itemprop="datePublished">2016-07-14</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-什么是线程，线程之间的基本状态和状态之间的关系？"><a href="#1-什么是线程，线程之间的基本状态和状态之间的关系？" class="headerlink" title="1.什么是线程，线程之间的基本状态和状态之间的关系？"></a>1.什么是线程，线程之间的基本状态和状态之间的关系？</h2><p>是程序执行的最小单位，一条线程指的是进程中一个单一顺序的控制流，线程是CPU进行调度资源的最小单位，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
+<p>同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）。</p>
+<p><strong>线程间的基本状态是：就绪,运行,阻塞.</strong><br>1，就绪状态是指线程具备运行的所有条件，逻辑上可以运行，在等待处理机。<br>2，运行状态是指线程占有处理机正在运行。<br>3,阻塞状态是指线程在等待一个事件（如某个信号量），逻辑上不可执行。</p>
+<p>线程状态转换图：<br><img src="http://7xstto.com1.z0.glb.clouddn.com/threadMap.jpg" alt="状态转换图"></p>
+<h2 id="2-线程和进程有什么区别？"><a href="#2-线程和进程有什么区别？" class="headerlink" title="2.线程和进程有什么区别？"></a>2.线程和进程有什么区别？</h2><p>1.进程是相对于操作系统来说的，进程是操作系统分配资源的最小单位，线程是程序中进程的不同执行路劲。<br>2.线程之间可以共享内存，对于一些需要并发操作，而且要共享某些变量就只能用线程。<br>3.线程不能独立运行，必须依赖于进程，单线程的一个程序就是一个进程。</p>
+<h2 id="3-多线程同步和互斥有几种实现方式，分别是什么-什么时候使用？"><a href="#3-多线程同步和互斥有几种实现方式，分别是什么-什么时候使用？" class="headerlink" title="3.多线程同步和互斥有几种实现方式，分别是什么,什么时候使用？"></a>3.多线程同步和互斥有几种实现方式，分别是什么,什么时候使用？</h2><p><strong>线程间的同步方法大体可分为两类：用户模式和内核模式。</strong></p>
+<p>内核模式就是指利用系统内核对象的单一性来进行同步，使用时需要切换内核态与用户态，而用户模式就是不需要切换到内核态，只在用户态完成操作。</p>
+<p><strong>线程同步</strong>是指线程之间所具有的一种制约关系，一个线程的执行依赖另一个线程的消息，当它没有得到另一个线程的消息时应等待，直到消息到达时才被唤醒。   </p>
+<p><strong>线程同步可以使用信号量的方式（wait,notify,notifyAll)</strong>  </p>
+<p><strong>线程互斥</strong>是指对于共享的进程系统资源，在各单个线程访问时的排它性。当有若干个线程都要使用某一共享资源时，任何时刻最多只允许一个线程去使用，其它要使用该资源的线程必须等待，直到占用资源者释放该资源。线程互斥可以看成是一种特殊的线程同步（下文统称为同步）。 </p>
+<p><strong>线程互斥可以使用lock,synchronized</strong></p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-什么是线程，线程之间的基本状态和状态之间的关系？"><a href="#1-什么是线程，线程之间的基本状态和状态之间的关系？" class="headerlink" title="1.什么是线程，线程之间的基本状态和状态之间的关系？"></a>1.什么是线程，线程之间的基本状态和状态之间的关系？</h2><p>是程序执行的最小单位，一条线程指的是进程中一个单一顺序的控制流，线程是CPU进行调度资源的最小单位，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
+<p>同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）。</p>
+<p><strong>线程间的基本状态是：就绪,运行,阻塞.</strong><br>1，就绪状态是指线程具备运行的所有条件，逻辑上可以运行，在等待处理机。<br>2，运行状态是指线程占有处理机正在运行。<br>3,阻塞状态是指线程在等待一个事件（如某个信号量），逻辑上不可执行。</p>
+<p>线程状态转换图：<br><img src="http://7xstto.com1.z0.glb.clouddn.com/threadMap.jpg" alt="状态转换图"></p>
+<h2 id="2-线程和进程有什么区别？"><a href="#2-线程和进程有什么区别？" class="headerlink" title="2.线程和进程有什么区别？"></a>2.线程和进程有什么区别？</h2><p>1.进程是相对于操作系统来说的，进程是操作系统分配资源的最小单位，线程是程序中进程的不同执行路劲。<br>2.线程之间可以共享内存，对于一些需要并发操作，而且要共享某些变量就只能用线程。<br>3.线程不能独立运行，必须依赖于进程，单线程的一个程序就是一个进程。</p>
+<h2 id="3-多线程同步和互斥有几种实现方式，分别是什么-什么时候使用？"><a href="#3-多线程同步和互斥有几种实现方式，分别是什么-什么时候使用？" class="headerlink" title="3.多线程同步和互斥有几种实现方式，分别是什么,什么时候使用？"></a>3.多线程同步和互斥有几种实现方式，分别是什么,什么时候使用？</h2><p><strong>线程间的同步方法大体可分为两类：用户模式和内核模式。</strong></p>
+<p>内核模式就是指利用系统内核对象的单一性来进行同步，使用时需要切换内核态与用户态，而用户模式就是不需要切换到内核态，只在用户态完成操作。</p>
+<p><strong>线程同步</strong>是指线程之间所具有的一种制约关系，一个线程的执行依赖另一个线程的消息，当它没有得到另一个线程的消息时应等待，直到消息到达时才被唤醒。   </p>
+<p><strong>线程同步可以使用信号量的方式（wait,notify,notifyAll)</strong>  </p>
+<p><strong>线程互斥</strong>是指对于共享的进程系统资源，在各单个线程访问时的排它性。当有若干个线程都要使用某一共享资源时，任何时刻最多只允许一个线程去使用，其它要使用该资源的线程必须等待，直到占用资源者释放该资源。线程互斥可以看成是一种特殊的线程同步（下文统称为同步）。 </p>
+<p><strong>线程互斥可以使用lock,synchronized</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/07/14/多线程一/" data-id="cixidchm4002y54ojrmz4f1tx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
     <article id="post-linux常用命令" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
@@ -94,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/13/linux常用命令/" data-id="cixg168mc0020lqoj61jj82sc" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/13/linux常用命令/" data-id="cixidchlk002054ojmnttpcb6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -158,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/06/httpClient反思/" data-id="cixg168lx001klqojjzv6fwcx" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/06/httpClient反思/" data-id="cixidchl6001j54ojl1wdg93p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"></ul>
@@ -230,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/30/JDK动态代理/" data-id="cixg168l4000elqojksvrq7m9" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/30/JDK动态代理/" data-id="cixidchkh000e54oj9p64mv6m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -290,122 +362,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/29/java链表/" data-id="cixg168m7001ulqojp6lpgbpa" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/29/java链表/" data-id="cixidchlb001o54ojrq7hk3mw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-maven" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/06/28/maven/">maven命令行创建项目,解决构建缓慢问题</a>
-    </h1>
-  
-
-        <a href="/blog/2016/06/28/maven/" class="article-data-title">
-
-  <time  datetime="2016-06-28T06:36:04.000Z" itemprop="datePublished">2016-06-28</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>以前项目中使用maven由于编译器集成的不好，为此换过编译器，现在重新来开始只是当时使用太过匆忙，没有太多思考，一下是看《maven实战》这本书小小的收货。</p>
-</blockquote>
-<h2 id="maven版本"><a href="#maven版本" class="headerlink" title="maven版本"></a>maven版本</h2><p>maven2 和 maven3 版本差异比较大，所以所有的命令都是基于maven3的。</p>
-<h2 id="maven-环境变量。"><a href="#maven-环境变量。" class="headerlink" title="maven 环境变量。"></a>maven 环境变量。</h2><p>Mac下使用brew安装软件，方便快捷。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install maven</span><br></pre></td></tr></table></figure>
-<h2 id="maven-环境变量"><a href="#maven-环境变量" class="headerlink" title="maven 环境变量"></a>maven 环境变量</h2><p>环境变量设置的目的在于能让maven bin中的命令，在用户shell的执行环境中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MAVEN_HOME=/usr/local/Cellar/maven/3.3.3/libexec</span><br><span class="line">PATH=$MAVEN_HOME/bin:$PATH</span><br><span class="line">M2_HOME=/usr/local/Cellar/maven/3.3.3/libexec</span><br><span class="line">PATH=$M2_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
-<h2 id="常见-maven-命令"><a href="#常见-maven-命令" class="headerlink" title="常见 maven 命令"></a>常见 maven 命令</h2><p><strong>maven 最快捷高效的使用方式是命令行</strong></p>
-<blockquote>
-<p><strong>ps:</strong> maven构建项目非常依赖网络，确保网络能访问maven的中央仓库，很多时候构建不成功，就是因为无法下载到maven构建所需要的插件。  </p>
-</blockquote>
-<p>生成项目骨架：</p>
-<p>需要你在创建的时候填写信息，例如 groupId,package,artifactId等。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate</span><br><span class="line">```  </span><br><span class="line">不使用用交互模式：  </span><br><span class="line"></span><br><span class="line">``` shell</span><br><span class="line">mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=myapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false</span><br></pre></td></tr></table></figure>
-<p>生成java项目路径。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">└── maven-test</span><br><span class="line">    ├── maven-test.iml</span><br><span class="line">    ├── pom.xml</span><br><span class="line">    └── src</span><br><span class="line">        ├── main</span><br><span class="line">        │   └── java</span><br><span class="line">        │       └── com</span><br><span class="line">        │           └── jun</span><br><span class="line">        │               └── maven</span><br><span class="line">        │                   └── App.java</span><br><span class="line">        └── test</span><br><span class="line">            └── java</span><br><span class="line">                └── com</span><br><span class="line">                    └── jun</span><br><span class="line">                        └── maven</span><br><span class="line">                            └── AppTest.java</span><br></pre></td></tr></table></figure>
-<h2 id="生成Web项目"><a href="#生成Web项目" class="headerlink" title="生成Web项目"></a>生成Web项目</h2><p>交互模式下生成速度相对快，对比无交互模式我用了4分钟。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DarchetypeArtifactId=maven-archetype-webapp</span><br></pre></td></tr></table></figure>
-<p>无交互模式生成的速度极其缓慢，可能网速比较烂，我用了24分钟（解决方法留在最后）！！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DgroupId=cn.luxh.app -DartifactId=my-web-app -DarchetypeArtifactId=maven-archetype-webapp -DinteractivMode=false</span><br></pre></td></tr></table></figure>
-<p>项目结构</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">├── pom.xml</span><br><span class="line">└── src</span><br><span class="line">    └── main</span><br><span class="line">        ├── resources</span><br><span class="line">        └── webapp</span><br><span class="line">            ├── WEB-INF</span><br><span class="line">            │   └── web.xml</span><br><span class="line">            └── index.jsp</span><br></pre></td></tr></table></figure>
-<p>为了约定的项目结构，需要手动在main下添加 </p>
-<p>java 目录来存放源文件<br>test 目录来写测试用例  </p>
-<h2 id="解决maven构建项目缓慢问题"><a href="#解决maven构建项目缓慢问题" class="headerlink" title="解决maven构建项目缓慢问题"></a>解决maven构建项目缓慢问题</h2><p>问题原因：由于每次maven构建项目时候需要去网上查找这个文件<a href="http://repo1.maven.org/maven2/archetype-catalog.xml" target="_blank" rel="external">archetype-catalog.xml</a> 4M大的文件，游览器打开都缓慢。</p>
-<p>解决方法：<br>1，把次文件放到 maven home的文件夹下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MacBook-Pro:3.3.3 jun$ pwd</span><br><span class="line">/usr/local/Cellar/maven/3.3.3</span><br><span class="line">MacBook-Pro:3.3.3 jun$ ls  </span><br><span class="line">INSTALL_RECEIPT.json	archetype-catalog.xml</span><br><span class="line">LICENSE			bin</span><br><span class="line">NOTICE			libexec</span><br><span class="line">README.txt</span><br></pre></td></tr></table></figure>
-<p>2, 每次执行命令时候添加 -DarchetypeCatalog=local</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DgroupId=cn.luxh.app -DartifactId=my-web-app -DarchetypeArtifactId=maven-archetype-webapp -DinteractivMode=false -DarchetypeCatalog=local</span><br></pre></td></tr></table></figure>
-<p>这样原本24分钟的构建，使用本地archetype-catalog.xml，只需要9s!!</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>以前项目中使用maven由于编译器集成的不好，为此换过编译器，现在重新来开始只是当时使用太过匆忙，没有太多思考，一下是看《maven实战》这本书小小的收货。</p>
-</blockquote>
-<h2 id="maven版本"><a href="#maven版本" class="headerlink" title="maven版本"></a>maven版本</h2><p>maven2 和 maven3 版本差异比较大，所以所有的命令都是基于maven3的。</p>
-<h2 id="maven-环境变量。"><a href="#maven-环境变量。" class="headerlink" title="maven 环境变量。"></a>maven 环境变量。</h2><p>Mac下使用brew安装软件，方便快捷。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install maven</span><br></pre></td></tr></table></figure>
-<h2 id="maven-环境变量"><a href="#maven-环境变量" class="headerlink" title="maven 环境变量"></a>maven 环境变量</h2><p>环境变量设置的目的在于能让maven bin中的命令，在用户shell的执行环境中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MAVEN_HOME=/usr/local/Cellar/maven/3.3.3/libexec</span><br><span class="line">PATH=$MAVEN_HOME/bin:$PATH</span><br><span class="line">M2_HOME=/usr/local/Cellar/maven/3.3.3/libexec</span><br><span class="line">PATH=$M2_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
-<h2 id="常见-maven-命令"><a href="#常见-maven-命令" class="headerlink" title="常见 maven 命令"></a>常见 maven 命令</h2><p><strong>maven 最快捷高效的使用方式是命令行</strong></p>
-<blockquote>
-<p><strong>ps:</strong> maven构建项目非常依赖网络，确保网络能访问maven的中央仓库，很多时候构建不成功，就是因为无法下载到maven构建所需要的插件。  </p>
-</blockquote>
-<p>生成项目骨架：</p>
-<p>需要你在创建的时候填写信息，例如 groupId,package,artifactId等。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate</span><br><span class="line">```  </span><br><span class="line">不使用用交互模式：  </span><br><span class="line"></span><br><span class="line">``` shell</span><br><span class="line">mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=myapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false</span><br></pre></td></tr></table></figure>
-<p>生成java项目路径。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">└── maven-test</span><br><span class="line">    ├── maven-test.iml</span><br><span class="line">    ├── pom.xml</span><br><span class="line">    └── src</span><br><span class="line">        ├── main</span><br><span class="line">        │   └── java</span><br><span class="line">        │       └── com</span><br><span class="line">        │           └── jun</span><br><span class="line">        │               └── maven</span><br><span class="line">        │                   └── App.java</span><br><span class="line">        └── test</span><br><span class="line">            └── java</span><br><span class="line">                └── com</span><br><span class="line">                    └── jun</span><br><span class="line">                        └── maven</span><br><span class="line">                            └── AppTest.java</span><br></pre></td></tr></table></figure>
-<h2 id="生成Web项目"><a href="#生成Web项目" class="headerlink" title="生成Web项目"></a>生成Web项目</h2><p>交互模式下生成速度相对快，对比无交互模式我用了4分钟。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DarchetypeArtifactId=maven-archetype-webapp</span><br></pre></td></tr></table></figure>
-<p>无交互模式生成的速度极其缓慢，可能网速比较烂，我用了24分钟（解决方法留在最后）！！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DgroupId=cn.luxh.app -DartifactId=my-web-app -DarchetypeArtifactId=maven-archetype-webapp -DinteractivMode=false</span><br></pre></td></tr></table></figure>
-<p>项目结构</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">├── pom.xml</span><br><span class="line">└── src</span><br><span class="line">    └── main</span><br><span class="line">        ├── resources</span><br><span class="line">        └── webapp</span><br><span class="line">            ├── WEB-INF</span><br><span class="line">            │   └── web.xml</span><br><span class="line">            └── index.jsp</span><br></pre></td></tr></table></figure>
-<p>为了约定的项目结构，需要手动在main下添加 </p>
-<p>java 目录来存放源文件<br>test 目录来写测试用例  </p>
-<h2 id="解决maven构建项目缓慢问题"><a href="#解决maven构建项目缓慢问题" class="headerlink" title="解决maven构建项目缓慢问题"></a>解决maven构建项目缓慢问题</h2><p>问题原因：由于每次maven构建项目时候需要去网上查找这个文件<a href="http://repo1.maven.org/maven2/archetype-catalog.xml" target="_blank" rel="external">archetype-catalog.xml</a> 4M大的文件，游览器打开都缓慢。</p>
-<p>解决方法：<br>1，把次文件放到 maven home的文件夹下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MacBook-Pro:3.3.3 jun$ pwd</span><br><span class="line">/usr/local/Cellar/maven/3.3.3</span><br><span class="line">MacBook-Pro:3.3.3 jun$ ls  </span><br><span class="line">INSTALL_RECEIPT.json	archetype-catalog.xml</span><br><span class="line">LICENSE			bin</span><br><span class="line">NOTICE			libexec</span><br><span class="line">README.txt</span><br></pre></td></tr></table></figure>
-<p>2, 每次执行命令时候添加 -DarchetypeCatalog=local</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DgroupId=cn.luxh.app -DartifactId=my-web-app -DarchetypeArtifactId=maven-archetype-webapp -DinteractivMode=false -DarchetypeCatalog=local</span><br></pre></td></tr></table></figure>
-<p>这样原本24分钟的构建，使用本地archetype-catalog.xml，只需要9s!!</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/28/maven/" data-id="cixg168mf0024lqojqro04emi" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
 
     </footer>
   </div>
