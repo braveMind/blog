@@ -23,7 +23,7 @@
 3，删除远程分支
 12345678 git push origin --delete remotebranch``` 4,删除本地分支``` shellgit branch -d branch
 3,查看远程">
-<meta property="og:updated_time" content="2017-03-06T08:41:54.000Z">
+<meta property="og:updated_time" content="2017-03-06T11:13:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git">
 <meta name="twitter:description" content="git 常用操作1，checkout远程达到本地
@@ -99,7 +99,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git push --set-upstream origin branch</span><br></pre></td></tr></table></figure>
 <p>6, 合并指定分支到当前分支</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge 指定分之 当前分支</span><br></pre></td></tr></table></figure>
-
+<p>7，git 报错</p>
+<blockquote>
+<p>fatal: git checkout: updating paths is incompatible with switching branches.<br>Did you intend to checkout ‘origin/remote-name’ which can not be resolved as commit?</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote update</span><br><span class="line">git fetch</span><br><span class="line">Now it should work:</span><br><span class="line"></span><br><span class="line">git checkout -b local-name origin/remote-name</span><br></pre></td></tr></table></figure>
       
 
 
@@ -124,11 +128,15 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git push --set-upstream origin branch</span><br></pre></td></tr></table></figure>
 <p>6, 合并指定分支到当前分支</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge 指定分之 当前分支</span><br></pre></td></tr></table></figure>
-
+<p>7，git 报错</p>
+<blockquote>
+<p>fatal: git checkout: updating paths is incompatible with switching branches.<br>Did you intend to checkout ‘origin/remote-name’ which can not be resolved as commit?</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote update</span><br><span class="line">git fetch</span><br><span class="line">Now it should work:</span><br><span class="line"></span><br><span class="line">git checkout -b local-name origin/remote-name</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/03/06/git/" data-id="cizxuyjv70017lzojhr1r9clo" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/03/06/git/" data-id="cizy0d27g001b02oju4gv26oa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
