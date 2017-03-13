@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java基础/">Java基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,74 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-环境变量" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/05/16/环境变量/">linux系统中四种环境变量</a>
+    </h1>
+  
+
+        <a href="/blog/2016/05/16/环境变量/" class="article-data-title">
+
+  <time  datetime="2016-05-16T14:09:06.000Z" itemprop="datePublished">2016-05-16</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="全局环境变量"><a href="#全局环境变量" class="headerlink" title="全局环境变量"></a>全局环境变量</h3><h4 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a>/etc/profile</h4><p>次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。</p>
+<h4 id="etc-bashrc"><a href="#etc-bashrc" class="headerlink" title="/etc/bashrc"></a>/etc/bashrc</h4><p>次文件是每次 bash shell被打开时候该文件就会被读取里面的环境变量。</p>
+<h3 id="用户环境变量"><a href="#用户环境变量" class="headerlink" title="用户环境变量"></a>用户环境变量</h3><h5 id="bash-profile"><a href="#bash-profile" class="headerlink" title="~./bash_profile"></a>~./bash_profile</h5><p>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件.</p>
+<h5 id="使用export-在终端导入"><a href="#使用export-在终端导入" class="headerlink" title="使用export 在终端导入"></a>使用export 在终端导入</h5><p>例如使用导入jdk环境变量：<br>export PATH=$PATH:/usr/local/lib/jdk1.6.0_25</p>
+<h3 id="修改环境变量文件生效方法"><a href="#修改环境变量文件生效方法" class="headerlink" title="修改环境变量文件生效方法"></a>修改环境变量文件生效方法</h3><p>source 文件名</p>
+<h3 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h3><p>linux 系统中环境变量的路径叫做 PATH,我们如果定义环境变量千万不要覆盖了系统PATH，一般的做法是使用 “<strong>：</strong>” 跟着我们自己的环境变量，和windows不同，windows使用“<strong>；</strong>”。</p>
+<h3 id="环境变量文件执行顺序"><a href="#环境变量文件执行顺序" class="headerlink" title="环境变量文件执行顺序"></a>环境变量文件执行顺序</h3><p><strong>括弧里面的 环境变量文件名称可能 不同版本的linux 文件名字不一样,例如Ubuntu里面只有~/.profile</strong></p>
+<p>/etc/profile -&gt; (~/.bash_profile | ~/.bash_login | ~/.profile) -&gt; ~/.bashrc -&gt; /etc/bashrc -&gt; ~/.bash_logout</p>
+<h3 id="配置java-Maven环境变量"><a href="#配置java-Maven环境变量" class="headerlink" title="配置java,Maven环境变量"></a>配置java,Maven环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home</span><br><span class="line">PATH=<span class="variable">$MAVEN_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line">PAHT=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PAHT</span></span><br><span class="line"></span><br><span class="line">M2_HOME=/usr/<span class="built_in">local</span>/Cellar/maven/3.3.3/libexec</span><br><span class="line">PATH=<span class="variable">$M2_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> M2_HOME</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME</span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <h3 id="全局环境变量"><a href="#全局环境变量" class="headerlink" title="全局环境变量"></a>全局环境变量</h3><h4 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a>/etc/profile</h4><p>次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。</p>
+<h4 id="etc-bashrc"><a href="#etc-bashrc" class="headerlink" title="/etc/bashrc"></a>/etc/bashrc</h4><p>次文件是每次 bash shell被打开时候该文件就会被读取里面的环境变量。</p>
+<h3 id="用户环境变量"><a href="#用户环境变量" class="headerlink" title="用户环境变量"></a>用户环境变量</h3><h5 id="bash-profile"><a href="#bash-profile" class="headerlink" title="~./bash_profile"></a>~./bash_profile</h5><p>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件.</p>
+<h5 id="使用export-在终端导入"><a href="#使用export-在终端导入" class="headerlink" title="使用export 在终端导入"></a>使用export 在终端导入</h5><p>例如使用导入jdk环境变量：<br>export PATH=$PATH:/usr/local/lib/jdk1.6.0_25</p>
+<h3 id="修改环境变量文件生效方法"><a href="#修改环境变量文件生效方法" class="headerlink" title="修改环境变量文件生效方法"></a>修改环境变量文件生效方法</h3><p>source 文件名</p>
+<h3 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h3><p>linux 系统中环境变量的路径叫做 PATH,我们如果定义环境变量千万不要覆盖了系统PATH，一般的做法是使用 “<strong>：</strong>” 跟着我们自己的环境变量，和windows不同，windows使用“<strong>；</strong>”。</p>
+<h3 id="环境变量文件执行顺序"><a href="#环境变量文件执行顺序" class="headerlink" title="环境变量文件执行顺序"></a>环境变量文件执行顺序</h3><p><strong>括弧里面的 环境变量文件名称可能 不同版本的linux 文件名字不一样,例如Ubuntu里面只有~/.profile</strong></p>
+<p>/etc/profile -&gt; (~/.bash_profile | ~/.bash_login | ~/.profile) -&gt; ~/.bashrc -&gt; /etc/bashrc -&gt; ~/.bash_logout</p>
+<h3 id="配置java-Maven环境变量"><a href="#配置java-Maven环境变量" class="headerlink" title="配置java,Maven环境变量"></a>配置java,Maven环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home</span><br><span class="line">PATH=<span class="variable">$MAVEN_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line">PAHT=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PAHT</span></span><br><span class="line"></span><br><span class="line">M2_HOME=/usr/<span class="built_in">local</span>/Cellar/maven/3.3.3/libexec</span><br><span class="line">PATH=<span class="variable">$M2_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> M2_HOME</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME</span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/05/16/环境变量/" data-id="cj07rrjy7004455oj8w2egf6d" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-设计模式第一阶段完结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -98,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/14/设计模式第一阶段完结/" data-id="cj07rlfjj004k17ojv9p2nnw1" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/14/设计模式第一阶段完结/" data-id="cj07rrjyi004o55ojudnju97m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -200,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/14/备忘录模式/" data-id="cj07rlfin003717ojg2hlpdps" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/14/备忘录模式/" data-id="cj07rrjxo003b55ojir5v63hk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -314,7 +382,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/12/访问者模式/" data-id="cj07rlfjl004o17ojlszhq86m" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/12/访问者模式/" data-id="cj07rrjyk004s55ojannbek7m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -398,99 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/11/模板模式/" data-id="cj07rlfiz003s17oja0ast9p1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-策略模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/05/10/策略模式/">策略模式（行为模式七）</a>
-    </h1>
-  
-
-        <a href="/blog/2016/05/10/策略模式/" class="article-data-title">
-
-  <time  datetime="2016-05-10T13:37:20.000Z" itemprop="datePublished">2016-05-10</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>策略模式允许类根据不同的条件在运行的时候可以选择不同的策略（算法）处理问题。策略模式把一系列的算法包装起来，供Client根据不同的条件调用。</p>
-</blockquote>
-<h2 id="类的结构图"><a href="#类的结构图" class="headerlink" title="类的结构图"></a>类的结构图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/strategy.png" alt="类的结构图"></p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>结构组成：  </p>
-<ol>
-<li>顶层策略类  </li>
-<li>策略类的实现类  </li>
-<li>策略容器</li>
-</ol>
-<p>策略模式的类结构比较简单，只要实现一个接口就可以实现一种策略，容器中含有对策略类的引用，客户端调用时候根据不同的条件，把不同的策略注入到容器中，就可以完成对这种策略的引用。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>顶层策略类  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Operation</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doOperation</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>策略实现类  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">addOperation</span> <span class="keyword">implements</span> <span class="title">Operation</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doOperation</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        System.out.println(a+b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubOperation</span> <span class="keyword">implements</span> <span class="title">Operation</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doOperation</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        System.out.println(a-b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>容器类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Operation operation;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Operation <span class="title">getOperation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> operation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOperation</span><span class="params">(Operation operation)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.operation = operation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Context</span><span class="params">(Operation operation)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.operation = operation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Operation</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.operation.doOperation(a,b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>App 类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Operation operation=<span class="keyword">new</span> addOperation();</span><br><span class="line">        Context context=<span class="keyword">new</span> Context(operation);</span><br><span class="line">        context.Operation(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">        Operation subOperation=<span class="keyword">new</span> SubOperation();</span><br><span class="line">        context.setOperation(subOperation);</span><br><span class="line">        context.Operation(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>策略模式封装的是算法，在算法不确定的时候，可以使用策略模式。如果算法改变时候，客户端可以不用做任何的调整。</p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>策略模式在调用的时候，客户端必须知道这个具体使用哪个算法，不符合迪米特法则，可以使用工厂方法避免。</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>策略模式允许类根据不同的条件在运行的时候可以选择不同的策略（算法）处理问题。策略模式把一系列的算法包装起来，供Client根据不同的条件调用。</p>
-</blockquote>
-<h2 id="类的结构图"><a href="#类的结构图" class="headerlink" title="类的结构图"></a>类的结构图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/strategy.png" alt="类的结构图"></p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>结构组成：  </p>
-<ol>
-<li>顶层策略类  </li>
-<li>策略类的实现类  </li>
-<li>策略容器</li>
-</ol>
-<p>策略模式的类结构比较简单，只要实现一个接口就可以实现一种策略，容器中含有对策略类的引用，客户端调用时候根据不同的条件，把不同的策略注入到容器中，就可以完成对这种策略的引用。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>顶层策略类  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Operation</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doOperation</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>策略实现类  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">addOperation</span> <span class="keyword">implements</span> <span class="title">Operation</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doOperation</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        System.out.println(a+b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubOperation</span> <span class="keyword">implements</span> <span class="title">Operation</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doOperation</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        System.out.println(a-b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>容器类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Operation operation;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Operation <span class="title">getOperation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> operation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOperation</span><span class="params">(Operation operation)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.operation = operation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Context</span><span class="params">(Operation operation)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.operation = operation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Operation</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.operation.doOperation(a,b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>App 类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Operation operation=<span class="keyword">new</span> addOperation();</span><br><span class="line">        Context context=<span class="keyword">new</span> Context(operation);</span><br><span class="line">        context.Operation(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">        Operation subOperation=<span class="keyword">new</span> SubOperation();</span><br><span class="line">        context.setOperation(subOperation);</span><br><span class="line">        context.Operation(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>策略模式封装的是算法，在算法不确定的时候，可以使用策略模式。如果算法改变时候，客户端可以不用做任何的调整。</p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>策略模式在调用的时候，客户端必须知道这个具体使用哪个算法，不符合迪米特法则，可以使用工厂方法避免。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/10/策略模式/" data-id="cj07rlfjb004417oj3ex48r3d" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/11/模板模式/" data-id="cj07rrjy0003w55ojfuv88mux" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -506,7 +482,7 @@
   
   
     <nav id="page-nav">
-      <a class="" rel="prev" href="/blog/page/10/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/9/">9</a><a class="page-number" href="/blog/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/blog/page/12/">12</a><a class="page-number" href="/blog/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/17/">17</a><a class="extend next" rel="next" href="/blog/page/12/">Next &raquo;</a>
+      <a class="" rel="prev" href="/blog/page/10/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/9/">9</a><a class="page-number" href="/blog/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/blog/page/12/">12</a><a class="page-number" href="/blog/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/18/">18</a><a class="extend next" rel="next" href="/blog/page/12/">Next &raquo;</a>
     </nav>
   
 </section>
