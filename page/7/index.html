@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,74 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-DFS深度优先遍历算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/06/25/DFS深度优先遍历算法/">DFS深度优先遍历算法</a>
+    </h1>
+  
+
+        <a href="/blog/2016/06/25/DFS深度优先遍历算法/" class="article-data-title">
+
+  <time  datetime="2016-06-25T01:43:49.000Z" itemprop="datePublished">2016-06-25</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>深度优先遍历存储结构上使用的是栈的结构</strong>，广度优先遍历存储上使用的是队列的结构，从表现形式上来看深度优先遍历是一条线，走下去，如果没有孩子节点，跳到上一个节点继续遍历，此种遍历方式，非常满足栈的特性，先进后出。  </p>
+<p><strong>广度优先遍历使用的是队列的一种存储结构</strong>，先进先出，广度优先遍历在表现型式上是一种发散性的搜索方式，对于节点的搜索表现形式上就是一圈一圈的搜索，队列恰好符合这个特性，所有节点先进先出，距离这个节点比较近的点放入队列，限次遍历会拿出先放入进去的节点进行搜索。</p>
+</blockquote>
+<h2 id="DFS-实现"><a href="#DFS-实现" class="headerlink" title="DFS 实现"></a>DFS 实现</h2><p>在上一篇<a href="http://bravemind.github.io/blog/2016/06/24/BFS%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95/">BFS</a>的博客中进行了图的数据建模，在本篇博客中继续使用上一篇博客的图，所以本篇博客基于上一篇博客。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="comment">//使用栈的结构 存储</span></span><br><span class="line">       Stack&lt;Integer&gt; s = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">       <span class="keyword">int</span> rootNode = <span class="number">0</span>;</span><br><span class="line">       s.push(rootNode);</span><br><span class="line">       visited[rootNode] = <span class="keyword">true</span>;</span><br><span class="line">       System.out.println((rootNode));</span><br><span class="line">       <span class="keyword">while</span> (!s.isEmpty()) &#123;</span><br><span class="line">           <span class="keyword">int</span> n = s.peek();</span><br><span class="line">           <span class="keyword">int</span> child = getUnvisitedChildNode(n);</span><br><span class="line">           <span class="keyword">if</span> (child != -<span class="number">1</span>) &#123;</span><br><span class="line">               visited[child] = <span class="keyword">true</span>;</span><br><span class="line">               System.out.println(child);</span><br><span class="line">               s.push(child);</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               s.pop();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>0<br>1<br>7<br>2<br>3<br>4<br>8<br>5<br>6</p>
+<p>可以看到除了存储结构发生改变外，查找孩子节点，记录是否访问过的逻辑一点都没有变化。</p>
+<p>这两篇博客中的图都是连通图，只有连通图才能完整遍历。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p><strong>深度优先遍历存储结构上使用的是栈的结构</strong>，广度优先遍历存储上使用的是队列的结构，从表现形式上来看深度优先遍历是一条线，走下去，如果没有孩子节点，跳到上一个节点继续遍历，此种遍历方式，非常满足栈的特性，先进后出。  </p>
+<p><strong>广度优先遍历使用的是队列的一种存储结构</strong>，先进先出，广度优先遍历在表现型式上是一种发散性的搜索方式，对于节点的搜索表现形式上就是一圈一圈的搜索，队列恰好符合这个特性，所有节点先进先出，距离这个节点比较近的点放入队列，限次遍历会拿出先放入进去的节点进行搜索。</p>
+</blockquote>
+<h2 id="DFS-实现"><a href="#DFS-实现" class="headerlink" title="DFS 实现"></a>DFS 实现</h2><p>在上一篇<a href="http://bravemind.github.io/blog/2016/06/24/BFS%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95/">BFS</a>的博客中进行了图的数据建模，在本篇博客中继续使用上一篇博客的图，所以本篇博客基于上一篇博客。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="comment">//使用栈的结构 存储</span></span><br><span class="line">       Stack&lt;Integer&gt; s = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">       <span class="keyword">int</span> rootNode = <span class="number">0</span>;</span><br><span class="line">       s.push(rootNode);</span><br><span class="line">       visited[rootNode] = <span class="keyword">true</span>;</span><br><span class="line">       System.out.println((rootNode));</span><br><span class="line">       <span class="keyword">while</span> (!s.isEmpty()) &#123;</span><br><span class="line">           <span class="keyword">int</span> n = s.peek();</span><br><span class="line">           <span class="keyword">int</span> child = getUnvisitedChildNode(n);</span><br><span class="line">           <span class="keyword">if</span> (child != -<span class="number">1</span>) &#123;</span><br><span class="line">               visited[child] = <span class="keyword">true</span>;</span><br><span class="line">               System.out.println(child);</span><br><span class="line">               s.push(child);</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               s.pop();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>0<br>1<br>7<br>2<br>3<br>4<br>8<br>5<br>6</p>
+<p>可以看到除了存储结构发生改变外，查找孩子节点，记录是否访问过的逻辑一点都没有变化。</p>
+<p>这两篇博客中的图都是连通图，只有连通图才能完整遍历。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/06/25/DFS深度优先遍历算法/" data-id="cj0upo7u90008hkoj0xl19b8l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-BFS广度优先算法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -100,7 +168,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/24/BFS广度优先算法/" data-id="cj07s68b00001fhojzdik3v2i" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/24/BFS广度优先算法/" data-id="cj0upo7tz0001hkojbl5d274a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -164,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/21/key-must-be-null/" data-id="cj07s68ck0021fhojwyh3s4tw" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/21/key-must-be-null/" data-id="cj0upo7vp0020hkojquv4gwaf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -238,7 +306,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/20/比较器/" data-id="cj07s68dk003sfhojdrkpz9nv" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/20/比较器/" data-id="cj0upo7wp003thkoj9dgg3bqf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -328,81 +396,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/16/treeMap/" data-id="cj07s68cu002hfhoj36a1ivm7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-hashSet" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/06/15/hashSet/">hashSet细节</a>
-    </h1>
-  
-
-        <a href="/blog/2016/06/15/hashSet/" class="article-data-title">
-
-  <time  datetime="2016-06-15T15:14:33.000Z" itemprop="datePublished">2016-06-15</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>JDK如下定义HashSet<br>This class implements the <tt>Set</tt> interface, backed by a hash table<br>  (actually a <tt>HashMap</tt> instance).  It makes no guarantees as to the  iteration order of the set; in particular, it does not guarantee that the  order will remain constant over time.  This class permits the <tt>null</tt>  element.  </p>
-</blockquote>
-<p>HashTable 是基于hash表的数据结构，实际上使用的是HashMap的数据结构,HashSet不保证结迭代顺序，也不保证保证表中的元素顺序随着时间的变化,HashSet允许包含一个null值。由于HashSet使用的是hashMap为底层的数据结构，那么hashSet也是线程非同步的。</p>
-<h2 id="HashSet-add方法"><a href="#HashSet-add方法" class="headerlink" title="HashSet add方法"></a>HashSet add方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> map.put(e, PRESENT)==<span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>hashSet实际上add元素时候是把将要存入的这个元素当做key值调用hashMap的put方法，放入hashMap中的，value放一个空的对象。因此hashSet,put元素的时间复杂度基本上是o(1),除了hash冲突。  </p>
-<h2 id="hashSet-contain方法"><a href="#hashSet-contain方法" class="headerlink" title="hashSet contain方法"></a>hashSet contain方法</h2><p>hashMap中没有contain放，hashMap中的方法叫做containKey曾经一道面试题。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> map.containsKey(o);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>没错，hashSet的contains方法是调用map.containsKey(O)方法的，containsKey(o)是根据hash函数去做散列的，所以与元素的多少无关，无论是多少元素containsKey(o)的时间复杂度基本上O(1)。</p>
-<h2 id="hashSet-的遍历-iterator"><a href="#hashSet-的遍历-iterator" class="headerlink" title="hashSet 的遍历 iterator"></a>hashSet 的遍历 iterator</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> map.keySet().iterator();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>HashSet的遍历也是调用HashMap的keySet().iterator()进行遍历的Entry<k,v>这样的一个链表节点的。</k,v></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>HashSet可以看成是HashMap的一种特殊结构,HashSet存储的元素是仅仅是HashMap的key，因此hashSet可以过滤重复的值，同时采用了Hash表结构HashSet是一种非线程安全的存储结构，在多线程下需要线程同步。影响HashSet性能的因素和HashMap相同同样是初始化容量，和负载因子。</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>JDK如下定义HashSet<br>This class implements the <tt>Set</tt> interface, backed by a hash table<br>  (actually a <tt>HashMap</tt> instance).  It makes no guarantees as to the  iteration order of the set; in particular, it does not guarantee that the  order will remain constant over time.  This class permits the <tt>null</tt>  element.  </p>
-</blockquote>
-<p>HashTable 是基于hash表的数据结构，实际上使用的是HashMap的数据结构,HashSet不保证结迭代顺序，也不保证保证表中的元素顺序随着时间的变化,HashSet允许包含一个null值。由于HashSet使用的是hashMap为底层的数据结构，那么hashSet也是线程非同步的。</p>
-<h2 id="HashSet-add方法"><a href="#HashSet-add方法" class="headerlink" title="HashSet add方法"></a>HashSet add方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> map.put(e, PRESENT)==<span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>hashSet实际上add元素时候是把将要存入的这个元素当做key值调用hashMap的put方法，放入hashMap中的，value放一个空的对象。因此hashSet,put元素的时间复杂度基本上是o(1),除了hash冲突。  </p>
-<h2 id="hashSet-contain方法"><a href="#hashSet-contain方法" class="headerlink" title="hashSet contain方法"></a>hashSet contain方法</h2><p>hashMap中没有contain放，hashMap中的方法叫做containKey曾经一道面试题。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> map.containsKey(o);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>没错，hashSet的contains方法是调用map.containsKey(O)方法的，containsKey(o)是根据hash函数去做散列的，所以与元素的多少无关，无论是多少元素containsKey(o)的时间复杂度基本上O(1)。</p>
-<h2 id="hashSet-的遍历-iterator"><a href="#hashSet-的遍历-iterator" class="headerlink" title="hashSet 的遍历 iterator"></a>hashSet 的遍历 iterator</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> map.keySet().iterator();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>HashSet的遍历也是调用HashMap的keySet().iterator()进行遍历的Entry<k,v>这样的一个链表节点的。</k,v></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>HashSet可以看成是HashMap的一种特殊结构,HashSet存储的元素是仅仅是HashMap的key，因此hashSet可以过滤重复的值，同时采用了Hash表结构HashSet是一种非线程安全的存储结构，在多线程下需要线程同步。影响HashSet性能的因素和HashMap相同同样是初始化容量，和负载因子。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/15/hashSet/" data-id="cj07s68ca001pfhoj5o074kj0" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/16/treeMap/" data-id="cj0upo7w3002nhkojj4ncqc08" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -418,7 +412,7 @@
   
   
     <nav id="page-nav">
-      <a class="" rel="prev" href="/blog/page/6/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/5/">5</a><a class="page-number" href="/blog/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/blog/page/8/">8</a><a class="page-number" href="/blog/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/17/">17</a><a class="extend next" rel="next" href="/blog/page/8/">Next &raquo;</a>
+      <a class="" rel="prev" href="/blog/page/6/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/5/">5</a><a class="page-number" href="/blog/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/blog/page/8/">8</a><a class="page-number" href="/blog/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/18/">18</a><a class="extend next" rel="next" href="/blog/page/8/">Next &raquo;</a>
     </nav>
   
 </section>

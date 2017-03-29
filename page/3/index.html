@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,62 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-Permissions" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/08/27/Permissions/">Java File Permissions(Time to Check to Time of Use)</a>
+    </h1>
+  
+
+        <a href="/blog/2016/08/27/Permissions/" class="article-data-title">
+
+  <time  datetime="2016-08-27T01:11:29.000Z" itemprop="datePublished">2016-08-27</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是篇java NIO 帮助文档，我们开始介绍 Files类来自java.nio.file包中，它提供很多静态的方法进行文件和目录的操作，让我开始java文件权限的操作。是么时候进行文件权限检查，按照我的观点来说就是“何时使用，何时检查”，我们做权限检查，然后基于结果，我们在各自的对象上执行操作。如果操作的文件权限在中途被改变，将会导致安全漏洞。</p>
+<h2 id="Readable-Hidden-Writable-Executable"><a href="#Readable-Hidden-Writable-Executable" class="headerlink" title="Readable,Hidden,Writable,Executable"></a>Readable,Hidden,Writable,Executable</h2><p>Files类中，关于文件权限的操作如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.javapapers.java.nio;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.nio.file.Files;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Path;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Paths;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FilePermissionNIO</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		Path file = Paths.get(<span class="string">"C:\\Users\\Cycle\\Desktop\\a.html"</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">boolean</span> isRegularFile = Files.isRegularFile(file);</span><br><span class="line">		<span class="keyword">boolean</span> isHidden = Files.isReadable(file);</span><br><span class="line">		<span class="keyword">boolean</span> isReadable = Files.isReadable(file);</span><br><span class="line">		<span class="keyword">boolean</span> isExecutable = Files.isExecutable(file);</span><br><span class="line">		<span class="keyword">boolean</span> isSymbolicLink = Files.isSymbolicLink(file);</span><br><span class="line"></span><br><span class="line">		Path directory = Paths.get(<span class="string">"C:\\Users\\Cycle\\Desktop"</span>);</span><br><span class="line">		<span class="keyword">boolean</span> isDirectory = Files.isDirectory(directory);</span><br><span class="line">		<span class="keyword">boolean</span> isWritable = Files.isWritable(directory);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="基于文件权限的操作"><a href="#基于文件权限的操作" class="headerlink" title="基于文件权限的操作"></a>基于文件权限的操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.javapapers.java.nio;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.AccessDeniedException;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Files;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Path;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Paths;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FilePermissionNIO</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">		Path file = Paths.get(<span class="string">"C:\\Users\\Cycle\\Desktop\\a.txt"</span>);</span><br><span class="line">		String userMessage = <span class="string">""</span>;</span><br><span class="line">		</span><br><span class="line">		userMessage = strategyA(file);</span><br><span class="line">		System.out.println(<span class="string">"Strategy A: "</span> + userMessage);</span><br><span class="line"></span><br><span class="line">		userMessage = strategyB(file);</span><br><span class="line">		System.out.println(<span class="string">"Strategy B: "</span> + userMessage);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">strategyA</span><span class="params">(Path file)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		String userMessage = <span class="string">""</span>;</span><br><span class="line">		<span class="keyword">boolean</span> isWritable = Files.isWritable(file);</span><br><span class="line">		<span class="keyword">if</span> (isWritable) &#123;</span><br><span class="line">			Files.delete(file);</span><br><span class="line">			userMessage = <span class="string">"Deleted Successfully!"</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			userMessage = <span class="string">"File is not writable."</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> userMessage;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">strategyB</span><span class="params">(Path file)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		String userMessage = <span class="string">""</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// do not check for permission</span></span><br><span class="line">			<span class="comment">// just go ahead and delete</span></span><br><span class="line">			<span class="comment">// if denied, act based on it</span></span><br><span class="line">			Files.delete(file);</span><br><span class="line">			userMessage = <span class="string">"Deleted Successfully!"</span>;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (AccessDeniedException ade) &#123;</span><br><span class="line">			ade.printStackTrace();</span><br><span class="line">			userMessage = ade.getMessage() + <span class="string">" File is not writable."</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> userMessage;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <p>这是篇java NIO 帮助文档，我们开始介绍 Files类来自java.nio.file包中，它提供很多静态的方法进行文件和目录的操作，让我开始java文件权限的操作。是么时候进行文件权限检查，按照我的观点来说就是“何时使用，何时检查”，我们做权限检查，然后基于结果，我们在各自的对象上执行操作。如果操作的文件权限在中途被改变，将会导致安全漏洞。</p>
+<h2 id="Readable-Hidden-Writable-Executable"><a href="#Readable-Hidden-Writable-Executable" class="headerlink" title="Readable,Hidden,Writable,Executable"></a>Readable,Hidden,Writable,Executable</h2><p>Files类中，关于文件权限的操作如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.javapapers.java.nio;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.nio.file.Files;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Path;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Paths;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FilePermissionNIO</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		Path file = Paths.get(<span class="string">"C:\\Users\\Cycle\\Desktop\\a.html"</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">boolean</span> isRegularFile = Files.isRegularFile(file);</span><br><span class="line">		<span class="keyword">boolean</span> isHidden = Files.isReadable(file);</span><br><span class="line">		<span class="keyword">boolean</span> isReadable = Files.isReadable(file);</span><br><span class="line">		<span class="keyword">boolean</span> isExecutable = Files.isExecutable(file);</span><br><span class="line">		<span class="keyword">boolean</span> isSymbolicLink = Files.isSymbolicLink(file);</span><br><span class="line"></span><br><span class="line">		Path directory = Paths.get(<span class="string">"C:\\Users\\Cycle\\Desktop"</span>);</span><br><span class="line">		<span class="keyword">boolean</span> isDirectory = Files.isDirectory(directory);</span><br><span class="line">		<span class="keyword">boolean</span> isWritable = Files.isWritable(directory);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="基于文件权限的操作"><a href="#基于文件权限的操作" class="headerlink" title="基于文件权限的操作"></a>基于文件权限的操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.javapapers.java.nio;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.AccessDeniedException;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Files;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Path;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Paths;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FilePermissionNIO</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">		Path file = Paths.get(<span class="string">"C:\\Users\\Cycle\\Desktop\\a.txt"</span>);</span><br><span class="line">		String userMessage = <span class="string">""</span>;</span><br><span class="line">		</span><br><span class="line">		userMessage = strategyA(file);</span><br><span class="line">		System.out.println(<span class="string">"Strategy A: "</span> + userMessage);</span><br><span class="line"></span><br><span class="line">		userMessage = strategyB(file);</span><br><span class="line">		System.out.println(<span class="string">"Strategy B: "</span> + userMessage);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">strategyA</span><span class="params">(Path file)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		String userMessage = <span class="string">""</span>;</span><br><span class="line">		<span class="keyword">boolean</span> isWritable = Files.isWritable(file);</span><br><span class="line">		<span class="keyword">if</span> (isWritable) &#123;</span><br><span class="line">			Files.delete(file);</span><br><span class="line">			userMessage = <span class="string">"Deleted Successfully!"</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			userMessage = <span class="string">"File is not writable."</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> userMessage;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">strategyB</span><span class="params">(Path file)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		String userMessage = <span class="string">""</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// do not check for permission</span></span><br><span class="line">			<span class="comment">// just go ahead and delete</span></span><br><span class="line">			<span class="comment">// if denied, act based on it</span></span><br><span class="line">			Files.delete(file);</span><br><span class="line">			userMessage = <span class="string">"Deleted Successfully!"</span>;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (AccessDeniedException ade) &#123;</span><br><span class="line">			ade.printStackTrace();</span><br><span class="line">			userMessage = ade.getMessage() + <span class="string">" File is not writable."</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> userMessage;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/08/27/Permissions/" data-id="cj0upo7uu000whkojh67h7gif" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/译文/">译文</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-ReadWrite" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -122,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/27/ReadWrite/" data-id="cj07s68bs000yfhojxgmjsy5u" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/27/ReadWrite/" data-id="cj0upo7uy0011hkojbwwq5611" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/译文/">译文</a></li></ul>
@@ -198,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/27/NIOPath/" data-id="cj07s68bo000tfhoj7ck7qtbj" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/27/NIOPath/" data-id="cj0upo7us000thkojnchszt61" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/译文/">译文</a></li></ul>
@@ -332,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/26/NIOBuffer/" data-id="cj07s68bm000ofhojoyb5c8us" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/26/NIOBuffer/" data-id="cj0upo7uq000rhkoj9npho548" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/译文/">译文</a></li></ul>
@@ -418,121 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/26/NIOChannel/" data-id="cj07s68bn000rfhojn60j2lmo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/译文/">译文</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-JAVANIO" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/08/26/JAVANIO/">JAVA NIO 指南</a>
-    </h1>
-  
-
-        <a href="/blog/2016/08/26/JAVANIO/" class="article-data-title">
-
-  <time  datetime="2016-08-26T12:46:00.000Z" itemprop="datePublished">2016-08-26</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>天道酬勤，低头耕耘</p>
-</blockquote>
-<p>还是老规矩，为啥要翻译这本书呢？对于自己这个英语渣渣，勉强过四级的英语的人来说，可能自己不借助于字典有些单词都不认识，但这不能成为我技术上的阻碍，看英文文档是一个程序员可能最重要的能力了，为了锻炼英语，不惧怕英语，学习提高英语翻译能力，顺带把知识点过一遍，我决定翻译这本薄薄的书籍了，对了<strong>薄</strong>也是我考虑的重要因素。</p>
-<h2 id="JAVA-NIO-指南"><a href="#JAVA-NIO-指南" class="headerlink" title="JAVA NIO 指南"></a>JAVA NIO 指南</h2><p>我们开始学习JAVA NIO教程，这是第一篇文章因此我们当做目录。<strong>java的非阻塞IO操作是面向buffer的，以前的标准IO操作是面向字节流的</strong>。</p>
-<p><img src="http://7xstto.com1.z0.glb.clouddn.com/NIO.png" alt=""></p>
-<h2 id="标准IO和NIO的不同"><a href="#标准IO和NIO的不同" class="headerlink" title="标准IO和NIO的不同"></a>标准IO和NIO的不同</h2><p>第一个主要的不同点是，标准IO操作是基于字节流（stream）的，NIO是面向Buffer(缓存区的)，基于Buffer的操作处理数据更灵活。<strong>基于Buffer的IO操作只要数据到达缓冲区，那么这个数据就可以被处理</strong>。<strong>因此我们可以把数据指针向前或者向后移动，而字节流却不可以这么操作</strong>。  </p>
-<p>第二个主要的不同点是，IO操作，在基于字节流的情况下，线程会被阻塞知道完成IO操作。当NIO操作的时候线程不会被阻塞，如果IO操作未完成线程可以去做其它的事情而不必停留在阻塞模式下。<strong>NIO结合channels(通道)和selectors(选择器)一个多线程可以管理多个线程进行并行的IO操作</strong>。</p>
-<h2 id="java-NIO"><a href="#java-NIO" class="headerlink" title="java NIO"></a>java NIO</h2><p>在接下来的NIO学习中，我们将涵盖一下内容。    </p>
-<ul>
-<li>java NIO Channel  </li>
-<li>java NIO Buffer  </li>
-<li>NIO Path  </li>
-<li>File Permissions  </li>
-<li>File Attributes using Java NIO  </li>
-<li>Glob with Java NIO  </li>
-<li>Java NIO Files – Delete Copy Move  </li>
-<li>Walk File Tree with Java NIO  </li>
-<li>Search File Using NIO  </li>
-<li>Monitor Folder with Java NIO  </li>
-<li>File Read with NIO  </li>
-<li>File Write with NIO  </li>
-<li>Memory-mapped file with NIO  </li>
-<li>Scattering and Gathering with NIO  </li>
-<li>File Locking  </li>
-<li>Selectors  </li>
-<li>Character Sets  </li>
-<li>NIO Pipes  </li>
-<li>SocketChannel  </li>
-<li>DatagramChannel  </li>
-<li>Example: Java TFTP Client with NIO  </li>
-</ul>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>天道酬勤，低头耕耘</p>
-</blockquote>
-<p>还是老规矩，为啥要翻译这本书呢？对于自己这个英语渣渣，勉强过四级的英语的人来说，可能自己不借助于字典有些单词都不认识，但这不能成为我技术上的阻碍，看英文文档是一个程序员可能最重要的能力了，为了锻炼英语，不惧怕英语，学习提高英语翻译能力，顺带把知识点过一遍，我决定翻译这本薄薄的书籍了，对了<strong>薄</strong>也是我考虑的重要因素。</p>
-<h2 id="JAVA-NIO-指南"><a href="#JAVA-NIO-指南" class="headerlink" title="JAVA NIO 指南"></a>JAVA NIO 指南</h2><p>我们开始学习JAVA NIO教程，这是第一篇文章因此我们当做目录。<strong>java的非阻塞IO操作是面向buffer的，以前的标准IO操作是面向字节流的</strong>。</p>
-<p><img src="http://7xstto.com1.z0.glb.clouddn.com/NIO.png" alt=""></p>
-<h2 id="标准IO和NIO的不同"><a href="#标准IO和NIO的不同" class="headerlink" title="标准IO和NIO的不同"></a>标准IO和NIO的不同</h2><p>第一个主要的不同点是，标准IO操作是基于字节流（stream）的，NIO是面向Buffer(缓存区的)，基于Buffer的操作处理数据更灵活。<strong>基于Buffer的IO操作只要数据到达缓冲区，那么这个数据就可以被处理</strong>。<strong>因此我们可以把数据指针向前或者向后移动，而字节流却不可以这么操作</strong>。  </p>
-<p>第二个主要的不同点是，IO操作，在基于字节流的情况下，线程会被阻塞知道完成IO操作。当NIO操作的时候线程不会被阻塞，如果IO操作未完成线程可以去做其它的事情而不必停留在阻塞模式下。<strong>NIO结合channels(通道)和selectors(选择器)一个多线程可以管理多个线程进行并行的IO操作</strong>。</p>
-<h2 id="java-NIO"><a href="#java-NIO" class="headerlink" title="java NIO"></a>java NIO</h2><p>在接下来的NIO学习中，我们将涵盖一下内容。    </p>
-<ul>
-<li>java NIO Channel  </li>
-<li>java NIO Buffer  </li>
-<li>NIO Path  </li>
-<li>File Permissions  </li>
-<li>File Attributes using Java NIO  </li>
-<li>Glob with Java NIO  </li>
-<li>Java NIO Files – Delete Copy Move  </li>
-<li>Walk File Tree with Java NIO  </li>
-<li>Search File Using NIO  </li>
-<li>Monitor Folder with Java NIO  </li>
-<li>File Read with NIO  </li>
-<li>File Write with NIO  </li>
-<li>Memory-mapped file with NIO  </li>
-<li>Scattering and Gathering with NIO  </li>
-<li>File Locking  </li>
-<li>Selectors  </li>
-<li>Character Sets  </li>
-<li>NIO Pipes  </li>
-<li>SocketChannel  </li>
-<li>DatagramChannel  </li>
-<li>Example: Java TFTP Client with NIO  </li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/26/JAVANIO/" data-id="cj07s68be000cfhoj72c4fdjh" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/26/NIOChannel/" data-id="cj0upo7uo000ohkojohwtr94l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/译文/">译文</a></li></ul>
@@ -548,7 +490,7 @@
   
   
     <nav id="page-nav">
-      <a class="" rel="prev" href="/blog/page/2/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/17/">17</a><a class="extend next" rel="next" href="/blog/page/4/">Next &raquo;</a>
+      <a class="" rel="prev" href="/blog/page/2/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/18/">18</a><a class="extend next" rel="next" href="/blog/page/4/">Next &raquo;</a>
     </nav>
   
 </section>

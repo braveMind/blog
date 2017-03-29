@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,76 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-jva核心基础变量初始化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/05/25/jva核心基础变量初始化/">子类继承父类后代码执行顺序</a>
+    </h1>
+  
+
+        <a href="/blog/2016/05/25/jva核心基础变量初始化/" class="article-data-title">
+
+  <time  datetime="2016-05-25T01:35:21.000Z" itemprop="datePublished">2016-05-25</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>java继承关系中代码的执行顺序。</p>
+</blockquote>
+<h2 id="创建子类以及子类向上转型"><a href="#创建子类以及子类向上转型" class="headerlink" title="创建子类以及子类向上转型"></a>创建子类以及子类向上转型</h2><p>基类（父类）的静态代码块–&gt;子类的静态代码块–&gt;父类的<strong>非静态代码块</strong>–&gt;父类的构造函数–&gt;子类的<strong>非静态代码块</strong>–&gt;子类的构造函数–&gt;具体的方法调用。</p>
+<h2 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h2><p>父类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String staticParams=<span class="string">"test"</span>;</span><br><span class="line">    <span class="comment">/*静态代码块*/</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"this is Parent static block--"</span>+staticParams);</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is Parent static function"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Parent</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is parent constructor function"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*非静态代码块*/</span></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"this parent not static block"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>子类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String test=<span class="string">"test"</span>;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"this is son static block--- "</span>+test);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Son</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this son constructor"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"main"</span>);</span><br><span class="line">        System.out.println(<span class="string">"========子类向上转型======="</span>);</span><br><span class="line">        Parent parent=(Parent) <span class="keyword">new</span> Son();</span><br><span class="line">        System.out.println(<span class="string">"=====new子类======="</span>);</span><br><span class="line">        Parent son1= <span class="keyword">new</span> Son();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"this is son block"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果<br><img src="http://7xstto.com1.z0.glb.clouddn.com/static%20order.png" alt="控制台执行结果"></p>
+<h2 id="静态代码块和静态变量谁先初始化？"><a href="#静态代码块和静态变量谁先初始化？" class="headerlink" title="静态代码块和静态变量谁先初始化？"></a>静态代码块和静态变量谁先初始化？</h2><p>静态静态代码块在同一个类里面它们是按照顺序进行初始化的。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p>java继承关系中代码的执行顺序。</p>
+</blockquote>
+<h2 id="创建子类以及子类向上转型"><a href="#创建子类以及子类向上转型" class="headerlink" title="创建子类以及子类向上转型"></a>创建子类以及子类向上转型</h2><p>基类（父类）的静态代码块–&gt;子类的静态代码块–&gt;父类的<strong>非静态代码块</strong>–&gt;父类的构造函数–&gt;子类的<strong>非静态代码块</strong>–&gt;子类的构造函数–&gt;具体的方法调用。</p>
+<h2 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h2><p>父类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String staticParams=<span class="string">"test"</span>;</span><br><span class="line">    <span class="comment">/*静态代码块*/</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"this is Parent static block--"</span>+staticParams);</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is Parent static function"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Parent</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is parent constructor function"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*非静态代码块*/</span></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"this parent not static block"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>子类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String test=<span class="string">"test"</span>;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"this is son static block--- "</span>+test);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Son</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this son constructor"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"main"</span>);</span><br><span class="line">        System.out.println(<span class="string">"========子类向上转型======="</span>);</span><br><span class="line">        Parent parent=(Parent) <span class="keyword">new</span> Son();</span><br><span class="line">        System.out.println(<span class="string">"=====new子类======="</span>);</span><br><span class="line">        Parent son1= <span class="keyword">new</span> Son();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"this is son block"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果<br><img src="http://7xstto.com1.z0.glb.clouddn.com/static%20order.png" alt="控制台执行结果"></p>
+<h2 id="静态代码块和静态变量谁先初始化？"><a href="#静态代码块和静态变量谁先初始化？" class="headerlink" title="静态代码块和静态变量谁先初始化？"></a>静态代码块和静态变量谁先初始化？</h2><p>静态静态代码块在同一个类里面它们是按照顺序进行初始化的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/05/25/jva核心基础变量初始化/" data-id="cj0upo7vr0022hkojklvnvter" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-友情链接" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -90,7 +160,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/21/友情链接/" data-id="cj07s68d2002ufhojkjcc7kdk" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/21/友情链接/" data-id="cj0upo7w8002zhkoj21mjeczu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"></ul>
@@ -146,7 +216,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/18/命令行操作/" data-id="cj07s68d4002zfhoje97p49vv" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/18/命令行操作/" data-id="cj0upo7w7002xhkojugveowk6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
@@ -214,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/17/子查询/" data-id="cj07s68da0039fhoj0ihp4c72" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/17/子查询/" data-id="cj0upo7wg003chkojh9slvs0i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
@@ -296,7 +366,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/17/SQL链接/" data-id="cj07s68bu0011fhojge6dcu2m" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/17/SQL链接/" data-id="cj0upo7ux000yhkoj52js1ovm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
@@ -310,77 +380,9 @@
 
 
   
-    <article id="post-环境变量" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/05/16/环境变量/">linux系统中四种环境变量</a>
-    </h1>
-  
-
-        <a href="/blog/2016/05/16/环境变量/" class="article-data-title">
-
-  <time  datetime="2016-05-16T14:09:06.000Z" itemprop="datePublished">2016-05-16</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="全局环境变量"><a href="#全局环境变量" class="headerlink" title="全局环境变量"></a>全局环境变量</h3><h4 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a>/etc/profile</h4><p>次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。</p>
-<h4 id="etc-bashrc"><a href="#etc-bashrc" class="headerlink" title="/etc/bashrc"></a>/etc/bashrc</h4><p>次文件是每次 bash shell被打开时候该文件就会被读取里面的环境变量。</p>
-<h3 id="用户环境变量"><a href="#用户环境变量" class="headerlink" title="用户环境变量"></a>用户环境变量</h3><h5 id="bash-profile"><a href="#bash-profile" class="headerlink" title="~./bash_profile"></a>~./bash_profile</h5><p>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件.</p>
-<h5 id="使用export-在终端导入"><a href="#使用export-在终端导入" class="headerlink" title="使用export 在终端导入"></a>使用export 在终端导入</h5><p>例如使用导入jdk环境变量：<br>export PATH=$PATH:/usr/local/lib/jdk1.6.0_25</p>
-<h3 id="修改环境变量文件生效方法"><a href="#修改环境变量文件生效方法" class="headerlink" title="修改环境变量文件生效方法"></a>修改环境变量文件生效方法</h3><p>source 文件名</p>
-<h3 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h3><p>linux 系统中环境变量的路径叫做 PATH,我们如果定义环境变量千万不要覆盖了系统PATH，一般的做法是使用 “<strong>：</strong>” 跟着我们自己的环境变量，和windows不同，windows使用“<strong>；</strong>”。</p>
-<h3 id="环境变量文件执行顺序"><a href="#环境变量文件执行顺序" class="headerlink" title="环境变量文件执行顺序"></a>环境变量文件执行顺序</h3><p><strong>括弧里面的 环境变量文件名称可能 不同版本的linux 文件名字不一样,例如Ubuntu里面只有~/.profile</strong></p>
-<p>/etc/profile -&gt; (~/.bash_profile | ~/.bash_login | ~/.profile) -&gt; ~/.bashrc -&gt; /etc/bashrc -&gt; ~/.bash_logout</p>
-<h3 id="配置java-Maven环境变量"><a href="#配置java-Maven环境变量" class="headerlink" title="配置java,Maven环境变量"></a>配置java,Maven环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home</span><br><span class="line">PATH=<span class="variable">$MAVEN_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line">PAHT=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PAHT</span></span><br><span class="line"></span><br><span class="line">M2_HOME=/usr/<span class="built_in">local</span>/Cellar/maven/3.3.3/libexec</span><br><span class="line">PATH=<span class="variable">$M2_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> M2_HOME</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME</span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <h3 id="全局环境变量"><a href="#全局环境变量" class="headerlink" title="全局环境变量"></a>全局环境变量</h3><h4 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a>/etc/profile</h4><p>次文件是系统文件，配置在次文件的环境变量每个用户都可以使用,为了系统安全期间一般不建议使用次文件。</p>
-<h4 id="etc-bashrc"><a href="#etc-bashrc" class="headerlink" title="/etc/bashrc"></a>/etc/bashrc</h4><p>次文件是每次 bash shell被打开时候该文件就会被读取里面的环境变量。</p>
-<h3 id="用户环境变量"><a href="#用户环境变量" class="headerlink" title="用户环境变量"></a>用户环境变量</h3><h5 id="bash-profile"><a href="#bash-profile" class="headerlink" title="~./bash_profile"></a>~./bash_profile</h5><p>每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件.</p>
-<h5 id="使用export-在终端导入"><a href="#使用export-在终端导入" class="headerlink" title="使用export 在终端导入"></a>使用export 在终端导入</h5><p>例如使用导入jdk环境变量：<br>export PATH=$PATH:/usr/local/lib/jdk1.6.0_25</p>
-<h3 id="修改环境变量文件生效方法"><a href="#修改环境变量文件生效方法" class="headerlink" title="修改环境变量文件生效方法"></a>修改环境变量文件生效方法</h3><p>source 文件名</p>
-<h3 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h3><p>linux 系统中环境变量的路径叫做 PATH,我们如果定义环境变量千万不要覆盖了系统PATH，一般的做法是使用 “<strong>：</strong>” 跟着我们自己的环境变量，和windows不同，windows使用“<strong>；</strong>”。</p>
-<h3 id="环境变量文件执行顺序"><a href="#环境变量文件执行顺序" class="headerlink" title="环境变量文件执行顺序"></a>环境变量文件执行顺序</h3><p><strong>括弧里面的 环境变量文件名称可能 不同版本的linux 文件名字不一样,例如Ubuntu里面只有~/.profile</strong></p>
-<p>/etc/profile -&gt; (~/.bash_profile | ~/.bash_login | ~/.profile) -&gt; ~/.bashrc -&gt; /etc/bashrc -&gt; ~/.bash_logout</p>
-<h3 id="配置java-Maven环境变量"><a href="#配置java-Maven环境变量" class="headerlink" title="配置java,Maven环境变量"></a>配置java,Maven环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home</span><br><span class="line">PATH=<span class="variable">$MAVEN_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line">PAHT=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PAHT</span></span><br><span class="line"></span><br><span class="line">M2_HOME=/usr/<span class="built_in">local</span>/Cellar/maven/3.3.3/libexec</span><br><span class="line">PATH=<span class="variable">$M2_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> M2_HOME</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME</span><br><span class="line"><span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/16/环境变量/" data-id="cj07s68dn003ufhoj7c0r7n7d" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="" rel="prev" href="/blog/page/9/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/8/">8</a><a class="page-number" href="/blog/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/blog/page/11/">11</a><a class="page-number" href="/blog/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/17/">17</a><a class="extend next" rel="next" href="/blog/page/11/">Next &raquo;</a>
+      <a class="" rel="prev" href="/blog/page/9/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/8/">8</a><a class="page-number" href="/blog/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/blog/page/11/">11</a><a class="page-number" href="/blog/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/18/">18</a><a class="extend next" rel="next" href="/blog/page/11/">Next &raquo;</a>
     </nav>
   
 </section>
