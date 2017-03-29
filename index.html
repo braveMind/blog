@@ -73,12 +73,10 @@
         <blockquote>
 <p>什么是数据一致性？<br>分布式架构中如何保证数据的一致性？<br>什么是CAP和BASE理论。</p>
 </blockquote>
-<p>#一致性</p>
-<p>一致性就是事务在<strong>完成</strong>时候，数据库中的状态从一个状态转全部转化成林外一个状态。</p>
+<h1 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a>一致性</h1><p>一致性就是事务在<strong>完成</strong>时候，数据库中的状态从一个状态转全部转化成林外一个状态。</p>
 <p>一致性分为：强一致性，弱一致性。</p>
 <p>弱一致性在分布式环境中，最常使用的是最终一致性，在有限时间内数据会最终一致性。最常见的例子就是DNS缓存为题。</p>
-<p>##CAP定理</p>
-<p>CAP定理一个分布式系统中不可能同时满足<strong>一致性（C：Consistency）</strong>、<strong>可用性（A：Availability）</strong>、<strong>分区容错性（P:Partition tolerance）</strong>这三个基本需求，最多只能同时满足其中两项。</p>
+<h2 id="CAP定理"><a href="#CAP定理" class="headerlink" title="CAP定理"></a>CAP定理</h2><p>CAP定理一个分布式系统中不可能同时满足<strong>一致性（C：Consistency）</strong>、<strong>可用性（A：Availability）</strong>、<strong>分区容错性（P:Partition tolerance）</strong>这三个基本需求，最多只能同时满足其中两项。</p>
 <h3 id="分布式一致性"><a href="#分布式一致性" class="headerlink" title="分布式一致性"></a>分布式一致性</h3><p>分布式环境中所有的数据被分到不同的节点上，如果对一个节点的数据进行了更新，却没有使得第二个节点上的数据进行更新，于是在第二个节点上进行读取操作，获取依旧是老的数据（脏读），这就是典型的分布式数据不一致情况，<strong>如果在分布式系统中能做到针对一个数据的更新，所有的用户都能读到新值，那么这样的系统就被称为强一致性，或严格一致性。</strong></p>
 <h3 id="可用性"><a href="#可用性" class="headerlink" title="可用性"></a>可用性</h3><p>在有限时间内能返回结果。</p>
 <h3 id="分区容错性"><a href="#分区容错性" class="headerlink" title="分区容错性"></a>分区容错性</h3><p>分布式系统在遇到任何网络分区故障时候仍然能够保证对外提供满足一致性和可用性的服务，除非整个网络发生了故障。</p>
@@ -104,12 +102,10 @@
       <blockquote>
 <p>什么是数据一致性？<br>分布式架构中如何保证数据的一致性？<br>什么是CAP和BASE理论。</p>
 </blockquote>
-<p>#一致性</p>
-<p>一致性就是事务在<strong>完成</strong>时候，数据库中的状态从一个状态转全部转化成林外一个状态。</p>
+<h1 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a>一致性</h1><p>一致性就是事务在<strong>完成</strong>时候，数据库中的状态从一个状态转全部转化成林外一个状态。</p>
 <p>一致性分为：强一致性，弱一致性。</p>
 <p>弱一致性在分布式环境中，最常使用的是最终一致性，在有限时间内数据会最终一致性。最常见的例子就是DNS缓存为题。</p>
-<p>##CAP定理</p>
-<p>CAP定理一个分布式系统中不可能同时满足<strong>一致性（C：Consistency）</strong>、<strong>可用性（A：Availability）</strong>、<strong>分区容错性（P:Partition tolerance）</strong>这三个基本需求，最多只能同时满足其中两项。</p>
+<h2 id="CAP定理"><a href="#CAP定理" class="headerlink" title="CAP定理"></a>CAP定理</h2><p>CAP定理一个分布式系统中不可能同时满足<strong>一致性（C：Consistency）</strong>、<strong>可用性（A：Availability）</strong>、<strong>分区容错性（P:Partition tolerance）</strong>这三个基本需求，最多只能同时满足其中两项。</p>
 <h3 id="分布式一致性"><a href="#分布式一致性" class="headerlink" title="分布式一致性"></a>分布式一致性</h3><p>分布式环境中所有的数据被分到不同的节点上，如果对一个节点的数据进行了更新，却没有使得第二个节点上的数据进行更新，于是在第二个节点上进行读取操作，获取依旧是老的数据（脏读），这就是典型的分布式数据不一致情况，<strong>如果在分布式系统中能做到针对一个数据的更新，所有的用户都能读到新值，那么这样的系统就被称为强一致性，或严格一致性。</strong></p>
 <h3 id="可用性"><a href="#可用性" class="headerlink" title="可用性"></a>可用性</h3><p>在有限时间内能返回结果。</p>
 <h3 id="分区容错性"><a href="#分区容错性" class="headerlink" title="分区容错性"></a>分区容错性</h3><p>分布式系统在遇到任何网络分区故障时候仍然能够保证对外提供满足一致性和可用性的服务，除非整个网络发生了故障。</p>
@@ -128,7 +124,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/03/29/一致性协议/" data-id="cj0upo7w0002jhkojla0nmde8" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/03/29/一致性协议/" data-id="cj0uprf68002ljyojp960hmxs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -198,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/03/13/lambda/" data-id="cj0upo7vs0024hkojtlrdkk79" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/03/13/lambda/" data-id="cj0uprf5w0022jyoj2zzfycd4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -280,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/03/06/git/" data-id="cj0upo7vd001khkoj8yokuq1e" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/03/06/git/" data-id="cj0uprf5b001hjyojhhr8fqzf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -346,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/03/02/mysqlPassword/" data-id="cj0upo7vx002chkoj7p1gawb8" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/03/02/mysqlPassword/" data-id="cj0uprf62002ajyojll87wl5w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
@@ -402,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/01/04/Spring初始化方法/" data-id="cj0upo7v30018hkojblicqyvt" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/01/04/Spring初始化方法/" data-id="cj0uprf560017jyoj69nojfj3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
