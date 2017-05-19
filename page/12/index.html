@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,90 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-模板模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/05/11/模板模式/">模板模式（行为模式八）</a>
+    </h1>
+  
+
+        <a href="/blog/2016/05/11/模板模式/" class="article-data-title">
+
+  <time  datetime="2016-05-11T12:58:21.000Z" itemprop="datePublished">2016-05-11</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>模板模式把一系列不变的操作封装在模板这个抽象类中，把模板方法延迟在子类中去实现。</p>
+</blockquote>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://7xstto.com2.z0.glb.clouddn.com/Template.png" alt="类的结构图"></h2><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>组成：  </p>
+<ol>
+<li>顶层抽象类  </li>
+<li>子类实现模板方法。</li>
+</ol>
+<p>模板类比较简单，在模板中规定了执行步骤，子类去实现。这些步骤就按一定的顺序执行。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>顶层抽象类  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Template</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">speedUP</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">driveCar</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.start();;</span><br><span class="line">        <span class="keyword">this</span>.speedUP();</span><br><span class="line">        <span class="keyword">this</span>.stop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>模板方法实现类  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">extends</span> <span class="title">Template</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"car is start"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">speedUP</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"car speed up"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"car is stop"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>APP 类  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Template template=<span class="keyword">new</span> Car();</span><br><span class="line">        template.driveCar();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>模板方法客户端在调用时候不需要知道具体的子类实现，符合迪米特法则，便于扩展符合开闭原则。</p>
+<h3 id="取点"><a href="#取点" class="headerlink" title="取点"></a>取点</h3><p>模板父类中的方法依赖于子类中的方法，在复杂的项目中会带来代码阅读的难度。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p>模板模式把一系列不变的操作封装在模板这个抽象类中，把模板方法延迟在子类中去实现。</p>
+</blockquote>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://7xstto.com2.z0.glb.clouddn.com/Template.png" alt="类的结构图"></h2><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>组成：  </p>
+<ol>
+<li>顶层抽象类  </li>
+<li>子类实现模板方法。</li>
+</ol>
+<p>模板类比较简单，在模板中规定了执行步骤，子类去实现。这些步骤就按一定的顺序执行。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>顶层抽象类  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Template</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">speedUP</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">driveCar</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.start();;</span><br><span class="line">        <span class="keyword">this</span>.speedUP();</span><br><span class="line">        <span class="keyword">this</span>.stop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>模板方法实现类  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">extends</span> <span class="title">Template</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"car is start"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">speedUP</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"car speed up"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"car is stop"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>APP 类  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Template template=<span class="keyword">new</span> Car();</span><br><span class="line">        template.driveCar();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>模板方法客户端在调用时候不需要知道具体的子类实现，符合迪米特法则，便于扩展符合开闭原则。</p>
+<h3 id="取点"><a href="#取点" class="headerlink" title="取点"></a>取点</h3><p>模板父类中的方法依赖于子类中的方法，在复杂的项目中会带来代码阅读的难度。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/05/11/模板模式/" data-id="cj2v8rnqm003s49oj1td7tnz4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-策略模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -124,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/10/策略模式/" data-id="cj0uprf760041jyojs991qfwe" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/10/策略模式/" data-id="cj2v8rnqw004449ojzvd05weh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -228,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/09/空对象模式/" data-id="cj0uprf75003zjyoj6tb1t9eh" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/09/空对象模式/" data-id="cj2v8rnqv004249ojmmqy68l6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -296,7 +380,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/08/自己激励/" data-id="cj0uprf7b0049jyojhv56iicx" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/08/自己激励/" data-id="cj2v8rnr1004e49ojaowu73x3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"></ul>
@@ -374,180 +458,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/08/redis/" data-id="cj0uprf64002ejyojgktu2a54" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/08/redis/" data-id="cj2v8rnpp002d49ojwfbckj24" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/技术求索/">技术求索</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-状态模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/05/08/状态模式/">状态模式（行为模式五）</a>
-    </h1>
-  
-
-        <a href="/blog/2016/05/08/状态模式/" class="article-data-title">
-
-  <time  datetime="2016-05-08T02:28:26.000Z" itemprop="datePublished">2016-05-08</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>状态模式：状态模式又称为类的状态模式，描述的是一个类根据不同的状态处理不同的业务逻辑，通常我们在项目中会通过 if(state) else,或switch来处理，但是对于复杂的类来说这样的代码显然可读性差，而且耦合性高。使用状态模式可以把每个类对应的不同状态交给具体的类处理接口来处理。</p>
-</blockquote>
-<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/state.png" alt="类的结构图"></p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>状态模式组成：  </p>
-<ol>
-<li>抽象状态(StateHandle） 处理接口。  </li>
-<li>具体状态(ConcreteState)处理接口。  </li>
-<li>具体类(Content)。</li>
-</ol>
-<p>具体类处理者对细节的处理交给抽象状态处理者的实现，替代if-else 逻辑耦合，客户端只需要调用具体类的 hand方法就可以，屏蔽状态处理的细节。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>顶层抽象类  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StateHandle</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doAction</span><span class="params">(String state)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>抽象类的实现</p>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteState</span> <span class="keyword">implements</span> <span class="title">StateHandle</span> </span>{
-    <span class="meta">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doAction</span><span class="params">(String state)</span> </span>{
-        System.out.println(<span class="string">"this request to concrete StateHandle "</span>+state);
-    }
-}
-</code></pre>
-<p>状态类  </p>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Content</span> </span>{
-    <span class="keyword">private</span> StateHandle state;
-    <span class="keyword">private</span> String stateFlag;
-
-    <span class="function"><span class="keyword">public</span> String <span class="title">getStateFlag</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> stateFlag;
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStateFlag</span><span class="params">(String stateFlag)</span> </span>{
-        <span class="keyword">this</span>.stateFlag = stateFlag;
-    }
-
-    <span class="function"><span class="keyword">public</span> StateHandle <span class="title">getState</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> state;
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(StateHandle state)</span> </span>{
-        <span class="keyword">this</span>.state = state;
-    }
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">HandleState</span><span class="params">(String stateFlag)</span></span>{
-        state.doAction(stateFlag);
-    }
-
-}
-</code></pre>
-<p>APP类调用  </p>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>{
-    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
-        StateHandle stateHandle=<span class="keyword">new</span> ConcreteState();
-        Content content=<span class="keyword">new</span> Content();
-        content.setState(stateHandle);<span class="comment">//注入具体的处理类</span>
-        content.setStateFlag(<span class="string">"Ready"</span>);
-        content.HandleState(content.getStateFlag());<span class="comment">//调用具体处理类</span>
-
-    }
-}
-</code></pre>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>状态模式相对于 if -else只是把 if-else 对应的代码交给具体的状态处理着，避免了写一堆逻辑代码，代码结构清晰。解耦了逻辑处理与业务判断的耦合性，方便扩展。</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>状态模式：状态模式又称为类的状态模式，描述的是一个类根据不同的状态处理不同的业务逻辑，通常我们在项目中会通过 if(state) else,或switch来处理，但是对于复杂的类来说这样的代码显然可读性差，而且耦合性高。使用状态模式可以把每个类对应的不同状态交给具体的类处理接口来处理。</p>
-</blockquote>
-<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/state.png" alt="类的结构图"></p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>状态模式组成：  </p>
-<ol>
-<li>抽象状态(StateHandle） 处理接口。  </li>
-<li>具体状态(ConcreteState)处理接口。  </li>
-<li>具体类(Content)。</li>
-</ol>
-<p>具体类处理者对细节的处理交给抽象状态处理者的实现，替代if-else 逻辑耦合，客户端只需要调用具体类的 hand方法就可以，屏蔽状态处理的细节。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>顶层抽象类  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StateHandle</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doAction</span><span class="params">(String state)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>抽象类的实现</p>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteState</span> <span class="keyword">implements</span> <span class="title">StateHandle</span> </span>{
-    <span class="meta">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doAction</span><span class="params">(String state)</span> </span>{
-        System.out.println(<span class="string">"this request to concrete StateHandle "</span>+state);
-    }
-}
-</code></pre>
-<p>状态类  </p>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Content</span> </span>{
-    <span class="keyword">private</span> StateHandle state;
-    <span class="keyword">private</span> String stateFlag;
-
-    <span class="function"><span class="keyword">public</span> String <span class="title">getStateFlag</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> stateFlag;
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStateFlag</span><span class="params">(String stateFlag)</span> </span>{
-        <span class="keyword">this</span>.stateFlag = stateFlag;
-    }
-
-    <span class="function"><span class="keyword">public</span> StateHandle <span class="title">getState</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> state;
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(StateHandle state)</span> </span>{
-        <span class="keyword">this</span>.state = state;
-    }
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">HandleState</span><span class="params">(String stateFlag)</span></span>{
-        state.doAction(stateFlag);
-    }
-
-}
-</code></pre>
-<p>APP类调用  </p>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>{
-    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
-        StateHandle stateHandle=<span class="keyword">new</span> ConcreteState();
-        Content content=<span class="keyword">new</span> Content();
-        content.setState(stateHandle);<span class="comment">//注入具体的处理类</span>
-        content.setStateFlag(<span class="string">"Ready"</span>);
-        content.HandleState(content.getStateFlag());<span class="comment">//调用具体处理类</span>
-
-    }
-}
-</code></pre>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>状态模式相对于 if -else只是把 if-else 对应的代码交给具体的状态处理着，避免了写一堆逻辑代码，代码结构清晰。解耦了逻辑处理与业务判断的耦合性，方便扩展。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/08/状态模式/" data-id="cj0uprf70003vjyojsub9avts" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
 
     </footer>
   </div>

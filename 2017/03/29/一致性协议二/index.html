@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>一致性协议二 | 小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="2PC二阶段提交就是将事务提交过程分成了两个阶段来处理，执行流程如下：
+阶段一：提交事务请求
+事务询问。  
+
+
+协调者向所有参与者发送事务内容，询问是否可以执行事务的提交操作，并开始等待参与者的相应。
+
+2.执行事务
+
+各参与者节点执行事务的操作，并将Undo和Redo信息记入事务日志
+  
+
+3.各参与者向协调者反馈事务的响应。
+
+如果参与者成功执行了事务操作，那就反馈yes响应，表示事务可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一致性协议二">
+<meta property="og:url" content="http://bravemind.github.io/2017/03/29/一致性协议二/index.html">
+<meta property="og:site_name" content="小菜园">
+<meta property="og:description" content="2PC二阶段提交就是将事务提交过程分成了两个阶段来处理，执行流程如下：
+阶段一：提交事务请求
+事务询问。  
+
+
+协调者向所有参与者发送事务内容，询问是否可以执行事务的提交操作，并开始等待参与者的相应。
+
+2.执行事务
+
+各参与者节点执行事务的操作，并将Undo和Redo信息记入事务日志
+  
+
+3.各参与者向协调者反馈事务的响应。
+
+如果参与者成功执行了事务操作，那就反馈yes响应，表示事务可以">
+<meta property="og:updated_time" content="2017-03-29T09:24:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一致性协议二">
+<meta name="twitter:description" content="2PC二阶段提交就是将事务提交过程分成了两个阶段来处理，执行流程如下：
+阶段一：提交事务请求
+事务询问。  
+
+
+协调者向所有参与者发送事务内容，询问是否可以执行事务的提交操作，并开始等待参与者的相应。
+
+2.执行事务
+
+各参与者节点执行事务的操作，并将Undo和Redo信息记入事务日志
+  
+
+3.各参与者向协调者反馈事务的响应。
+
+如果参与者成功执行了事务操作，那就反馈yes响应，表示事务可以">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/grid.css">
+
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.min.css">
+
+
+
+</head>
+<div class="left_header">
+    <a class="header_avater" href="/blog"></a>
+    <div class="tag_s" id="showTag">
+        <i class="fa fa-tag" href="../blog"></i>
+            <div id="tags_clod" class="pop">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+            </div>
+    </div>
+    <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
+    <a href="https://github.com/braveMind" class="git" target="_blank"><i class="fa fa-github"></i></a>
+
+
+    <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
+    <a href="/blog/2016/05/21/友情链接/"><i class="fa fa-link" aria-hidden="true"></i></a>
+
+</div>
+<div class="left_content">
+    <section><article id="post-一致性协议二" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      一致性协议二
+    </h1>
+  
+
+        <a href="/blog/2017/03/29/一致性协议二/" class="article-data-title">
+
+  <time  datetime="2017-03-29T08:51:23.000Z" itemprop="datePublished">2017-03-29</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="2PC"><a href="#2PC" class="headerlink" title="2PC"></a>2PC</h2><p>二阶段提交就是将事务提交过程分成了两个阶段来处理，执行流程如下：</p>
+<h2 id="阶段一：提交事务请求"><a href="#阶段一：提交事务请求" class="headerlink" title="阶段一：提交事务请求"></a>阶段一：提交事务请求</h2><ol>
+<li>事务询问。  </li>
+</ol>
+<blockquote>
+<p>协调者向所有参与者发送事务内容，询问是否可以执行事务的提交操作，并开始等待参与者的相应。</p>
+</blockquote>
+<p>2.执行事务</p>
+<blockquote>
+<p>各参与者节点执行事务的操作，并将Undo和Redo信息<strong>记入事务日志
+</strong>  </p>
+</blockquote>
+<p>3.各参与者向协调者反馈事务的响应。</p>
+<blockquote>
+<p>如果参与者成功执行了事务操作，那就反馈yes响应，表示事务可以执行；如果参与者没有成功执行事务，那么反馈给协调者No响应，表示事务不可以执行。</p>
+</blockquote>
+<h2 id="阶段二：执行事务提交"><a href="#阶段二：执行事务提交" class="headerlink" title="阶段二：执行事务提交"></a>阶段二：执行事务提交</h2><p>1.发送提交请求 （给所有的协调者发送 commit请求）<br>2.事务提交（收到commit请求后会正式提交事务操作）<br>3.反馈事务提交结果（返回ack）<br>4.完成事务（协调者根据ack消息完成事务）</p>
+<h2 id="中断事务"><a href="#中断事务" class="headerlink" title="中断事务"></a>中断事务</h2><p>1.发送回滚请求。</p>
+<p>协调者向所有参与者节点发送Rollback请求。</p>
+<p>2.事务回滚  </p>
+<p>参与者收到Rollback请求后，会利用第一阶段记录的Undo信息来执行回滚事务操作。</p>
+<p>3.反馈回滚事务操作</p>
+<p>回滚结束后发送ACK消息。</p>
+<p>4.中断事务</p>
+<p>协调者收到所有参与者反馈ACK消息后，完成事务中断。</p>
+<p>优缺点：</p>
+<p>优点：原理简单，实现方便。<br>缺点：同步阻塞，单点问题（协调者），数据不一致（协调者down），脑裂，太过保守。</p>
+<h2 id="3PC"><a href="#3PC" class="headerlink" title="3PC"></a>3PC</h2><blockquote>
+<p>3PC是在2PC的改进版，是将2阶段<strong>提交提交事务请求</strong>一分为2，CanCommit、PreCommit和doCommit三个阶段组成的事务处理协议。</p>
+</blockquote>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <div id="toc" class="article-toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2PC"><span class="toc-number">1.</span> <span class="toc-text">2PC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#阶段一：提交事务请求"><span class="toc-number">2.</span> <span class="toc-text">阶段一：提交事务请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#阶段二：执行事务提交"><span class="toc-number">3.</span> <span class="toc-text">阶段二：执行事务提交</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中断事务"><span class="toc-number">4.</span> <span class="toc-text">中断事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3PC"><span class="toc-number">5.</span> <span class="toc-text">3PC</span></a></li></ol>
+        <hr/>
+      </div>
+      
+      <h2 id="2PC"><a href="#2PC" class="headerlink" title="2PC"></a>2PC</h2><p>二阶段提交就是将事务提交过程分成了两个阶段来处理，执行流程如下：</p>
+<h2 id="阶段一：提交事务请求"><a href="#阶段一：提交事务请求" class="headerlink" title="阶段一：提交事务请求"></a>阶段一：提交事务请求</h2><ol>
+<li>事务询问。  </li>
+</ol>
+<blockquote>
+<p>协调者向所有参与者发送事务内容，询问是否可以执行事务的提交操作，并开始等待参与者的相应。</p>
+</blockquote>
+<p>2.执行事务</p>
+<blockquote>
+<p>各参与者节点执行事务的操作，并将Undo和Redo信息<strong>记入事务日志
+</strong>  </p>
+</blockquote>
+<p>3.各参与者向协调者反馈事务的响应。</p>
+<blockquote>
+<p>如果参与者成功执行了事务操作，那就反馈yes响应，表示事务可以执行；如果参与者没有成功执行事务，那么反馈给协调者No响应，表示事务不可以执行。</p>
+</blockquote>
+<h2 id="阶段二：执行事务提交"><a href="#阶段二：执行事务提交" class="headerlink" title="阶段二：执行事务提交"></a>阶段二：执行事务提交</h2><p>1.发送提交请求 （给所有的协调者发送 commit请求）<br>2.事务提交（收到commit请求后会正式提交事务操作）<br>3.反馈事务提交结果（返回ack）<br>4.完成事务（协调者根据ack消息完成事务）</p>
+<h2 id="中断事务"><a href="#中断事务" class="headerlink" title="中断事务"></a>中断事务</h2><p>1.发送回滚请求。</p>
+<p>协调者向所有参与者节点发送Rollback请求。</p>
+<p>2.事务回滚  </p>
+<p>参与者收到Rollback请求后，会利用第一阶段记录的Undo信息来执行回滚事务操作。</p>
+<p>3.反馈回滚事务操作</p>
+<p>回滚结束后发送ACK消息。</p>
+<p>4.中断事务</p>
+<p>协调者收到所有参与者反馈ACK消息后，完成事务中断。</p>
+<p>优缺点：</p>
+<p>优点：原理简单，实现方便。<br>缺点：同步阻塞，单点问题（协调者），数据不一致（协调者down），脑裂，太过保守。</p>
+<h2 id="3PC"><a href="#3PC" class="headerlink" title="3PC"></a>3PC</h2><blockquote>
+<p>3PC是在2PC的改进版，是将2阶段<strong>提交提交事务请求</strong>一分为2，CanCommit、PreCommit和doCommit三个阶段组成的事务处理协议。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2017/03/29/一致性协议二/" data-id="cj2v8rnpt002i49oj8vzc3m9i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2017/03/29/一致性协议/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">一致性协议</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+</div>
+
+
+   
+
+   <script src="/blog/js/jQuery.js"></script>
+   <script src="/blog/js/script.js"></script>
+
+
+
