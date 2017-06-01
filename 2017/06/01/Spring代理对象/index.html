@@ -5,23 +5,26 @@
   
   <title>Spring代理对象 | 小菜园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;gt;之前对Mybatis自动创建代理对象比较感兴趣，Mybatis可以扫描Mapper接口文件，不需要用户去手动实现Dao接口，其本质就是使用动态代理的方式，从容器中获取Mybatis生成的代理对象。
+  <meta name="description" content="之前对Mybatis自动创建代理对象比较感兴趣，Mybatis可以扫描Mapper接口文件，不需要用户去手动实现Dao接口，其本质就是使用动态代理的方式，从容器中获取Mybatis生成的代理对象。
+
 Spring 初始化Bean的注入点
-在整个Bean的生命周期中，我们都可以根据Spring提供的扩展接口对Bean进行注入。Aware接口（ApplicationContextAware）,I">
+在整个Bean的生命周期中，我们都可以根据Spring提供的扩展接口对Bean进行注入。Aware接口（ApplicationContextAware）,Ini">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring代理对象">
 <meta property="og:url" content="http://bravemind.github.io/2017/06/01/Spring代理对象/index.html">
 <meta property="og:site_name" content="小菜园">
-<meta property="og:description" content="&amp;gt;之前对Mybatis自动创建代理对象比较感兴趣，Mybatis可以扫描Mapper接口文件，不需要用户去手动实现Dao接口，其本质就是使用动态代理的方式，从容器中获取Mybatis生成的代理对象。
+<meta property="og:description" content="之前对Mybatis自动创建代理对象比较感兴趣，Mybatis可以扫描Mapper接口文件，不需要用户去手动实现Dao接口，其本质就是使用动态代理的方式，从容器中获取Mybatis生成的代理对象。
+
 Spring 初始化Bean的注入点
-在整个Bean的生命周期中，我们都可以根据Spring提供的扩展接口对Bean进行注入。Aware接口（ApplicationContextAware）,I">
+在整个Bean的生命周期中，我们都可以根据Spring提供的扩展接口对Bean进行注入。Aware接口（ApplicationContextAware）,Ini">
 <meta property="og:image" content="http://7xstto.com1.z0.glb.clouddn.com/beanInit.png">
-<meta property="og:updated_time" content="2017-06-01T08:46:11.000Z">
+<meta property="og:updated_time" content="2017-06-01T08:48:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring代理对象">
-<meta name="twitter:description" content="&amp;gt;之前对Mybatis自动创建代理对象比较感兴趣，Mybatis可以扫描Mapper接口文件，不需要用户去手动实现Dao接口，其本质就是使用动态代理的方式，从容器中获取Mybatis生成的代理对象。
+<meta name="twitter:description" content="之前对Mybatis自动创建代理对象比较感兴趣，Mybatis可以扫描Mapper接口文件，不需要用户去手动实现Dao接口，其本质就是使用动态代理的方式，从容器中获取Mybatis生成的代理对象。
+
 Spring 初始化Bean的注入点
-在整个Bean的生命周期中，我们都可以根据Spring提供的扩展接口对Bean进行注入。Aware接口（ApplicationContextAware）,I">
+在整个Bean的生命周期中，我们都可以根据Spring提供的扩展接口对Bean进行注入。Aware接口（ApplicationContextAware）,Ini">
 <meta name="twitter:image" content="http://7xstto.com1.z0.glb.clouddn.com/beanInit.png">
   
   
@@ -77,7 +80,9 @@ Spring 初始化Bean的注入点
     
    <!-- <div class="article-entry" itemprop="articleBody">
       
-        <p>&gt;<br>之前对Mybatis自动创建代理对象比较感兴趣，Mybatis可以扫描Mapper接口文件，不需要用户去手动实现Dao接口，其本质就是使用动态代理的方式，从容器中获取Mybatis生成的代理对象。</p>
+        <blockquote>
+<p>之前对Mybatis自动创建代理对象比较感兴趣，Mybatis可以扫描Mapper接口文件，不需要用户去手动实现Dao接口，其本质就是使用动态代理的方式，从容器中获取Mybatis生成的代理对象。</p>
+</blockquote>
 <h2 id="Spring-初始化Bean的注入点"><a href="#Spring-初始化Bean的注入点" class="headerlink" title="Spring 初始化Bean的注入点"></a>Spring 初始化Bean的注入点</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/beanInit.png" alt="bean初始化过程"></p>
 <p>在整个Bean的生命周期中，我们都可以根据Spring提供的扩展接口对Bean进行注入。<br>Aware接口（ApplicationContextAware）,InitializingBean,BeanPostProcessor,DisposableBean</p>
 <h2 id="Spring-容器返回代理对象"><a href="#Spring-容器返回代理对象" class="headerlink" title="Spring 容器返回代理对象"></a>Spring 容器返回代理对象</h2><p>使用BeanPostProcessor接口生成代理对象</p>
@@ -99,7 +104,9 @@ Spring 初始化Bean的注入点
         <hr/>
       </div>
       
-      <p>&gt;<br>之前对Mybatis自动创建代理对象比较感兴趣，Mybatis可以扫描Mapper接口文件，不需要用户去手动实现Dao接口，其本质就是使用动态代理的方式，从容器中获取Mybatis生成的代理对象。</p>
+      <blockquote>
+<p>之前对Mybatis自动创建代理对象比较感兴趣，Mybatis可以扫描Mapper接口文件，不需要用户去手动实现Dao接口，其本质就是使用动态代理的方式，从容器中获取Mybatis生成的代理对象。</p>
+</blockquote>
 <h2 id="Spring-初始化Bean的注入点"><a href="#Spring-初始化Bean的注入点" class="headerlink" title="Spring 初始化Bean的注入点"></a>Spring 初始化Bean的注入点</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/beanInit.png" alt="bean初始化过程"></p>
 <p>在整个Bean的生命周期中，我们都可以根据Spring提供的扩展接口对Bean进行注入。<br>Aware接口（ApplicationContextAware）,InitializingBean,BeanPostProcessor,DisposableBean</p>
 <h2 id="Spring-容器返回代理对象"><a href="#Spring-容器返回代理对象" class="headerlink" title="Spring 容器返回代理对象"></a>Spring 容器返回代理对象</h2><p>使用BeanPostProcessor接口生成代理对象</p>
@@ -112,7 +119,7 @@ Spring 初始化Bean的注入点
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/06/01/Spring代理对象/" data-id="cj3e6f9gs001614oj96x8zhwm" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/06/01/Spring代理对象/" data-id="cj3e6i09j00143toj11jfog1n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
