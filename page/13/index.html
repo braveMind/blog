@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,84 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/05/08/redis/">redis（挖坑）</a>
+    </h1>
+  
+
+        <a href="/blog/2016/05/08/redis/" class="article-data-title">
+
+  <time  datetime="2016-05-08T02:30:20.000Z" itemprop="datePublished">2016-05-08</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="掌握"><a href="#掌握" class="headerlink" title="掌握"></a>掌握</h1><ol>
+<li>Redis支持五种数据类型。  </li>
+<li>Redis部分命令只能对特定的数据进行执行（Append只能针对字符串进行操作，HSET 只能对哈希表进行操作）而DEL，TYPE,EXPIRE可以对所有数据进行操作。  </li>
+<li>Redis的数据库如何实现存储不同的数据类型的。  </li>
+<li>发布订阅，脚本，事务等特性。  </li>
+<li>Redis如何处理客户端的请求。  </li>
+<li>Redis位操作，排序，复制，Sentinel,集群。  </li>
+<li>Redis单机特性，事务、持久化、Lua脚本、排序、二进制位操作。    </li>
+</ol>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ol>
+<li>Redis是由键值对组成的，其中数据库的键值必须是<strong>字符串</strong>  </li>
+<li>Redis的值value，可以是<strong>字符串</strong>，<strong>列表对象（）list object）</strong>,<strong>哈希对象（hash object）</strong>,<strong>集合对象（set object）</strong>,<strong>有序集合对象（sorted set object）</strong>这五种。</li>
+<li>Redis SDS 磁盘空间分配两种策略如果小于1M,那么分配free为字符串本身大小，如果大于1M那么free为1M，通过预分配策略可以减少内存分配的次数。</li>
+</ol>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <h1 id="掌握"><a href="#掌握" class="headerlink" title="掌握"></a>掌握</h1><ol>
+<li>Redis支持五种数据类型。  </li>
+<li>Redis部分命令只能对特定的数据进行执行（Append只能针对字符串进行操作，HSET 只能对哈希表进行操作）而DEL，TYPE,EXPIRE可以对所有数据进行操作。  </li>
+<li>Redis的数据库如何实现存储不同的数据类型的。  </li>
+<li>发布订阅，脚本，事务等特性。  </li>
+<li>Redis如何处理客户端的请求。  </li>
+<li>Redis位操作，排序，复制，Sentinel,集群。  </li>
+<li>Redis单机特性，事务、持久化、Lua脚本、排序、二进制位操作。    </li>
+</ol>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ol>
+<li>Redis是由键值对组成的，其中数据库的键值必须是<strong>字符串</strong>  </li>
+<li>Redis的值value，可以是<strong>字符串</strong>，<strong>列表对象（）list object）</strong>,<strong>哈希对象（hash object）</strong>,<strong>集合对象（set object）</strong>,<strong>有序集合对象（sorted set object）</strong>这五种。</li>
+<li>Redis SDS 磁盘空间分配两种策略如果小于1M,那么分配free为字符串本身大小，如果大于1M那么free为1M，通过预分配策略可以减少内存分配的次数。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/05/08/redis/" data-id="cj3e6de9b002kyvojtp4fem4y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/技术求索/">技术求索</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-状态模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -202,7 +280,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/08/状态模式/" data-id="cj2v8rnqr003y49oji60ztst4" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/08/状态模式/" data-id="cj3e6deak0041yvojhdiobegr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -298,7 +376,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/07/中介者模式/" data-id="cj2v8rnq2002u49ojid8mmpye" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/07/中介者模式/" data-id="cj3e6de9j002xyvoj1o0d6xja" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -388,7 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/05/迭代器模式/" data-id="cj2v8rnr8004s49oj1l881cfd" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/05/迭代器模式/" data-id="cj3e6deax004vyvojy442vx2a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -476,91 +554,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/04/观察者模式/" data-id="cj2v8rnr3004i49oj6vbwn2j0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-命令模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/05/03/命令模式/">命令模式（行为模式一）</a>
-    </h1>
-  
-
-        <a href="/blog/2016/05/03/命令模式/" class="article-data-title">
-
-  <time  datetime="2016-05-03T02:12:29.000Z" itemprop="datePublished">2016-05-03</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>命令模式的本质是把一条条命令封装成一个对象，客户端不需要知道具体的命令是如何实现的，实现调用者和实现者解耦，命令模式中的所谓宏命令就是一系列命令的一个组合，实现起来方便。</p>
-</blockquote>
-<h2 id="类的结构图"><a href="#类的结构图" class="headerlink" title="类的结构图"></a>类的结构图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/Command.png" alt="类结构图"></p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>Car 这个对象中有三个具体的方法（run,sppedup,stop），使用Command抽象成三条具体的命。使用Invoker来封装三条具体的命令，客户端只需要调用Invoker类，达到命令调用者与具体的实现类相解耦的目的。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>具体的对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"car is running"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">speedUp</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"car is full speed ahead"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.print(<span class="string">"car is stop"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>抽象命令类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Command</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>具体的实现类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CarRun</span> <span class="keyword">implements</span> <span class="title">Command</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Car car;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CarRun</span><span class="params">(Car car)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.car = car;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.car.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CarSpeed</span> <span class="keyword">implements</span> <span class="title">Command</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Car car;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CarSpeed</span><span class="params">(Car car)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.car=car;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.car.speedUp();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CarStop</span> <span class="keyword">implements</span> <span class="title">Command</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Car car;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CarStop</span><span class="params">(Car car)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.car=car;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        car.stop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>命令类的封装者，也就是具体命令接收者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Invoker</span> </span>&#123;</span><br><span class="line">    Command carRun;</span><br><span class="line">    Command carStop;</span><br><span class="line">    Command carSpeed;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCarRun</span><span class="params">(Command carRun)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.carRun = carRun;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCarStop</span><span class="params">(Command carStop)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.carStop = carStop;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCarSpeed</span><span class="params">(Command carSpeed)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.carSpeed = carSpeed;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.carRun.execute();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">speed</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.carSpeed.execute();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.carStop.execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>客户端调用者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Car car=<span class="keyword">new</span> Car();</span><br><span class="line"></span><br><span class="line">        CarRun carRun=<span class="keyword">new</span> CarRun(car);</span><br><span class="line">        CarSpeed carSpeed=<span class="keyword">new</span> CarSpeed(car);</span><br><span class="line">        CarStop carStop=<span class="keyword">new</span> CarStop(car);</span><br><span class="line"></span><br><span class="line">        Invoker invoker=<span class="keyword">new</span> Invoker();</span><br><span class="line">        invoker.setCarRun(carRun);</span><br><span class="line">        invoker.run();</span><br><span class="line"></span><br><span class="line">        invoker.setCarSpeed(carSpeed);</span><br><span class="line">        invoker.speed();</span><br><span class="line"></span><br><span class="line">        invoker.setCarStop(carStop);</span><br><span class="line">        invoker.stop();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p><strong><em>降低系统的耦合度</em></strong>。<br>新的命令可以很容易地加入到系统中。<br>可以比较容易地设计一个命令队列和宏命令（组合命令）。</p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>使用命令模式可能会导致某些系统有过多的具体命令类。因为针对每一个命令都需要设计一个具体命令类，因此某些系统可能需要大量具体命令类，这将影响命令模式的使用。</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>命令模式的本质是把一条条命令封装成一个对象，客户端不需要知道具体的命令是如何实现的，实现调用者和实现者解耦，命令模式中的所谓宏命令就是一系列命令的一个组合，实现起来方便。</p>
-</blockquote>
-<h2 id="类的结构图"><a href="#类的结构图" class="headerlink" title="类的结构图"></a>类的结构图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/Command.png" alt="类结构图"></p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>Car 这个对象中有三个具体的方法（run,sppedup,stop），使用Command抽象成三条具体的命。使用Invoker来封装三条具体的命令，客户端只需要调用Invoker类，达到命令调用者与具体的实现类相解耦的目的。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>具体的对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"car is running"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">speedUp</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"car is full speed ahead"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.print(<span class="string">"car is stop"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>抽象命令类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Command</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>具体的实现类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CarRun</span> <span class="keyword">implements</span> <span class="title">Command</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Car car;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CarRun</span><span class="params">(Car car)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.car = car;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.car.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CarSpeed</span> <span class="keyword">implements</span> <span class="title">Command</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Car car;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CarSpeed</span><span class="params">(Car car)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.car=car;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.car.speedUp();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CarStop</span> <span class="keyword">implements</span> <span class="title">Command</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Car car;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CarStop</span><span class="params">(Car car)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.car=car;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        car.stop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>命令类的封装者，也就是具体命令接收者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Invoker</span> </span>&#123;</span><br><span class="line">    Command carRun;</span><br><span class="line">    Command carStop;</span><br><span class="line">    Command carSpeed;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCarRun</span><span class="params">(Command carRun)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.carRun = carRun;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCarStop</span><span class="params">(Command carStop)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.carStop = carStop;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCarSpeed</span><span class="params">(Command carSpeed)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.carSpeed = carSpeed;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.carRun.execute();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">speed</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.carSpeed.execute();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.carStop.execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>客户端调用者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Car car=<span class="keyword">new</span> Car();</span><br><span class="line"></span><br><span class="line">        CarRun carRun=<span class="keyword">new</span> CarRun(car);</span><br><span class="line">        CarSpeed carSpeed=<span class="keyword">new</span> CarSpeed(car);</span><br><span class="line">        CarStop carStop=<span class="keyword">new</span> CarStop(car);</span><br><span class="line"></span><br><span class="line">        Invoker invoker=<span class="keyword">new</span> Invoker();</span><br><span class="line">        invoker.setCarRun(carRun);</span><br><span class="line">        invoker.run();</span><br><span class="line"></span><br><span class="line">        invoker.setCarSpeed(carSpeed);</span><br><span class="line">        invoker.speed();</span><br><span class="line"></span><br><span class="line">        invoker.setCarStop(carStop);</span><br><span class="line">        invoker.stop();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p><strong><em>降低系统的耦合度</em></strong>。<br>新的命令可以很容易地加入到系统中。<br>可以比较容易地设计一个命令队列和宏命令（组合命令）。</p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>使用命令模式可能会导致某些系统有过多的具体命令类。因为针对每一个命令都需要设计一个具体命令类，因此某些系统可能需要大量具体命令类，这将影响命令模式的使用。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/03/命令模式/" data-id="cj2v8rnq7003249ojm2rkxzut" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/04/观察者模式/" data-id="cj3e6dear004hyvoj4h7xnprw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>

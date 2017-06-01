@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,140 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-NIOBuffer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/08/26/NIOBuffer/">Java NIO Buffer</a>
+    </h1>
+  
+
+        <a href="/blog/2016/08/26/NIOBuffer/" class="article-data-title">
+
+  <time  datetime="2016-08-26T15:13:30.000Z" itemprop="datePublished">2016-08-26</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>Buffer存放一大块的数据，这些数据可以被写入channel中或从channel中读入到缓冲区中，buffer是一个对象也充当着NIO的一个端点。Buffer提供了一种访问数据的机制，并可以跟踪读写处理机制。</p>
+<p>Buffer有别于原始的阻塞I/O,先前的字节流读写是单向的，现在可以从Buffer里面读数据，也可以写数据到buffer里面，在NIO里面Channels是streams的同意词。</p>
+<h2 id="NIO-Buffer的特点。"><a href="#NIO-Buffer的特点。" class="headerlink" title="NIO Buffer的特点。"></a>NIO Buffer的特点。</h2><ul>
+<li>Buffer是构建NIO的基础</li>
+<li>Buffer是定长的读写容器</li>
+<li>每一个Buffer都是可读的，但不是所有的buffers都是可写的。</li>
+<li>Buffer是Channels的终端。</li>
+<li>在只读缓冲区的内容是不可变的，它的标志、位置和范围是可变的</li>
+<li>默认的情况下，Buffer不是线程安全的。</li>
+</ul>
+<p><img src="http://7xstto.com1.z0.glb.clouddn.com/Buffer.png" alt=""></p>
+<h2 id="Buffer-的类型"><a href="#Buffer-的类型" class="headerlink" title="Buffer 的类型"></a>Buffer 的类型</h2><p>每一个原始类型都有一个Buffer类型与之对应，所有的类型都实现了Buffer接口，使用最频繁的是ByteBuffer,下面是java NIO 包下的buffer类型。</p>
+<ul>
+<li>ByteBuffer  </li>
+<li>CharBuffer  </li>
+<li>ShortBuffer  </li>
+<li>IntBuffer  </li>
+<li>LongBuffer  </li>
+<li>FloatBuffer  </li>
+<li>DoubleBuffer  </li>
+<li>MappedByteBuffer  </li>
+</ul>
+<h2 id="Buffer-Capacity"><a href="#Buffer-Capacity" class="headerlink" title="Buffer Capacity"></a>Buffer Capacity</h2><p>Buffer是固定长度的类型，我们可以存储大量的定长数据，buffer的最大固定长度叫做Buffer的容量。一旦Buffer满了，就需要在写之前情况buffer的容量，一旦buffer的长度固定那么这个值就不会改变了。</p>
+<h2 id="Buffer-Limit"><a href="#Buffer-Limit" class="headerlink" title="Buffer Limit"></a>Buffer Limit</h2><p>在写的模式下，limit最大等于capacity，在读的模式下，limit等于最后以读到数据的最后一位，当数据开始写的时候limit开始增长，Limit始终大于O，小于等于capacity.0 &lt;= limit &lt;= capacity</p>
+<h2 id="Buffer-Position"><a href="#Buffer-Position" class="headerlink" title="Buffer Position"></a>Buffer Position</h2><p>Position指向当前buffer的中的当前位置，当buffer被创建的时候position指向0,在读或者写的时候当前位置开始增加，指向下一个位置，position总之介于0和limit之间。</p>
+<h2 id="Buffer-Mark"><a href="#Buffer-Mark" class="headerlink" title="Buffer Mark"></a>Buffer Mark</h2><p>Mark是在buffer中设置一个书签，当mark()被调用，当前的缓冲区中position会被记录，当reset()被调用时候被标记的位置会被跟新。</p>
+<h2 id="Buffer-flip-clear-and-rewind"><a href="#Buffer-flip-clear-and-rewind" class="headerlink" title="Buffer flip,clear and rewind"></a>Buffer flip,clear and rewind</h2><p><strong>Buffer flip()</strong></p>
+<p>flip（）方法是被用来进行 get操作，或着通知当前缓冲区需要一个连续的存储空间进行写操作。flip() 将缓存字节数组的指针设置为数组的开始序列即数组下标0。这样就可以从buffer开头，对该buffer进行遍历（读取）了.<strong>也就是说调用flip之后，读写指针指到Buffer头部，并且设置了最多只能读出之前写入的数据长度(而不是整个缓存的容量大小)。</strong></p>
+<p><strong>Buffer clear()</strong><br>clear()方法被用来执行缓冲区的put操作，或者让缓冲区准备好read操作，clear操作设置limit的指针指向缓冲区的最后位置，也就是指向capacity当前position指向0，开始准备读操作。</p>
+<p><strong>Buffer rewind()</strong><br>rewind()方法被用来多次读取已经存在缓冲区的数据，rewind()方法设置缓冲区的当前位置为0；</p>
+<h2 id="如何从-NIO的Buffer中读取数据。"><a href="#如何从-NIO的Buffer中读取数据。" class="headerlink" title="如何从 NIO的Buffer中读取数据。"></a>如何从 NIO的Buffer中读取数据。</h2><p>1，使用allocate(size)开辟固定大小的缓存区域。</p>
+<pre><code>ByteBuffer byteBuffer = ByteBuffer.allocate(512);
+</code></pre><p>2,Flip操作后开始读取。</p>
+<pre><code>byteBuffer.flip();
+</code></pre><p>3，可以被读入的字节数。</p>
+<pre><code>int numberOfBytes = fileChannel.read(byteBuffer);
+</code></pre><p>4，从缓冲区中读取字符。</p>
+<pre><code>char c = (char)byteBuffer.get();
+</code></pre><h2 id="如何进行写入缓冲区"><a href="#如何进行写入缓冲区" class="headerlink" title="如何进行写入缓冲区"></a>如何进行写入缓冲区</h2><p>1，使用allocate(size)开辟固定大小的缓存区域。</p>
+<pre><code>ByteBuffer byteBuffer = ByteBuffer.allocate(512);
+</code></pre><p>2，把数据放入缓冲区</p>
+<pre><code>byteBuffer.put((byte) 0xff);
+</code></pre><h2 id="NIO-Buffer-读取和写入例子"><a href="#NIO-Buffer-读取和写入例子" class="headerlink" title="NIO Buffer 读取和写入例子"></a>NIO Buffer 读取和写入例子</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.javapapers.java.nio;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.nio.ByteBuffer;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.FileChannel;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Path;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Paths;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.StandardOpenOption;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BufferExample</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		Path path = Paths.get(<span class="string">"temp.txt"</span>);</span><br><span class="line">		write(path);</span><br><span class="line">		read(path);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(Path path)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		String input = <span class="string">"NIO Buffer Hello World!"</span>;</span><br><span class="line">		<span class="keyword">byte</span>[] inputBytes = input.getBytes();</span><br><span class="line">		ByteBuffer byteBuffer = ByteBuffer.wrap(inputBytes);</span><br><span class="line">		FileChannel channelWrite = FileChannel.open(path,</span><br><span class="line">				StandardOpenOption.CREATE, StandardOpenOption.WRITE);</span><br><span class="line">		channelWrite.write(byteBuffer);</span><br><span class="line">		channelWrite.close();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(Path path)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		FileChannel channelRead = FileChannel.open(path);</span><br><span class="line">		ByteBuffer byteBuffer = ByteBuffer.allocate(<span class="number">512</span>);</span><br><span class="line">		channelRead.read(byteBuffer);</span><br><span class="line">		<span class="keyword">byte</span>[] byteArray = byteBuffer.array();</span><br><span class="line">		String fileContent = <span class="keyword">new</span> String(byteArray).trim();</span><br><span class="line">		System.out.println(<span class="string">"File Content: "</span> + fileContent);</span><br><span class="line">		channelRead.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <p>Buffer存放一大块的数据，这些数据可以被写入channel中或从channel中读入到缓冲区中，buffer是一个对象也充当着NIO的一个端点。Buffer提供了一种访问数据的机制，并可以跟踪读写处理机制。</p>
+<p>Buffer有别于原始的阻塞I/O,先前的字节流读写是单向的，现在可以从Buffer里面读数据，也可以写数据到buffer里面，在NIO里面Channels是streams的同意词。</p>
+<h2 id="NIO-Buffer的特点。"><a href="#NIO-Buffer的特点。" class="headerlink" title="NIO Buffer的特点。"></a>NIO Buffer的特点。</h2><ul>
+<li>Buffer是构建NIO的基础</li>
+<li>Buffer是定长的读写容器</li>
+<li>每一个Buffer都是可读的，但不是所有的buffers都是可写的。</li>
+<li>Buffer是Channels的终端。</li>
+<li>在只读缓冲区的内容是不可变的，它的标志、位置和范围是可变的</li>
+<li>默认的情况下，Buffer不是线程安全的。</li>
+</ul>
+<p><img src="http://7xstto.com1.z0.glb.clouddn.com/Buffer.png" alt=""></p>
+<h2 id="Buffer-的类型"><a href="#Buffer-的类型" class="headerlink" title="Buffer 的类型"></a>Buffer 的类型</h2><p>每一个原始类型都有一个Buffer类型与之对应，所有的类型都实现了Buffer接口，使用最频繁的是ByteBuffer,下面是java NIO 包下的buffer类型。</p>
+<ul>
+<li>ByteBuffer  </li>
+<li>CharBuffer  </li>
+<li>ShortBuffer  </li>
+<li>IntBuffer  </li>
+<li>LongBuffer  </li>
+<li>FloatBuffer  </li>
+<li>DoubleBuffer  </li>
+<li>MappedByteBuffer  </li>
+</ul>
+<h2 id="Buffer-Capacity"><a href="#Buffer-Capacity" class="headerlink" title="Buffer Capacity"></a>Buffer Capacity</h2><p>Buffer是固定长度的类型，我们可以存储大量的定长数据，buffer的最大固定长度叫做Buffer的容量。一旦Buffer满了，就需要在写之前情况buffer的容量，一旦buffer的长度固定那么这个值就不会改变了。</p>
+<h2 id="Buffer-Limit"><a href="#Buffer-Limit" class="headerlink" title="Buffer Limit"></a>Buffer Limit</h2><p>在写的模式下，limit最大等于capacity，在读的模式下，limit等于最后以读到数据的最后一位，当数据开始写的时候limit开始增长，Limit始终大于O，小于等于capacity.0 &lt;= limit &lt;= capacity</p>
+<h2 id="Buffer-Position"><a href="#Buffer-Position" class="headerlink" title="Buffer Position"></a>Buffer Position</h2><p>Position指向当前buffer的中的当前位置，当buffer被创建的时候position指向0,在读或者写的时候当前位置开始增加，指向下一个位置，position总之介于0和limit之间。</p>
+<h2 id="Buffer-Mark"><a href="#Buffer-Mark" class="headerlink" title="Buffer Mark"></a>Buffer Mark</h2><p>Mark是在buffer中设置一个书签，当mark()被调用，当前的缓冲区中position会被记录，当reset()被调用时候被标记的位置会被跟新。</p>
+<h2 id="Buffer-flip-clear-and-rewind"><a href="#Buffer-flip-clear-and-rewind" class="headerlink" title="Buffer flip,clear and rewind"></a>Buffer flip,clear and rewind</h2><p><strong>Buffer flip()</strong></p>
+<p>flip（）方法是被用来进行 get操作，或着通知当前缓冲区需要一个连续的存储空间进行写操作。flip() 将缓存字节数组的指针设置为数组的开始序列即数组下标0。这样就可以从buffer开头，对该buffer进行遍历（读取）了.<strong>也就是说调用flip之后，读写指针指到Buffer头部，并且设置了最多只能读出之前写入的数据长度(而不是整个缓存的容量大小)。</strong></p>
+<p><strong>Buffer clear()</strong><br>clear()方法被用来执行缓冲区的put操作，或者让缓冲区准备好read操作，clear操作设置limit的指针指向缓冲区的最后位置，也就是指向capacity当前position指向0，开始准备读操作。</p>
+<p><strong>Buffer rewind()</strong><br>rewind()方法被用来多次读取已经存在缓冲区的数据，rewind()方法设置缓冲区的当前位置为0；</p>
+<h2 id="如何从-NIO的Buffer中读取数据。"><a href="#如何从-NIO的Buffer中读取数据。" class="headerlink" title="如何从 NIO的Buffer中读取数据。"></a>如何从 NIO的Buffer中读取数据。</h2><p>1，使用allocate(size)开辟固定大小的缓存区域。</p>
+<pre><code>ByteBuffer byteBuffer = ByteBuffer.allocate(512);
+</code></pre><p>2,Flip操作后开始读取。</p>
+<pre><code>byteBuffer.flip();
+</code></pre><p>3，可以被读入的字节数。</p>
+<pre><code>int numberOfBytes = fileChannel.read(byteBuffer);
+</code></pre><p>4，从缓冲区中读取字符。</p>
+<pre><code>char c = (char)byteBuffer.get();
+</code></pre><h2 id="如何进行写入缓冲区"><a href="#如何进行写入缓冲区" class="headerlink" title="如何进行写入缓冲区"></a>如何进行写入缓冲区</h2><p>1，使用allocate(size)开辟固定大小的缓存区域。</p>
+<pre><code>ByteBuffer byteBuffer = ByteBuffer.allocate(512);
+</code></pre><p>2，把数据放入缓冲区</p>
+<pre><code>byteBuffer.put((byte) 0xff);
+</code></pre><h2 id="NIO-Buffer-读取和写入例子"><a href="#NIO-Buffer-读取和写入例子" class="headerlink" title="NIO Buffer 读取和写入例子"></a>NIO Buffer 读取和写入例子</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.javapapers.java.nio;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.nio.ByteBuffer;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.FileChannel;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Path;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Paths;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.StandardOpenOption;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BufferExample</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		Path path = Paths.get(<span class="string">"temp.txt"</span>);</span><br><span class="line">		write(path);</span><br><span class="line">		read(path);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(Path path)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		String input = <span class="string">"NIO Buffer Hello World!"</span>;</span><br><span class="line">		<span class="keyword">byte</span>[] inputBytes = input.getBytes();</span><br><span class="line">		ByteBuffer byteBuffer = ByteBuffer.wrap(inputBytes);</span><br><span class="line">		FileChannel channelWrite = FileChannel.open(path,</span><br><span class="line">				StandardOpenOption.CREATE, StandardOpenOption.WRITE);</span><br><span class="line">		channelWrite.write(byteBuffer);</span><br><span class="line">		channelWrite.close();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(Path path)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		FileChannel channelRead = FileChannel.open(path);</span><br><span class="line">		ByteBuffer byteBuffer = ByteBuffer.allocate(<span class="number">512</span>);</span><br><span class="line">		channelRead.read(byteBuffer);</span><br><span class="line">		<span class="keyword">byte</span>[] byteArray = byteBuffer.array();</span><br><span class="line">		String fileContent = <span class="keyword">new</span> String(byteArray).trim();</span><br><span class="line">		System.out.println(<span class="string">"File Content: "</span> + fileContent);</span><br><span class="line">		channelRead.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/08/26/NIOBuffer/" data-id="cj3e6de7t000qyvoj4u0c863m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/译文/">译文</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-NIOChannel" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -118,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/26/NIOChannel/" data-id="cj2v8rnoe000p49ojjri7p9ap" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/26/NIOChannel/" data-id="cj3e6de7x000uyvojxu13ko98" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/译文/">译文</a></li></ul>
@@ -232,7 +366,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/26/JAVANIO/" data-id="cj2v8rno1000949oj9hbkhlwv" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/26/JAVANIO/" data-id="cj3e6de7d0009yvojxenetc2w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/译文/">译文</a></li></ul>
@@ -310,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/24/CopyOnWriteArrayList/" data-id="cj2v8rnnw000449ojhg2rcnyk" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/24/CopyOnWriteArrayList/" data-id="cj3e6de760004yvojly1jeuij" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -386,83 +520,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/12/annotation/" data-id="cj2v8rnox001d49oj4zuf1ddz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-LinkedList" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/08/11/LinkedList/">LinkedList</a>
-    </h1>
-  
-
-        <a href="/blog/2016/08/11/LinkedList/" class="article-data-title">
-
-  <time  datetime="2016-08-11T01:32:22.000Z" itemprop="datePublished">2016-08-11</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>LinkedList是java里双链表的实现，LinkedList实现了list接口和Deque接口，可以存放任何值。同时LinkedList也是是线程不安全的。</p>
-</blockquote>
-<h2 id="LinkedList如何进行线程安全的操作。"><a href="#LinkedList如何进行线程安全的操作。" class="headerlink" title="LinkedList如何进行线程安全的操作。"></a>LinkedList如何进行线程安全的操作。</h2><p>需要使用Collections方法进行包装一下，包装成线程安全的类，同时如果要使用队列java.util.concurrent包中提供了两个线程安全的类LinkedBlockingDeque，和LinkedBlockingQueue可以直接那来用，不需要再做线程安全的同步，同时性能也比LinkedList同步性能更高。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List list = Collections.synchronizedList(<span class="keyword">new</span> LinkedList(...));</span><br></pre></td></tr></table></figure>
-<h2 id="LinkedList-类的实现"><a href="#LinkedList-类的实现" class="headerlink" title="LinkedList 类的实现"></a>LinkedList 类的实现</h2><p>里面最小的存储单元，Node的实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    E item;</span><br><span class="line">    Node&lt;E&gt; next;</span><br><span class="line">    Node&lt;E&gt; prev;</span><br><span class="line"></span><br><span class="line">    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) &#123;</span><br><span class="line">        <span class="keyword">this</span>.item = element;</span><br><span class="line">        <span class="keyword">this</span>.next = next;</span><br><span class="line">        <span class="keyword">this</span>.prev = prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a>get方法</h2><p>获取list中的元素的方法，可以看出linked元素是通过下标的移动来获取元素的，这和hashMap通过key的hash算法获取值时间复杂度相比较，list的时间复杂度是O（n）,而hashMap是O（1）。  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Node&lt;E&gt; <span class="title">node</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">      <span class="comment">// assert isElementIndex(index);</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (index &lt; (size &gt;&gt; <span class="number">1</span>)) &#123;</span><br><span class="line">          Node&lt;E&gt; x = first;</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; index; i++)</span><br><span class="line">              x = x.next;</span><br><span class="line">          <span class="keyword">return</span> x;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          Node&lt;E&gt; x = last;</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> i = size - <span class="number">1</span>; i &gt; index; i--)</span><br><span class="line">              x = x.prev;</span><br><span class="line">          <span class="keyword">return</span> x;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="put方法"><a href="#put方法" class="headerlink" title="put方法"></a>put方法</h2><p>LinkedList的插入总是在表头进行插入。  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkLast</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">final</span> Node&lt;E&gt; l = last;</span><br><span class="line">      <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(l, e, <span class="keyword">null</span>);</span><br><span class="line">      last = newNode;</span><br><span class="line">      <span class="keyword">if</span> (l == <span class="keyword">null</span>)</span><br><span class="line">          first = newNode;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">          l.next = newNode;</span><br><span class="line">      size++;</span><br><span class="line">      modCount++;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="remove方法"><a href="#remove方法" class="headerlink" title="remove方法"></a>remove方法</h2><p>链表的删除比较简单，不需要像数组那样进行删除数据移动n-1个位置，只需要交换指针指向，把移除的元素的指针指向null就可以完成删除，所以在linkedList中间位置删除元素比ArrayList速度更快。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">E <span class="title">unlink</span><span class="params">(Node&lt;E&gt; x)</span> </span>&#123;</span><br><span class="line">       <span class="comment">// assert x != null;</span></span><br><span class="line">       <span class="keyword">final</span> E element = x.item;</span><br><span class="line">       <span class="keyword">final</span> Node&lt;E&gt; next = x.next;</span><br><span class="line">       <span class="keyword">final</span> Node&lt;E&gt; prev = x.prev;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (prev == <span class="keyword">null</span>) &#123;</span><br><span class="line">           first = next;</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           prev.next = next;</span><br><span class="line">           x.prev = <span class="keyword">null</span>;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (next == <span class="keyword">null</span>) &#123;</span><br><span class="line">           last = prev;</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           next.prev = prev;</span><br><span class="line">           x.next = <span class="keyword">null</span>;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       x.item = <span class="keyword">null</span>;</span><br><span class="line">       size--;</span><br><span class="line">       modCount++;</span><br><span class="line">       <span class="keyword">return</span> element;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>LinkedList是java里双链表的实现，LinkedList实现了list接口和Deque接口，可以存放任何值。同时LinkedList也是是线程不安全的。</p>
-</blockquote>
-<h2 id="LinkedList如何进行线程安全的操作。"><a href="#LinkedList如何进行线程安全的操作。" class="headerlink" title="LinkedList如何进行线程安全的操作。"></a>LinkedList如何进行线程安全的操作。</h2><p>需要使用Collections方法进行包装一下，包装成线程安全的类，同时如果要使用队列java.util.concurrent包中提供了两个线程安全的类LinkedBlockingDeque，和LinkedBlockingQueue可以直接那来用，不需要再做线程安全的同步，同时性能也比LinkedList同步性能更高。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List list = Collections.synchronizedList(<span class="keyword">new</span> LinkedList(...));</span><br></pre></td></tr></table></figure>
-<h2 id="LinkedList-类的实现"><a href="#LinkedList-类的实现" class="headerlink" title="LinkedList 类的实现"></a>LinkedList 类的实现</h2><p>里面最小的存储单元，Node的实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    E item;</span><br><span class="line">    Node&lt;E&gt; next;</span><br><span class="line">    Node&lt;E&gt; prev;</span><br><span class="line"></span><br><span class="line">    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) &#123;</span><br><span class="line">        <span class="keyword">this</span>.item = element;</span><br><span class="line">        <span class="keyword">this</span>.next = next;</span><br><span class="line">        <span class="keyword">this</span>.prev = prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a>get方法</h2><p>获取list中的元素的方法，可以看出linked元素是通过下标的移动来获取元素的，这和hashMap通过key的hash算法获取值时间复杂度相比较，list的时间复杂度是O（n）,而hashMap是O（1）。  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Node&lt;E&gt; <span class="title">node</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">      <span class="comment">// assert isElementIndex(index);</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (index &lt; (size &gt;&gt; <span class="number">1</span>)) &#123;</span><br><span class="line">          Node&lt;E&gt; x = first;</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; index; i++)</span><br><span class="line">              x = x.next;</span><br><span class="line">          <span class="keyword">return</span> x;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          Node&lt;E&gt; x = last;</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> i = size - <span class="number">1</span>; i &gt; index; i--)</span><br><span class="line">              x = x.prev;</span><br><span class="line">          <span class="keyword">return</span> x;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="put方法"><a href="#put方法" class="headerlink" title="put方法"></a>put方法</h2><p>LinkedList的插入总是在表头进行插入。  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkLast</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">final</span> Node&lt;E&gt; l = last;</span><br><span class="line">      <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(l, e, <span class="keyword">null</span>);</span><br><span class="line">      last = newNode;</span><br><span class="line">      <span class="keyword">if</span> (l == <span class="keyword">null</span>)</span><br><span class="line">          first = newNode;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">          l.next = newNode;</span><br><span class="line">      size++;</span><br><span class="line">      modCount++;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="remove方法"><a href="#remove方法" class="headerlink" title="remove方法"></a>remove方法</h2><p>链表的删除比较简单，不需要像数组那样进行删除数据移动n-1个位置，只需要交换指针指向，把移除的元素的指针指向null就可以完成删除，所以在linkedList中间位置删除元素比ArrayList速度更快。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">E <span class="title">unlink</span><span class="params">(Node&lt;E&gt; x)</span> </span>&#123;</span><br><span class="line">       <span class="comment">// assert x != null;</span></span><br><span class="line">       <span class="keyword">final</span> E element = x.item;</span><br><span class="line">       <span class="keyword">final</span> Node&lt;E&gt; next = x.next;</span><br><span class="line">       <span class="keyword">final</span> Node&lt;E&gt; prev = x.prev;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (prev == <span class="keyword">null</span>) &#123;</span><br><span class="line">           first = next;</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           prev.next = next;</span><br><span class="line">           x.prev = <span class="keyword">null</span>;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (next == <span class="keyword">null</span>) &#123;</span><br><span class="line">           last = prev;</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           next.prev = prev;</span><br><span class="line">           x.next = <span class="keyword">null</span>;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       x.item = <span class="keyword">null</span>;</span><br><span class="line">       size--;</span><br><span class="line">       modCount++;</span><br><span class="line">       <span class="keyword">return</span> element;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/11/LinkedList/" data-id="cj2v8rno6000d49oj10sho5hp" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/12/annotation/" data-id="cj3e6de8b001dyvoj4z7jxjin" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>

@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,120 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-访问者模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/05/12/访问者模式/">访问者模式（行为模式九）</a>
+    </h1>
+  
+
+        <a href="/blog/2016/05/12/访问者模式/" class="article-data-title">
+
+  <time  datetime="2016-05-12T14:23:24.000Z" itemprop="datePublished">2016-05-12</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>访问者模式是比较难理解的一种设计模式，封装一些作用于<strong>某种数据结构中的各元素操作</strong>，它可以在<strong>不改变数据结构的前提下定义作用于这些元素的新的操作</strong>。</p>
+</blockquote>
+<h2 id="类的结构图"><a href="#类的结构图" class="headerlink" title="类的结构图"></a>类的结构图</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/Vistor.png" alt="类的结构图"></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>访问者模式的组成：  </p>
+<ol>
+<li>抽象的<strong>被访问对象</strong>（ComputerPart）,定义添加<strong>访问者</strong>  </li>
+<li>抽象的访问者对象（ComputerPartVisitor），用来传递<strong>被访问者对象</strong>  </li>
+<li>具体的被访问者对象就是普通的java类。  </li>
+<li>具体的访问者对象用来处理传递过来的被访问者对象。  </li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>抽象被访问者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ComputerPart</span> </span>&#123; </span><br><span class="line">	<span class="comment">//为实现 类添加具体的访问对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(ComputerPartVisitor visitor)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体被访问者子类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mouse</span> <span class="keyword">implements</span>  <span class="title">ComputerPart</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(ComputerPartVisitor visitor)</span> </span>&#123;</span><br><span class="line">        visitor.visit(<span class="keyword">this</span>); <span class="comment">//传递这个类的信息到访问者类中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Monitor</span> <span class="keyword">implements</span> <span class="title">ComputerPart</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(ComputerPartVisitor visitor)</span> </span>&#123;</span><br><span class="line">        visitor.visit(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KeyBoard</span> <span class="keyword">implements</span> <span class="title">ComputerPart</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(ComputerPartVisitor visitor)</span> </span>&#123;</span><br><span class="line">        visitor.visit(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//封装 子类</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Computer</span> <span class="keyword">implements</span> <span class="title">ComputerPart</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    ComputerPart[] parts;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Computer</span><span class="params">()</span></span>&#123;</span><br><span class="line">        parts = <span class="keyword">new</span> ComputerPart[] &#123;<span class="keyword">new</span> Mouse(), <span class="keyword">new</span> KeyBoard(), <span class="keyword">new</span> Monitor()&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(ComputerPartVisitor computerPartVisitor)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; parts.length; i++) &#123;</span><br><span class="line">            parts[i].accept(computerPartVisitor);</span><br><span class="line">        &#125;</span><br><span class="line">        computerPartVisitor.visit(<span class="keyword">this</span>); <span class="comment">// 为子类添加每一个 访问者</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is computer 385"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>抽象访问者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ComputerPartVisitor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Computer computer)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Mouse mouse)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(KeyBoard keyboard)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Monitor monitor)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体访问者实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ComputerDisplayVistor</span> <span class="keyword">implements</span> <span class="title">ComputerPartVisitor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Computer computer)</span> </span>&#123;</span><br><span class="line">      computer.showInfo();;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Mouse mouse)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is  test mouse"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(KeyBoard keyboard)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is test for keyboard"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Monitor monitor)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is test for monitor"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li><p>好的扩展性<br>能够在不修改对象结构中的元素的情况下，在访问者类中为对象结构添加新的功能。  </p>
+</li>
+<li><p>灵活性高<br>  可以通过访问者来定义整个对象结构通用的功能，从而提高复用程度。</p>
+</li>
+<li><p>符合单一职责<br>可以通过访问者来分离无关的行为，把相关的行为封装在一起，构成一个访问者，这样每一个访问者的功能都比较单一。
+　　</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3></li>
+<li>具体元素对访问者公布细节。  </li>
+<li>具体元素变更比较困难，改变了具体元素就需要改变调用它的访问者。  </li>
+<li>违背了依赖倒置原则，访问者依赖的是具体的元素，而不是抽象元素。依赖实现类而不是接口，扩展比较困难。</li>
+</ul>
+<p><a href="https://www.amazon.cn/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%A6%85-%E7%A7%A6%E5%B0%8F%E6%B3%A2/dp/B003DQPPIK/478-5976493-8089059?ie=UTF8&amp;*Version*=1&amp;*entries*=0" target="_blank" rel="external">参考：设计模式之禅</a></p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p>访问者模式是比较难理解的一种设计模式，封装一些作用于<strong>某种数据结构中的各元素操作</strong>，它可以在<strong>不改变数据结构的前提下定义作用于这些元素的新的操作</strong>。</p>
+</blockquote>
+<h2 id="类的结构图"><a href="#类的结构图" class="headerlink" title="类的结构图"></a>类的结构图</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/Vistor.png" alt="类的结构图"></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>访问者模式的组成：  </p>
+<ol>
+<li>抽象的<strong>被访问对象</strong>（ComputerPart）,定义添加<strong>访问者</strong>  </li>
+<li>抽象的访问者对象（ComputerPartVisitor），用来传递<strong>被访问者对象</strong>  </li>
+<li>具体的被访问者对象就是普通的java类。  </li>
+<li>具体的访问者对象用来处理传递过来的被访问者对象。  </li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>抽象被访问者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ComputerPart</span> </span>&#123; </span><br><span class="line">	<span class="comment">//为实现 类添加具体的访问对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(ComputerPartVisitor visitor)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体被访问者子类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mouse</span> <span class="keyword">implements</span>  <span class="title">ComputerPart</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(ComputerPartVisitor visitor)</span> </span>&#123;</span><br><span class="line">        visitor.visit(<span class="keyword">this</span>); <span class="comment">//传递这个类的信息到访问者类中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Monitor</span> <span class="keyword">implements</span> <span class="title">ComputerPart</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(ComputerPartVisitor visitor)</span> </span>&#123;</span><br><span class="line">        visitor.visit(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KeyBoard</span> <span class="keyword">implements</span> <span class="title">ComputerPart</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(ComputerPartVisitor visitor)</span> </span>&#123;</span><br><span class="line">        visitor.visit(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//封装 子类</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Computer</span> <span class="keyword">implements</span> <span class="title">ComputerPart</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    ComputerPart[] parts;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Computer</span><span class="params">()</span></span>&#123;</span><br><span class="line">        parts = <span class="keyword">new</span> ComputerPart[] &#123;<span class="keyword">new</span> Mouse(), <span class="keyword">new</span> KeyBoard(), <span class="keyword">new</span> Monitor()&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(ComputerPartVisitor computerPartVisitor)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; parts.length; i++) &#123;</span><br><span class="line">            parts[i].accept(computerPartVisitor);</span><br><span class="line">        &#125;</span><br><span class="line">        computerPartVisitor.visit(<span class="keyword">this</span>); <span class="comment">// 为子类添加每一个 访问者</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is computer 385"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>抽象访问者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ComputerPartVisitor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Computer computer)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Mouse mouse)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(KeyBoard keyboard)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Monitor monitor)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体访问者实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ComputerDisplayVistor</span> <span class="keyword">implements</span> <span class="title">ComputerPartVisitor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Computer computer)</span> </span>&#123;</span><br><span class="line">      computer.showInfo();;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Mouse mouse)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is  test mouse"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(KeyBoard keyboard)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is test for keyboard"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Monitor monitor)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is test for monitor"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li><p>好的扩展性<br>能够在不修改对象结构中的元素的情况下，在访问者类中为对象结构添加新的功能。  </p>
+</li>
+<li><p>灵活性高<br>  可以通过访问者来定义整个对象结构通用的功能，从而提高复用程度。</p>
+</li>
+<li><p>符合单一职责<br>可以通过访问者来分离无关的行为，把相关的行为封装在一起，构成一个访问者，这样每一个访问者的功能都比较单一。
+　　</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3></li>
+<li>具体元素对访问者公布细节。  </li>
+<li>具体元素变更比较困难，改变了具体元素就需要改变调用它的访问者。  </li>
+<li>违背了依赖倒置原则，访问者依赖的是具体的元素，而不是抽象元素。依赖实现类而不是接口，扩展比较困难。</li>
+</ul>
+<p><a href="https://www.amazon.cn/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%A6%85-%E7%A7%A6%E5%B0%8F%E6%B3%A2/dp/B003DQPPIK/478-5976493-8089059?ie=UTF8&amp;*Version*=1&amp;*entries*=0" target="_blank" rel="external">参考：设计模式之禅</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/05/12/访问者模式/" data-id="cj3e6deav004pyvojokg87try" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-模板模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -116,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/11/模板模式/" data-id="cj2v8rnqm003s49oj1td7tnz4" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/11/模板模式/" data-id="cj3e6deah003vyvoj5wtdj6an" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -208,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/10/策略模式/" data-id="cj2v8rnqw004449ojzvd05weh" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/10/策略模式/" data-id="cj3e6deao0047yvojq8btacet" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -312,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/09/空对象模式/" data-id="cj2v8rnqv004249ojmmqy68l6" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/09/空对象模式/" data-id="cj3e6deal0043yvojteuq5tix" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -380,88 +494,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/08/自己激励/" data-id="cj2v8rnr1004e49ojaowu73x3" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/05/08/自己激励/" data-id="cj3e6deax004xyvojwiqurfpf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/05/08/redis/">redis（挖坑）</a>
-    </h1>
-  
-
-        <a href="/blog/2016/05/08/redis/" class="article-data-title">
-
-  <time  datetime="2016-05-08T02:30:20.000Z" itemprop="datePublished">2016-05-08</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="掌握"><a href="#掌握" class="headerlink" title="掌握"></a>掌握</h1><ol>
-<li>Redis支持五种数据类型。  </li>
-<li>Redis部分命令只能对特定的数据进行执行（Append只能针对字符串进行操作，HSET 只能对哈希表进行操作）而DEL，TYPE,EXPIRE可以对所有数据进行操作。  </li>
-<li>Redis的数据库如何实现存储不同的数据类型的。  </li>
-<li>发布订阅，脚本，事务等特性。  </li>
-<li>Redis如何处理客户端的请求。  </li>
-<li>Redis位操作，排序，复制，Sentinel,集群。  </li>
-<li>Redis单机特性，事务、持久化、Lua脚本、排序、二进制位操作。    </li>
-</ol>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ol>
-<li>Redis是由键值对组成的，其中数据库的键值必须是<strong>字符串</strong>  </li>
-<li>Redis的值value，可以是<strong>字符串</strong>，<strong>列表对象（）list object）</strong>,<strong>哈希对象（hash object）</strong>,<strong>集合对象（set object）</strong>,<strong>有序集合对象（sorted set object）</strong>这五种。</li>
-<li>Redis SDS 磁盘空间分配两种策略如果小于1M,那么分配free为字符串本身大小，如果大于1M那么free为1M，通过预分配策略可以减少内存分配的次数。</li>
-</ol>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <h1 id="掌握"><a href="#掌握" class="headerlink" title="掌握"></a>掌握</h1><ol>
-<li>Redis支持五种数据类型。  </li>
-<li>Redis部分命令只能对特定的数据进行执行（Append只能针对字符串进行操作，HSET 只能对哈希表进行操作）而DEL，TYPE,EXPIRE可以对所有数据进行操作。  </li>
-<li>Redis的数据库如何实现存储不同的数据类型的。  </li>
-<li>发布订阅，脚本，事务等特性。  </li>
-<li>Redis如何处理客户端的请求。  </li>
-<li>Redis位操作，排序，复制，Sentinel,集群。  </li>
-<li>Redis单机特性，事务、持久化、Lua脚本、排序、二进制位操作。    </li>
-</ol>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ol>
-<li>Redis是由键值对组成的，其中数据库的键值必须是<strong>字符串</strong>  </li>
-<li>Redis的值value，可以是<strong>字符串</strong>，<strong>列表对象（）list object）</strong>,<strong>哈希对象（hash object）</strong>,<strong>集合对象（set object）</strong>,<strong>有序集合对象（sorted set object）</strong>这五种。</li>
-<li>Redis SDS 磁盘空间分配两种策略如果小于1M,那么分配free为字符串本身大小，如果大于1M那么free为1M，通过预分配策略可以减少内存分配的次数。</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/05/08/redis/" data-id="cj2v8rnpp002d49ojwfbckj24" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/技术求索/">技术求索</a></li></ul>
 
     </footer>
   </div>

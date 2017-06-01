@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,72 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-mysqlPassword" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/03/02/mysqlPassword/">mysqlPassword</a>
+    </h1>
+  
+
+        <a href="/blog/2017/03/02/mysqlPassword/" class="article-data-title">
+
+  <time  datetime="2017-03-02T06:30:27.000Z" itemprop="datePublished">2017-03-02</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>#mysql mac重置密码</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1，系统偏好点击关闭  </p>
+<p>2，mysql 安装目录 例如（/usr/local/mysql-5.7.16-osx10.11-x86_64/bin）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./mysqld_safe --skip-grant-tables --skip-networking &amp;</span><br></pre></td></tr></table></figure>
+<p>3，登录mysql </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./mysql    </span><br><span class="line"></span><br><span class="line">use mysql  </span><br><span class="line"></span><br><span class="line">update MySQL.user set </span><br><span class="line">authentication_string=password(&apos;123456&apos;) where user=&apos;root&apos;</span><br></pre></td></tr></table></figure>
+<p>4.重启 mysql </p>
+<p>密码重置完毕</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <p>#mysql mac重置密码</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1，系统偏好点击关闭  </p>
+<p>2，mysql 安装目录 例如（/usr/local/mysql-5.7.16-osx10.11-x86_64/bin）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./mysqld_safe --skip-grant-tables --skip-networking &amp;</span><br></pre></td></tr></table></figure>
+<p>3，登录mysql </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./mysql    </span><br><span class="line"></span><br><span class="line">use mysql  </span><br><span class="line"></span><br><span class="line">update MySQL.user set </span><br><span class="line">authentication_string=password(&apos;123456&apos;) where user=&apos;root&apos;</span><br></pre></td></tr></table></figure>
+<p>4.重启 mysql </p>
+<p>密码重置完毕</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2017/03/02/mysqlPassword/" data-id="cj3e6de99002gyvojsddj4r7q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-Spring初始化方法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -88,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/01/04/Spring初始化方法/" data-id="cj2v8rnom001149oj7jgrf78u" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/01/04/Spring初始化方法/" data-id="cj3e6de8a001byvojtvohq0mz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -166,7 +232,7 @@ Host code.dianpingoa.com
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/01/02/git多客户端/" data-id="cj2v8rnoq001849ojws5rdugb" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/01/02/git多客户端/" data-id="cj3e6de8h001iyvoj5d3yd99u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -302,7 +368,7 @@ Host code.dianpingoa.com
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/11/20/Spring-AOP/" data-id="cj2v8rnou001a49ojq350u4qw" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/11/20/Spring-AOP/" data-id="cj3e6de840014yvojucbdmtf6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -362,80 +428,10 @@ Host code.dianpingoa.com
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/10/31/访问者模式-1/" data-id="cj2v8rnr9004u49oj2e6wi5rl" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/10/31/访问者模式-1/" data-id="cj3e6deat004lyvojo1ead818" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-面试总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/09/06/面试总结/">码农的心路历程</a>
-    </h1>
-  
-
-        <a href="/blog/2016/09/06/面试总结/" class="article-data-title">
-
-  <time  datetime="2016-09-06T05:01:12.000Z" itemprop="datePublished">2016-09-06</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天上午和领导说了要离职了，想想自己从毕业到今天已经三年多了，在这三年多的时间里成长了很多，失去了很多，总的来说成长和失去应该还算对等，感谢女友，不对，已经升级为老婆了，陪伴在码农的身边，还有身边的好基友都是从大学里面一起走过来的，上海这么大有了你们我的心里也有了落脚点。</p>
-<p>毕业后三年的时间对于码农来说非常宝贵，这段时间里是技术积累的黄金时期，这个时间生活上的压力少点，身体还像打了鸡血一样有活力，此时用来学习工作上的技能，为人处世，工作方法等都能打下一个好的基础，本身就是一张白纸所以企业对你进行塑性就非常容易。</p>
-<p>在这三年的时间里，我换了一次工作，从外企跳槽到国企开始人生的第一次技术创业，感触也非常多，在这这个创业的项目里，因为人手不够一个人被当做三个人来用，前端，后端，运维，让我变成了懂半桶水的全栈工程师,<a href="https://www.letusign.com/djqian/static/web/index.html" target="_blank" rel="external">大家签</a>电子合同平台，就是我和我同事两人用来8个多月开发出来的，现在已经有几家企业接入我们的电子合同服务了。这一年的时间里成长最快，加班，探讨需求，技术决策，阅读PDF源码，跨团队沟通，把本来要使用第三的核心技术硬是钻研了三周时间，自己阅读源码解决了，那时候带来的成就感真不是用金钱就能衡量的，现在看着自己的产品，服务也有人再用真的很开心。  </p>
-<p>可是自己本身是一个闲不住的人，对于时间的流逝深有体会，慢慢的项目从开发时期逐渐过渡为运维时期，对于新技术的渴望使我对于自己现在的工作状态不满，习惯了每天编码解决问题，到后来项目运行平稳没有什么新的问题需要解决，我常常想在这样下去会不会自己就像是温水里面的青蛙🐸？所以在8月末我打算去互联网企业，接触一下大数据，高并发这些高大上的互联网技术，筛选完以后发现上海能选择的并不多，只有大众点评（美团点评，美团和大众点评合并了），携程，BAT驻上海研发部等，这次面试的目的我已经很确定一定要去有大数据流量的企业。  </p>
-<p>去点评面试结果很顺利，过程比较漫长，距离第一次电话面试到发放offer时间差不多半个月时间左右，这半个月的时间里经历了，电话面试—&gt;现场两轮技术面—&gt;HR电话面—&gt;跨部门技术电话面–&gt;跨部门HR面–&gt;HR电话谈offer。这次面试还真是有些曲折，第一次电话面试完后，HR说给我发现场面试邮件通知，可是等了2天没有收到，以为电面挂了，第三天早上收到HR电话，“怎么还没有来面试呢？是在路上吗？” 我当时就懵了，问清楚了原来是163邮箱没有收到信。重新约了面试间，现场面试完，感觉还不错，结果有等了一周，各种胡思乱想，难道挂了？好吧，原谅上海互联网公司少。现场面试的结果出来了，HR反馈“还不错”，说还有另外的一个BU电话面试，给个大数据场景，让想有什么解决方案，具体的题目就不透露了，毕竟没有通用性，所以一路走来考考验的不仅仅是技术还有耐心和运气。</p>
-<p>由于本身偏爱技术，业余时间不是在学习新的技术，就是在开源框架的源码，总是担心时间流逝技术水平依然没有提高，这可能是做技术人的林外一种衰老，为了延缓衰老，所以内心深处还是在寻找挑战。</p>
-<p>看到有人说过，对于能力的提高，开始你可能没有这个能力，但是你去一个平台上，或者说换一个环境，通过你的努力你就具备了这个能力，所以说对于普通人来说，有个好的平台，好的环境真是对于个人的提高很有帮助，环境会推动着你往前走，所以选择个靠谱的环境比努力更重要。</p>
-<p>为什么有这么强烈的紧迫感呢？可能是在上海缺少落脚点，没有可以依靠的支柱，所以只能依靠自己了……</p>
-<p>有好的身体，才能好好的工作，做码农的如果保护不好你的身体那么到最后，你也只能和程序挥手说拜拜了，平时多注意体育锻炼，自己的房间不大，里面摆满了各种型号的哑铃，腹肌轮，引体向上杆，仰卧起坐板，小杠铃杆，所以加上平时吃饭注意饮食每周三次跑步，所以在坚持两年多的健身中实践中，身才还算凑活，走在路上老婆说也很有安全感😆。平时对身体的投资永远都是对的，多多爱惜自己的身体。</p>
-<p>前路漫漫，一步一个脚印👣，相信未来的道路一定会因为自己的努力而越来越敞亮（东北话）。</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <p>今天上午和领导说了要离职了，想想自己从毕业到今天已经三年多了，在这三年多的时间里成长了很多，失去了很多，总的来说成长和失去应该还算对等，感谢女友，不对，已经升级为老婆了，陪伴在码农的身边，还有身边的好基友都是从大学里面一起走过来的，上海这么大有了你们我的心里也有了落脚点。</p>
-<p>毕业后三年的时间对于码农来说非常宝贵，这段时间里是技术积累的黄金时期，这个时间生活上的压力少点，身体还像打了鸡血一样有活力，此时用来学习工作上的技能，为人处世，工作方法等都能打下一个好的基础，本身就是一张白纸所以企业对你进行塑性就非常容易。</p>
-<p>在这三年的时间里，我换了一次工作，从外企跳槽到国企开始人生的第一次技术创业，感触也非常多，在这这个创业的项目里，因为人手不够一个人被当做三个人来用，前端，后端，运维，让我变成了懂半桶水的全栈工程师,<a href="https://www.letusign.com/djqian/static/web/index.html" target="_blank" rel="external">大家签</a>电子合同平台，就是我和我同事两人用来8个多月开发出来的，现在已经有几家企业接入我们的电子合同服务了。这一年的时间里成长最快，加班，探讨需求，技术决策，阅读PDF源码，跨团队沟通，把本来要使用第三的核心技术硬是钻研了三周时间，自己阅读源码解决了，那时候带来的成就感真不是用金钱就能衡量的，现在看着自己的产品，服务也有人再用真的很开心。  </p>
-<p>可是自己本身是一个闲不住的人，对于时间的流逝深有体会，慢慢的项目从开发时期逐渐过渡为运维时期，对于新技术的渴望使我对于自己现在的工作状态不满，习惯了每天编码解决问题，到后来项目运行平稳没有什么新的问题需要解决，我常常想在这样下去会不会自己就像是温水里面的青蛙🐸？所以在8月末我打算去互联网企业，接触一下大数据，高并发这些高大上的互联网技术，筛选完以后发现上海能选择的并不多，只有大众点评（美团点评，美团和大众点评合并了），携程，BAT驻上海研发部等，这次面试的目的我已经很确定一定要去有大数据流量的企业。  </p>
-<p>去点评面试结果很顺利，过程比较漫长，距离第一次电话面试到发放offer时间差不多半个月时间左右，这半个月的时间里经历了，电话面试—&gt;现场两轮技术面—&gt;HR电话面—&gt;跨部门技术电话面–&gt;跨部门HR面–&gt;HR电话谈offer。这次面试还真是有些曲折，第一次电话面试完后，HR说给我发现场面试邮件通知，可是等了2天没有收到，以为电面挂了，第三天早上收到HR电话，“怎么还没有来面试呢？是在路上吗？” 我当时就懵了，问清楚了原来是163邮箱没有收到信。重新约了面试间，现场面试完，感觉还不错，结果有等了一周，各种胡思乱想，难道挂了？好吧，原谅上海互联网公司少。现场面试的结果出来了，HR反馈“还不错”，说还有另外的一个BU电话面试，给个大数据场景，让想有什么解决方案，具体的题目就不透露了，毕竟没有通用性，所以一路走来考考验的不仅仅是技术还有耐心和运气。</p>
-<p>由于本身偏爱技术，业余时间不是在学习新的技术，就是在开源框架的源码，总是担心时间流逝技术水平依然没有提高，这可能是做技术人的林外一种衰老，为了延缓衰老，所以内心深处还是在寻找挑战。</p>
-<p>看到有人说过，对于能力的提高，开始你可能没有这个能力，但是你去一个平台上，或者说换一个环境，通过你的努力你就具备了这个能力，所以说对于普通人来说，有个好的平台，好的环境真是对于个人的提高很有帮助，环境会推动着你往前走，所以选择个靠谱的环境比努力更重要。</p>
-<p>为什么有这么强烈的紧迫感呢？可能是在上海缺少落脚点，没有可以依靠的支柱，所以只能依靠自己了……</p>
-<p>有好的身体，才能好好的工作，做码农的如果保护不好你的身体那么到最后，你也只能和程序挥手说拜拜了，平时多注意体育锻炼，自己的房间不大，里面摆满了各种型号的哑铃，腹肌轮，引体向上杆，仰卧起坐板，小杠铃杆，所以加上平时吃饭注意饮食每周三次跑步，所以在坚持两年多的健身中实践中，身才还算凑活，走在路上老婆说也很有安全感😆。平时对身体的投资永远都是对的，多多爱惜自己的身体。</p>
-<p>前路漫漫，一步一个脚印👣，相信未来的道路一定会因为自己的努力而越来越敞亮（东北话）。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/09/06/面试总结/" data-id="cj2v8rnrc005249oj0wmhlb0t" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"></ul>
 
     </footer>
   </div>
