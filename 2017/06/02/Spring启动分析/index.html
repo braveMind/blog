@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Spring启动分析 | 小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Spring容器设计接口类图  
+ApplicationContext就是Spring容器的抽象。
+BeanFactory接口定义IOC容器的主要功能。  
+ResourceLoader用来从classPath下加载资源。
+
+ConfigurableApplicationContext，非web容器使用。  
+WebApplicationContext web容器使用。
+源码分析加载配置文件。12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring启动分析">
+<meta property="og:url" content="http://bravemind.github.io/2017/06/02/Spring启动分析/index.html">
+<meta property="og:site_name" content="小菜园">
+<meta property="og:description" content="Spring容器设计接口类图  
+ApplicationContext就是Spring容器的抽象。
+BeanFactory接口定义IOC容器的主要功能。  
+ResourceLoader用来从classPath下加载资源。
+
+ConfigurableApplicationContext，非web容器使用。  
+WebApplicationContext web容器使用。
+源码分析加载配置文件。12">
+<meta property="og:image" content="http://7xstto.com1.z0.glb.clouddn.com/ApplicationContext.png">
+<meta property="og:image" content="http://7xstto.com1.z0.glb.clouddn.com/AplicationContext2.png">
+<meta property="og:updated_time" content="2017-06-22T05:10:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring启动分析">
+<meta name="twitter:description" content="Spring容器设计接口类图  
+ApplicationContext就是Spring容器的抽象。
+BeanFactory接口定义IOC容器的主要功能。  
+ResourceLoader用来从classPath下加载资源。
+
+ConfigurableApplicationContext，非web容器使用。  
+WebApplicationContext web容器使用。
+源码分析加载配置文件。12">
+<meta name="twitter:image" content="http://7xstto.com1.z0.glb.clouddn.com/ApplicationContext.png">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/grid.css">
+
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.min.css">
+
+
+
+</head>
+<div class="left_header">
+    <a class="header_avater" href="/blog"></a>
+    <div class="tag_s" id="showTag">
+        <i class="fa fa-tag" href="../blog"></i>
+            <div id="tags_clod" class="pop">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+            </div>
+    </div>
+    <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
+    <a href="https://github.com/braveMind" class="git" target="_blank"><i class="fa fa-github"></i></a>
+
+
+    <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
+    <a href="/blog/2016/05/21/友情链接/"><i class="fa fa-link" aria-hidden="true"></i></a>
+
+</div>
+<div class="left_content">
+    <section><article id="post-Spring启动分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spring启动分析
+    </h1>
+  
+
+        <a href="/blog/2017/06/02/Spring启动分析/" class="article-data-title">
+
+  <time  datetime="2017-06-02T08:09:31.000Z" itemprop="datePublished">2017-06-02</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Spring容器设计接口类图"><a href="#Spring容器设计接口类图" class="headerlink" title="Spring容器设计接口类图"></a>Spring容器设计接口类图</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/ApplicationContext.png" alt="容器设计">  </p>
+<p>ApplicationContext就是Spring容器的抽象。</p>
+<p>BeanFactory接口定义IOC容器的主要功能。  </p>
+<p>ResourceLoader用来从classPath下加载资源。</p>
+<p><img src="http://7xstto.com1.z0.glb.clouddn.com/AplicationContext2.png" alt="容器主要实现类"></p>
+<p>ConfigurableApplicationContext，非web容器使用。  </p>
+<p>WebApplicationContext web容器使用。</p>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h3 id="加载配置文件。"><a href="#加载配置文件。" class="headerlink" title="加载配置文件。"></a>加载配置文件。</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="comment">//classpath下加载Spring配置文件</span></span><br><span class="line">       ApplicationContext applicationContext=<span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"spring-config.xml"</span>);</span><br><span class="line">       Person person= (Person) applicationContext.getBean(<span class="string">"person"</span>);</span><br><span class="line">       System.out.println(person.getName());</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   初始化<span class="function">ClassPathXmlApplicationContext</span><br><span class="line">   <span class="keyword">public</span> <span class="title">ClassPathXmlApplicationContext</span><span class="params">(String configLocation)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>(<span class="keyword">new</span> String[] &#123;configLocation&#125;, <span class="keyword">true</span>, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ClassPathXmlApplicationContext</span><span class="params">(String[] configLocations, <span class="keyword">boolean</span> refresh, ApplicationContext parent)</span></span><br><span class="line">		<span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">super</span>(parent);<span class="comment">//子类继承父类，显示调用父类构造函数，这一步没什么用。</span></span><br><span class="line">	<span class="comment">//获取classpath下的配置文件</span></span><br><span class="line">	setConfigLocations(configLocations);</span><br><span class="line">	<span class="comment">//控制容器要不起动</span></span><br><span class="line">	<span class="keyword">if</span> (refresh) &#123;</span><br><span class="line">	<span class="comment">//调用父类的容器启动方法</span></span><br><span class="line">		refresh();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="父类refresh方法"><a href="#父类refresh方法" class="headerlink" title="父类refresh方法"></a>父类refresh方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">()</span> <span class="keyword">throws</span> BeansException, IllegalStateException </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (<span class="keyword">this</span>.startupShutdownMonitor) &#123;</span><br><span class="line">			<span class="comment">// 为容器初始化做准备，包括设置Spring启动时间，如果是web容器中的参数例如（servletContextInitParams），检查配置文件是否正确</span></span><br><span class="line">			prepareRefresh();</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 读取配置文件解析xml中的bean和class存储在 beanFactory中的map中，为初始化做准备。</span></span><br><span class="line">			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 准备初始化Spring容器，给beanFactory中注入，或排除一些类。</span></span><br><span class="line">			prepareBeanFactory(beanFactory);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="comment">// Spring留的扩展选项，此时所有的bean已经被加载到容器中，但是没有bean被初始化，可以在Spring容器启动的时候对beanFactory进行扩展，例如可以把它加入到web容器中，此时需要覆盖postProcessBeanFactory方法。</span></span><br><span class="line">				postProcessBeanFactory(beanFactory);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Invoke factory processors registered as beans in the context.</span></span><br><span class="line">				invokeBeanFactoryPostProcessors(beanFactory);</span><br><span class="line">					</span><br><span class="line">				<span class="comment">//注册bean的后置处理器，被bean创建的时候调用</span></span><br><span class="line">				registerBeanPostProcessors(beanFactory);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 初始化消息</span></span><br><span class="line">				initMessageSource();</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Initialize event multicaster for this context.</span></span><br><span class="line">				initApplicationEventMulticaster();</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Initialize other special beans in specific context subclasses.</span></span><br><span class="line">				onRefresh();</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Check for listener beans and register them.</span></span><br><span class="line">				registerListeners();</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Instantiate all remaining (non-lazy-init) singletons.</span></span><br><span class="line">				finishBeanFactoryInitialization(beanFactory);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Last step: publish corresponding event.</span></span><br><span class="line">				finishRefresh();</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">catch</span> (BeansException ex) &#123;</span><br><span class="line">				logger.warn(<span class="string">"Exception encountered during context initialization - cancelling refresh attempt"</span>, ex);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Destroy already created singletons to avoid dangling resources.</span></span><br><span class="line">				destroyBeans();</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Reset 'active' flag.</span></span><br><span class="line">				cancelRefresh(ex);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Propagate exception to caller.</span></span><br><span class="line">				<span class="keyword">throw</span> ex;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <div id="toc" class="article-toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring容器设计接口类图"><span class="toc-number">1.</span> <span class="toc-text">Spring容器设计接口类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源码分析"><span class="toc-number">2.</span> <span class="toc-text">源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#加载配置文件。"><span class="toc-number">2.1.</span> <span class="toc-text">加载配置文件。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#父类refresh方法"><span class="toc-number">3.</span> <span class="toc-text">父类refresh方法</span></a></li></ol>
+        <hr/>
+      </div>
+      
+      <h2 id="Spring容器设计接口类图"><a href="#Spring容器设计接口类图" class="headerlink" title="Spring容器设计接口类图"></a>Spring容器设计接口类图</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/ApplicationContext.png" alt="容器设计">  </p>
+<p>ApplicationContext就是Spring容器的抽象。</p>
+<p>BeanFactory接口定义IOC容器的主要功能。  </p>
+<p>ResourceLoader用来从classPath下加载资源。</p>
+<p><img src="http://7xstto.com1.z0.glb.clouddn.com/AplicationContext2.png" alt="容器主要实现类"></p>
+<p>ConfigurableApplicationContext，非web容器使用。  </p>
+<p>WebApplicationContext web容器使用。</p>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h3 id="加载配置文件。"><a href="#加载配置文件。" class="headerlink" title="加载配置文件。"></a>加载配置文件。</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="comment">//classpath下加载Spring配置文件</span></span><br><span class="line">       ApplicationContext applicationContext=<span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"spring-config.xml"</span>);</span><br><span class="line">       Person person= (Person) applicationContext.getBean(<span class="string">"person"</span>);</span><br><span class="line">       System.out.println(person.getName());</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   初始化<span class="function">ClassPathXmlApplicationContext</span><br><span class="line">   <span class="keyword">public</span> <span class="title">ClassPathXmlApplicationContext</span><span class="params">(String configLocation)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>(<span class="keyword">new</span> String[] &#123;configLocation&#125;, <span class="keyword">true</span>, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ClassPathXmlApplicationContext</span><span class="params">(String[] configLocations, <span class="keyword">boolean</span> refresh, ApplicationContext parent)</span></span><br><span class="line">		<span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">super</span>(parent);<span class="comment">//子类继承父类，显示调用父类构造函数，这一步没什么用。</span></span><br><span class="line">	<span class="comment">//获取classpath下的配置文件</span></span><br><span class="line">	setConfigLocations(configLocations);</span><br><span class="line">	<span class="comment">//控制容器要不起动</span></span><br><span class="line">	<span class="keyword">if</span> (refresh) &#123;</span><br><span class="line">	<span class="comment">//调用父类的容器启动方法</span></span><br><span class="line">		refresh();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="父类refresh方法"><a href="#父类refresh方法" class="headerlink" title="父类refresh方法"></a>父类refresh方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">()</span> <span class="keyword">throws</span> BeansException, IllegalStateException </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (<span class="keyword">this</span>.startupShutdownMonitor) &#123;</span><br><span class="line">			<span class="comment">// 为容器初始化做准备，包括设置Spring启动时间，如果是web容器中的参数例如（servletContextInitParams），检查配置文件是否正确</span></span><br><span class="line">			prepareRefresh();</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 读取配置文件解析xml中的bean和class存储在 beanFactory中的map中，为初始化做准备。</span></span><br><span class="line">			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 准备初始化Spring容器，给beanFactory中注入，或排除一些类。</span></span><br><span class="line">			prepareBeanFactory(beanFactory);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="comment">// Spring留的扩展选项，此时所有的bean已经被加载到容器中，但是没有bean被初始化，可以在Spring容器启动的时候对beanFactory进行扩展，例如可以把它加入到web容器中，此时需要覆盖postProcessBeanFactory方法。</span></span><br><span class="line">				postProcessBeanFactory(beanFactory);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Invoke factory processors registered as beans in the context.</span></span><br><span class="line">				invokeBeanFactoryPostProcessors(beanFactory);</span><br><span class="line">					</span><br><span class="line">				<span class="comment">//注册bean的后置处理器，被bean创建的时候调用</span></span><br><span class="line">				registerBeanPostProcessors(beanFactory);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 初始化消息</span></span><br><span class="line">				initMessageSource();</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Initialize event multicaster for this context.</span></span><br><span class="line">				initApplicationEventMulticaster();</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Initialize other special beans in specific context subclasses.</span></span><br><span class="line">				onRefresh();</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Check for listener beans and register them.</span></span><br><span class="line">				registerListeners();</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Instantiate all remaining (non-lazy-init) singletons.</span></span><br><span class="line">				finishBeanFactoryInitialization(beanFactory);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Last step: publish corresponding event.</span></span><br><span class="line">				finishRefresh();</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">catch</span> (BeansException ex) &#123;</span><br><span class="line">				logger.warn(<span class="string">"Exception encountered during context initialization - cancelling refresh attempt"</span>, ex);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Destroy already created singletons to avoid dangling resources.</span></span><br><span class="line">				destroyBeans();</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Reset 'active' flag.</span></span><br><span class="line">				cancelRefresh(ex);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Propagate exception to caller.</span></span><br><span class="line">				<span class="keyword">throw</span> ex;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2017/06/02/Spring启动分析/" data-id="cj4pjnxrp001cl1ojo4fkxirw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2017/06/01/Spring代理对象/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Spring代理对象</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+</div>
+
+
+   
+
+   <script src="/blog/js/jQuery.js"></script>
+   <script src="/blog/js/script.js"></script>
+
+
+
