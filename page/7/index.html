@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">28</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,204 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-多线程一" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/07/14/多线程一/">多线程一</a>
+    </h1>
+  
+
+        <a href="/blog/2016/07/14/多线程一/" class="article-data-title">
+
+  <time  datetime="2016-07-14T08:55:46.000Z" itemprop="datePublished">2016-07-14</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-什么是线程，线程之间的基本状态和状态之间的关系？"><a href="#1-什么是线程，线程之间的基本状态和状态之间的关系？" class="headerlink" title="1.什么是线程，线程之间的基本状态和状态之间的关系？"></a>1.什么是线程，线程之间的基本状态和状态之间的关系？</h2><p>是程序执行的最小单位，一条线程指的是进程中一个单一顺序的控制流，线程是CPU进行调度资源的最小单位，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
+<p>同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）。</p>
+<p><strong>线程间的基本状态是：就绪,运行,阻塞.</strong><br>1，就绪状态是指线程具备运行的所有条件，逻辑上可以运行，在等待处理机。<br>2，运行状态是指线程占有处理机正在运行。<br>3,阻塞状态是指线程在等待一个事件（如某个信号量），逻辑上不可执行。</p>
+<p>线程状态转换图：<br><img src="http://7xstto.com1.z0.glb.clouddn.com/threadMap.jpg" alt="状态转换图"></p>
+<h2 id="2-线程和进程有什么区别？"><a href="#2-线程和进程有什么区别？" class="headerlink" title="2.线程和进程有什么区别？"></a>2.线程和进程有什么区别？</h2><p>1.进程是相对于操作系统来说的，进程是操作系统分配资源的最小单位，线程是程序中进程的不同执行路劲。<br>2.线程之间可以共享内存，对于一些需要并发操作，而且要共享某些变量就只能用线程。<br>3.线程不能独立运行，必须依赖于进程，单线程的一个程序就是一个进程。</p>
+<h2 id="3-多线程同步和互斥有几种实现方式，分别是什么-什么时候使用？"><a href="#3-多线程同步和互斥有几种实现方式，分别是什么-什么时候使用？" class="headerlink" title="3.多线程同步和互斥有几种实现方式，分别是什么,什么时候使用？"></a>3.多线程同步和互斥有几种实现方式，分别是什么,什么时候使用？</h2><p><strong>线程间的同步方法大体可分为两类：用户模式和内核模式。</strong></p>
+<p>内核模式就是指利用系统内核对象的单一性来进行同步，使用时需要切换内核态与用户态，而用户模式就是不需要切换到内核态，只在用户态完成操作。</p>
+<p><strong>线程同步</strong>是指线程之间所具有的一种制约关系，一个线程的执行依赖另一个线程的消息，当它没有得到另一个线程的消息时应等待，直到消息到达时才被唤醒。   </p>
+<p><strong>线程同步可以使用信号量的方式（wait,notify,notifyAll)</strong>  </p>
+<p><strong>线程互斥</strong>是指对于共享的进程系统资源，在各单个线程访问时的排它性。当有若干个线程都要使用某一共享资源时，任何时刻最多只允许一个线程去使用，其它要使用该资源的线程必须等待，直到占用资源者释放该资源。线程互斥可以看成是一种特殊的线程同步（下文统称为同步）。 </p>
+<p><strong>线程互斥可以使用lock,synchronized</strong></p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-什么是线程，线程之间的基本状态和状态之间的关系？"><a href="#1-什么是线程，线程之间的基本状态和状态之间的关系？" class="headerlink" title="1.什么是线程，线程之间的基本状态和状态之间的关系？"></a>1.什么是线程，线程之间的基本状态和状态之间的关系？</h2><p>是程序执行的最小单位，一条线程指的是进程中一个单一顺序的控制流，线程是CPU进行调度资源的最小单位，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
+<p>同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）。</p>
+<p><strong>线程间的基本状态是：就绪,运行,阻塞.</strong><br>1，就绪状态是指线程具备运行的所有条件，逻辑上可以运行，在等待处理机。<br>2，运行状态是指线程占有处理机正在运行。<br>3,阻塞状态是指线程在等待一个事件（如某个信号量），逻辑上不可执行。</p>
+<p>线程状态转换图：<br><img src="http://7xstto.com1.z0.glb.clouddn.com/threadMap.jpg" alt="状态转换图"></p>
+<h2 id="2-线程和进程有什么区别？"><a href="#2-线程和进程有什么区别？" class="headerlink" title="2.线程和进程有什么区别？"></a>2.线程和进程有什么区别？</h2><p>1.进程是相对于操作系统来说的，进程是操作系统分配资源的最小单位，线程是程序中进程的不同执行路劲。<br>2.线程之间可以共享内存，对于一些需要并发操作，而且要共享某些变量就只能用线程。<br>3.线程不能独立运行，必须依赖于进程，单线程的一个程序就是一个进程。</p>
+<h2 id="3-多线程同步和互斥有几种实现方式，分别是什么-什么时候使用？"><a href="#3-多线程同步和互斥有几种实现方式，分别是什么-什么时候使用？" class="headerlink" title="3.多线程同步和互斥有几种实现方式，分别是什么,什么时候使用？"></a>3.多线程同步和互斥有几种实现方式，分别是什么,什么时候使用？</h2><p><strong>线程间的同步方法大体可分为两类：用户模式和内核模式。</strong></p>
+<p>内核模式就是指利用系统内核对象的单一性来进行同步，使用时需要切换内核态与用户态，而用户模式就是不需要切换到内核态，只在用户态完成操作。</p>
+<p><strong>线程同步</strong>是指线程之间所具有的一种制约关系，一个线程的执行依赖另一个线程的消息，当它没有得到另一个线程的消息时应等待，直到消息到达时才被唤醒。   </p>
+<p><strong>线程同步可以使用信号量的方式（wait,notify,notifyAll)</strong>  </p>
+<p><strong>线程互斥</strong>是指对于共享的进程系统资源，在各单个线程访问时的排它性。当有若干个线程都要使用某一共享资源时，任何时刻最多只允许一个线程去使用，其它要使用该资源的线程必须等待，直到占用资源者释放该资源。线程互斥可以看成是一种特殊的线程同步（下文统称为同步）。 </p>
+<p><strong>线程互斥可以使用lock,synchronized</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/07/14/多线程一/" data-id="cj7vp8eh2003kifoj0xvfp54b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-linux常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/07/13/linux常用命令/">linux常用命令</a>
+    </h1>
+  
+
+        <a href="/blog/2016/07/13/linux常用命令/" class="article-data-title">
+
+  <time  datetime="2016-07-13T02:13:21.000Z" itemprop="datePublished">2016-07-13</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><h2 id="大小排序"><a href="#大小排序" class="headerlink" title="大小排序"></a>大小排序</h2><h2 id="某目录下按照M排序"><a href="#某目录下按照M排序" class="headerlink" title="某目录下按照M排序"></a>某目录下按照M排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo du -sh /usr/* | sort -rn</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/mfryf/p/3243211.html" target="_blank" rel="external">du命令详见</a></p>
+<h2 id="压力测试工具"><a href="#压力测试工具" class="headerlink" title="压力测试工具"></a>压力测试工具</h2><p>ab是apache自带的一个很好用的压力测试工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ab -n 1000 -c 200 http://xxx</span><br></pre></td></tr></table></figure>
+<p>请求1000次，并发是200，模拟200个人同时访问  </p>
+<p><a href="http://www.ha97.com/4617.html" target="_blank" rel="external">ab命令参考</a></p>
+<h2 id="结束进程"><a href="#结束进程" class="headerlink" title="结束进程"></a>结束进程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 $(ps -ef | grep $1 | grep -v grep | awk &apos;&#123;print $2&#125;&apos;)</span><br></pre></td></tr></table></figure>
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><h2 id="大小排序"><a href="#大小排序" class="headerlink" title="大小排序"></a>大小排序</h2><h2 id="某目录下按照M排序"><a href="#某目录下按照M排序" class="headerlink" title="某目录下按照M排序"></a>某目录下按照M排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo du -sh /usr/* | sort -rn</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/mfryf/p/3243211.html" target="_blank" rel="external">du命令详见</a></p>
+<h2 id="压力测试工具"><a href="#压力测试工具" class="headerlink" title="压力测试工具"></a>压力测试工具</h2><p>ab是apache自带的一个很好用的压力测试工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ab -n 1000 -c 200 http://xxx</span><br></pre></td></tr></table></figure>
+<p>请求1000次，并发是200，模拟200个人同时访问  </p>
+<p><a href="http://www.ha97.com/4617.html" target="_blank" rel="external">ab命令参考</a></p>
+<h2 id="结束进程"><a href="#结束进程" class="headerlink" title="结束进程"></a>结束进程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 $(ps -ef | grep $1 | grep -v grep | awk &apos;&#123;print $2&#125;&apos;)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/07/13/linux常用命令/" data-id="cj7vp8egf002gifoj79ygl8j5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-httpClient反思" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/07/06/httpClient反思/">小bug反思</a>
+    </h1>
+  
+
+        <a href="/blog/2016/07/06/httpClient反思/" class="article-data-title">
+
+  <time  datetime="2016-07-06T01:47:45.000Z" itemprop="datePublished">2016-07-06</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>程序中那些困扰我好几天的问题，在某个瞬间突然柳暗花明，常常让我觉得感动，又觉得当时好蠢！</p>
+</blockquote>
+<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>最近自己用httpClient4.5封装了一个顺手的HttpClientUtils工具，丝滑的链式调用用来模拟登陆smartqq，再接一个图灵机器人（第三方接口），图灵机器人内部接了很多有意思的API，天气查询，快递查询，百科，笑话，聊天等，还可以自己在扩展，在接入其它api如讯飞的人脸识别，语音识别，喜欢玩硬件的可以搭建在树莓派上，总之可以玩的花样很多。</p>
+<p><strong>问题来了</strong>：在用firebug分析qq的请求包时候发现游览器在请求qq协议的时候携带的是15个cookie，我在用httpClient的时候发送的是12个cookie，<strong>奇葩的是发送的这个12cookie在登陆这一步的时候服务器发给我的请求是成功的，关键是当时没多想</strong>，既然成功了那么后续的操作获取登陆的一个token的时候服务器返回状态代码1000，当时查看了smartqq的协议说是cookie携带不全。  </p>
+<h3 id="寻找解决方法"><a href="#寻找解决方法" class="headerlink" title="寻找解决方法"></a>寻找解决方法</h3><p>以前项目中使用的老版本的httpClient 3.x，自己在玩的时候就换上了最新版的httpClient 4.5配置了httpClinet连接池，配置好了cookie管理策略。可就是请求时候携带12个cookie，这个问题困扰着我，从上周六到周一脑子异常兴奋每天睡眠不足5小时，早上六点就又爬起来，问题解决不了的时候就在谷歌上搜索，大家使用的方法我都用了可是还是没解决，算了还是放放吧，隔了一天再仔细研究了一下qq的协议发现登陆成功后少调用了一个get请求！！当把这个get请求添加上的时候瞬间柳暗花明！先是感动，后到想死的心都有了！！</p>
+<h2 id="问题反思"><a href="#问题反思" class="headerlink" title="问题反思"></a>问题反思</h2><p>技术问题往往很好解决，难解决的是思维逻辑问题，尤其是你百思不解的时候有容易把问题归类到技术领域，这个时候如果跳出来就会很苦恼，俗称牛角尖！浪费大量时间在谷歌，debug，这时候最好的办法是搁置问题。给大脑一个休息的时间，回过头来再看问题也许你就有了新的发现，此时既不会盲目自信，又不会过度思考，更容易接近问题的本质。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p>程序中那些困扰我好几天的问题，在某个瞬间突然柳暗花明，常常让我觉得感动，又觉得当时好蠢！</p>
+</blockquote>
+<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>最近自己用httpClient4.5封装了一个顺手的HttpClientUtils工具，丝滑的链式调用用来模拟登陆smartqq，再接一个图灵机器人（第三方接口），图灵机器人内部接了很多有意思的API，天气查询，快递查询，百科，笑话，聊天等，还可以自己在扩展，在接入其它api如讯飞的人脸识别，语音识别，喜欢玩硬件的可以搭建在树莓派上，总之可以玩的花样很多。</p>
+<p><strong>问题来了</strong>：在用firebug分析qq的请求包时候发现游览器在请求qq协议的时候携带的是15个cookie，我在用httpClient的时候发送的是12个cookie，<strong>奇葩的是发送的这个12cookie在登陆这一步的时候服务器发给我的请求是成功的，关键是当时没多想</strong>，既然成功了那么后续的操作获取登陆的一个token的时候服务器返回状态代码1000，当时查看了smartqq的协议说是cookie携带不全。  </p>
+<h3 id="寻找解决方法"><a href="#寻找解决方法" class="headerlink" title="寻找解决方法"></a>寻找解决方法</h3><p>以前项目中使用的老版本的httpClient 3.x，自己在玩的时候就换上了最新版的httpClient 4.5配置了httpClinet连接池，配置好了cookie管理策略。可就是请求时候携带12个cookie，这个问题困扰着我，从上周六到周一脑子异常兴奋每天睡眠不足5小时，早上六点就又爬起来，问题解决不了的时候就在谷歌上搜索，大家使用的方法我都用了可是还是没解决，算了还是放放吧，隔了一天再仔细研究了一下qq的协议发现登陆成功后少调用了一个get请求！！当把这个get请求添加上的时候瞬间柳暗花明！先是感动，后到想死的心都有了！！</p>
+<h2 id="问题反思"><a href="#问题反思" class="headerlink" title="问题反思"></a>问题反思</h2><p>技术问题往往很好解决，难解决的是思维逻辑问题，尤其是你百思不解的时候有容易把问题归类到技术领域，这个时候如果跳出来就会很苦恼，俗称牛角尖！浪费大量时间在谷歌，debug，这时候最好的办法是搁置问题。给大脑一个休息的时间，回过头来再看问题也许你就有了新的发现，此时既不会盲目自信，又不会过度思考，更容易接近问题的本质。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/07/06/httpClient反思/" data-id="cj7vp8efx001wifojn4e8v47m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-JDK动态代理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -104,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/30/JDK动态代理/" data-id="cj4pjnxr7000el1ojyv7bnhma" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/30/JDK动态代理/" data-id="cj7vp8eey000eifoj27z1kl23" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -164,255 +362,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/29/java链表/" data-id="cj4pjnxs90021l1ojc8l7onro" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-maven" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/06/28/maven/">maven命令行创建项目,解决构建缓慢问题</a>
-    </h1>
-  
-
-        <a href="/blog/2016/06/28/maven/" class="article-data-title">
-
-  <time  datetime="2016-06-28T06:36:04.000Z" itemprop="datePublished">2016-06-28</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>以前项目中使用maven由于编译器集成的不好，为此换过编译器，现在重新来开始只是当时使用太过匆忙，没有太多思考，一下是看《maven实战》这本书小小的收货。</p>
-</blockquote>
-<h2 id="maven版本"><a href="#maven版本" class="headerlink" title="maven版本"></a>maven版本</h2><p>maven2 和 maven3 版本差异比较大，所以所有的命令都是基于maven3的。</p>
-<h2 id="maven-环境变量。"><a href="#maven-环境变量。" class="headerlink" title="maven 环境变量。"></a>maven 环境变量。</h2><p>Mac下使用brew安装软件，方便快捷。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install maven</span><br></pre></td></tr></table></figure>
-<h2 id="maven-环境变量"><a href="#maven-环境变量" class="headerlink" title="maven 环境变量"></a>maven 环境变量</h2><p>环境变量设置的目的在于能让maven bin中的命令，在用户shell的执行环境中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MAVEN_HOME=/usr/local/Cellar/maven/3.3.3/libexec</span><br><span class="line">PATH=$MAVEN_HOME/bin:$PATH</span><br><span class="line">M2_HOME=/usr/local/Cellar/maven/3.3.3/libexec</span><br><span class="line">PATH=$M2_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
-<h2 id="常见-maven-命令"><a href="#常见-maven-命令" class="headerlink" title="常见 maven 命令"></a>常见 maven 命令</h2><p><strong>maven 最快捷高效的使用方式是命令行</strong></p>
-<blockquote>
-<p><strong>ps:</strong> maven构建项目非常依赖网络，确保网络能访问maven的中央仓库，很多时候构建不成功，就是因为无法下载到maven构建所需要的插件。  </p>
-</blockquote>
-<p>生成项目骨架：</p>
-<p>需要你在创建的时候填写信息，例如 groupId,package,artifactId等。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate</span><br><span class="line">```  </span><br><span class="line">不使用用交互模式：  </span><br><span class="line"></span><br><span class="line">``` shell</span><br><span class="line">mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=myapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false</span><br></pre></td></tr></table></figure>
-<p>生成java项目路径。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">└── maven-test</span><br><span class="line">    ├── maven-test.iml</span><br><span class="line">    ├── pom.xml</span><br><span class="line">    └── src</span><br><span class="line">        ├── main</span><br><span class="line">        │   └── java</span><br><span class="line">        │       └── com</span><br><span class="line">        │           └── jun</span><br><span class="line">        │               └── maven</span><br><span class="line">        │                   └── App.java</span><br><span class="line">        └── test</span><br><span class="line">            └── java</span><br><span class="line">                └── com</span><br><span class="line">                    └── jun</span><br><span class="line">                        └── maven</span><br><span class="line">                            └── AppTest.java</span><br></pre></td></tr></table></figure>
-<h2 id="生成Web项目"><a href="#生成Web项目" class="headerlink" title="生成Web项目"></a>生成Web项目</h2><p>交互模式下生成速度相对快，对比无交互模式我用了4分钟。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DarchetypeArtifactId=maven-archetype-webapp</span><br></pre></td></tr></table></figure>
-<p>无交互模式生成的速度极其缓慢，可能网速比较烂，我用了24分钟（解决方法留在最后）！！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DgroupId=cn.luxh.app -DartifactId=my-web-app -DarchetypeArtifactId=maven-archetype-webapp -DinteractivMode=false</span><br></pre></td></tr></table></figure>
-<p>项目结构</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">├── pom.xml</span><br><span class="line">└── src</span><br><span class="line">    └── main</span><br><span class="line">        ├── resources</span><br><span class="line">        └── webapp</span><br><span class="line">            ├── WEB-INF</span><br><span class="line">            │   └── web.xml</span><br><span class="line">            └── index.jsp</span><br></pre></td></tr></table></figure>
-<p>为了约定的项目结构，需要手动在main下添加 </p>
-<p>java 目录来存放源文件<br>test 目录来写测试用例  </p>
-<h2 id="解决maven构建项目缓慢问题"><a href="#解决maven构建项目缓慢问题" class="headerlink" title="解决maven构建项目缓慢问题"></a>解决maven构建项目缓慢问题</h2><p>问题原因：由于每次maven构建项目时候需要去网上查找这个文件<a href="http://repo1.maven.org/maven2/archetype-catalog.xml" target="_blank" rel="external">archetype-catalog.xml</a> 4M大的文件，游览器打开都缓慢。</p>
-<p>解决方法：<br>1，把次文件放到 maven home的文件夹下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MacBook-Pro:3.3.3 jun$ pwd</span><br><span class="line">/usr/local/Cellar/maven/3.3.3</span><br><span class="line">MacBook-Pro:3.3.3 jun$ ls  </span><br><span class="line">INSTALL_RECEIPT.json	archetype-catalog.xml</span><br><span class="line">LICENSE			bin</span><br><span class="line">NOTICE			libexec</span><br><span class="line">README.txt</span><br></pre></td></tr></table></figure>
-<p>2, 每次执行命令时候添加 -DarchetypeCatalog=local</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DgroupId=cn.luxh.app -DartifactId=my-web-app -DarchetypeArtifactId=maven-archetype-webapp -DinteractivMode=false -DarchetypeCatalog=local</span><br></pre></td></tr></table></figure>
-<p>这样原本24分钟的构建，使用本地archetype-catalog.xml，只需要9s!!</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>以前项目中使用maven由于编译器集成的不好，为此换过编译器，现在重新来开始只是当时使用太过匆忙，没有太多思考，一下是看《maven实战》这本书小小的收货。</p>
-</blockquote>
-<h2 id="maven版本"><a href="#maven版本" class="headerlink" title="maven版本"></a>maven版本</h2><p>maven2 和 maven3 版本差异比较大，所以所有的命令都是基于maven3的。</p>
-<h2 id="maven-环境变量。"><a href="#maven-环境变量。" class="headerlink" title="maven 环境变量。"></a>maven 环境变量。</h2><p>Mac下使用brew安装软件，方便快捷。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install maven</span><br></pre></td></tr></table></figure>
-<h2 id="maven-环境变量"><a href="#maven-环境变量" class="headerlink" title="maven 环境变量"></a>maven 环境变量</h2><p>环境变量设置的目的在于能让maven bin中的命令，在用户shell的执行环境中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MAVEN_HOME=/usr/local/Cellar/maven/3.3.3/libexec</span><br><span class="line">PATH=$MAVEN_HOME/bin:$PATH</span><br><span class="line">M2_HOME=/usr/local/Cellar/maven/3.3.3/libexec</span><br><span class="line">PATH=$M2_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
-<h2 id="常见-maven-命令"><a href="#常见-maven-命令" class="headerlink" title="常见 maven 命令"></a>常见 maven 命令</h2><p><strong>maven 最快捷高效的使用方式是命令行</strong></p>
-<blockquote>
-<p><strong>ps:</strong> maven构建项目非常依赖网络，确保网络能访问maven的中央仓库，很多时候构建不成功，就是因为无法下载到maven构建所需要的插件。  </p>
-</blockquote>
-<p>生成项目骨架：</p>
-<p>需要你在创建的时候填写信息，例如 groupId,package,artifactId等。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate</span><br><span class="line">```  </span><br><span class="line">不使用用交互模式：  </span><br><span class="line"></span><br><span class="line">``` shell</span><br><span class="line">mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=myapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false</span><br></pre></td></tr></table></figure>
-<p>生成java项目路径。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">└── maven-test</span><br><span class="line">    ├── maven-test.iml</span><br><span class="line">    ├── pom.xml</span><br><span class="line">    └── src</span><br><span class="line">        ├── main</span><br><span class="line">        │   └── java</span><br><span class="line">        │       └── com</span><br><span class="line">        │           └── jun</span><br><span class="line">        │               └── maven</span><br><span class="line">        │                   └── App.java</span><br><span class="line">        └── test</span><br><span class="line">            └── java</span><br><span class="line">                └── com</span><br><span class="line">                    └── jun</span><br><span class="line">                        └── maven</span><br><span class="line">                            └── AppTest.java</span><br></pre></td></tr></table></figure>
-<h2 id="生成Web项目"><a href="#生成Web项目" class="headerlink" title="生成Web项目"></a>生成Web项目</h2><p>交互模式下生成速度相对快，对比无交互模式我用了4分钟。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DarchetypeArtifactId=maven-archetype-webapp</span><br></pre></td></tr></table></figure>
-<p>无交互模式生成的速度极其缓慢，可能网速比较烂，我用了24分钟（解决方法留在最后）！！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DgroupId=cn.luxh.app -DartifactId=my-web-app -DarchetypeArtifactId=maven-archetype-webapp -DinteractivMode=false</span><br></pre></td></tr></table></figure>
-<p>项目结构</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">├── pom.xml</span><br><span class="line">└── src</span><br><span class="line">    └── main</span><br><span class="line">        ├── resources</span><br><span class="line">        └── webapp</span><br><span class="line">            ├── WEB-INF</span><br><span class="line">            │   └── web.xml</span><br><span class="line">            └── index.jsp</span><br></pre></td></tr></table></figure>
-<p>为了约定的项目结构，需要手动在main下添加 </p>
-<p>java 目录来存放源文件<br>test 目录来写测试用例  </p>
-<h2 id="解决maven构建项目缓慢问题"><a href="#解决maven构建项目缓慢问题" class="headerlink" title="解决maven构建项目缓慢问题"></a>解决maven构建项目缓慢问题</h2><p>问题原因：由于每次maven构建项目时候需要去网上查找这个文件<a href="http://repo1.maven.org/maven2/archetype-catalog.xml" target="_blank" rel="external">archetype-catalog.xml</a> 4M大的文件，游览器打开都缓慢。</p>
-<p>解决方法：<br>1，把次文件放到 maven home的文件夹下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MacBook-Pro:3.3.3 jun$ pwd</span><br><span class="line">/usr/local/Cellar/maven/3.3.3</span><br><span class="line">MacBook-Pro:3.3.3 jun$ ls  </span><br><span class="line">INSTALL_RECEIPT.json	archetype-catalog.xml</span><br><span class="line">LICENSE			bin</span><br><span class="line">NOTICE			libexec</span><br><span class="line">README.txt</span><br></pre></td></tr></table></figure>
-<p>2, 每次执行命令时候添加 -DarchetypeCatalog=local</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DgroupId=cn.luxh.app -DartifactId=my-web-app -DarchetypeArtifactId=maven-archetype-webapp -DinteractivMode=false -DarchetypeCatalog=local</span><br></pre></td></tr></table></figure>
-<p>这样原本24分钟的构建，使用本地archetype-catalog.xml，只需要9s!!</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/28/maven/" data-id="cj4pjnxsf0029l1ojtslwnub9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-DFS深度优先遍历算法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/06/25/DFS深度优先遍历算法/">DFS深度优先遍历算法</a>
-    </h1>
-  
-
-        <a href="/blog/2016/06/25/DFS深度优先遍历算法/" class="article-data-title">
-
-  <time  datetime="2016-06-25T01:43:49.000Z" itemprop="datePublished">2016-06-25</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><strong>深度优先遍历存储结构上使用的是栈的结构</strong>，广度优先遍历存储上使用的是队列的结构，从表现形式上来看深度优先遍历是一条线，走下去，如果没有孩子节点，跳到上一个节点继续遍历，此种遍历方式，非常满足栈的特性，先进后出。  </p>
-<p><strong>广度优先遍历使用的是队列的一种存储结构</strong>，先进先出，广度优先遍历在表现型式上是一种发散性的搜索方式，对于节点的搜索表现形式上就是一圈一圈的搜索，队列恰好符合这个特性，所有节点先进先出，距离这个节点比较近的点放入队列，限次遍历会拿出先放入进去的节点进行搜索。</p>
-</blockquote>
-<h2 id="DFS-实现"><a href="#DFS-实现" class="headerlink" title="DFS 实现"></a>DFS 实现</h2><p>在上一篇<a href="http://bravemind.github.io/blog/2016/06/24/BFS%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95/">BFS</a>的博客中进行了图的数据建模，在本篇博客中继续使用上一篇博客的图，所以本篇博客基于上一篇博客。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="comment">//使用栈的结构 存储</span></span><br><span class="line">       Stack&lt;Integer&gt; s = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">       <span class="keyword">int</span> rootNode = <span class="number">0</span>;</span><br><span class="line">       s.push(rootNode);</span><br><span class="line">       visited[rootNode] = <span class="keyword">true</span>;</span><br><span class="line">       System.out.println((rootNode));</span><br><span class="line">       <span class="keyword">while</span> (!s.isEmpty()) &#123;</span><br><span class="line">           <span class="keyword">int</span> n = s.peek();</span><br><span class="line">           <span class="keyword">int</span> child = getUnvisitedChildNode(n);</span><br><span class="line">           <span class="keyword">if</span> (child != -<span class="number">1</span>) &#123;</span><br><span class="line">               visited[child] = <span class="keyword">true</span>;</span><br><span class="line">               System.out.println(child);</span><br><span class="line">               s.push(child);</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               s.pop();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>0<br>1<br>7<br>2<br>3<br>4<br>8<br>5<br>6</p>
-<p>可以看到除了存储结构发生改变外，查找孩子节点，记录是否访问过的逻辑一点都没有变化。</p>
-<p>这两篇博客中的图都是连通图，只有连通图才能完整遍历。</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p><strong>深度优先遍历存储结构上使用的是栈的结构</strong>，广度优先遍历存储上使用的是队列的结构，从表现形式上来看深度优先遍历是一条线，走下去，如果没有孩子节点，跳到上一个节点继续遍历，此种遍历方式，非常满足栈的特性，先进后出。  </p>
-<p><strong>广度优先遍历使用的是队列的一种存储结构</strong>，先进先出，广度优先遍历在表现型式上是一种发散性的搜索方式，对于节点的搜索表现形式上就是一圈一圈的搜索，队列恰好符合这个特性，所有节点先进先出，距离这个节点比较近的点放入队列，限次遍历会拿出先放入进去的节点进行搜索。</p>
-</blockquote>
-<h2 id="DFS-实现"><a href="#DFS-实现" class="headerlink" title="DFS 实现"></a>DFS 实现</h2><p>在上一篇<a href="http://bravemind.github.io/blog/2016/06/24/BFS%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95/">BFS</a>的博客中进行了图的数据建模，在本篇博客中继续使用上一篇博客的图，所以本篇博客基于上一篇博客。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="comment">//使用栈的结构 存储</span></span><br><span class="line">       Stack&lt;Integer&gt; s = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">       <span class="keyword">int</span> rootNode = <span class="number">0</span>;</span><br><span class="line">       s.push(rootNode);</span><br><span class="line">       visited[rootNode] = <span class="keyword">true</span>;</span><br><span class="line">       System.out.println((rootNode));</span><br><span class="line">       <span class="keyword">while</span> (!s.isEmpty()) &#123;</span><br><span class="line">           <span class="keyword">int</span> n = s.peek();</span><br><span class="line">           <span class="keyword">int</span> child = getUnvisitedChildNode(n);</span><br><span class="line">           <span class="keyword">if</span> (child != -<span class="number">1</span>) &#123;</span><br><span class="line">               visited[child] = <span class="keyword">true</span>;</span><br><span class="line">               System.out.println(child);</span><br><span class="line">               s.push(child);</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               s.pop();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>0<br>1<br>7<br>2<br>3<br>4<br>8<br>5<br>6</p>
-<p>可以看到除了存储结构发生改变外，查找孩子节点，记录是否访问过的逻辑一点都没有变化。</p>
-<p>这两篇博客中的图都是连通图，只有连通图才能完整遍历。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/25/DFS深度优先遍历算法/" data-id="cj4pjnxr10009l1ojf4bnzzhu" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-BFS广度优先算法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/06/24/BFS广度优先算法/">BFS广度优先遍历算法</a>
-    </h1>
-  
-
-        <a href="/blog/2016/06/24/BFS广度优先算法/" class="article-data-title">
-
-  <time  datetime="2016-06-24T02:00:38.000Z" itemprop="datePublished">2016-06-24</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>广度优先算法的应用，非常的广，例如n度人脉，走迷宫，连连看，网络爬虫等。</p>
-</blockquote>
-<p>如下图使用广度优先遍历算法  </p>
-<p><img src="http://7xstto.com1.z0.glb.clouddn.com/bfs.png" alt="画的比较难看"></p>
-<p>图形建模如下：行表示节点，列表示和和这个节点的联通情况</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//               0  1  2  3  4  5  6  7  8</span></span><br><span class="line"><span class="comment">// ===================================================</span></span><br><span class="line">        <span class="keyword">int</span>[][] conn = &#123;</span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> &#125;,  <span class="comment">// 0</span></span><br><span class="line">                &#123; <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span> &#125;,  <span class="comment">// 1</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span> &#125;,  <span class="comment">// 2</span></span><br><span class="line">                &#123; <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 3</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> &#125;,  <span class="comment">// 4</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 5</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 6</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 7</span></span><br><span class="line">                &#123; <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;  <span class="comment">// 8</span></span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="java代码实现DFS"><a href="#java代码实现DFS" class="headerlink" title="java代码实现DFS"></a>java代码实现DFS</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Graph</span> </span>&#123;</span><br><span class="line">    <span class="comment">//保存节点数目</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> nodeNum;</span><br><span class="line">    <span class="comment">//保存这个节点有没有被访问过</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[] visited;</span><br><span class="line">    <span class="comment">//把节点表示成一个二维矩阵,n,m列,矩阵中0表示没有节点和此节点相连接,1表示这个节点和其它节点有链接</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[][] matrix;</span><br><span class="line">    <span class="comment">//初始化图</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Graph</span><span class="params">(<span class="keyword">int</span>[][] graph)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//二维数组的行数,代表有多少个节点</span></span><br><span class="line">        <span class="keyword">this</span>.nodeNum=graph.length;</span><br><span class="line">        <span class="comment">//二维数组的行表示多少个节点,列表示每个节点的链接状态,0表示没有联通,1表示联通.</span></span><br><span class="line">        <span class="keyword">this</span>.matrix=<span class="keyword">new</span> <span class="keyword">int</span> [<span class="keyword">this</span>.nodeNum][<span class="keyword">this</span>.nodeNum];</span><br><span class="line">        <span class="comment">//visited数组代表节点的访问状态,访问过的节点记录为ture,下次遍历不在访问该节点.</span></span><br><span class="line">        <span class="keyword">this</span>.visited=<span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="keyword">this</span>.nodeNum];</span><br><span class="line">        <span class="comment">//把graph copy到 matrix中完成初始化操作.</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="keyword">this</span>.nodeNum;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="keyword">this</span>.nodeNum;j++)&#123;</span><br><span class="line">                <span class="keyword">this</span>.matrix[i][j]=graph[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bfs</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//定义一个 rootNode</span></span><br><span class="line">        <span class="keyword">int</span> rootNode = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//使用队列来保存要访问的节点,队列是先进先出,先进来的</span></span><br><span class="line">        Queue&lt;Integer&gt; q = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">        <span class="comment">//把根节点添加到 队列中</span></span><br><span class="line">        q.add(rootNode);</span><br><span class="line">        visited[rootNode] = <span class="keyword">true</span>;</span><br><span class="line">        System.out.println(rootNode);</span><br><span class="line">        <span class="comment">//广度优先遍历重点来了,如果队列不为空,就遍历队列中的节点</span></span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> n, child;</span><br><span class="line">            n = (q.peek()).intValue();</span><br><span class="line">            <span class="comment">//得到与这个点相连接的孩子坐标</span></span><br><span class="line">            child = getUnvisitedChildNode(n);</span><br><span class="line">            <span class="comment">//-1表示已经访问过的节点</span></span><br><span class="line">            <span class="keyword">if</span> (child != -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="comment">//设置这个节点已经被访问了</span></span><br><span class="line">                visited[child] = <span class="keyword">true</span>;</span><br><span class="line">                <span class="comment">//给队列对末尾添加新的节点</span></span><br><span class="line">                q.add(child);</span><br><span class="line">                 System.out.println(child);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//移除已经遍历完所有孩子节点的 节点.</span></span><br><span class="line">                q.remove();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getUnvisitedChildNode</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> j;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; nodeNum; j++ )</span><br><span class="line">        &#123;    <span class="comment">//编列第n个节点的,所有相连接的点,所有相连接的店就是二维数组的列,</span></span><br><span class="line">            <span class="keyword">if</span> ( matrix[n][j] &gt; <span class="number">0</span> )</span><br><span class="line">            &#123;<span class="comment">//第 j 个点没有访问过,就把 第j个点返回</span></span><br><span class="line">                <span class="keyword">if</span> ( ! visited[j] )</span><br><span class="line">                    <span class="keyword">return</span>(j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="comment">//把n的所有节点都编列完成后,就不需要再编列第n个节点了,把n从对列的对首删除.</span></span><br><span class="line">        <span class="keyword">return</span>(-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line"><span class="comment">//               0  1  2  3  4  5  6  7  8</span></span><br><span class="line"><span class="comment">// ===================================================</span></span><br><span class="line">        <span class="keyword">int</span>[][] conn = &#123;</span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> &#125;,  <span class="comment">// 0</span></span><br><span class="line">                &#123; <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span> &#125;,  <span class="comment">// 1</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span> &#125;,  <span class="comment">// 2</span></span><br><span class="line">                &#123; <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 3</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> &#125;,  <span class="comment">// 4</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 5</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 6</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 7</span></span><br><span class="line">                &#123; <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;</span><br><span class="line">        &#125;;<span class="comment">// 8</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Graph1 G = <span class="keyword">new</span> Graph1(conn);</span><br><span class="line"></span><br><span class="line">        G.bfs();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>0<br>1<br>3<br>8<br>7<br>2<br>4<br>5<br>6  </p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>广度优先算法的应用，非常的广，例如n度人脉，走迷宫，连连看，网络爬虫等。</p>
-</blockquote>
-<p>如下图使用广度优先遍历算法  </p>
-<p><img src="http://7xstto.com1.z0.glb.clouddn.com/bfs.png" alt="画的比较难看"></p>
-<p>图形建模如下：行表示节点，列表示和和这个节点的联通情况</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//               0  1  2  3  4  5  6  7  8</span></span><br><span class="line"><span class="comment">// ===================================================</span></span><br><span class="line">        <span class="keyword">int</span>[][] conn = &#123;</span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> &#125;,  <span class="comment">// 0</span></span><br><span class="line">                &#123; <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span> &#125;,  <span class="comment">// 1</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span> &#125;,  <span class="comment">// 2</span></span><br><span class="line">                &#123; <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 3</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> &#125;,  <span class="comment">// 4</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 5</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 6</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 7</span></span><br><span class="line">                &#123; <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;  <span class="comment">// 8</span></span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="java代码实现DFS"><a href="#java代码实现DFS" class="headerlink" title="java代码实现DFS"></a>java代码实现DFS</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Graph</span> </span>&#123;</span><br><span class="line">    <span class="comment">//保存节点数目</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> nodeNum;</span><br><span class="line">    <span class="comment">//保存这个节点有没有被访问过</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[] visited;</span><br><span class="line">    <span class="comment">//把节点表示成一个二维矩阵,n,m列,矩阵中0表示没有节点和此节点相连接,1表示这个节点和其它节点有链接</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[][] matrix;</span><br><span class="line">    <span class="comment">//初始化图</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Graph</span><span class="params">(<span class="keyword">int</span>[][] graph)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//二维数组的行数,代表有多少个节点</span></span><br><span class="line">        <span class="keyword">this</span>.nodeNum=graph.length;</span><br><span class="line">        <span class="comment">//二维数组的行表示多少个节点,列表示每个节点的链接状态,0表示没有联通,1表示联通.</span></span><br><span class="line">        <span class="keyword">this</span>.matrix=<span class="keyword">new</span> <span class="keyword">int</span> [<span class="keyword">this</span>.nodeNum][<span class="keyword">this</span>.nodeNum];</span><br><span class="line">        <span class="comment">//visited数组代表节点的访问状态,访问过的节点记录为ture,下次遍历不在访问该节点.</span></span><br><span class="line">        <span class="keyword">this</span>.visited=<span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="keyword">this</span>.nodeNum];</span><br><span class="line">        <span class="comment">//把graph copy到 matrix中完成初始化操作.</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="keyword">this</span>.nodeNum;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="keyword">this</span>.nodeNum;j++)&#123;</span><br><span class="line">                <span class="keyword">this</span>.matrix[i][j]=graph[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bfs</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//定义一个 rootNode</span></span><br><span class="line">        <span class="keyword">int</span> rootNode = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//使用队列来保存要访问的节点,队列是先进先出,先进来的</span></span><br><span class="line">        Queue&lt;Integer&gt; q = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">        <span class="comment">//把根节点添加到 队列中</span></span><br><span class="line">        q.add(rootNode);</span><br><span class="line">        visited[rootNode] = <span class="keyword">true</span>;</span><br><span class="line">        System.out.println(rootNode);</span><br><span class="line">        <span class="comment">//广度优先遍历重点来了,如果队列不为空,就遍历队列中的节点</span></span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> n, child;</span><br><span class="line">            n = (q.peek()).intValue();</span><br><span class="line">            <span class="comment">//得到与这个点相连接的孩子坐标</span></span><br><span class="line">            child = getUnvisitedChildNode(n);</span><br><span class="line">            <span class="comment">//-1表示已经访问过的节点</span></span><br><span class="line">            <span class="keyword">if</span> (child != -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="comment">//设置这个节点已经被访问了</span></span><br><span class="line">                visited[child] = <span class="keyword">true</span>;</span><br><span class="line">                <span class="comment">//给队列对末尾添加新的节点</span></span><br><span class="line">                q.add(child);</span><br><span class="line">                 System.out.println(child);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//移除已经遍历完所有孩子节点的 节点.</span></span><br><span class="line">                q.remove();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getUnvisitedChildNode</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> j;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; nodeNum; j++ )</span><br><span class="line">        &#123;    <span class="comment">//编列第n个节点的,所有相连接的点,所有相连接的店就是二维数组的列,</span></span><br><span class="line">            <span class="keyword">if</span> ( matrix[n][j] &gt; <span class="number">0</span> )</span><br><span class="line">            &#123;<span class="comment">//第 j 个点没有访问过,就把 第j个点返回</span></span><br><span class="line">                <span class="keyword">if</span> ( ! visited[j] )</span><br><span class="line">                    <span class="keyword">return</span>(j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="comment">//把n的所有节点都编列完成后,就不需要再编列第n个节点了,把n从对列的对首删除.</span></span><br><span class="line">        <span class="keyword">return</span>(-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line"><span class="comment">//               0  1  2  3  4  5  6  7  8</span></span><br><span class="line"><span class="comment">// ===================================================</span></span><br><span class="line">        <span class="keyword">int</span>[][] conn = &#123;</span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> &#125;,  <span class="comment">// 0</span></span><br><span class="line">                &#123; <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span> &#125;,  <span class="comment">// 1</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span> &#125;,  <span class="comment">// 2</span></span><br><span class="line">                &#123; <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 3</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> &#125;,  <span class="comment">// 4</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 5</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 6</span></span><br><span class="line">                &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;,  <span class="comment">// 7</span></span><br><span class="line">                &#123; <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;</span><br><span class="line">        &#125;;<span class="comment">// 8</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Graph1 G = <span class="keyword">new</span> Graph1(conn);</span><br><span class="line"></span><br><span class="line">        G.bfs();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>0<br>1<br>3<br>8<br>7<br>2<br>4<br>5<br>6  </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/06/24/BFS广度优先算法/" data-id="cj4pjnxqs0001l1ojcoh78smn" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/06/29/java链表/" data-id="cj7vp8eg80026ifoj4zs94cje" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -428,7 +378,7 @@
   
   
     <nav id="page-nav">
-      <a class="" rel="prev" href="/blog/page/6/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/5/">5</a><a class="page-number" href="/blog/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/blog/page/8/">8</a><a class="page-number" href="/blog/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/18/">18</a><a class="extend next" rel="next" href="/blog/page/8/">Next &raquo;</a>
+      <a class="" rel="prev" href="/blog/page/6/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/5/">5</a><a class="page-number" href="/blog/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/blog/page/8/">8</a><a class="page-number" href="/blog/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/19/">19</a><a class="extend next" rel="next" href="/blog/page/8/">Next &raquo;</a>
     </nav>
   
 </section>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jvm | 小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JVM 思维导图好久没有更新博客了，罪过罪过，坚持写东西使内心平静，练习语言的组织能力。加油。。。。
+搬运工本次博客的内容总结了《深入理解JVM虚拟机》这本书，作为平时JVM内存调优的理论基础。废话说了这么多了直接上图。
+
+原始文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jvm">
+<meta property="og:url" content="http://bravemind.github.io/2017/09/22/jvm/index.html">
+<meta property="og:site_name" content="小菜园">
+<meta property="og:description" content="JVM 思维导图好久没有更新博客了，罪过罪过，坚持写东西使内心平静，练习语言的组织能力。加油。。。。
+搬运工本次博客的内容总结了《深入理解JVM虚拟机》这本书，作为平时JVM内存调优的理论基础。废话说了这么多了直接上图。
+
+原始文件">
+<meta property="og:image" content="http://7xstto.com1.z0.glb.clouddn.com/JVM.png">
+<meta property="og:updated_time" content="2017-09-22T09:43:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jvm">
+<meta name="twitter:description" content="JVM 思维导图好久没有更新博客了，罪过罪过，坚持写东西使内心平静，练习语言的组织能力。加油。。。。
+搬运工本次博客的内容总结了《深入理解JVM虚拟机》这本书，作为平时JVM内存调优的理论基础。废话说了这么多了直接上图。
+
+原始文件">
+<meta name="twitter:image" content="http://7xstto.com1.z0.glb.clouddn.com/JVM.png">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/grid.css">
+
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.min.css">
+
+
+
+</head>
+<div class="left_header">
+    <a class="header_avater" href="/blog"></a>
+    <div class="tag_s" id="showTag">
+        <i class="fa fa-tag" href="../blog"></i>
+            <div id="tags_clod" class="pop">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">28</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+            </div>
+    </div>
+    <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
+    <a href="https://github.com/braveMind" class="git" target="_blank"><i class="fa fa-github"></i></a>
+
+
+    <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
+    <a href="/blog/2016/05/21/友情链接/"><i class="fa fa-link" aria-hidden="true"></i></a>
+
+</div>
+<div class="left_content">
+    <section><article id="post-jvm" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jvm
+    </h1>
+  
+
+        <a href="/blog/2017/09/22/jvm/" class="article-data-title">
+
+  <time  datetime="2017-09-22T09:30:20.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JVM-思维导图"><a href="#JVM-思维导图" class="headerlink" title="JVM 思维导图"></a>JVM 思维导图</h1><p>好久没有更新博客了，罪过罪过，坚持写东西使内心平静，练习语言的组织能力。加油。。。。</p>
+<h2 id="搬运工"><a href="#搬运工" class="headerlink" title="搬运工"></a>搬运工</h2><p>本次博客的内容总结了《深入理解JVM虚拟机》这本书，作为平时JVM内存调优的理论基础。废话说了这么多了直接上图。</p>
+<p><img src="http://7xstto.com1.z0.glb.clouddn.com/JVM.png" alt="JVM"></p>
+<p><a href="http://7xstto.com1.z0.glb.clouddn.com/jvm.xmind" target="_blank" rel="external">原始文件</a></p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <div id="toc" class="article-toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM-思维导图"><span class="toc-number">1.</span> <span class="toc-text">JVM 思维导图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#搬运工"><span class="toc-number">1.1.</span> <span class="toc-text">搬运工</span></a></li></ol></li></ol>
+        <hr/>
+      </div>
+      
+      <h1 id="JVM-思维导图"><a href="#JVM-思维导图" class="headerlink" title="JVM 思维导图"></a>JVM 思维导图</h1><p>好久没有更新博客了，罪过罪过，坚持写东西使内心平静，练习语言的组织能力。加油。。。。</p>
+<h2 id="搬运工"><a href="#搬运工" class="headerlink" title="搬运工"></a>搬运工</h2><p>本次博客的内容总结了《深入理解JVM虚拟机》这本书，作为平时JVM内存调优的理论基础。废话说了这么多了直接上图。</p>
+<p><img src="http://7xstto.com1.z0.glb.clouddn.com/JVM.png" alt="JVM"></p>
+<p><a href="http://7xstto.com1.z0.glb.clouddn.com/jvm.xmind" target="_blank" rel="external">原始文件</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2017/09/22/jvm/" data-id="cj7vp8eg40021ifojfyactod4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2017/08/18/基于消息的一致性/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">基于消息的一致性</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+</div>
+
+
+   
+
+   <script src="/blog/js/jQuery.js"></script>
+   <script src="/blog/js/script.js"></script>
+
+
+
