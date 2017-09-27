@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">28</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">29</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,78 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-Spring代理对象" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/06/01/Spring代理对象/">Spring代理对象</a>
+    </h1>
+  
+
+        <a href="/blog/2017/06/01/Spring代理对象/" class="article-data-title">
+
+  <time  datetime="2017-06-01T07:08:24.000Z" itemprop="datePublished">2017-06-01</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>之前对Mybatis自动创建代理对象比较感兴趣，Mybatis可以扫描Mapper接口文件，不需要用户去手动实现Dao接口，其本质就是使用动态代理的方式，从容器中获取Mybatis生成的代理对象。</p>
+</blockquote>
+<h2 id="Spring-初始化Bean的注入点"><a href="#Spring-初始化Bean的注入点" class="headerlink" title="Spring 初始化Bean的注入点"></a>Spring 初始化Bean的注入点</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/beanInit.png" alt="bean初始化过程"></p>
+<p>在整个Bean的生命周期中，我们都可以根据Spring提供的扩展接口对Bean进行注入。<br>Aware接口（ApplicationContextAware）,InitializingBean,BeanPostProcessor,DisposableBean</p>
+<h2 id="Spring-容器返回代理对象"><a href="#Spring-容器返回代理对象" class="headerlink" title="Spring 容器返回代理对象"></a>Spring 容器返回代理对象</h2><p>使用BeanPostProcessor接口生成代理对象</p>
+<blockquote>
+<p>我们需要在Controller中为接口MyDao生成一个代理对象，类似于mybatis的Mapper文件，有了代理对象，就不需要手动去实现myDao接口了。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyDao</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">say</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> MyDao myDao; <span class="comment">//把代理对象注入到Spring中</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/home"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"aa"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"aa"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyProcess</span> <span class="keyword">implements</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object o, String s)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//使用jdk动态代理，也可以使用cglib</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object o, String s)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        Class&lt;?&gt; clazz = o.getClass();</span><br><span class="line">        <span class="keyword">if</span> (clazz.isAnnotationPresent(Controller.class))&#123;</span><br><span class="line">            System.out.println(o.getClass().getName());</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Field field=clazz.getField(<span class="string">"myDao"</span>);</span><br><span class="line">                <span class="keyword">if</span>(field!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">                        MyDao myDao= (MyDao)  java.lang.reflect.Proxy.newProxyInstance(MyDao.class.getClassLoader(),</span><br><span class="line">                                <span class="keyword">new</span> Class[]&#123;MyDao.class&#125;,</span><br><span class="line">                                <span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line">                                    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                                        System.out.println(<span class="string">"aaa"</span>);</span><br><span class="line">                                        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;);</span><br><span class="line">                        field.set(clazz.newInstance(), myDao);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                System.out.println(field.getName());</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> o;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="动态代理的应用点扩展"><a href="#动态代理的应用点扩展" class="headerlink" title="动态代理的应用点扩展"></a>动态代理的应用点扩展</h2><p>远程RPC,可以在代理对象中去实现对象远程调用，就像是调用本地接口一样。<br>可以发挥想象，自己去写一些项目中常用的底层框架。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p>之前对Mybatis自动创建代理对象比较感兴趣，Mybatis可以扫描Mapper接口文件，不需要用户去手动实现Dao接口，其本质就是使用动态代理的方式，从容器中获取Mybatis生成的代理对象。</p>
+</blockquote>
+<h2 id="Spring-初始化Bean的注入点"><a href="#Spring-初始化Bean的注入点" class="headerlink" title="Spring 初始化Bean的注入点"></a>Spring 初始化Bean的注入点</h2><p><img src="http://7xstto.com1.z0.glb.clouddn.com/beanInit.png" alt="bean初始化过程"></p>
+<p>在整个Bean的生命周期中，我们都可以根据Spring提供的扩展接口对Bean进行注入。<br>Aware接口（ApplicationContextAware）,InitializingBean,BeanPostProcessor,DisposableBean</p>
+<h2 id="Spring-容器返回代理对象"><a href="#Spring-容器返回代理对象" class="headerlink" title="Spring 容器返回代理对象"></a>Spring 容器返回代理对象</h2><p>使用BeanPostProcessor接口生成代理对象</p>
+<blockquote>
+<p>我们需要在Controller中为接口MyDao生成一个代理对象，类似于mybatis的Mapper文件，有了代理对象，就不需要手动去实现myDao接口了。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyDao</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">say</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> MyDao myDao; <span class="comment">//把代理对象注入到Spring中</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/home"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"aa"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"aa"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyProcess</span> <span class="keyword">implements</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object o, String s)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//使用jdk动态代理，也可以使用cglib</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object o, String s)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        Class&lt;?&gt; clazz = o.getClass();</span><br><span class="line">        <span class="keyword">if</span> (clazz.isAnnotationPresent(Controller.class))&#123;</span><br><span class="line">            System.out.println(o.getClass().getName());</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Field field=clazz.getField(<span class="string">"myDao"</span>);</span><br><span class="line">                <span class="keyword">if</span>(field!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">                        MyDao myDao= (MyDao)  java.lang.reflect.Proxy.newProxyInstance(MyDao.class.getClassLoader(),</span><br><span class="line">                                <span class="keyword">new</span> Class[]&#123;MyDao.class&#125;,</span><br><span class="line">                                <span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line">                                    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                                        System.out.println(<span class="string">"aaa"</span>);</span><br><span class="line">                                        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;);</span><br><span class="line">                        field.set(clazz.newInstance(), myDao);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                System.out.println(field.getName());</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> o;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="动态代理的应用点扩展"><a href="#动态代理的应用点扩展" class="headerlink" title="动态代理的应用点扩展"></a>动态代理的应用点扩展</h2><p>远程RPC,可以在代理对象中去实现对象远程调用，就像是调用本地接口一样。<br>可以发挥想象，自己去写一些项目中常用的底层框架。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2017/06/01/Spring代理对象/" data-id="cj82qvgp4001eqmojv8018ye1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-一致性协议二" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -142,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/03/29/一致性协议二/" data-id="cj7vp8egq002zifojlvp0zm34" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/03/29/一致性协议二/" data-id="cj82qvgq8002xqmojuvc40squ" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -234,7 +306,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/03/29/一致性协议/" data-id="cj7vp8egp002xifojiryl4t5e" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/03/29/一致性协议/" data-id="cj82qvgq6002tqmoj7d3vxywn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -304,7 +376,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/03/13/lambda/" data-id="cj7vp8egd002eifoj5k2v1tef" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/03/13/lambda/" data-id="cj82qvgpr002cqmojyx9ft57z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -390,76 +462,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/03/06/git/" data-id="cj7vp8efq001kifojmceni6tv" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/03/06/git/" data-id="cj82qvgpe001sqmojqovpxt5x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-mysqlPassword" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/03/02/mysqlPassword/">mysqlPassword</a>
-    </h1>
-  
-
-        <a href="/blog/2017/03/02/mysqlPassword/" class="article-data-title">
-
-  <time  datetime="2017-03-02T06:30:27.000Z" itemprop="datePublished">2017-03-02</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <p>#mysql mac重置密码</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1，系统偏好点击关闭  </p>
-<p>2，mysql 安装目录 例如（/usr/local/mysql-5.7.16-osx10.11-x86_64/bin）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./mysqld_safe --skip-grant-tables --skip-networking &amp;</span><br></pre></td></tr></table></figure>
-<p>3，登录mysql </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./mysql    </span><br><span class="line"></span><br><span class="line">use mysql  </span><br><span class="line"></span><br><span class="line">update MySQL.user set </span><br><span class="line">authentication_string=password(&apos;123456&apos;) where user=&apos;root&apos;</span><br></pre></td></tr></table></figure>
-<p>4.重启 mysql </p>
-<p>密码重置完毕</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <p>#mysql mac重置密码</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1，系统偏好点击关闭  </p>
-<p>2，mysql 安装目录 例如（/usr/local/mysql-5.7.16-osx10.11-x86_64/bin）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./mysqld_safe --skip-grant-tables --skip-networking &amp;</span><br></pre></td></tr></table></figure>
-<p>3，登录mysql </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./mysql    </span><br><span class="line"></span><br><span class="line">use mysql  </span><br><span class="line"></span><br><span class="line">update MySQL.user set </span><br><span class="line">authentication_string=password(&apos;123456&apos;) where user=&apos;root&apos;</span><br></pre></td></tr></table></figure>
-<p>4.重启 mysql </p>
-<p>密码重置完毕</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/03/02/mysqlPassword/" data-id="cj7vp8egl002mifoju9mxs9ho" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
 
     </footer>
   </div>
