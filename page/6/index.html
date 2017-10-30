@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">29</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">30</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,82 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-annotation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/08/12/annotation/">注解处理器</a>
+    </h1>
+  
+
+        <a href="/blog/2016/08/12/annotation/" class="article-data-title">
+
+  <time  datetime="2016-08-12T01:56:27.000Z" itemprop="datePublished">2016-08-12</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>总感觉这个文章写得很生硬，没有生气，不能把编程中抽象的概念映射到具体的现实世界里，那还怎么面向对象编程。面向对象编程就是现实和虚拟的桥梁，所以解释一些概念的时候能把概念解释成大白话那就是更高层次的概括了，所以以后文章中要添加各种废话，我记住了！</p>
+</blockquote>
+<p>读书的高潮时每次你看到作者的观点和你不谋而合的时候，产生的共鸣，在那一刻你会吐槽，“卧槽，这本书，这个作者真是NB，居然和我想到的一样”，这也是我看书的乐趣。</p>
+<p><strong>看《Think in java》开头就写到：如果注解没有没有注解处理器，那么注解就和注释已没有什么区别</strong>我以前也是这么想的，一个注解必须得被注解处理器翻译一下，注解和注解处理器一一对应，可是就是没能概括出来，注解和注释的区别。这个概括能力还得练习！！</p>
+<h2 id="注解的作用"><a href="#注解的作用" class="headerlink" title="注解的作用"></a>注解的作用</h2><p>注解最好用的就是给类一个标记，没错给类做个记号等，这个记号在什么时候用呢？没错就是注解处理器用来翻译这个标记，如果碰到这个记号那么我就 xxx,xxx就是处理我的业务代码。为啥我要这么做呢？因为我懒☺️，没有必要为重复的业务逻辑写重复代码，给类做个标记碰到标记就自动xxx。</p>
+<h2 id="定义Test的注解"><a href="#定义Test的注解" class="headerlink" title="定义Test的注解"></a>定义Test的注解</h2><p>定义一个Test注解，当这个类遇到的含有Test注解的时候就自动执行这个方法，模仿一下Junit的方法自动执行。</p>
+<h2 id="例子🌰"><a href="#例子🌰" class="headerlink" title="例子🌰"></a>例子🌰</h2><p>先编写注解类,因为Junit的@Test是注解在方法上的，我们也需要注解在方法上。并且给这个注解取了一个响亮的名字叫做TestJ。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> TestJ &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> "TestJ"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="注解翻译"><a href="#注解翻译" class="headerlink" title="注解翻译"></a>注解翻译</h2><p>翻译注解，如果注解没有被翻译，那么和注释没有什么区别，开始翻译。如果对java的反射不了解，那么基本上就可以告别写框架的念头了，所以说<strong>反射+动态代理</strong>采用jdk默认的这种字节码技术，除了性能不说，能满足大部分的造轮子功能，谁年轻的时候还没造过几个轮子。</p>
+<p>动态代理的几种实现:<a href="http://www.iteye.com/topic/1116696" target="_blank" rel="external">动态代理传送门</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSub</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">parseTest</span><span class="params">(Class&lt;?&gt; clazz)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Object obj=clazz.newInstance();</span><br><span class="line">            <span class="keyword">for</span>(Method method:clazz.getDeclaredMethods())&#123;</span><br><span class="line">              TestJ annotation= method.getAnnotation(TestJ.class);</span><br><span class="line">              <span class="keyword">if</span>(annotation!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                  System.out.println(annotation.name());<span class="comment">//输出反射的名字</span></span><br><span class="line">                  method.invoke(obj,<span class="keyword">null</span>);</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> TestSub().parseTest(TestAnnotation.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出</span><br><span class="line">TestJ</span><br><span class="line"><span class="keyword">this</span> is test</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>改变了写作风格，感觉还挺好，多写点废话，等以后读起来的时候也知道当时的是怎么样的一个心境。莫愁前路无知己，总有bug伴着你，努力做个段子手把生活滋润滋润。</p>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p>总感觉这个文章写得很生硬，没有生气，不能把编程中抽象的概念映射到具体的现实世界里，那还怎么面向对象编程。面向对象编程就是现实和虚拟的桥梁，所以解释一些概念的时候能把概念解释成大白话那就是更高层次的概括了，所以以后文章中要添加各种废话，我记住了！</p>
+</blockquote>
+<p>读书的高潮时每次你看到作者的观点和你不谋而合的时候，产生的共鸣，在那一刻你会吐槽，“卧槽，这本书，这个作者真是NB，居然和我想到的一样”，这也是我看书的乐趣。</p>
+<p><strong>看《Think in java》开头就写到：如果注解没有没有注解处理器，那么注解就和注释已没有什么区别</strong>我以前也是这么想的，一个注解必须得被注解处理器翻译一下，注解和注解处理器一一对应，可是就是没能概括出来，注解和注释的区别。这个概括能力还得练习！！</p>
+<h2 id="注解的作用"><a href="#注解的作用" class="headerlink" title="注解的作用"></a>注解的作用</h2><p>注解最好用的就是给类一个标记，没错给类做个记号等，这个记号在什么时候用呢？没错就是注解处理器用来翻译这个标记，如果碰到这个记号那么我就 xxx,xxx就是处理我的业务代码。为啥我要这么做呢？因为我懒☺️，没有必要为重复的业务逻辑写重复代码，给类做个标记碰到标记就自动xxx。</p>
+<h2 id="定义Test的注解"><a href="#定义Test的注解" class="headerlink" title="定义Test的注解"></a>定义Test的注解</h2><p>定义一个Test注解，当这个类遇到的含有Test注解的时候就自动执行这个方法，模仿一下Junit的方法自动执行。</p>
+<h2 id="例子🌰"><a href="#例子🌰" class="headerlink" title="例子🌰"></a>例子🌰</h2><p>先编写注解类,因为Junit的@Test是注解在方法上的，我们也需要注解在方法上。并且给这个注解取了一个响亮的名字叫做TestJ。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> TestJ &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> "TestJ"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="注解翻译"><a href="#注解翻译" class="headerlink" title="注解翻译"></a>注解翻译</h2><p>翻译注解，如果注解没有被翻译，那么和注释没有什么区别，开始翻译。如果对java的反射不了解，那么基本上就可以告别写框架的念头了，所以说<strong>反射+动态代理</strong>采用jdk默认的这种字节码技术，除了性能不说，能满足大部分的造轮子功能，谁年轻的时候还没造过几个轮子。</p>
+<p>动态代理的几种实现:<a href="http://www.iteye.com/topic/1116696" target="_blank" rel="external">动态代理传送门</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSub</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">parseTest</span><span class="params">(Class&lt;?&gt; clazz)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Object obj=clazz.newInstance();</span><br><span class="line">            <span class="keyword">for</span>(Method method:clazz.getDeclaredMethods())&#123;</span><br><span class="line">              TestJ annotation= method.getAnnotation(TestJ.class);</span><br><span class="line">              <span class="keyword">if</span>(annotation!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                  System.out.println(annotation.name());<span class="comment">//输出反射的名字</span></span><br><span class="line">                  method.invoke(obj,<span class="keyword">null</span>);</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> TestSub().parseTest(TestAnnotation.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出</span><br><span class="line">TestJ</span><br><span class="line"><span class="keyword">this</span> is test</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>改变了写作风格，感觉还挺好，多写点废话，等以后读起来的时候也知道当时的是怎么样的一个心境。莫愁前路无知己，总有bug伴着你，努力做个段子手把生活滋润滋润。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/08/12/annotation/" data-id="cj9du5yoh001yexojqlocjt7d" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-LinkedList" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -108,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/11/LinkedList/" data-id="cj82qvgom000kqmojmlhvgsqn" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/11/LinkedList/" data-id="cj9du5ynp000oexojay5c3hdm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -221,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/09/java虚拟机内存模型/" data-id="cj82qvgpo0026qmoj9dc6vnmn" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/09/java虚拟机内存模型/" data-id="cj9du5yoo0028exojhodj6vm1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -349,7 +425,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/08/09/java内存模型/" data-id="cj82qvgpk0020qmojaeh97yz4" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/08/09/java内存模型/" data-id="cj9du5yoq002cexojor4xsacz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -413,77 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/22/NIO/" data-id="cj82qvgon000nqmoj1aub8lwf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-IOmodel" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/07/22/IOmodel/">IO模型目录</a>
-    </h1>
-  
-
-        <a href="/blog/2016/07/22/IOmodel/" class="article-data-title">
-
-  <time  datetime="2016-07-22T02:58:31.000Z" itemprop="datePublished">2016-07-22</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>最近在学习NIO(非阻塞式IO模型)，感触颇多。</p>
-</blockquote>
-<p>NIO学习牵扯出来的知识点(坑)非常多：</p>
-<blockquote>
-<p>1 NIO和BIO文件读写内存模型<br>2 IO阻塞和非阻塞具体的阻塞指的是什么<br>3 什么是同步IO，什么是异步IO<br>4 多线程同步和单线程异步的优缺点<br>5 单线程事件驱动模型（Reactor）设计模式<br>6 Tcp协议，TCP粘包，拆包问题<br>7 Buffers类<br>8 Channels<br>9 Selector</p>
-</blockquote>
-<p>上面的坑已经挖好，接下来会慢慢爬坑。</p>
-<p>上面的每个知识点都会牵扯出来很多问题，总是会被牵扯出来的问题引入到其它的问题上o(╯□╰)o，不过学习就是在不断的填坑，同时定时清理，提炼。</p>
-<p>参考资料  <a href="http://elf.cs.pub.ro/idp/_media/laboratoare/l7/nio.pdf" target="_blank" rel="external">NIO英文PDF</a><br>《Netty权威指南》<br>《UNIX网络编程-第1卷:套接口API(第3版)》</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>最近在学习NIO(非阻塞式IO模型)，感触颇多。</p>
-</blockquote>
-<p>NIO学习牵扯出来的知识点(坑)非常多：</p>
-<blockquote>
-<p>1 NIO和BIO文件读写内存模型<br>2 IO阻塞和非阻塞具体的阻塞指的是什么<br>3 什么是同步IO，什么是异步IO<br>4 多线程同步和单线程异步的优缺点<br>5 单线程事件驱动模型（Reactor）设计模式<br>6 Tcp协议，TCP粘包，拆包问题<br>7 Buffers类<br>8 Channels<br>9 Selector</p>
-</blockquote>
-<p>上面的坑已经挖好，接下来会慢慢爬坑。</p>
-<p>上面的每个知识点都会牵扯出来很多问题，总是会被牵扯出来的问题引入到其它的问题上o(╯□╰)o，不过学习就是在不断的填坑，同时定时清理，提炼。</p>
-<p>参考资料  <a href="http://elf.cs.pub.ro/idp/_media/laboratoare/l7/nio.pdf" target="_blank" rel="external">NIO英文PDF</a><br>《Netty权威指南》<br>《UNIX网络编程-第1卷:套接口API(第3版)》</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/07/22/IOmodel/" data-id="cj82qvgoa0008qmojagpgkh40" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/07/22/NIO/" data-id="cj9du5ynq000qexoj9bgbrmo3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
