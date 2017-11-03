@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">31</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,66 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-jafka-send-message" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/11/03/jafka-send-message/">jafka发送消息源码分析</a>
+    </h1>
+  
+
+        <a href="/blog/2017/11/03/jafka-send-message/" class="article-data-title">
+
+  <time  datetime="2017-11-03T09:18:07.000Z" itemprop="datePublished">2017-11-03</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>jafka Producer 发送消息分析，建立连接源码分析</p>
+</blockquote>
+<h3 id="send发送代码分析"><a href="#send发送代码分析" class="headerlink" title="send发送代码分析"></a>send发送代码分析</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">(BoundedByteBufferSend send)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">           logger.info(<span class="string">"开始发送。。。"</span>);</span><br><span class="line">           <span class="comment">//对发送的数据进行校验，产生一个新的 buffer。</span></span><br><span class="line">           <span class="comment">// slice方法的作用，就是做数据分割，将当前的position到limit之间的数据分割出来，返回一个新的ByteBuffer,同时,mark标记重置为-1。</span></span><br><span class="line">           <span class="comment">// 不过这里注意，分割出来的数据的容量刚好就是数据长度，而不是被分割之前的长度。，</span></span><br><span class="line">           verifySendBuffer(send.getBuffer().slice());</span><br><span class="line">           <span class="keyword">long</span> startTime = System.nanoTime();</span><br><span class="line">           logger.info(<span class="string">"建立连接。。。"</span>);</span><br><span class="line">           <span class="comment">//如果channel不为null建立连接。</span></span><br><span class="line">           getOrMakeConnection();</span><br><span class="line">           <span class="keyword">int</span> written = -<span class="number">1</span>;</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="comment">//往通道中写数据</span></span><br><span class="line">               written = send.writeCompletely(channel);</span><br><span class="line">           &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">               <span class="comment">// no way to tell if write succeeded. Disconnect and re-throw exception to let client handle retry</span></span><br><span class="line">               <span class="comment">//如果数据写入失败，抛出异常断开连接，让客户端去进行重试</span></span><br><span class="line">               disconnect();</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">           &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">               <span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">                   logger.debug(format(<span class="string">"write %d bytes data to %s:%d"</span>, written, host, port));</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">//负载均衡的一种策略，jafka通过重新连接，可以随机选择新的broker。细节操作。。</span></span><br><span class="line">           <span class="comment">//https://webcache.googleusercontent.com/search?q=cache:2-15E_M91gcJ:https://kafka.apache.org/07/documentation.html+&amp;cd=1&amp;hl=zh-CN&amp;ct=clnk&amp;gl=hk</span></span><br><span class="line">           sentOnConnection++;</span><br><span class="line">           <span class="keyword">if</span> (sentOnConnection &gt;= config.reconnectInterval</span><br><span class="line">                   || (config.reconnectTimeInterval &gt;= <span class="number">0</span> &amp;&amp; System.currentTimeMillis() - lastConnectionTime &gt;= config.reconnectTimeInterval)) &#123;</span><br><span class="line">               disconnect();</span><br><span class="line">               channel = connect();</span><br><span class="line">               sentOnConnection = <span class="number">0</span>;</span><br><span class="line">               lastConnectionTime = System.currentTimeMillis();</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">final</span> <span class="keyword">long</span> endTime = System.nanoTime();</span><br><span class="line">           SyncProducerStats.recordProduceRequest(endTime - startTime);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="建立连接"><a href="#建立连接" class="headerlink" title="建立连接"></a>建立连接</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> SocketChannel <span class="title">connect</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> connectBackoffMs = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">long</span> beginTimeMs =  System.currentTimeMillis();</span><br><span class="line">    <span class="comment">//确保channel不为null,不关闭</span></span><br><span class="line">    <span class="keyword">while</span> (channel == <span class="keyword">null</span> &amp;&amp; !shutdown) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            channel = SocketChannel.open();</span><br><span class="line">            channel.socket().setSendBufferSize(config.bufferSize);</span><br><span class="line">            <span class="comment">//设置 发送信息为阻塞模式</span></span><br><span class="line">            channel.configureBlocking(<span class="keyword">true</span>);</span><br><span class="line">            channel.socket().setSoTimeout(config.getSocketTimeoutMs());</span><br><span class="line">            channel.socket().setKeepAlive(<span class="keyword">true</span>);</span><br><span class="line">            channel.connect(<span class="keyword">new</span> InetSocketAddress(config.getHost(), config.getPort()));</span><br><span class="line">            logger.info(<span class="string">"Connected to "</span> + config.getHost() + <span class="string">":"</span> + config.getPort() + <span class="string">" for producing"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="comment">//发生异常断开连接</span></span><br><span class="line">            disconnect();</span><br><span class="line">            <span class="keyword">long</span> endTimeMs =  System.currentTimeMillis();</span><br><span class="line">            <span class="comment">//超时直接爆出异常</span></span><br><span class="line">            <span class="keyword">if</span> ((endTimeMs - beginTimeMs + connectBackoffMs) &gt; config.connectTimeoutMs) &#123;</span><br><span class="line">                logger.error(<span class="string">"Producer connection to "</span> + config.getHost() + <span class="string">":"</span> + config.getPort()</span><br><span class="line">                        + <span class="string">" timing out after "</span> + config.connectTimeoutMs + <span class="string">" ms"</span>, e);</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e.getMessage(), e);</span><br><span class="line">            &#125;</span><br><span class="line">            logger.error(<span class="string">"Connection attempt to "</span> + config.getHost() + <span class="string">":"</span> + config.getPort()</span><br><span class="line">                    + <span class="string">" failed, next attempt in "</span> + connectBackoffMs + <span class="string">" ms"</span>, e);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//第一次次接时候线程sleep 1毫秒</span></span><br><span class="line">                Thread.sleep(connectBackoffMs);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e1) &#123;</span><br><span class="line">                logger.warn(e1.getMessage());</span><br><span class="line">                Thread.currentThread().interrupt();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//最大休息一分钟</span></span><br><span class="line">            connectBackoffMs = Math.min(<span class="number">10</span> * connectBackoffMs, MaxConnectBackoffMs);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> channel;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p>jafka Producer 发送消息分析，建立连接源码分析</p>
+</blockquote>
+<h3 id="send发送代码分析"><a href="#send发送代码分析" class="headerlink" title="send发送代码分析"></a>send发送代码分析</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">(BoundedByteBufferSend send)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">           logger.info(<span class="string">"开始发送。。。"</span>);</span><br><span class="line">           <span class="comment">//对发送的数据进行校验，产生一个新的 buffer。</span></span><br><span class="line">           <span class="comment">// slice方法的作用，就是做数据分割，将当前的position到limit之间的数据分割出来，返回一个新的ByteBuffer,同时,mark标记重置为-1。</span></span><br><span class="line">           <span class="comment">// 不过这里注意，分割出来的数据的容量刚好就是数据长度，而不是被分割之前的长度。，</span></span><br><span class="line">           verifySendBuffer(send.getBuffer().slice());</span><br><span class="line">           <span class="keyword">long</span> startTime = System.nanoTime();</span><br><span class="line">           logger.info(<span class="string">"建立连接。。。"</span>);</span><br><span class="line">           <span class="comment">//如果channel不为null建立连接。</span></span><br><span class="line">           getOrMakeConnection();</span><br><span class="line">           <span class="keyword">int</span> written = -<span class="number">1</span>;</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="comment">//往通道中写数据</span></span><br><span class="line">               written = send.writeCompletely(channel);</span><br><span class="line">           &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">               <span class="comment">// no way to tell if write succeeded. Disconnect and re-throw exception to let client handle retry</span></span><br><span class="line">               <span class="comment">//如果数据写入失败，抛出异常断开连接，让客户端去进行重试</span></span><br><span class="line">               disconnect();</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">           &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">               <span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">                   logger.debug(format(<span class="string">"write %d bytes data to %s:%d"</span>, written, host, port));</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">//负载均衡的一种策略，jafka通过重新连接，可以随机选择新的broker。细节操作。。</span></span><br><span class="line">           <span class="comment">//https://webcache.googleusercontent.com/search?q=cache:2-15E_M91gcJ:https://kafka.apache.org/07/documentation.html+&amp;cd=1&amp;hl=zh-CN&amp;ct=clnk&amp;gl=hk</span></span><br><span class="line">           sentOnConnection++;</span><br><span class="line">           <span class="keyword">if</span> (sentOnConnection &gt;= config.reconnectInterval</span><br><span class="line">                   || (config.reconnectTimeInterval &gt;= <span class="number">0</span> &amp;&amp; System.currentTimeMillis() - lastConnectionTime &gt;= config.reconnectTimeInterval)) &#123;</span><br><span class="line">               disconnect();</span><br><span class="line">               channel = connect();</span><br><span class="line">               sentOnConnection = <span class="number">0</span>;</span><br><span class="line">               lastConnectionTime = System.currentTimeMillis();</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">final</span> <span class="keyword">long</span> endTime = System.nanoTime();</span><br><span class="line">           SyncProducerStats.recordProduceRequest(endTime - startTime);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="建立连接"><a href="#建立连接" class="headerlink" title="建立连接"></a>建立连接</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> SocketChannel <span class="title">connect</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> connectBackoffMs = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">long</span> beginTimeMs =  System.currentTimeMillis();</span><br><span class="line">    <span class="comment">//确保channel不为null,不关闭</span></span><br><span class="line">    <span class="keyword">while</span> (channel == <span class="keyword">null</span> &amp;&amp; !shutdown) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            channel = SocketChannel.open();</span><br><span class="line">            channel.socket().setSendBufferSize(config.bufferSize);</span><br><span class="line">            <span class="comment">//设置 发送信息为阻塞模式</span></span><br><span class="line">            channel.configureBlocking(<span class="keyword">true</span>);</span><br><span class="line">            channel.socket().setSoTimeout(config.getSocketTimeoutMs());</span><br><span class="line">            channel.socket().setKeepAlive(<span class="keyword">true</span>);</span><br><span class="line">            channel.connect(<span class="keyword">new</span> InetSocketAddress(config.getHost(), config.getPort()));</span><br><span class="line">            logger.info(<span class="string">"Connected to "</span> + config.getHost() + <span class="string">":"</span> + config.getPort() + <span class="string">" for producing"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="comment">//发生异常断开连接</span></span><br><span class="line">            disconnect();</span><br><span class="line">            <span class="keyword">long</span> endTimeMs =  System.currentTimeMillis();</span><br><span class="line">            <span class="comment">//超时直接爆出异常</span></span><br><span class="line">            <span class="keyword">if</span> ((endTimeMs - beginTimeMs + connectBackoffMs) &gt; config.connectTimeoutMs) &#123;</span><br><span class="line">                logger.error(<span class="string">"Producer connection to "</span> + config.getHost() + <span class="string">":"</span> + config.getPort()</span><br><span class="line">                        + <span class="string">" timing out after "</span> + config.connectTimeoutMs + <span class="string">" ms"</span>, e);</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e.getMessage(), e);</span><br><span class="line">            &#125;</span><br><span class="line">            logger.error(<span class="string">"Connection attempt to "</span> + config.getHost() + <span class="string">":"</span> + config.getPort()</span><br><span class="line">                    + <span class="string">" failed, next attempt in "</span> + connectBackoffMs + <span class="string">" ms"</span>, e);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//第一次次接时候线程sleep 1毫秒</span></span><br><span class="line">                Thread.sleep(connectBackoffMs);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e1) &#123;</span><br><span class="line">                logger.warn(e1.getMessage());</span><br><span class="line">                Thread.currentThread().interrupt();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//最大休息一分钟</span></span><br><span class="line">            connectBackoffMs = Math.min(<span class="number">10</span> * connectBackoffMs, MaxConnectBackoffMs);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> channel;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2017/11/03/jafka-send-message/" data-id="cj9jrucsr002025oj9xukf51t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-jafka-服务端start源码分析" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -88,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/10/31/jafka-服务端start源码分析/" data-id="cj9jna4xm0024wwojivyepive" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/10/31/jafka-服务端start源码分析/" data-id="cj9jrucst002325oji43oscp0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -148,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/10/30/quartz调度分析/" data-id="cj9jna4y1002swwojs22wyl9o" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/10/30/quartz调度分析/" data-id="cj9jruct9002q25ojhcmxoubk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -204,7 +264,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/09/27/DispatcherServlet/" data-id="cj9jna4wa000cwwojd1e8dnmc" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/09/27/DispatcherServlet/" data-id="cj9jrucrf000825ojgr8urf97" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -262,57 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/09/22/jvm/" data-id="cj9jna4xr002ewwoj3e73ionk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-基于消息的一致性" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/08/18/基于消息的一致性/">基于消息的一致性</a>
-    </h1>
-  
-
-        <a href="/blog/2017/08/18/基于消息的一致性/" class="article-data-title">
-
-  <time  datetime="2017-08-18T06:25:22.000Z" itemprop="datePublished">2017-08-18</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/08/18/基于消息的一致性/" data-id="cj9jna4yl003owwojs8v5vb3x" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/09/22/jvm/" data-id="cj9jruct4002k25ojb4yanrxh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -328,7 +338,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/19/">19</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/20/">20</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
     </nav>
   
 </section>
