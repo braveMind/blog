@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>反射调用被Spring代理的类 | 小菜园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="正常：项目中有自定义注解，该注解修饰在方法上，正常情况下当Spring启动的时候会扫描该注解，扫描到该注解，在对该方法进行放射调用。
+异常：在使用该注解的同时使用SpringAop，例如添加@Transation等，此时代理类 方法 里面是不会有该注解的，此时就会报错。
+解决方法：获取代理类的原始方法类型，再通过method.invoke(代理bean,参数类型)进行调用。
+
+思维误区：没有意识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反射调用被Spring代理的类">
+<meta property="og:url" content="http://bravemind.github.io/2017/12/05/反射调用被Spring代理的类/index.html">
+<meta property="og:site_name" content="小菜园">
+<meta property="og:description" content="正常：项目中有自定义注解，该注解修饰在方法上，正常情况下当Spring启动的时候会扫描该注解，扫描到该注解，在对该方法进行放射调用。
+异常：在使用该注解的同时使用SpringAop，例如添加@Transation等，此时代理类 方法 里面是不会有该注解的，此时就会报错。
+解决方法：获取代理类的原始方法类型，再通过method.invoke(代理bean,参数类型)进行调用。
+
+思维误区：没有意识">
+<meta property="og:updated_time" content="2017-12-05T10:53:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="反射调用被Spring代理的类">
+<meta name="twitter:description" content="正常：项目中有自定义注解，该注解修饰在方法上，正常情况下当Spring启动的时候会扫描该注解，扫描到该注解，在对该方法进行放射调用。
+异常：在使用该注解的同时使用SpringAop，例如添加@Transation等，此时代理类 方法 里面是不会有该注解的，此时就会报错。
+解决方法：获取代理类的原始方法类型，再通过method.invoke(代理bean,参数类型)进行调用。
+
+思维误区：没有意识">
+  
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+  <link rel="stylesheet" href="/blog/css/normalize.css">
+  <link rel="stylesheet" href="/blog/css/grid.css">
+
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.min.css">
+
+
+
+</head>
+<div class="left_header">
+    <a class="header_avater" href="/blog"></a>
+    <div class="tag_s" id="showTag">
+        <i class="fa fa-tag" href="../blog"></i>
+            <div id="tags_clod" class="pop">
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">34</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+            </div>
+    </div>
+    <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
+    <a href="https://github.com/braveMind" class="git" target="_blank"><i class="fa fa-github"></i></a>
+
+
+    <a href="/blog/tags/think"><i class="fa fa-pencil-square-o"></i></a>
+    <a href="/blog/2016/05/21/友情链接/"><i class="fa fa-link" aria-hidden="true"></i></a>
+
+</div>
+<div class="left_content">
+    <section><article id="post-反射调用被Spring代理的类" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      反射调用被Spring代理的类
+    </h1>
+  
+
+        <a href="/blog/2017/12/05/反射调用被Spring代理的类/" class="article-data-title">
+
+  <time  datetime="2017-12-05T10:10:47.000Z" itemprop="datePublished">2017-12-05</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>正常：项目中有自定义注解，该注解修饰在方法上，正常情况下当Spring启动的时候会扫描该注解，扫描到该注解，在对该方法进行放射调用。</p>
+<p>异常：在使用该注解的同时使用SpringAop，例如添加@Transation等，此时代理类 <strong>方法</strong> 里面是不会有该注解的，此时就会报错。</p>
+<p>解决方法：获取代理类的原始方法类型，再通过method.invoke(代理bean,参数类型)进行调用。</p>
+</blockquote>
+<p>思维误区：没有意识到生成的代理类，通过方法名字，和参数类型，也可以进行代理方法调用。</p>
+<p>调用方法例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (AopUtils.isAopProxy(jobCallBack)) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">				</span><br><span class="line">                    Object jobTarget = AopTargetUtils.getTarget(jobCallBack);</span><br><span class="line">                    Method[] methods = jobTarget.getClass().getMethods();</span><br><span class="line">                    <span class="keyword">for</span> (Method method : methods) &#123;</span><br><span class="line">                        Clock clock = method.getAnnotation(Clock.class);</span><br><span class="line">                        <span class="keyword">if</span> (clock != <span class="keyword">null</span>) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (!StringUtils.isEmpty(clock.name())) &#123;</span><br><span class="line"></span><br><span class="line">                                methodMap.put(clock.name(), method);</span><br><span class="line">                            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">                                methodMap.put(method.getName(), method);</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            ......</span><br><span class="line">            ....</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (m != <span class="keyword">null</span> &amp;&amp; m.getParameterTypes().length == <span class="number">1</span>) &#123;</span><br><span class="line">                		<span class="comment">//jobCallBack代理类，m为被代理的原始方法！</span></span><br><span class="line">                    m.invoke(jobCallBack, (String) jobParams.getParams());</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    m.invoke(jobCallBack);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (log.isInfoEnabled()) &#123;</span><br><span class="line">                    log.info(<span class="string">"business ok"</span>);</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>反思：不要想当然。。。。巩固基础，也不要把简单问题复杂化。</p>
+</blockquote>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <div id="toc" class="article-toc">
+        
+        <hr/>
+      </div>
+      
+      <blockquote>
+<p>正常：项目中有自定义注解，该注解修饰在方法上，正常情况下当Spring启动的时候会扫描该注解，扫描到该注解，在对该方法进行放射调用。</p>
+<p>异常：在使用该注解的同时使用SpringAop，例如添加@Transation等，此时代理类 <strong>方法</strong> 里面是不会有该注解的，此时就会报错。</p>
+<p>解决方法：获取代理类的原始方法类型，再通过method.invoke(代理bean,参数类型)进行调用。</p>
+</blockquote>
+<p>思维误区：没有意识到生成的代理类，通过方法名字，和参数类型，也可以进行代理方法调用。</p>
+<p>调用方法例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (AopUtils.isAopProxy(jobCallBack)) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">				</span><br><span class="line">                    Object jobTarget = AopTargetUtils.getTarget(jobCallBack);</span><br><span class="line">                    Method[] methods = jobTarget.getClass().getMethods();</span><br><span class="line">                    <span class="keyword">for</span> (Method method : methods) &#123;</span><br><span class="line">                        Clock clock = method.getAnnotation(Clock.class);</span><br><span class="line">                        <span class="keyword">if</span> (clock != <span class="keyword">null</span>) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (!StringUtils.isEmpty(clock.name())) &#123;</span><br><span class="line"></span><br><span class="line">                                methodMap.put(clock.name(), method);</span><br><span class="line">                            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">                                methodMap.put(method.getName(), method);</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            ......</span><br><span class="line">            ....</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (m != <span class="keyword">null</span> &amp;&amp; m.getParameterTypes().length == <span class="number">1</span>) &#123;</span><br><span class="line">                		<span class="comment">//jobCallBack代理类，m为被代理的原始方法！</span></span><br><span class="line">                    m.invoke(jobCallBack, (String) jobParams.getParams());</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    m.invoke(jobCallBack);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (log.isInfoEnabled()) &#123;</span><br><span class="line">                    log.info(<span class="string">"business ok"</span>);</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>反思：不要想当然。。。。巩固基础，也不要把简单问题复杂化。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2017/12/05/反射调用被Spring代理的类/" data-id="cjatiatxv003j3bojh3tj551z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2017/11/21/jprofile/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">jprofile</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+</div>
+
+
+   
+
+   <script src="/blog/js/jQuery.js"></script>
+   <script src="/blog/js/script.js"></script>
+
+
+

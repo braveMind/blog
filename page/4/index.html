@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">33</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">34</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,76 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-lambda" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/03/13/lambda/">lambda</a>
+    </h1>
+  
+
+        <a href="/blog/2017/03/13/lambda/" class="article-data-title">
+
+  <time  datetime="2017-03-13T06:37:31.000Z" itemprop="datePublished">2017-03-13</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>lambda表达式少写一行代码。</p>
+</blockquote>
+<p>lambda表达进行List类型转换，非常方便替换原始的内部类，只需要一行代码。</p>
+<p>把T1 转化成 T2</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span>  <span class="keyword">static</span>  &lt;T1,T2&gt; <span class="function">T2 <span class="title">convert</span><span class="params">(T1 t1,T2 t2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        BeanUtils.copyProperties(t2,t1);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以前</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> Lists.transform(cityPos, <span class="keyword">new</span> com.google.common.base.Function&lt;CityPo, Object&gt;() &#123;</span><br><span class="line">            <span class="meta">@Nullable</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Object <span class="title">apply</span><span class="params">(@Nullable CityPo input)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">``` </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">现在：</span><br><span class="line"></span><br><span class="line">``` java</span><br><span class="line">       List&lt;CityDto&gt; list2= Lists.transform(cityPos, (input)-&gt;&#123;<span class="keyword">return</span> convert(input,<span class="keyword">new</span> CityDto());&#125;);</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;CityDto&gt; list=cityPos.stream().map(cityPo2 -&gt;</span><br><span class="line">               convert(cityPo2, <span class="keyword">new</span> CityDto())).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p>lambda表达式少写一行代码。</p>
+</blockquote>
+<p>lambda表达进行List类型转换，非常方便替换原始的内部类，只需要一行代码。</p>
+<p>把T1 转化成 T2</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span>  <span class="keyword">static</span>  &lt;T1,T2&gt; <span class="function">T2 <span class="title">convert</span><span class="params">(T1 t1,T2 t2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        BeanUtils.copyProperties(t2,t1);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以前</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> Lists.transform(cityPos, <span class="keyword">new</span> com.google.common.base.Function&lt;CityPo, Object&gt;() &#123;</span><br><span class="line">            <span class="meta">@Nullable</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Object <span class="title">apply</span><span class="params">(@Nullable CityPo input)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">``` </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">现在：</span><br><span class="line"></span><br><span class="line">``` java</span><br><span class="line">       List&lt;CityDto&gt; list2= Lists.transform(cityPos, (input)-&gt;&#123;<span class="keyword">return</span> convert(input,<span class="keyword">new</span> CityDto());&#125;);</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;CityDto&gt; list=cityPos.stream().map(cityPo2 -&gt;</span><br><span class="line">               convert(cityPo2, <span class="keyword">new</span> CityDto())).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2017/03/13/lambda/" data-id="cjatiatxi002q3boj55ciegra" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-git" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -120,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/03/06/git/" data-id="cja9b35vt001rj0oj3r1al6at" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/03/06/git/" data-id="cjatiatwq001n3boj978e2797" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -186,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/03/02/mysqlPassword/" data-id="cja9b35wn002wj0ojdzvsbv2e" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/03/02/mysqlPassword/" data-id="cjatiatxl002y3bojia7fl0vw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
@@ -242,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/01/04/Spring初始化方法/" data-id="cja9b35vi001cj0ojsrh4mux2" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/01/04/Spring初始化方法/" data-id="cjatiatwl001f3boj4t5dpsa7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -320,146 +390,10 @@ Host code.dianpingoa.com
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/01/02/git多客户端/" data-id="cja9b35vu001tj0oj5o39szf3" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/01/02/git多客户端/" data-id="cjatiatws001p3bojah7304ur" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-Spring-AOP" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/11/20/Spring-AOP/">Spring AOP</a>
-    </h1>
-  
-
-        <a href="/blog/2016/11/20/Spring-AOP/" class="article-data-title">
-
-  <time  datetime="2016-11-20T02:41:59.000Z" itemprop="datePublished">2016-11-20</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Spring中Aop的实现方式？<br>Spring如何什么时候使用JDK动态代理？<br>Spring中前置通知，后置通知，环绕通知？<br>动态代理性能如何？</p>
-</blockquote>
-<p>#Spring中的AOP的实现方式。</p>
-<p>java中每一个思想的提出都是经历过很多痛苦的编程实践，AOP面向面向切面编程从<strong>切点中分离出来横切关注点</strong>，横切关注点就是与具体的业务无关的相关代码，可能是一些公用的模块，使原来分散在不同业务模块的代码可以统一的管理。</p>
-<h2 id="Spring中使用编程的方式使用AOP"><a href="#Spring中使用编程的方式使用AOP" class="headerlink" title="Spring中使用编程的方式使用AOP"></a>Spring中使用编程的方式使用AOP</h2><h3 id="Spring-Aop继承关系图-（Before-Advice）"><a href="#Spring-Aop继承关系图-（Before-Advice）" class="headerlink" title="Spring Aop继承关系图 （Before Advice）"></a>Spring Aop继承关系图 （Before Advice）</h3><p><img src="http://7xstto.com1.z0.glb.clouddn.com/before.png" alt="类图"></p>
-<h3 id="类的实现方式"><a href="#类的实现方式" class="headerlink" title="类的实现方式"></a>类的实现方式</h3><p>Advice是AOP联盟定义的模型（org.aopalliance.aop）定义的空接口，Spring也是对AOP的一种实现。BeforeAdvice(package org.springframework.aop)定义空接口，<strong>MethodBeforeAdvice</strong>(package org.springframework.aop)交个用户自己实现。</p>
-<h3 id="用户实现"><a href="#用户实现" class="headerlink" title="用户实现"></a>用户实现</h3><p>MethodBeforeAdvice</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.springframework.aop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> org.springframework.aop.BeforeAdvice;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MethodBeforeAdvice</span> <span class="keyword">extends</span> <span class="title">BeforeAdvice</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">before</span><span class="params">(Method var1, Object[] var2, Object var3)</span> <span class="keyword">throws</span> Throwable</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Method参数，是目标方法的放射对象，Object[] var2是目标方法的参数，Object var3目标对象。</p>
-<pre><code class="xml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"xxxService"</span> <span class="attr">class</span>=<span class="string">"org.springframework.aop.framework.ProxyFactoryBean"</span>&gt;</span>  
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"interceptorNames"</span>&gt;</span>  
-            <span class="tag">&lt;<span class="name">list</span>&gt;</span>  
-                <span class="tag">&lt;<span class="name">value</span>&gt;</span>beforeAdvice<span class="tag">&lt;/<span class="name">value</span>&gt;</span> 
-            <span class="tag">&lt;/<span class="name">list</span>&gt;</span>  
-        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>  
-    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-</code></pre>
-<p><a href="http://www.cnblogs.com/wasp520/p/3143139.html" target="_blank" rel="external">ProxyFactoryBean</a>创建代理对象与其它AOP实现方式的不同。</p>
-<h2 id="使用注解方式提供"><a href="#使用注解方式提供" class="headerlink" title="使用注解方式提供"></a>使用注解方式提供</h2><p>使用注解方式提供给需要的方法进行注解。</p>
-<pre><code class="java"><span class="meta">@Target</span>(ElementType.METHOD)
-<span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)
-<span class="keyword">public</span> <span class="meta">@interface</span> MyPermission {
-    <span class="function">String <span class="title">role</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;
-}
-
-<span class="meta">@Component</span>
-<span class="meta">@Aspect</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyPermissionImp</span> </span>{
-        <span class="meta">@Around</span>(value= <span class="string">"@annotation(com.mvc.annotation.MyPermission)"</span>)
-        <span class="function"><span class="keyword">private</span> Object <span class="title">test</span><span class="params">(ProceedingJoinPoint joinPoint)</span> <span class="keyword">throws</span> Throwable </span>{
-            MethodSignature ms=(MethodSignature) joinPoint.getSignature();
-            Method method=ms.getMethod();
-            System.out.println(method.getAnnotation(MyPermission.class).role().toString()+<span class="string">"标记"</span>);
-            Object object=joinPoint.proceed();
-            <span class="keyword">return</span> object;
-
-        }
-
-}
-</code></pre>
-<p>@Around 和 before 和 after 最主要的区别就是，Around方式可以决定目标方法是否需要执行！</p>
-<p>待续。。。</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>Spring中Aop的实现方式？<br>Spring如何什么时候使用JDK动态代理？<br>Spring中前置通知，后置通知，环绕通知？<br>动态代理性能如何？</p>
-</blockquote>
-<p>#Spring中的AOP的实现方式。</p>
-<p>java中每一个思想的提出都是经历过很多痛苦的编程实践，AOP面向面向切面编程从<strong>切点中分离出来横切关注点</strong>，横切关注点就是与具体的业务无关的相关代码，可能是一些公用的模块，使原来分散在不同业务模块的代码可以统一的管理。</p>
-<h2 id="Spring中使用编程的方式使用AOP"><a href="#Spring中使用编程的方式使用AOP" class="headerlink" title="Spring中使用编程的方式使用AOP"></a>Spring中使用编程的方式使用AOP</h2><h3 id="Spring-Aop继承关系图-（Before-Advice）"><a href="#Spring-Aop继承关系图-（Before-Advice）" class="headerlink" title="Spring Aop继承关系图 （Before Advice）"></a>Spring Aop继承关系图 （Before Advice）</h3><p><img src="http://7xstto.com1.z0.glb.clouddn.com/before.png" alt="类图"></p>
-<h3 id="类的实现方式"><a href="#类的实现方式" class="headerlink" title="类的实现方式"></a>类的实现方式</h3><p>Advice是AOP联盟定义的模型（org.aopalliance.aop）定义的空接口，Spring也是对AOP的一种实现。BeforeAdvice(package org.springframework.aop)定义空接口，<strong>MethodBeforeAdvice</strong>(package org.springframework.aop)交个用户自己实现。</p>
-<h3 id="用户实现"><a href="#用户实现" class="headerlink" title="用户实现"></a>用户实现</h3><p>MethodBeforeAdvice</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.springframework.aop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> org.springframework.aop.BeforeAdvice;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MethodBeforeAdvice</span> <span class="keyword">extends</span> <span class="title">BeforeAdvice</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">before</span><span class="params">(Method var1, Object[] var2, Object var3)</span> <span class="keyword">throws</span> Throwable</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Method参数，是目标方法的放射对象，Object[] var2是目标方法的参数，Object var3目标对象。</p>
-<pre><code class="xml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"xxxService"</span> <span class="attr">class</span>=<span class="string">"org.springframework.aop.framework.ProxyFactoryBean"</span>&gt;</span>  
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"interceptorNames"</span>&gt;</span>  
-            <span class="tag">&lt;<span class="name">list</span>&gt;</span>  
-                <span class="tag">&lt;<span class="name">value</span>&gt;</span>beforeAdvice<span class="tag">&lt;/<span class="name">value</span>&gt;</span> 
-            <span class="tag">&lt;/<span class="name">list</span>&gt;</span>  
-        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>  
-    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-</code></pre>
-<p><a href="http://www.cnblogs.com/wasp520/p/3143139.html" target="_blank" rel="external">ProxyFactoryBean</a>创建代理对象与其它AOP实现方式的不同。</p>
-<h2 id="使用注解方式提供"><a href="#使用注解方式提供" class="headerlink" title="使用注解方式提供"></a>使用注解方式提供</h2><p>使用注解方式提供给需要的方法进行注解。</p>
-<pre><code class="java"><span class="meta">@Target</span>(ElementType.METHOD)
-<span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)
-<span class="keyword">public</span> <span class="meta">@interface</span> MyPermission {
-    <span class="function">String <span class="title">role</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;
-}
-
-<span class="meta">@Component</span>
-<span class="meta">@Aspect</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyPermissionImp</span> </span>{
-        <span class="meta">@Around</span>(value= <span class="string">"@annotation(com.mvc.annotation.MyPermission)"</span>)
-        <span class="function"><span class="keyword">private</span> Object <span class="title">test</span><span class="params">(ProceedingJoinPoint joinPoint)</span> <span class="keyword">throws</span> Throwable </span>{
-            MethodSignature ms=(MethodSignature) joinPoint.getSignature();
-            Method method=ms.getMethod();
-            System.out.println(method.getAnnotation(MyPermission.class).role().toString()+<span class="string">"标记"</span>);
-            Object object=joinPoint.proceed();
-            <span class="keyword">return</span> object;
-
-        }
-
-}
-</code></pre>
-<p>@Around 和 before 和 after 最主要的区别就是，Around方式可以决定目标方法是否需要执行！</p>
-<p>待续。。。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/11/20/Spring-AOP/" data-id="cja9b35vf0017j0ojnb8ktmwr" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
 
     </footer>
   </div>
