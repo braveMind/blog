@@ -3,24 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Gap 锁死锁问题 | 小菜园</title>
+  <title>mysql insert Gap死锁 | 小菜园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。原代码逻辑：先删除（通过索引删除），再插入gap锁：
+  <meta name="description" content="Gap 锁死锁问题
 
-简单的理解就是执行 delete from order where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id">
+线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。原代码逻辑：先删除（通过索引删除），再插入gap锁：
+例子分析执行 delete from order where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于cust">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gap 锁死锁问题">
+<meta property="og:title" content="mysql insert Gap死锁">
 <meta property="og:url" content="http://bravemind.github.io/2018/05/28/mysql锁/index.html">
 <meta property="og:site_name" content="小菜园">
-<meta property="og:description" content="线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。原代码逻辑：先删除（通过索引删除），再插入gap锁：
+<meta property="og:description" content="Gap 锁死锁问题
 
-简单的理解就是执行 delete from order where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id">
-<meta property="og:updated_time" content="2018-05-31T08:08:24.000Z">
+线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。原代码逻辑：先删除（通过索引删除），再插入gap锁：
+例子分析执行 delete from order where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于cust">
+<meta property="og:updated_time" content="2018-05-31T08:55:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gap 锁死锁问题">
-<meta name="twitter:description" content="线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。原代码逻辑：先删除（通过索引删除），再插入gap锁：
+<meta name="twitter:title" content="mysql insert Gap死锁">
+<meta name="twitter:description" content="Gap 锁死锁问题
 
-简单的理解就是执行 delete from order where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id">
+线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。原代码逻辑：先删除（通过索引删除），再插入gap锁：
+例子分析执行 delete from order where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于cust">
   
   
     <link rel="icon" href="/blog/favicon.png">
@@ -62,7 +65,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Gap 锁死锁问题
+      mysql insert Gap死锁
     </h1>
   
 
@@ -76,11 +79,11 @@
    <!-- <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+<p>Gap 锁死锁问题</p>
 </blockquote>
-<h3 id="简单的理解"><a href="#简单的理解" class="headerlink" title="简单的理解"></a>简单的理解</h3><p>就是执行 delete from <code>order</code> where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id存在一个索引，mysql根据索引进行搜索，索引的key是(1,2,6)，3不在这些key里面而是位于(2,6)之间的gap（间隙）中。Mysql对于(2,6)这个间隙加的锁就叫做Gap锁。</p>
-<p><strong>ps：两个锁的互斥关系如下</strong><br>存在Insert Intention 锁时，申请Gap锁是允许的；但是存在Gap锁时，申请Insert Intention锁时是被阻止的。<strong>Gap锁是共享锁。</strong></p>
-<p><strong>逻辑分析</strong><br>原有逻辑分析(举例)：</p>
+<p>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+<h2 id="例子分析"><a href="#例子分析" class="headerlink" title="例子分析"></a>例子分析</h2><p>执行 delete from <code>order</code> where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id存在一个索引，mysql根据索引进行搜索，索引的key是(1,2,6)，3不在这些key里面而是位于(2,6)之间的gap（间隙）中。Mysql对于(2,6)这个间隙加的锁就叫做Gap锁。</p>
+<h2 id="场景举例"><a href="#场景举例" class="headerlink" title="场景举例"></a>场景举例</h2><p>原有逻辑分析(举例)：</p>
 <p>A   ：T1  stagedPoiRoomBedInfoDAO.deleteByRoomId(3);</p>
 <p>B   ：T2  stagedPoiRoomBedInfoDAO.deleteByRoomId(4);</p>
 <p>C   ：T1  stagedPoiRoomBedInfoDAO.insert(stagedPoiRoomBedInfoDO1);</p>
@@ -89,9 +92,10 @@
 <p> 执行B语句，T2 申请Gap(2,6)的X锁，该申请被授权，所以T2 持有了Gap(2,6)的X锁。</p>
 <p> 执行C语句，T1 申请Insert Intention (2,6)的X锁，根据之前讲的互斥关系，由于T2持有Gap(2,6)的X锁，该申请被block。</p>
 <p> 执行D语句，T2 申请 Insert Intention(2,6)的X锁，根据之前讲的互斥关系，由于T1持有Gap(2,6)的X锁，该申请被block。</p>
-<p> 这里一个死锁很明显的出现，T1与T2都持有一个锁，同时都在等对方释放一个锁。到这里，整个死锁的原因分析清楚了。<br><strong>解决思路：</strong></p>
-<p>只要消除了Gap锁，这个死锁就解决了。</p>
+<p> 这里一个死锁很明显的出现，T1与T2都持有一个锁，同时都在等对方释放一个锁。到这里，整个死锁的原因分析清楚了。  </p>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>只要消除了Gap锁，这个死锁就解决了。</p>
 <p>在delete的时候，不让事务获取到Gap锁。比如，在执行delete from   <code>order</code>  where customer_id = 3 ;之前， 我们可以先用主键查询看数据是否存在，存在再用主键删除，即可解决上述的死锁问题。</p>
+<p><strong>ps：两个锁的互斥关系如下</strong><br>存在Insert Intention 锁时，申请Gap锁是允许的；但是存在Gap锁时，申请Insert Intention锁时是被阻止的。<strong>Gap锁是共享锁。</strong></p>
 
       
 
@@ -101,16 +105,16 @@
       
       
       <div id="toc" class="article-toc">
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单的理解"><span class="toc-number">1.</span> <span class="toc-text">简单的理解</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#例子分析"><span class="toc-number">1.</span> <span class="toc-text">例子分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#场景举例"><span class="toc-number">2.</span> <span class="toc-text">场景举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决思路"><span class="toc-number">3.</span> <span class="toc-text">解决思路</span></a></li></ol>
         <hr/>
       </div>
       
       <blockquote>
-<p>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+<p>Gap 锁死锁问题</p>
 </blockquote>
-<h3 id="简单的理解"><a href="#简单的理解" class="headerlink" title="简单的理解"></a>简单的理解</h3><p>就是执行 delete from <code>order</code> where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id存在一个索引，mysql根据索引进行搜索，索引的key是(1,2,6)，3不在这些key里面而是位于(2,6)之间的gap（间隙）中。Mysql对于(2,6)这个间隙加的锁就叫做Gap锁。</p>
-<p><strong>ps：两个锁的互斥关系如下</strong><br>存在Insert Intention 锁时，申请Gap锁是允许的；但是存在Gap锁时，申请Insert Intention锁时是被阻止的。<strong>Gap锁是共享锁。</strong></p>
-<p><strong>逻辑分析</strong><br>原有逻辑分析(举例)：</p>
+<p>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+<h2 id="例子分析"><a href="#例子分析" class="headerlink" title="例子分析"></a>例子分析</h2><p>执行 delete from <code>order</code> where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id存在一个索引，mysql根据索引进行搜索，索引的key是(1,2,6)，3不在这些key里面而是位于(2,6)之间的gap（间隙）中。Mysql对于(2,6)这个间隙加的锁就叫做Gap锁。</p>
+<h2 id="场景举例"><a href="#场景举例" class="headerlink" title="场景举例"></a>场景举例</h2><p>原有逻辑分析(举例)：</p>
 <p>A   ：T1  stagedPoiRoomBedInfoDAO.deleteByRoomId(3);</p>
 <p>B   ：T2  stagedPoiRoomBedInfoDAO.deleteByRoomId(4);</p>
 <p>C   ：T1  stagedPoiRoomBedInfoDAO.insert(stagedPoiRoomBedInfoDO1);</p>
@@ -119,14 +123,15 @@
 <p> 执行B语句，T2 申请Gap(2,6)的X锁，该申请被授权，所以T2 持有了Gap(2,6)的X锁。</p>
 <p> 执行C语句，T1 申请Insert Intention (2,6)的X锁，根据之前讲的互斥关系，由于T2持有Gap(2,6)的X锁，该申请被block。</p>
 <p> 执行D语句，T2 申请 Insert Intention(2,6)的X锁，根据之前讲的互斥关系，由于T1持有Gap(2,6)的X锁，该申请被block。</p>
-<p> 这里一个死锁很明显的出现，T1与T2都持有一个锁，同时都在等对方释放一个锁。到这里，整个死锁的原因分析清楚了。<br><strong>解决思路：</strong></p>
-<p>只要消除了Gap锁，这个死锁就解决了。</p>
+<p> 这里一个死锁很明显的出现，T1与T2都持有一个锁，同时都在等对方释放一个锁。到这里，整个死锁的原因分析清楚了。  </p>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>只要消除了Gap锁，这个死锁就解决了。</p>
 <p>在delete的时候，不让事务获取到Gap锁。比如，在执行delete from   <code>order</code>  where customer_id = 3 ;之前， 我们可以先用主键查询看数据是否存在，存在再用主键删除，即可解决上述的死锁问题。</p>
+<p><strong>ps：两个锁的互斥关系如下</strong><br>存在Insert Intention 锁时，申请Gap锁是允许的；但是存在Gap锁时，申请Insert Intention锁时是被阻止的。<strong>Gap锁是共享锁。</strong></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2018/05/28/mysql锁/" data-id="cjhu9prmg002wtyoj1sko91he" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2018/05/28/mysql锁/" data-id="cjhub0r2x002xn2oj7hffq9sq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>

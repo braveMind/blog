@@ -57,7 +57,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2018/05/28/mysql锁/">Gap 锁死锁问题</a>
+      <a class="article-title" href="/blog/2018/05/28/mysql锁/">mysql insert Gap死锁</a>
     </h1>
   
 
@@ -71,11 +71,11 @@
    <!-- <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+<p>Gap 锁死锁问题</p>
 </blockquote>
-<h3 id="简单的理解"><a href="#简单的理解" class="headerlink" title="简单的理解"></a>简单的理解</h3><p>就是执行 delete from <code>order</code> where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id存在一个索引，mysql根据索引进行搜索，索引的key是(1,2,6)，3不在这些key里面而是位于(2,6)之间的gap（间隙）中。Mysql对于(2,6)这个间隙加的锁就叫做Gap锁。</p>
-<p><strong>ps：两个锁的互斥关系如下</strong><br>存在Insert Intention 锁时，申请Gap锁是允许的；但是存在Gap锁时，申请Insert Intention锁时是被阻止的。<strong>Gap锁是共享锁。</strong></p>
-<p><strong>逻辑分析</strong><br>原有逻辑分析(举例)：</p>
+<p>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+<h2 id="例子分析"><a href="#例子分析" class="headerlink" title="例子分析"></a>例子分析</h2><p>执行 delete from <code>order</code> where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id存在一个索引，mysql根据索引进行搜索，索引的key是(1,2,6)，3不在这些key里面而是位于(2,6)之间的gap（间隙）中。Mysql对于(2,6)这个间隙加的锁就叫做Gap锁。</p>
+<h2 id="场景举例"><a href="#场景举例" class="headerlink" title="场景举例"></a>场景举例</h2><p>原有逻辑分析(举例)：</p>
 <p>A   ：T1  stagedPoiRoomBedInfoDAO.deleteByRoomId(3);</p>
 <p>B   ：T2  stagedPoiRoomBedInfoDAO.deleteByRoomId(4);</p>
 <p>C   ：T1  stagedPoiRoomBedInfoDAO.insert(stagedPoiRoomBedInfoDO1);</p>
@@ -84,9 +84,10 @@
 <p> 执行B语句，T2 申请Gap(2,6)的X锁，该申请被授权，所以T2 持有了Gap(2,6)的X锁。</p>
 <p> 执行C语句，T1 申请Insert Intention (2,6)的X锁，根据之前讲的互斥关系，由于T2持有Gap(2,6)的X锁，该申请被block。</p>
 <p> 执行D语句，T2 申请 Insert Intention(2,6)的X锁，根据之前讲的互斥关系，由于T1持有Gap(2,6)的X锁，该申请被block。</p>
-<p> 这里一个死锁很明显的出现，T1与T2都持有一个锁，同时都在等对方释放一个锁。到这里，整个死锁的原因分析清楚了。<br><strong>解决思路：</strong></p>
-<p>只要消除了Gap锁，这个死锁就解决了。</p>
+<p> 这里一个死锁很明显的出现，T1与T2都持有一个锁，同时都在等对方释放一个锁。到这里，整个死锁的原因分析清楚了。  </p>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>只要消除了Gap锁，这个死锁就解决了。</p>
 <p>在delete的时候，不让事务获取到Gap锁。比如，在执行delete from   <code>order</code>  where customer_id = 3 ;之前， 我们可以先用主键查询看数据是否存在，存在再用主键删除，即可解决上述的死锁问题。</p>
+<p><strong>ps：两个锁的互斥关系如下</strong><br>存在Insert Intention 锁时，申请Gap锁是允许的；但是存在Gap锁时，申请Insert Intention锁时是被阻止的。<strong>Gap锁是共享锁。</strong></p>
 
       
 
@@ -96,11 +97,11 @@
       
       
       <blockquote>
-<p>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+<p>Gap 锁死锁问题</p>
 </blockquote>
-<h3 id="简单的理解"><a href="#简单的理解" class="headerlink" title="简单的理解"></a>简单的理解</h3><p>就是执行 delete from <code>order</code> where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id存在一个索引，mysql根据索引进行搜索，索引的key是(1,2,6)，3不在这些key里面而是位于(2,6)之间的gap（间隙）中。Mysql对于(2,6)这个间隙加的锁就叫做Gap锁。</p>
-<p><strong>ps：两个锁的互斥关系如下</strong><br>存在Insert Intention 锁时，申请Gap锁是允许的；但是存在Gap锁时，申请Insert Intention锁时是被阻止的。<strong>Gap锁是共享锁。</strong></p>
-<p><strong>逻辑分析</strong><br>原有逻辑分析(举例)：</p>
+<p>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+<h2 id="例子分析"><a href="#例子分析" class="headerlink" title="例子分析"></a>例子分析</h2><p>执行 delete from <code>order</code> where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id存在一个索引，mysql根据索引进行搜索，索引的key是(1,2,6)，3不在这些key里面而是位于(2,6)之间的gap（间隙）中。Mysql对于(2,6)这个间隙加的锁就叫做Gap锁。</p>
+<h2 id="场景举例"><a href="#场景举例" class="headerlink" title="场景举例"></a>场景举例</h2><p>原有逻辑分析(举例)：</p>
 <p>A   ：T1  stagedPoiRoomBedInfoDAO.deleteByRoomId(3);</p>
 <p>B   ：T2  stagedPoiRoomBedInfoDAO.deleteByRoomId(4);</p>
 <p>C   ：T1  stagedPoiRoomBedInfoDAO.insert(stagedPoiRoomBedInfoDO1);</p>
@@ -109,14 +110,15 @@
 <p> 执行B语句，T2 申请Gap(2,6)的X锁，该申请被授权，所以T2 持有了Gap(2,6)的X锁。</p>
 <p> 执行C语句，T1 申请Insert Intention (2,6)的X锁，根据之前讲的互斥关系，由于T2持有Gap(2,6)的X锁，该申请被block。</p>
 <p> 执行D语句，T2 申请 Insert Intention(2,6)的X锁，根据之前讲的互斥关系，由于T1持有Gap(2,6)的X锁，该申请被block。</p>
-<p> 这里一个死锁很明显的出现，T1与T2都持有一个锁，同时都在等对方释放一个锁。到这里，整个死锁的原因分析清楚了。<br><strong>解决思路：</strong></p>
-<p>只要消除了Gap锁，这个死锁就解决了。</p>
+<p> 这里一个死锁很明显的出现，T1与T2都持有一个锁，同时都在等对方释放一个锁。到这里，整个死锁的原因分析清楚了。  </p>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>只要消除了Gap锁，这个死锁就解决了。</p>
 <p>在delete的时候，不让事务获取到Gap锁。比如，在执行delete from   <code>order</code>  where customer_id = 3 ;之前， 我们可以先用主键查询看数据是否存在，存在再用主键删除，即可解决上述的死锁问题。</p>
+<p><strong>ps：两个锁的互斥关系如下</strong><br>存在Insert Intention 锁时，申请Gap锁是允许的；但是存在Gap锁时，申请Insert Intention锁时是被阻止的。<strong>Gap锁是共享锁。</strong></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2018/05/28/mysql锁/" data-id="cjhu9prmg002wtyoj1sko91he" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2018/05/28/mysql锁/" data-id="cjhub0r2x002xn2oj7hffq9sq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
@@ -188,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/12/05/反射调用被Spring代理的类/" data-id="cjhu9prn6003styoj2q89vvt3" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/12/05/反射调用被Spring代理的类/" data-id="cjhub0r3j003tn2oj3tvxtaeu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -258,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/11/21/jprofile/" data-id="cjhu9prm6002ityoj3nt8i5a9" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/11/21/jprofile/" data-id="cjhub0r2f0025n2ojyjcz10bp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -316,7 +318,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/11/08/jafka-broker分析/" data-id="cjhu9prlt0023tyojl6ehtbs0" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/11/08/jafka-broker分析/" data-id="cjhub0r29001xn2ojc9zuw2fn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -366,7 +368,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/11/08/jafka-消费者获取数据分析/" data-id="cjhu9prlv0025tyojdwk12ez6" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/11/08/jafka-消费者获取数据分析/" data-id="cjhub0r2d0023n2ojui4icix5" class="article-share-link">Share</a>
       
       
     </footer>
