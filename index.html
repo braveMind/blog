@@ -88,6 +88,16 @@
 <h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>只要消除了Gap锁，这个死锁就解决了。</p>
 <p>在delete的时候，不让事务获取到Gap锁。比如，在执行delete from   <code>order</code>  where customer_id = 3 ;之前， 我们可以先用主键查询看数据是否存在，存在再用主键删除，即可解决上述的死锁问题。</p>
 <p><strong>ps：两个锁的互斥关系如下</strong><br>存在Insert Intention 锁时，申请Gap锁是允许的；但是存在Gap锁时，申请Insert Intention锁时是被阻止的。<strong>Gap锁是共享锁。</strong></p>
+<h2 id="什么时候会取得-gap-lock-或nextKey锁"><a href="#什么时候会取得-gap-lock-或nextKey锁" class="headerlink" title="什么时候会取得 gap lock 或nextKey锁"></a>什么时候会取得 gap lock 或nextKey锁</h2><p>这和隔离级别有关,只在REPEATABLE READ或以上的隔离级别下的特定操作才会取得gap lock或nextkey lock。</p>
+<p>For locking reads (<strong>SELECT with FOR UPDATE or LOCK IN SHARE MODE</strong>), <strong>UPDATE statements, and DELETE statements</strong>, InnoDB locks only index records, not the gaps before them, and thus permits the free insertion of new records next to locked records. Gap locking is only used for foreign-key constraint checking and duplicate-key checking.</p>
+<p>Because gap locking is disabled, phantom problems may occur, as other sessions can insert new rows into the gaps. For information about phantoms, see Section 14.5.4, “Phantom Rows”.</p>
+<p>Only row-based binary logging is supported with the READ COMMITTED isolation level. If you use READ COMMITTED with binlog_format=MIXED, the server automatically uses row-based logging.</p>
+<p>Using READ COMMITTED has additional effects:</p>
+<p>For UPDATE or DELETE statements, InnoDB holds locks only for rows that it updates or deletes. Record locks for nonmatching rows are released after MySQL has evaluated the WHERE condition. This greatly reduces the probability of deadlocks, but they can still happen.</p>
+<p>For UPDATE statements, if a row is already locked, InnoDB performs a “semi-consistent” read, returning the latest committed version to MySQL so that MySQL can determine whether the row matches the WHERE condition of the UPDATE. If the row matches (must be updated), MySQL reads the row again and this time InnoDB either locks it or waits for a lock on it.</p>
+<p><a href="https://dev.mysql.com/doc/refman/5.7/en/innodb-transaction-isolation-levels.html" target="_blank" rel="external">参考</a></p>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>GAP锁，锁的是区间，并不是最末端的几行，最大的记录到 +∞区间都被锁了，这个区间内的所有插入都会失败</p>
+<p>举个例子，表中最大id是10，错误id是10000，这样锁住的范围是10 ~ 正无穷大。这样插入大于10的id都会锁等待。</p>
 
       
 
@@ -114,11 +124,21 @@
 <h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>只要消除了Gap锁，这个死锁就解决了。</p>
 <p>在delete的时候，不让事务获取到Gap锁。比如，在执行delete from   <code>order</code>  where customer_id = 3 ;之前， 我们可以先用主键查询看数据是否存在，存在再用主键删除，即可解决上述的死锁问题。</p>
 <p><strong>ps：两个锁的互斥关系如下</strong><br>存在Insert Intention 锁时，申请Gap锁是允许的；但是存在Gap锁时，申请Insert Intention锁时是被阻止的。<strong>Gap锁是共享锁。</strong></p>
+<h2 id="什么时候会取得-gap-lock-或nextKey锁"><a href="#什么时候会取得-gap-lock-或nextKey锁" class="headerlink" title="什么时候会取得 gap lock 或nextKey锁"></a>什么时候会取得 gap lock 或nextKey锁</h2><p>这和隔离级别有关,只在REPEATABLE READ或以上的隔离级别下的特定操作才会取得gap lock或nextkey lock。</p>
+<p>For locking reads (<strong>SELECT with FOR UPDATE or LOCK IN SHARE MODE</strong>), <strong>UPDATE statements, and DELETE statements</strong>, InnoDB locks only index records, not the gaps before them, and thus permits the free insertion of new records next to locked records. Gap locking is only used for foreign-key constraint checking and duplicate-key checking.</p>
+<p>Because gap locking is disabled, phantom problems may occur, as other sessions can insert new rows into the gaps. For information about phantoms, see Section 14.5.4, “Phantom Rows”.</p>
+<p>Only row-based binary logging is supported with the READ COMMITTED isolation level. If you use READ COMMITTED with binlog_format=MIXED, the server automatically uses row-based logging.</p>
+<p>Using READ COMMITTED has additional effects:</p>
+<p>For UPDATE or DELETE statements, InnoDB holds locks only for rows that it updates or deletes. Record locks for nonmatching rows are released after MySQL has evaluated the WHERE condition. This greatly reduces the probability of deadlocks, but they can still happen.</p>
+<p>For UPDATE statements, if a row is already locked, InnoDB performs a “semi-consistent” read, returning the latest committed version to MySQL so that MySQL can determine whether the row matches the WHERE condition of the UPDATE. If the row matches (must be updated), MySQL reads the row again and this time InnoDB either locks it or waits for a lock on it.</p>
+<p><a href="https://dev.mysql.com/doc/refman/5.7/en/innodb-transaction-isolation-levels.html" target="_blank" rel="external">参考</a></p>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>GAP锁，锁的是区间，并不是最末端的几行，最大的记录到 +∞区间都被锁了，这个区间内的所有插入都会失败</p>
+<p>举个例子，表中最大id是10，错误id是10000，这样锁住的范围是10 ~ 正无穷大。这样插入大于10的id都会锁等待。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2018/05/28/mysql锁/" data-id="cjhub0r2x002xn2oj7hffq9sq" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2018/05/28/mysql锁/" data-id="cjhucizye002ykpoj8j3isdf0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
@@ -190,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/12/05/反射调用被Spring代理的类/" data-id="cjhub0r3j003tn2oj3tvxtaeu" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/12/05/反射调用被Spring代理的类/" data-id="cjhucizyy003rkpoj9grbml6u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -260,7 +280,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/11/21/jprofile/" data-id="cjhub0r2f0025n2ojyjcz10bp" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/11/21/jprofile/" data-id="cjhucizy4002ikpojkcbaydmu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -318,7 +338,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/11/08/jafka-broker分析/" data-id="cjhub0r29001xn2ojc9zuw2fn" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/11/08/jafka-broker分析/" data-id="cjhucizxt0021kpoj4l1zcw64" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -368,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/11/08/jafka-消费者获取数据分析/" data-id="cjhub0r2d0023n2ojui4icix5" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/11/08/jafka-消费者获取数据分析/" data-id="cjhucizxy0029kpojtcqkscvs" class="article-share-link">Share</a>
       
       
     </footer>
