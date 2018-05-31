@@ -32,7 +32,7 @@
     <div class="tag_s" id="showTag">
         <i class="fa fa-tag" href="../blog"></i>
             <div id="tags_clod" class="pop">
-                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">34</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Mysql/">Mysql</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java基础/">java基础</a><span class="tag-list-count">34</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux/">linux</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/技术求索/">技术求索</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/设计模式/">设计模式</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/译文/">译文</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li></ul>
             </div>
     </div>
     <a href="/blog/archives/"><i class="fa fa-list-ul"></i></a>
@@ -45,6 +45,94 @@
 </div>
 <div class="left_content">
     <section>
+  
+    <article id="post-简单工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/04/10/简单工厂模式/">简单工厂模式（创建型模型一）</a>
+    </h1>
+  
+
+        <a href="/blog/2016/04/10/简单工厂模式/" class="article-data-title">
+
+  <time  datetime="2016-04-10T13:49:28.000Z" itemprop="datePublished">2016-04-10</time>
+</a>
+
+      </header>
+    
+   <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>简单工厂模式属于设计模式中的<strong>创建型模型</strong>，解决的问题是隐藏对象的创建细节，根据参数工厂创建不同的对象。</p>
+</blockquote>
+<h2 id="类结构图"><a href="#类结构图" class="headerlink" title="类结构图"></a>类结构图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-10%20%E4%B8%8B%E5%8D%889.48.11.png" alt="类图"></p>
+<p>说明：Bicycle和Car都属于交通工具，实现Toos接口，工厂类创建一个静态的方法create();根据不不同的参数来决定生产具体的产品，App负责调用。</p>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//顶层接口定义约束，和抽象方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Toos</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//子类具体实现</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bicycle</span> <span class="keyword">implements</span> <span class="title">Toos</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"bicycle run.."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">implements</span> <span class="title">Toos</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"car run..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//根据参数 决定创建那个类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Toos <span class="title">create</span><span class="params">(String type)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="string">"car"</span>.equals(type)) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">new</span> Car();</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"bicycle"</span>.equals(type)) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">new</span> Bicycle();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//业务代码调用</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Car car= (Car) Factory.create(<span class="string">"car"</span>);</span><br><span class="line">        Bicycle bicycle= (Bicycle) Factory.create(<span class="string">"bicycle"</span>);</span><br><span class="line">        car.run();</span><br><span class="line">        bicycle.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="模式优点"><a href="#模式优点" class="headerlink" title="模式优点"></a>模式优点</h2><ol>
+<li>将<strong>对象的创建和业务代码分离，降低系统耦合度</strong>，两者修改起来比较方便。 </li>
+<li>静态工厂使用起来简单，只需要传入一个正确的参数就能创建对象，实际开发中这个参数来可以来自于配置文件。</li>
+</ol>
+<h2 id="模式缺点"><a href="#模式缺点" class="headerlink" title="模式缺点"></a>模式缺点</h2><ol>
+<li><strong>工厂类在系统中占得比重变大</strong>，一但工厂类需要修改或者逻辑变动整个系统都会受影响，<strong>不符合开闭原则</strong>。</li>
+<li>不利于扩展，<strong>增加新的产品需要在工厂类中增加逻辑代码</strong>  </li>
+<li>有人说静态方法无法在子类中继承，不过这点我认为这是静态方法本身的局限性，属于语法层面的，放在这里有点牵强。</li>
+</ol>
+<h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><ol>
+<li>系统中创建的对象种类不多，并且创建逻辑简单</li>
+<li>需要对调用端隐藏创建细节，只需要提供给调用端一个参数，就能创建对象。</li>
+</ol>
+
+      
+
+
+    </div>-->
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <blockquote>
+<p>简单工厂模式属于设计模式中的<strong>创建型模型</strong>，解决的问题是隐藏对象的创建细节，根据参数工厂创建不同的对象。</p>
+</blockquote>
+<h2 id="类结构图"><a href="#类结构图" class="headerlink" title="类结构图"></a>类结构图</h2><p><img src="http://7xstto.com2.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-04-10%20%E4%B8%8B%E5%8D%889.48.11.png" alt="类图"></p>
+<p>说明：Bicycle和Car都属于交通工具，实现Toos接口，工厂类创建一个静态的方法create();根据不不同的参数来决定生产具体的产品，App负责调用。</p>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//顶层接口定义约束，和抽象方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Toos</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//子类具体实现</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bicycle</span> <span class="keyword">implements</span> <span class="title">Toos</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"bicycle run.."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">implements</span> <span class="title">Toos</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"car run..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//根据参数 决定创建那个类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Toos <span class="title">create</span><span class="params">(String type)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="string">"car"</span>.equals(type)) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">new</span> Car();</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"bicycle"</span>.equals(type)) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">new</span> Bicycle();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//业务代码调用</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Car car= (Car) Factory.create(<span class="string">"car"</span>);</span><br><span class="line">        Bicycle bicycle= (Bicycle) Factory.create(<span class="string">"bicycle"</span>);</span><br><span class="line">        car.run();</span><br><span class="line">        bicycle.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="模式优点"><a href="#模式优点" class="headerlink" title="模式优点"></a>模式优点</h2><ol>
+<li>将<strong>对象的创建和业务代码分离，降低系统耦合度</strong>，两者修改起来比较方便。 </li>
+<li>静态工厂使用起来简单，只需要传入一个正确的参数就能创建对象，实际开发中这个参数来可以来自于配置文件。</li>
+</ol>
+<h2 id="模式缺点"><a href="#模式缺点" class="headerlink" title="模式缺点"></a>模式缺点</h2><ol>
+<li><strong>工厂类在系统中占得比重变大</strong>，一但工厂类需要修改或者逻辑变动整个系统都会受影响，<strong>不符合开闭原则</strong>。</li>
+<li>不利于扩展，<strong>增加新的产品需要在工厂类中增加逻辑代码</strong>  </li>
+<li>有人说静态方法无法在子类中继承，不过这点我认为这是静态方法本身的局限性，属于语法层面的，放在这里有点牵强。</li>
+</ol>
+<h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><ol>
+<li>系统中创建的对象种类不多，并且创建逻辑简单</li>
+<li>需要对调用端隐藏创建细节，只需要提供给调用端一个参数，就能创建对象。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bravemind.github.io/blog/2016/04/10/简单工厂模式/" data-id="cjhu9anwk004vhxojj6vegt9s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-设计模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -96,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/10/设计模式/" data-id="cjgvogmf50056zzojfsyal3u7" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/10/设计模式/" data-id="cjhu9anwv005lhxojwutnfl8a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/设计模式/">设计模式</a></li></ul>
@@ -184,7 +272,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/10/构造函数和原型/" data-id="cjgvogmep0048zzojn0u6uzvi" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/10/构造函数和原型/" data-id="cjhu9anwa004bhxojo9u4wzrp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/JavaScript/">JavaScript</a></li></ul>
@@ -250,7 +338,7 @@ chmod -R 700 run/
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/09/系统更新后nginx报错/" data-id="cjgvogmey004szzojm7osj2su" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/09/系统更新后nginx报错/" data-id="cjhu9anwl004xhxojphoiw6v1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -322,7 +410,7 @@ service iptables stop # 停止服务
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/09/linux防火墙开端口/" data-id="cjgvogmdj002kzzoj4bm9bsl5" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2016/04/09/linux防火墙开端口/" data-id="cjhu9anvg002ohxoju7xezs01" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -336,69 +424,9 @@ service iptables stop # 停止服务
 
 
   
-    <article id="post-写于开始" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/04/09/写于开始/">首记</a>
-    </h1>
-  
-
-        <a href="/blog/2016/04/09/写于开始/" class="article-data-title">
-
-  <time  datetime="2016-04-09T01:53:15.000Z" itemprop="datePublished">2016-04-09</time>
-</a>
-
-      </header>
-    
-   <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>写文章和读书能让人的心灵慢慢的平静下来，对于我而言能获得真正心灵上的放松，把日常的琐碎暂时忘记，全身沉浸在和自己交流的空间里，对于我来说这就是搭建这个博客的意义。 </p>
-</blockquote>
-<h3 id="为什么还要造这个轮子"><a href="#为什么还要造这个轮子" class="headerlink" title="为什么还要造这个轮子"></a>为什么还要造这个轮子</h3><p>博客的风格我偏向于简约，之前也在网上找了很多别人开发的主题，但都不能完全切合我的心意，简洁的风格是我所喜欢的。于是打算自己给自己造个博客主题，不为炫技只为展示文字，于是braveMind就诞生了，由于诞生的比较匆忙很多地方做的不够灵活，修改了部分源码，也没有做全面测试，所以暂时先不开源出。<br>如果喜欢可以加我Q：1069983529留言，看到我会第一时间分享与你。</p>
-<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>博客的名字取名为小菜园，比较符合本码农的情怀，理想主义种自己的菜，业余时间浇浇水，希望能自己能一直坚持下去。</p>
-
-      
-
-
-    </div>-->
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <blockquote>
-<p>写文章和读书能让人的心灵慢慢的平静下来，对于我而言能获得真正心灵上的放松，把日常的琐碎暂时忘记，全身沉浸在和自己交流的空间里，对于我来说这就是搭建这个博客的意义。 </p>
-</blockquote>
-<h3 id="为什么还要造这个轮子"><a href="#为什么还要造这个轮子" class="headerlink" title="为什么还要造这个轮子"></a>为什么还要造这个轮子</h3><p>博客的风格我偏向于简约，之前也在网上找了很多别人开发的主题，但都不能完全切合我的心意，简洁的风格是我所喜欢的。于是打算自己给自己造个博客主题，不为炫技只为展示文字，于是braveMind就诞生了，由于诞生的比较匆忙很多地方做的不够灵活，修改了部分源码，也没有做全面测试，所以暂时先不开源出。<br>如果喜欢可以加我Q：1069983529留言，看到我会第一时间分享与你。</p>
-<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>博客的名字取名为小菜园，比较符合本码农的情怀，理想主义种自己的菜，业余时间浇浇水，希望能自己能一直坚持下去。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2016/04/09/写于开始/" data-id="cjgvogme0003dzzojf22sucz4" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="" rel="prev" href="/blog/page/19/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/18/">18</a><a class="page-number" href="/blog/page/19/">19</a><span class="page-number current">20</span>
+      <a class="" rel="prev" href="/blog/page/19/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/18/">18</a><a class="page-number" href="/blog/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/blog/page/21/">21</a><a class="extend next" rel="next" href="/blog/page/21/">Next &raquo;</a>
     </nav>
   
 </section>
