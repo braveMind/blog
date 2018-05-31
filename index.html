@@ -70,7 +70,9 @@
     
    <!-- <div class="article-entry" itemprop="articleBody">
       
-        <p>&gt;<br>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+        <blockquote>
+<p>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+</blockquote>
 <h3 id="简单的理解"><a href="#简单的理解" class="headerlink" title="简单的理解"></a>简单的理解</h3><p>就是执行 delete from <code>order</code> where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id存在一个索引，mysql根据索引进行搜索，索引的key是(1,2,6)，3不在这些key里面而是位于(2,6)之间的gap（间隙）中。Mysql对于(2,6)这个间隙加的锁就叫做Gap锁。</p>
 <p><strong>ps：两个锁的互斥关系如下</strong><br>存在Insert Intention 锁时，申请Gap锁是允许的；但是存在Gap锁时，申请Insert Intention锁时是被阻止的。<strong>Gap锁是共享锁。</strong></p>
 <p><strong>逻辑分析</strong><br>原有逻辑分析(举例)：</p>
@@ -93,7 +95,9 @@
     <div class="article-entry" itemprop="articleBody">
       
       
-      <p>&gt;<br>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+      <blockquote>
+<p>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+</blockquote>
 <h3 id="简单的理解"><a href="#简单的理解" class="headerlink" title="简单的理解"></a>简单的理解</h3><p>就是执行 delete from <code>order</code> where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id存在一个索引，mysql根据索引进行搜索，索引的key是(1,2,6)，3不在这些key里面而是位于(2,6)之间的gap（间隙）中。Mysql对于(2,6)这个间隙加的锁就叫做Gap锁。</p>
 <p><strong>ps：两个锁的互斥关系如下</strong><br>存在Insert Intention 锁时，申请Gap锁是允许的；但是存在Gap锁时，申请Insert Intention锁时是被阻止的。<strong>Gap锁是共享锁。</strong></p>
 <p><strong>逻辑分析</strong><br>原有逻辑分析(举例)：</p>
@@ -112,7 +116,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2018/05/28/mysql锁/" data-id="cjhu9anvk002uhxoje0oqnvta" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2018/05/28/mysql锁/" data-id="cjhu9cnz40031jroje7uycjve" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
@@ -184,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/12/05/反射调用被Spring代理的类/" data-id="cjhu9anw1003thxojz58ya6q0" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/12/05/反射调用被Spring代理的类/" data-id="cjhu9cnzp003ujroj9uo837te" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -254,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/11/21/jprofile/" data-id="cjhu9anv7002chxoj9tmdsj2a" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/11/21/jprofile/" data-id="cjhu9cnyq002hjroj9t0uszis" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -312,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/11/08/jafka-broker分析/" data-id="cjhu9anuy001yhxoj5mefplv9" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/11/08/jafka-broker分析/" data-id="cjhu9cnyh0024jrojfijlf7kg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java基础/">java基础</a></li></ul>
@@ -362,7 +366,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2017/11/08/jafka-消费者获取数据分析/" data-id="cjhu9anv30023hxojkby00g0q" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2017/11/08/jafka-消费者获取数据分析/" data-id="cjhu9cnyn002djrojkbtud3xm" class="article-share-link">Share</a>
       
       
     </footer>

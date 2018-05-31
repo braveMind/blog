@@ -5,19 +5,22 @@
   
   <title>Gap 锁死锁问题 | 小菜园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;gt;线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。原代码逻辑：先删除（通过索引删除），再插入gap锁：
-简单的理解就是执行 delete from order where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_">
+  <meta name="description" content="线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。原代码逻辑：先删除（通过索引删除），再插入gap锁：
+
+简单的理解就是执行 delete from order where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gap 锁死锁问题">
 <meta property="og:url" content="http://bravemind.github.io/2018/05/28/mysql锁/index.html">
 <meta property="og:site_name" content="小菜园">
-<meta property="og:description" content="&amp;gt;线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。原代码逻辑：先删除（通过索引删除），再插入gap锁：
-简单的理解就是执行 delete from order where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_">
-<meta property="og:updated_time" content="2018-05-31T08:06:28.000Z">
+<meta property="og:description" content="线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。原代码逻辑：先删除（通过索引删除），再插入gap锁：
+
+简单的理解就是执行 delete from order where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id">
+<meta property="og:updated_time" content="2018-05-31T08:08:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gap 锁死锁问题">
-<meta name="twitter:description" content="&amp;gt;线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。原代码逻辑：先删除（通过索引删除），再插入gap锁：
-简单的理解就是执行 delete from order where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_">
+<meta name="twitter:description" content="线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。原代码逻辑：先删除（通过索引删除），再插入gap锁：
+
+简单的理解就是执行 delete from order where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id">
   
   
     <link rel="icon" href="/blog/favicon.png">
@@ -72,7 +75,9 @@
     
    <!-- <div class="article-entry" itemprop="articleBody">
       
-        <p>&gt;<br>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+        <blockquote>
+<p>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+</blockquote>
 <h3 id="简单的理解"><a href="#简单的理解" class="headerlink" title="简单的理解"></a>简单的理解</h3><p>就是执行 delete from <code>order</code> where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id存在一个索引，mysql根据索引进行搜索，索引的key是(1,2,6)，3不在这些key里面而是位于(2,6)之间的gap（间隙）中。Mysql对于(2,6)这个间隙加的锁就叫做Gap锁。</p>
 <p><strong>ps：两个锁的互斥关系如下</strong><br>存在Insert Intention 锁时，申请Gap锁是允许的；但是存在Gap锁时，申请Insert Intention锁时是被阻止的。<strong>Gap锁是共享锁。</strong></p>
 <p><strong>逻辑分析</strong><br>原有逻辑分析(举例)：</p>
@@ -100,7 +105,9 @@
         <hr/>
       </div>
       
-      <p>&gt;<br>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+      <blockquote>
+<p>线上时不时会报mysql-insert-deadlock,经排查发现是由于gap锁和Insert Intention锁多线程并发时互斥而造成的死锁。<br>原代码逻辑：<br>先删除（通过索引删除），再插入gap锁：</p>
+</blockquote>
 <h3 id="简单的理解"><a href="#简单的理解" class="headerlink" title="简单的理解"></a>简单的理解</h3><p>就是执行 delete from <code>order</code> where customer_id = 3。这里在order表里面没有customer_id=3 的记录。但是又由于customer_id存在一个索引，mysql根据索引进行搜索，索引的key是(1,2,6)，3不在这些key里面而是位于(2,6)之间的gap（间隙）中。Mysql对于(2,6)这个间隙加的锁就叫做Gap锁。</p>
 <p><strong>ps：两个锁的互斥关系如下</strong><br>存在Insert Intention 锁时，申请Gap锁是允许的；但是存在Gap锁时，申请Insert Intention锁时是被阻止的。<strong>Gap锁是共享锁。</strong></p>
 <p><strong>逻辑分析</strong><br>原有逻辑分析(举例)：</p>
@@ -119,7 +126,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bravemind.github.io/blog/2018/05/28/mysql锁/" data-id="cjhu9anvk002uhxoje0oqnvta" class="article-share-link">Share</a>
+      <a data-url="http://bravemind.github.io/blog/2018/05/28/mysql锁/" data-id="cjhu9cnz40031jroje7uycjve" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Mysql/">Mysql</a></li></ul>
